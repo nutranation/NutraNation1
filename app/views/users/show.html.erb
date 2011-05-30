@@ -1,0 +1,26 @@
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+      <%= render 'follow_form' if signed_in? %>
+      <% if @user.posts.any? %>
+        <table class="posts" summary="User posts">
+          <%= render @posts %>
+        </table>
+        <%= will_paginate @posts %>
+      <% end %>
+    </td>
+	<td>
+	</td>
+    <td class="sidebar round">
+      <strong>Name:</strong> <%= @user.name %><br />
+      <strong>Description:</strong>  <%= @user.description %><br />
+      <strong>Posts:</strong> <%= @user.posts.count %>
+      <%= render 'shared/stats' %>
+    </td>
+  </tr>
+</table>
+

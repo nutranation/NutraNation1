@@ -1,0 +1,10 @@
+<%= form_for @comment  do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.text_area :content, :class => "comment" %>
+	<div><%= f.hidden_field :post_id  %></div>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add Comment", :post_id => @post.id %>
+  </div>
+<% end %>

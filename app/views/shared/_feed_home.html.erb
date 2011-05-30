@@ -1,0 +1,18 @@
+<table class="front" summary="For signed-in users">
+   <tr>
+     <td class="main">
+       <h1 class="post">What's up?</h1>
+       <%= render 'shared/post_form' %>
+       <% if  @feed_type == :live %>
+	       <strong><%= link_to "Live", root_path %></strong> <%= link_to "Subscriptions", subscribed_path %>
+       <% else %>
+           <%= link_to "Live", root_path %> <strong><%= link_to "Subscriptions", subscribed_path %></strong>
+       <% end %>
+       <%= render 'shared/feed' %>
+     </td>
+     <td class="sidebar round">
+       <%= render 'shared/user_info' %>
+       <%= render 'shared/stats' %>
+     </td>
+   </tr>
+</table>

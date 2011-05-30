@@ -1,0 +1,22 @@
+
+
+<tr>
+  <td class="gravatar">
+    <%= link_to gravatar_for(comment.user), comment.user %>
+  </td>
+  <td class="comments">
+    <span class="content"> <%= wrap(comment.content) %> </span>
+    <span class="timestamp">
+      <%= link_to comment.user.name, comment.user %> posted <%= time_ago_in_words(comment.created_at) %> ago.
+    </span>
+  </td>
+  
+  <% if current_user?(comment.user) %>
+    <td>
+      <%= link_to "delete", comment, :method => :delete,
+                                       :confirm => "You sure?",
+                                       :title => comment.content %>
+    </td>
+  <% end %>
+</tr>
+
