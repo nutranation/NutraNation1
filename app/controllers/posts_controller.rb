@@ -17,7 +17,6 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @comment.post_id = @post.id
     @c_comment = Comment.where("post_id = ?", @post.id)
-    @refresh = store_location
   end
 
   def destroy
