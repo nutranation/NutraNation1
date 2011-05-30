@@ -2,25 +2,29 @@ class CommentsController < ApplicationController
   
   def create
      @comment = current_user.comments.build(params[:comment])
-     @comment.save!
+     @refresh = "/posts/#{@comment.post_id}"
      if @comment.save
-       render 'pages/contact'
+       @refresh = "/posts/#{@comment.post_id}"
+       redirect_to( @refresh, :flash => { :success => "Comment created!" })
      else
-       @feed_items = []
-       render 'pages/home'
+       redirect_to( @refresh)
      end
    end
    
+   
    def destroy
+     @comment = Comment.find(params[:id])
+     @refresh = "/posts/#{@comment.post_id}"
      @comment.destroy
-     redirect_to root_path, :flash => { :success => "Post deleted!" }
+     redirect_to @refresh, :flash => { :success => "Comment deleted!" }
    end
 
    private
 
      def authorized_user
-       @comment = Post.find(params[:id])
-       redirect_to root_path unless current_user?(@commen.user)
+       @comment = Comment.find(params[:id])
+       redirect_to root_path unless current_user?(@comment.user)
      end
- 
+     
+     
 end
