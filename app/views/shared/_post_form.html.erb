@@ -1,7 +1,12 @@
 <%= form_for(@post) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
+  <h1 class="post">Title</h1>
   <div class="field">
-    <%= f.text_area :title %>
+    <%= f.text_field :title, :class => "feed"  %>
+  </div>
+  <strong><p>Further Description</p></strong>
+  <div class="field">
+    <%= f.text_area :content %>
   </div>
   <div class="actions">
     <%= f.submit "Submit" %>

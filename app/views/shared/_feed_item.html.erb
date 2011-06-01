@@ -3,7 +3,10 @@
     <%= link_to gravatar_for(feed_item.user), feed_item.user %>
   </td>
   <td class="post">
-    <span class="title"><%= link_to wrap(feed_item.title), feed_item %></span>
+    <span class="title"><%= link_to wrap(feed_item.title), feed_item %></span><br>
+	<% if feed_item.content %>
+   		<span class "post"><%= wrap(feed_item.content) %><span>
+	<% end %>
     <span class="timestamp">
       <%= link_to feed_item.user.name, feed_item.user %> posted <%= time_ago_in_words(feed_item.created_at) %> ago.
     </span>

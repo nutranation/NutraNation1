@@ -146,10 +146,17 @@ td.sidebar {
 div.field, div.actions {
   margin-bottom: 10px;
 }
+
+
+
 textarea.description{
 	width: 160px;
 	height: 65px;
 	padding: 5px;
+}
+
+input.feed{
+  	width: 398px;	
 }
 textarea.comment{
 	width: 275px;
@@ -239,7 +246,6 @@ table.posts tr td.post span.timestamp {
   font-size: 85%;
   color: #666;
 }
-
 
 
 div.user_info img {
