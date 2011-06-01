@@ -3,7 +3,11 @@
     <%= link_to gravatar_for(feed_item.user), feed_item.user %>
   </td>
   <td class="post">
-    <span class="title"><%= link_to wrap(feed_item.title), feed_item %></span><br>
+	<% if @unique %>
+		<span class="title" style = "font-size: 120%"><strong><%= wrap(feed_item.title)%></strong></span><br>
+	<% else %>
+    	<span class="title" style = "font-size: 120%"><%= link_to wrap(feed_item.title), feed_item %></span><br>
+	<% end %>
 	<% if feed_item.content %>
    		<span class "post"><%= wrap(feed_item.content) %><span>
 	<% end %>
