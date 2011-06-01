@@ -16,9 +16,7 @@
 	<td>
 	</td>
     <td class="sidebar round">
-      <strong>Name:</strong> <%= @user.name %><br />
-      <strong>Description:</strong>  <%= @user.description %><br />
-      <strong>Posts:</strong> <%= @user.posts.count %>
+      <%= render 'shared/sidebar_info' %>
       <%= render 'shared/stats' %>
     </td>
   </tr>
