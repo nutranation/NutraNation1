@@ -38,7 +38,7 @@ caption, th, td { text-align: left; font-weight: normal; }
 table, td, th { vertical-align: middle; }
 
 /* Remove possible quote marks (") from <q>, <blockquote>. */
-blockquote:before, blockquote:after, q:before, q:after { content: ""; }
+blockquote:before, blockquote:after, q:before, q:after { title: ""; }
 blockquote, q { quotes: "" ""; }
 
 /* Remove annoying border on linked images. */

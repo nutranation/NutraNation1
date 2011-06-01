@@ -15,7 +15,7 @@ Completed 302 Found in 2ms
   [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:08.033259', '2011-05-28 17:32:08.033259', '7fe8afafa9ce0bf3cf1c97ff18c5c042b906100f359a34ddbf0f5761a8623ae5', 'b10381986c26d7053493d66673167f5ee2c8c67a6ec09a1133f8c1ced3ebe7f1', 'f')[0m
   [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "posts"
   Processing by PostsController#create as HTML
-  Parameters: {"post"=>{"content"=>""}}
+  Parameters: {"post"=>{"title"=>""}}
 Rendered shared/_error_messages.html.erb (2.1ms)
 Rendered shared/_post_form.html.erb (5.0ms)
 Rendered shared/_feed.html.erb (0.5ms)
@@ -32,7 +32,7 @@ Completed 200 OK in 193ms (Views: 115.9ms | ActiveRecord: 1.9ms)
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:08.294394', '2011-05-28 17:32:08.294394', '7fe8afafa9ce0bf3cf1c97ff18c5c042b906100f359a34ddbf0f5761a8623ae5', 'b10381986c26d7053493d66673167f5ee2c8c67a6ec09a1133f8c1ced3ebe7f1', 'f')
   Processing by PostsController#create as HTML
-  Parameters: {"post"=>{"content"=>""}}
+  Parameters: {"post"=>{"title"=>""}}
 Rendered shared/_error_messages.html.erb (1.3ms)
 Rendered shared/_post_form.html.erb (2.4ms)
 Rendered shared/_feed.html.erb (0.0ms)
@@ -49,42 +49,42 @@ Completed 200 OK in 14ms (Views: 11.3ms | ActiveRecord: 1.0ms)
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:08.321672', '2011-05-28 17:32:08.321672', '7fe8afafa9ce0bf3cf1c97ff18c5c042b906100f359a34ddbf0f5761a8623ae5', 'b10381986c26d7053493d66673167f5ee2c8c67a6ec09a1133f8c1ced3ebe7f1', 'f')[0m
   [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "posts"
   Processing by PostsController#create as HTML
-  Parameters: {"post"=>{"content"=>"Lorem ipsum dolor sit amet"}}
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:08.326585', '2011-05-28 17:32:08.326585')[0m
+  Parameters: {"post"=>{"title"=>"Lorem ipsum dolor sit amet"}}
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:08.326585', '2011-05-28 17:32:08.326585')[0m
 Redirected to http://test.host/
 Completed 302 Found in 6ms
   [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "posts"
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:08.341606', '2011-05-28 17:32:08.341606', '7fe8afafa9ce0bf3cf1c97ff18c5c042b906100f359a34ddbf0f5761a8623ae5', 'b10381986c26d7053493d66673167f5ee2c8c67a6ec09a1133f8c1ced3ebe7f1', 'f')
   Processing by PostsController#create as HTML
-  Parameters: {"post"=>{"content"=>"Lorem ipsum dolor sit amet"}}
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:08.345665', '2011-05-28 17:32:08.345665')[0m
+  Parameters: {"post"=>{"title"=>"Lorem ipsum dolor sit amet"}}
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:08.345665', '2011-05-28 17:32:08.345665')[0m
 Redirected to http://test.host/
 Completed 302 Found in 2ms
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:08.357244', '2011-05-28 17:32:08.357244', '7fe8afafa9ce0bf3cf1c97ff18c5c042b906100f359a34ddbf0f5761a8623ae5', 'b10381986c26d7053493d66673167f5ee2c8c67a6ec09a1133f8c1ced3ebe7f1', 'f')[0m
   Processing by PostsController#create as HTML
-  Parameters: {"post"=>{"content"=>"Lorem ipsum dolor sit amet"}}
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:08.361310', '2011-05-28 17:32:08.361310')
+  Parameters: {"post"=>{"title"=>"Lorem ipsum dolor sit amet"}}
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:08.361310', '2011-05-28 17:32:08.361310')
 Redirected to http://test.host/
 Completed 302 Found in 2ms
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:08.372879', '2011-05-28 17:32:08.372879', '7fe8afafa9ce0bf3cf1c97ff18c5c042b906100f359a34ddbf0f5761a8623ae5', 'b10381986c26d7053493d66673167f5ee2c8c67a6ec09a1133f8c1ced3ebe7f1', 'f')
   [1m[36mSQL (0.1ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('person-1@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.1ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-1@example.com', '2011-05-28 17:32:08.377743', '2011-05-28 17:32:08.377743', '7fe8afafa9ce0bf3cf1c97ff18c5c042b906100f359a34ddbf0f5761a8623ae5', 'b10381986c26d7053493d66673167f5ee2c8c67a6ec09a1133f8c1ced3ebe7f1', 'f')
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 17:32:08.381617', '2011-05-28 17:32:08.381617')[0m
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 17:32:08.381617', '2011-05-28 17:32:08.381617')[0m
   Processing by PostsController#destroy as HTML
-  Parameters: {"id"=>#<Post id: 1, content: "Foo bar", user_id: 1, created_at: "2011-05-28 17:32:08", updated_at: "2011-05-28 17:32:08">}
+  Parameters: {"id"=>#<Post id: 1, title: "Foo bar", user_id: 1, created_at: "2011-05-28 17:32:08", updated_at: "2011-05-28 17:32:08">}
   [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 ORDER BY posts.created_at DESC LIMIT 1
   [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
 Redirected to http://test.host/
 Completed 302 Found in 2ms
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:08.396538', '2011-05-28 17:32:08.396538', '7fe8afafa9ce0bf3cf1c97ff18c5c042b906100f359a34ddbf0f5761a8623ae5', 'b10381986c26d7053493d66673167f5ee2c8c67a6ec09a1133f8c1ced3ebe7f1', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 17:32:08.398923', '2011-05-28 17:32:08.398923')
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 17:32:08.398923', '2011-05-28 17:32:08.398923')
   [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
   Processing by PostsController#destroy as HTML
-  Parameters: {"id"=>#<Post id: 1, content: "Foo bar", user_id: 1, created_at: "2011-05-28 17:32:08", updated_at: "2011-05-28 17:32:08">}
+  Parameters: {"id"=>#<Post id: 1, title: "Foo bar", user_id: 1, created_at: "2011-05-28 17:32:08", updated_at: "2011-05-28 17:32:08">}
   [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 ORDER BY posts.created_at DESC LIMIT 1
   [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
   [1m[35mAREL (0.1ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = 1
@@ -867,8 +867,8 @@ Rendered layouts/_footer.html.erb (0.4ms)
 Completed 200 OK in 12ms (Views: 9.8ms | ActiveRecord: 1.5ms)
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:10.182480', '2011-05-28 17:32:10.182480', '2a1d99a84babc8cf3df7af975da7cfd155b48cdf62f6033b8d5b15d376ec38e8', 'c0ef26a89dbbb8165c44d5b53f27f5b4f54a22b30ee64afef24406530f01f511', 'f')
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 17:32:10.184287', '2011-05-28 17:32:10.184287')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Baz quux', 1, '2011-05-28 17:32:10.185904', '2011-05-28 17:32:10.185904')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 17:32:10.184287', '2011-05-28 17:32:10.184287')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Baz quux', 1, '2011-05-28 17:32:10.185904', '2011-05-28 17:32:10.185904')
   Processing by UsersController#show as HTML
   Parameters: {"id"=>#<User id: 1, name: "Michael Hartl", email: "mhartl@example.com", created_at: "2011-05-28 17:32:10", updated_at: "2011-05-28 17:32:10", encrypted_password: "2a1d99a84babc8cf3df7af975da7cfd155b48cdf62f6033b8d5...", salt: "c0ef26a89dbbb8165c44d5b53f27f5b4f54a22b30ee64afef24...", admin: false>}
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
@@ -892,41 +892,41 @@ Rendered layouts/_footer.html.erb (0.4ms)
 Completed 200 OK in 18ms (Views: 14.6ms | ActiveRecord: 3.0ms)
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:10.216871', '2011-05-28 17:32:10.216871', '2a1d99a84babc8cf3df7af975da7cfd155b48cdf62f6033b8d5b15d376ec38e8', 'c0ef26a89dbbb8165c44d5b53f27f5b4f54a22b30ee64afef24406530f01f511', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.218482', '2011-05-28 17:32:10.218482')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.219577', '2011-05-28 17:32:10.219577')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.220432', '2011-05-28 17:32:10.220432')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.221234', '2011-05-28 17:32:10.221234')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.221997', '2011-05-28 17:32:10.221997')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.222773', '2011-05-28 17:32:10.222773')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.223538', '2011-05-28 17:32:10.223538')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.224301', '2011-05-28 17:32:10.224301')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.225073', '2011-05-28 17:32:10.225073')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.225871', '2011-05-28 17:32:10.225871')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.226643', '2011-05-28 17:32:10.226643')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.227411', '2011-05-28 17:32:10.227411')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.228170', '2011-05-28 17:32:10.228170')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.228918', '2011-05-28 17:32:10.228918')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.229682', '2011-05-28 17:32:10.229682')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.230444', '2011-05-28 17:32:10.230444')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.231206', '2011-05-28 17:32:10.231206')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.231989', '2011-05-28 17:32:10.231989')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.232774', '2011-05-28 17:32:10.232774')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.233534', '2011-05-28 17:32:10.233534')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.234325', '2011-05-28 17:32:10.234325')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.235103', '2011-05-28 17:32:10.235103')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.235866', '2011-05-28 17:32:10.235866')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.236659', '2011-05-28 17:32:10.236659')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.237494', '2011-05-28 17:32:10.237494')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.238283', '2011-05-28 17:32:10.238283')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.239049', '2011-05-28 17:32:10.239049')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.239810', '2011-05-28 17:32:10.239810')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.240558', '2011-05-28 17:32:10.240558')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.241326', '2011-05-28 17:32:10.241326')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.242086', '2011-05-28 17:32:10.242086')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.242854', '2011-05-28 17:32:10.242854')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.243802', '2011-05-28 17:32:10.243802')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.244781', '2011-05-28 17:32:10.244781')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.245813', '2011-05-28 17:32:10.245813')
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.218482', '2011-05-28 17:32:10.218482')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.219577', '2011-05-28 17:32:10.219577')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.220432', '2011-05-28 17:32:10.220432')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.221234', '2011-05-28 17:32:10.221234')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.221997', '2011-05-28 17:32:10.221997')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.222773', '2011-05-28 17:32:10.222773')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.223538', '2011-05-28 17:32:10.223538')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.224301', '2011-05-28 17:32:10.224301')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.225073', '2011-05-28 17:32:10.225073')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.225871', '2011-05-28 17:32:10.225871')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.226643', '2011-05-28 17:32:10.226643')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.227411', '2011-05-28 17:32:10.227411')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.228170', '2011-05-28 17:32:10.228170')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.228918', '2011-05-28 17:32:10.228918')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.229682', '2011-05-28 17:32:10.229682')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.230444', '2011-05-28 17:32:10.230444')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.231206', '2011-05-28 17:32:10.231206')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.231989', '2011-05-28 17:32:10.231989')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.232774', '2011-05-28 17:32:10.232774')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.233534', '2011-05-28 17:32:10.233534')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.234325', '2011-05-28 17:32:10.234325')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.235103', '2011-05-28 17:32:10.235103')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.235866', '2011-05-28 17:32:10.235866')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.236659', '2011-05-28 17:32:10.236659')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.237494', '2011-05-28 17:32:10.237494')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.238283', '2011-05-28 17:32:10.238283')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.239049', '2011-05-28 17:32:10.239049')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.239810', '2011-05-28 17:32:10.239810')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.240558', '2011-05-28 17:32:10.240558')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.241326', '2011-05-28 17:32:10.241326')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.242086', '2011-05-28 17:32:10.242086')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.242854', '2011-05-28 17:32:10.242854')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.243802', '2011-05-28 17:32:10.243802')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.244781', '2011-05-28 17:32:10.244781')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.245813', '2011-05-28 17:32:10.245813')
   Processing by UsersController#show as HTML
   Parameters: {"id"=>#<User id: 1, name: "Michael Hartl", email: "mhartl@example.com", created_at: "2011-05-28 17:32:10", updated_at: "2011-05-28 17:32:10", encrypted_password: "2a1d99a84babc8cf3df7af975da7cfd155b48cdf62f6033b8d5...", salt: "c0ef26a89dbbb8165c44d5b53f27f5b4f54a22b30ee64afef24...", admin: false>}
   [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
@@ -1007,16 +1007,16 @@ Rendered layouts/_footer.html.erb (0.4ms)
 Completed 200 OK in 43ms (Views: 33.7ms | ActiveRecord: 9.4ms)
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:10.301414', '2011-05-28 17:32:10.301414', '2a1d99a84babc8cf3df7af975da7cfd155b48cdf62f6033b8d5b15d376ec38e8', 'c0ef26a89dbbb8165c44d5b53f27f5b4f54a22b30ee64afef24406530f01f511', 'f')
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.303089', '2011-05-28 17:32:10.303089')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.304196', '2011-05-28 17:32:10.304196')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.305050', '2011-05-28 17:32:10.305050')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.305865', '2011-05-28 17:32:10.305865')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.306724', '2011-05-28 17:32:10.306724')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.307589', '2011-05-28 17:32:10.307589')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.308413', '2011-05-28 17:32:10.308413')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.309249', '2011-05-28 17:32:10.309249')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.310086', '2011-05-28 17:32:10.310086')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.310906', '2011-05-28 17:32:10.310906')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.303089', '2011-05-28 17:32:10.303089')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.304196', '2011-05-28 17:32:10.304196')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.305050', '2011-05-28 17:32:10.305050')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.305865', '2011-05-28 17:32:10.305865')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.306724', '2011-05-28 17:32:10.306724')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.307589', '2011-05-28 17:32:10.307589')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.308413', '2011-05-28 17:32:10.308413')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.309249', '2011-05-28 17:32:10.309249')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.310086', '2011-05-28 17:32:10.310086')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:10.310906', '2011-05-28 17:32:10.310906')
   Processing by UsersController#show as HTML
   Parameters: {"id"=>#<User id: 1, name: "Michael Hartl", email: "mhartl@example.com", created_at: "2011-05-28 17:32:10", updated_at: "2011-05-28 17:32:10", encrypted_password: "2a1d99a84babc8cf3df7af975da7cfd155b48cdf62f6033b8d5...", salt: "c0ef26a89dbbb8165c44d5b53f27f5b4f54a22b30ee64afef24...", admin: false>}
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
@@ -1363,13 +1363,13 @@ Rendered layouts/_footer.html.erb (0.4ms)
 Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 3.0ms)
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:11.207647', '2011-05-28 17:32:11.207647', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('lorem ipsum', 1, '2011-05-28 17:32:11.209797', '2011-05-28 17:32:11.209797')
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('lorem ipsum', 1, '2011-05-28 17:32:11.209797', '2011-05-28 17:32:11.209797')
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:11.214906', '2011-05-28 17:32:11.214906', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('lorem ipsum', 1, '2011-05-28 17:32:11.216999', '2011-05-28 17:32:11.216999')[0m
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('lorem ipsum', 1, '2011-05-28 17:32:11.216999', '2011-05-28 17:32:11.216999')[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:11.221134', '2011-05-28 17:32:11.221134', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('lorem ipsum', 1, '2011-05-28 17:32:11.223082', '2011-05-28 17:32:11.223082')
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('lorem ipsum', 1, '2011-05-28 17:32:11.223082', '2011-05-28 17:32:11.223082')
   [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:11.228353', '2011-05-28 17:32:11.228353', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
@@ -1383,9 +1383,9 @@ Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 3.0ms)
   [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-190@example.com', '2011-05-28 17:32:11.255615', '2011-05-28 17:32:11.255615', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
   [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('person-191@example.com')) LIMIT 1
   [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-191@example.com', '2011-05-28 17:32:11.258979', '2011-05-28 17:32:11.258979', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:11.261953', '2011-05-28 17:32:11.261953')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:11.263392', '2011-05-28 17:32:11.263392')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:11.264612', '2011-05-28 17:32:11.264612')
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:11.261953', '2011-05-28 17:32:11.261953')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:11.263392', '2011-05-28 17:32:11.263392')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:11.264612', '2011-05-28 17:32:11.264612')
   [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "relationships" ("follower_id", "followed_id", "created_at", "updated_at") VALUES (1, 2, '2011-05-28 17:32:11.265856', '2011-05-28 17:32:11.265856')[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:11.270534', '2011-05-28 17:32:11.270534', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
@@ -1393,9 +1393,9 @@ Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 3.0ms)
   [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-192@example.com', '2011-05-28 17:32:11.273288', '2011-05-28 17:32:11.273288', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
   [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('person-193@example.com')) LIMIT 1
   [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-193@example.com', '2011-05-28 17:32:11.275501', '2011-05-28 17:32:11.275501', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:11.335265', '2011-05-28 17:32:11.335265')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:11.336877', '2011-05-28 17:32:11.336877')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:11.338160', '2011-05-28 17:32:11.338160')
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:11.335265', '2011-05-28 17:32:11.335265')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:11.336877', '2011-05-28 17:32:11.336877')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:11.338160', '2011-05-28 17:32:11.338160')
   [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "relationships" ("follower_id", "followed_id", "created_at", "updated_at") VALUES (1, 2, '2011-05-28 17:32:11.339560', '2011-05-28 17:32:11.339560')[0m
   [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE (user_id IN (SELECT followed_id FROM relationships
  WHERE follower_id = 1) OR user_id = 1) ORDER BY posts.created_at DESC
@@ -1405,9 +1405,9 @@ Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 3.0ms)
   [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-194@example.com', '2011-05-28 17:32:11.349128', '2011-05-28 17:32:11.349128', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')
   [1m[36mSQL (0.1ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('person-195@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-195@example.com', '2011-05-28 17:32:11.351875', '2011-05-28 17:32:11.351875', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:11.354111', '2011-05-28 17:32:11.354111')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:11.355544', '2011-05-28 17:32:11.355544')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:11.356805', '2011-05-28 17:32:11.356805')[0m
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:11.354111', '2011-05-28 17:32:11.354111')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:11.355544', '2011-05-28 17:32:11.355544')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:11.356805', '2011-05-28 17:32:11.356805')[0m
   [1m[35mAREL (0.2ms)[0m  INSERT INTO "relationships" ("follower_id", "followed_id", "created_at", "updated_at") VALUES (1, 2, '2011-05-28 17:32:11.358051', '2011-05-28 17:32:11.358051')
   [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (user_id IN (SELECT followed_id FROM relationships
  WHERE follower_id = 1) OR user_id = 1) ORDER BY posts.created_at DESC[0m
@@ -1417,9 +1417,9 @@ Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 3.0ms)
   [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-196@example.com', '2011-05-28 17:32:11.367555', '2011-05-28 17:32:11.367555', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
   [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('person-197@example.com')) LIMIT 1
   [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-197@example.com', '2011-05-28 17:32:11.369735', '2011-05-28 17:32:11.369735', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:11.371776', '2011-05-28 17:32:11.371776')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:11.373378', '2011-05-28 17:32:11.373378')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:11.374743', '2011-05-28 17:32:11.374743')
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:11.371776', '2011-05-28 17:32:11.371776')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:11.373378', '2011-05-28 17:32:11.373378')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:11.374743', '2011-05-28 17:32:11.374743')
   [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "relationships" ("follower_id", "followed_id", "created_at", "updated_at") VALUES (1, 2, '2011-05-28 17:32:11.376243', '2011-05-28 17:32:11.376243')[0m
   [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE (user_id IN (SELECT followed_id FROM relationships
  WHERE follower_id = 1) OR user_id = 1) ORDER BY posts.created_at DESC
@@ -1511,17 +1511,17 @@ Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 3.0ms)
   [1m[35mAREL (0.1ms)[0m  UPDATE "users" SET "admin" = 't', "updated_at" = '2011-05-28 17:32:11.604754' WHERE "users"."id" = 1
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('user@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Example User', 'user@example.com', '2011-05-28 17:32:11.609673', '2011-05-28 17:32:11.609673', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:11.611055', '2011-05-28 17:32:11.611773')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:11.612526', '2011-05-28 17:32:11.612906')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:11.611055', '2011-05-28 17:32:11.611773')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:11.612526', '2011-05-28 17:32:11.612906')
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('user@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Example User', 'user@example.com', '2011-05-28 17:32:11.617977', '2011-05-28 17:32:11.617977', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:11.619256', '2011-05-28 17:32:11.620050')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:11.620887', '2011-05-28 17:32:11.621272')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:11.619256', '2011-05-28 17:32:11.620050')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:11.620887', '2011-05-28 17:32:11.621272')
   [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".user_id = 1) ORDER BY posts.created_at DESC[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('user@example.com')) LIMIT 1
   [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Example User', 'user@example.com', '2011-05-28 17:32:11.626635', '2011-05-28 17:32:11.626635', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:11.628021', '2011-05-28 17:32:11.628925')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:11.630256', '2011-05-28 17:32:11.630753')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:11.628021', '2011-05-28 17:32:11.628925')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:11.630256', '2011-05-28 17:32:11.630753')[0m
   [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".user_id = 1) ORDER BY posts.created_at DESC
   [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = 2[0m
   [1m[35mAREL (0.1ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = 1
@@ -1532,32 +1532,32 @@ Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 3.0ms)
   [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 ORDER BY posts.created_at DESC LIMIT 1[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('user@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Example User', 'user@example.com', '2011-05-28 17:32:11.639523', '2011-05-28 17:32:11.639523', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:11.640714', '2011-05-28 17:32:11.641489')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:11.642313', '2011-05-28 17:32:11.642761')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:11.640714', '2011-05-28 17:32:11.641489')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:11.642313', '2011-05-28 17:32:11.642761')[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('user@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Example User', 'user@example.com', '2011-05-28 17:32:11.647299', '2011-05-28 17:32:11.647299', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:11.648550', '2011-05-28 17:32:11.698135')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:11.699253', '2011-05-28 17:32:11.699782')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:11.648550', '2011-05-28 17:32:11.698135')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:11.699253', '2011-05-28 17:32:11.699782')[0m
   [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE (user_id IN (SELECT followed_id FROM relationships
  WHERE follower_id = 1) OR user_id = 1) ORDER BY posts.created_at DESC
   [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (user_id IN (SELECT followed_id FROM relationships
  WHERE follower_id = 1) OR user_id = 1) ORDER BY posts.created_at DESC[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('user@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Example User', 'user@example.com', '2011-05-28 17:32:11.707130', '2011-05-28 17:32:11.707130', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:11.708422', '2011-05-28 17:32:11.709205')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:11.709977', '2011-05-28 17:32:11.710371')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:11.708422', '2011-05-28 17:32:11.709205')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:11.709977', '2011-05-28 17:32:11.710371')[0m
   [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('person-205@example.com')) LIMIT 1
   [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-205@example.com', '2011-05-28 17:32:11.712963', '2011-05-28 17:32:11.712963', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 2, '2011-05-28 17:32:11.714569', '2011-05-28 17:32:11.714569')
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 2, '2011-05-28 17:32:11.714569', '2011-05-28 17:32:11.714569')
   [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (user_id IN (SELECT followed_id FROM relationships
  WHERE follower_id = 1) OR user_id = 1) ORDER BY posts.created_at DESC[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('user@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Example User', 'user@example.com', '2011-05-28 17:32:11.720499', '2011-05-28 17:32:11.720499', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:11.721748', '2011-05-28 17:32:11.722919')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:11.723728', '2011-05-28 17:32:11.724119')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:11.721748', '2011-05-28 17:32:11.722919')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:11.723728', '2011-05-28 17:32:11.724119')[0m
   [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('person-206@example.com')) LIMIT 1
   [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-206@example.com', '2011-05-28 17:32:11.726237', '2011-05-28 17:32:11.726237', 'cf3d734e2e3eb40c90a48c39709fa4c67ed055c1f6ccf2d4536d65ff70ec7e92', '027145b57f5ae6bcc94826b01abef7eeb2f3cd0a03b3d3a3701738bafa830f5d', 'f')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 2, '2011-05-28 17:32:11.727846', '2011-05-28 17:32:11.727846')
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 2, '2011-05-28 17:32:11.727846', '2011-05-28 17:32:11.727846')
   [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "relationships" ("follower_id", "followed_id", "created_at", "updated_at") VALUES (1, 2, '2011-05-28 17:32:11.729374', '2011-05-28 17:32:11.729374')[0m
   [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE (user_id IN (SELECT followed_id FROM relationships
  WHERE follower_id = 1) OR user_id = 1) ORDER BY posts.created_at DESC
@@ -2124,7 +2124,7 @@ Completed 200 OK in 14ms (Views: 11.6ms | ActiveRecord: 0.8ms)
 
 Started POST "/posts" for 127.0.0.1 at 2011-05-28 13:32:12 -0400
   Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "post"=>{"content"=>""}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "post"=>{"title"=>""}, "commit"=>"Submit"}
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
 Rendered shared/_error_messages.html.erb (1.7ms)
 Rendered shared/_post_form.html.erb (2.8ms)
@@ -2201,9 +2201,9 @@ Completed 200 OK in 11ms (Views: 8.5ms | ActiveRecord: 0.8ms)
 
 Started POST "/posts" for 127.0.0.1 at 2011-05-28 13:32:12 -0400
   Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "post"=>{"content"=>"Lorem ipsum dolor sit amet"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "post"=>{"title"=>"Lorem ipsum dolor sit amet"}, "commit"=>"Submit"}
   [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:12.671146', '2011-05-28 17:32:12.671146')[0m
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:12.671146', '2011-05-28 17:32:12.671146')[0m
 Redirected to http://www.example.com/
 Completed 302 Found in 3ms
 
@@ -2394,7 +2394,7 @@ Completed 302 Found in 2ms
   [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:44.623223', '2011-05-28 17:32:44.623223', '256d3cf542ada28a1c43c18d819018c944edd96b0dd342614a4055ecd58573e0', 'd1977bb614c7e54c4e15e979bf481442ab50daaca46bb2491f997b5fc6ea65fe', 'f')[0m
   [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "posts"
   Processing by PostsController#create as HTML
-  Parameters: {"post"=>{"content"=>""}}
+  Parameters: {"post"=>{"title"=>""}}
 Rendered shared/_error_messages.html.erb (2.1ms)
 Rendered shared/_post_form.html.erb (4.7ms)
 Rendered shared/_feed.html.erb (0.5ms)
@@ -2411,7 +2411,7 @@ Completed 200 OK in 160ms (Views: 84.0ms | ActiveRecord: 1.8ms)
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:44.807147', '2011-05-28 17:32:44.807147', '256d3cf542ada28a1c43c18d819018c944edd96b0dd342614a4055ecd58573e0', 'd1977bb614c7e54c4e15e979bf481442ab50daaca46bb2491f997b5fc6ea65fe', 'f')
   Processing by PostsController#create as HTML
-  Parameters: {"post"=>{"content"=>""}}
+  Parameters: {"post"=>{"title"=>""}}
 Rendered shared/_error_messages.html.erb (1.3ms)
 Rendered shared/_post_form.html.erb (2.4ms)
 Rendered shared/_feed.html.erb (0.0ms)
@@ -2428,42 +2428,42 @@ Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 1.1ms)
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:44.836323', '2011-05-28 17:32:44.836323', '256d3cf542ada28a1c43c18d819018c944edd96b0dd342614a4055ecd58573e0', 'd1977bb614c7e54c4e15e979bf481442ab50daaca46bb2491f997b5fc6ea65fe', 'f')[0m
   [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "posts"
   Processing by PostsController#create as HTML
-  Parameters: {"post"=>{"content"=>"Lorem ipsum dolor sit amet"}}
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:44.842164', '2011-05-28 17:32:44.842164')[0m
+  Parameters: {"post"=>{"title"=>"Lorem ipsum dolor sit amet"}}
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:44.842164', '2011-05-28 17:32:44.842164')[0m
 Redirected to http://test.host/
 Completed 302 Found in 6ms
   [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "posts"
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:44.856908', '2011-05-28 17:32:44.856908', '256d3cf542ada28a1c43c18d819018c944edd96b0dd342614a4055ecd58573e0', 'd1977bb614c7e54c4e15e979bf481442ab50daaca46bb2491f997b5fc6ea65fe', 'f')
   Processing by PostsController#create as HTML
-  Parameters: {"post"=>{"content"=>"Lorem ipsum dolor sit amet"}}
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:44.860963', '2011-05-28 17:32:44.860963')[0m
+  Parameters: {"post"=>{"title"=>"Lorem ipsum dolor sit amet"}}
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:44.860963', '2011-05-28 17:32:44.860963')[0m
 Redirected to http://test.host/
 Completed 302 Found in 2ms
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1
   [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:44.872300', '2011-05-28 17:32:44.872300', '256d3cf542ada28a1c43c18d819018c944edd96b0dd342614a4055ecd58573e0', 'd1977bb614c7e54c4e15e979bf481442ab50daaca46bb2491f997b5fc6ea65fe', 'f')[0m
   Processing by PostsController#create as HTML
-  Parameters: {"post"=>{"content"=>"Lorem ipsum dolor sit amet"}}
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:44.876799', '2011-05-28 17:32:44.876799')
+  Parameters: {"post"=>{"title"=>"Lorem ipsum dolor sit amet"}}
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:44.876799', '2011-05-28 17:32:44.876799')
 Redirected to http://test.host/
 Completed 302 Found in 2ms
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1[0m
   [1m[35mAREL (1.6ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:44.888045', '2011-05-28 17:32:44.888045', '256d3cf542ada28a1c43c18d819018c944edd96b0dd342614a4055ecd58573e0', 'd1977bb614c7e54c4e15e979bf481442ab50daaca46bb2491f997b5fc6ea65fe', 'f')
   [1m[36mSQL (0.1ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('person-1@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.1ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-1@example.com', '2011-05-28 17:32:44.892248', '2011-05-28 17:32:44.892248', '256d3cf542ada28a1c43c18d819018c944edd96b0dd342614a4055ecd58573e0', 'd1977bb614c7e54c4e15e979bf481442ab50daaca46bb2491f997b5fc6ea65fe', 'f')
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 17:32:44.896223', '2011-05-28 17:32:44.896223')[0m
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 17:32:44.896223', '2011-05-28 17:32:44.896223')[0m
   Processing by PostsController#destroy as HTML
-  Parameters: {"id"=>#<Post id: 1, content: "Foo bar", user_id: 1, created_at: "2011-05-28 17:32:44", updated_at: "2011-05-28 17:32:44">}
+  Parameters: {"id"=>#<Post id: 1, title: "Foo bar", user_id: 1, created_at: "2011-05-28 17:32:44", updated_at: "2011-05-28 17:32:44">}
   [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 ORDER BY posts.created_at DESC LIMIT 1
   [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
 Redirected to http://test.host/
 Completed 302 Found in 2ms
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:44.912355', '2011-05-28 17:32:44.912355', '256d3cf542ada28a1c43c18d819018c944edd96b0dd342614a4055ecd58573e0', 'd1977bb614c7e54c4e15e979bf481442ab50daaca46bb2491f997b5fc6ea65fe', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 17:32:44.914644', '2011-05-28 17:32:44.914644')
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 17:32:44.914644', '2011-05-28 17:32:44.914644')
   [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
   Processing by PostsController#destroy as HTML
-  Parameters: {"id"=>#<Post id: 1, content: "Foo bar", user_id: 1, created_at: "2011-05-28 17:32:44", updated_at: "2011-05-28 17:32:44">}
+  Parameters: {"id"=>#<Post id: 1, title: "Foo bar", user_id: 1, created_at: "2011-05-28 17:32:44", updated_at: "2011-05-28 17:32:44">}
   [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 ORDER BY posts.created_at DESC LIMIT 1
   [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
   [1m[35mAREL (0.1ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = 1
@@ -3246,8 +3246,8 @@ Rendered layouts/_footer.html.erb (0.4ms)
 Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 1.9ms)
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:46.528450', '2011-05-28 17:32:46.528450', 'c0faee88f6462cc2179b9e6ee12f5d63c8e65bd097784fcb85f94d1405244164', 'b88366fbf6bab978e549725b4e6e2a09b962e8f7bc39f8cd2a16df438c72f94a', 'f')
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 17:32:46.530418', '2011-05-28 17:32:46.530418')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Baz quux', 1, '2011-05-28 17:32:46.531582', '2011-05-28 17:32:46.531582')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 17:32:46.530418', '2011-05-28 17:32:46.530418')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Baz quux', 1, '2011-05-28 17:32:46.531582', '2011-05-28 17:32:46.531582')
   Processing by UsersController#show as HTML
   Parameters: {"id"=>#<User id: 1, name: "Michael Hartl", email: "mhartl@example.com", created_at: "2011-05-28 17:32:46", updated_at: "2011-05-28 17:32:46", encrypted_password: "c0faee88f6462cc2179b9e6ee12f5d63c8e65bd097784fcb85f...", salt: "b88366fbf6bab978e549725b4e6e2a09b962e8f7bc39f8cd2a1...", admin: false>}
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
@@ -3271,41 +3271,41 @@ Rendered layouts/_footer.html.erb (0.4ms)
 Completed 200 OK in 19ms (Views: 14.8ms | ActiveRecord: 2.6ms)
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1
   [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:46.563882', '2011-05-28 17:32:46.563882', 'c0faee88f6462cc2179b9e6ee12f5d63c8e65bd097784fcb85f94d1405244164', 'b88366fbf6bab978e549725b4e6e2a09b962e8f7bc39f8cd2a16df438c72f94a', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.566051', '2011-05-28 17:32:46.566051')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.567223', '2011-05-28 17:32:46.567223')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.568182', '2011-05-28 17:32:46.568182')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.569487', '2011-05-28 17:32:46.569487')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.570514', '2011-05-28 17:32:46.570514')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.571387', '2011-05-28 17:32:46.571387')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.572338', '2011-05-28 17:32:46.572338')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.573230', '2011-05-28 17:32:46.573230')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.574063', '2011-05-28 17:32:46.574063')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.575031', '2011-05-28 17:32:46.575031')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.575993', '2011-05-28 17:32:46.575993')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.576866', '2011-05-28 17:32:46.576866')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.577674', '2011-05-28 17:32:46.577674')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.578465', '2011-05-28 17:32:46.578465')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.579276', '2011-05-28 17:32:46.579276')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.580094', '2011-05-28 17:32:46.580094')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.580968', '2011-05-28 17:32:46.580968')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.581941', '2011-05-28 17:32:46.581941')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.582834', '2011-05-28 17:32:46.582834')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.583655', '2011-05-28 17:32:46.583655')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.584443', '2011-05-28 17:32:46.584443')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.585240', '2011-05-28 17:32:46.585240')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.586044', '2011-05-28 17:32:46.586044')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.586861', '2011-05-28 17:32:46.586861')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.587693', '2011-05-28 17:32:46.587693')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.588523', '2011-05-28 17:32:46.588523')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.589362', '2011-05-28 17:32:46.589362')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.590339', '2011-05-28 17:32:46.590339')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.591684', '2011-05-28 17:32:46.591684')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.592966', '2011-05-28 17:32:46.592966')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.593947', '2011-05-28 17:32:46.593947')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.594907', '2011-05-28 17:32:46.594907')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.595932', '2011-05-28 17:32:46.595932')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.596944', '2011-05-28 17:32:46.596944')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.597880', '2011-05-28 17:32:46.597880')
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.566051', '2011-05-28 17:32:46.566051')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.567223', '2011-05-28 17:32:46.567223')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.568182', '2011-05-28 17:32:46.568182')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.569487', '2011-05-28 17:32:46.569487')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.570514', '2011-05-28 17:32:46.570514')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.571387', '2011-05-28 17:32:46.571387')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.572338', '2011-05-28 17:32:46.572338')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.573230', '2011-05-28 17:32:46.573230')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.574063', '2011-05-28 17:32:46.574063')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.575031', '2011-05-28 17:32:46.575031')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.575993', '2011-05-28 17:32:46.575993')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.576866', '2011-05-28 17:32:46.576866')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.577674', '2011-05-28 17:32:46.577674')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.578465', '2011-05-28 17:32:46.578465')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.579276', '2011-05-28 17:32:46.579276')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.580094', '2011-05-28 17:32:46.580094')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.580968', '2011-05-28 17:32:46.580968')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.581941', '2011-05-28 17:32:46.581941')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.582834', '2011-05-28 17:32:46.582834')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.583655', '2011-05-28 17:32:46.583655')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.584443', '2011-05-28 17:32:46.584443')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.585240', '2011-05-28 17:32:46.585240')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.586044', '2011-05-28 17:32:46.586044')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.586861', '2011-05-28 17:32:46.586861')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.587693', '2011-05-28 17:32:46.587693')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.588523', '2011-05-28 17:32:46.588523')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.589362', '2011-05-28 17:32:46.589362')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.590339', '2011-05-28 17:32:46.590339')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.591684', '2011-05-28 17:32:46.591684')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.592966', '2011-05-28 17:32:46.592966')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.593947', '2011-05-28 17:32:46.593947')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.594907', '2011-05-28 17:32:46.594907')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.595932', '2011-05-28 17:32:46.595932')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.596944', '2011-05-28 17:32:46.596944')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.597880', '2011-05-28 17:32:46.597880')
   Processing by UsersController#show as HTML
   Parameters: {"id"=>#<User id: 1, name: "Michael Hartl", email: "mhartl@example.com", created_at: "2011-05-28 17:32:46", updated_at: "2011-05-28 17:32:46", encrypted_password: "c0faee88f6462cc2179b9e6ee12f5d63c8e65bd097784fcb85f...", salt: "b88366fbf6bab978e549725b4e6e2a09b962e8f7bc39f8cd2a1...", admin: false>}
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
@@ -3386,16 +3386,16 @@ Rendered layouts/_footer.html.erb (0.4ms)
 Completed 200 OK in 46ms (Views: 35.6ms | ActiveRecord: 10.6ms)
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:46.657592', '2011-05-28 17:32:46.657592', 'c0faee88f6462cc2179b9e6ee12f5d63c8e65bd097784fcb85f94d1405244164', 'b88366fbf6bab978e549725b4e6e2a09b962e8f7bc39f8cd2a16df438c72f94a', 'f')
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.659951', '2011-05-28 17:32:46.659951')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.661007', '2011-05-28 17:32:46.661007')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.661847', '2011-05-28 17:32:46.661847')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.662869', '2011-05-28 17:32:46.662869')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.663785', '2011-05-28 17:32:46.663785')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.664698', '2011-05-28 17:32:46.664698')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.665543', '2011-05-28 17:32:46.665543')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.666337', '2011-05-28 17:32:46.666337')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.667123', '2011-05-28 17:32:46.667123')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.667970', '2011-05-28 17:32:46.667970')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.659951', '2011-05-28 17:32:46.659951')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.661007', '2011-05-28 17:32:46.661007')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.661847', '2011-05-28 17:32:46.661847')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.662869', '2011-05-28 17:32:46.662869')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.663785', '2011-05-28 17:32:46.663785')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.664698', '2011-05-28 17:32:46.664698')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.665543', '2011-05-28 17:32:46.665543')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.666337', '2011-05-28 17:32:46.666337')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.667123', '2011-05-28 17:32:46.667123')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:46.667970', '2011-05-28 17:32:46.667970')
   Processing by UsersController#show as HTML
   Parameters: {"id"=>#<User id: 1, name: "Michael Hartl", email: "mhartl@example.com", created_at: "2011-05-28 17:32:46", updated_at: "2011-05-28 17:32:46", encrypted_password: "c0faee88f6462cc2179b9e6ee12f5d63c8e65bd097784fcb85f...", salt: "b88366fbf6bab978e549725b4e6e2a09b962e8f7bc39f8cd2a1...", admin: false>}
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
@@ -3742,13 +3742,13 @@ Rendered layouts/_footer.html.erb (0.4ms)
 Completed 200 OK in 12ms (Views: 9.6ms | ActiveRecord: 1.6ms)
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:47.574031', '2011-05-28 17:32:47.574031', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('lorem ipsum', 1, '2011-05-28 17:32:47.576269', '2011-05-28 17:32:47.576269')
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('lorem ipsum', 1, '2011-05-28 17:32:47.576269', '2011-05-28 17:32:47.576269')
   [1m[36mSQL (0.3ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:47.581036', '2011-05-28 17:32:47.581036', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('lorem ipsum', 1, '2011-05-28 17:32:47.583119', '2011-05-28 17:32:47.583119')[0m
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('lorem ipsum', 1, '2011-05-28 17:32:47.583119', '2011-05-28 17:32:47.583119')[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:47.587974', '2011-05-28 17:32:47.587974', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')[0m
-  [1m[35mAREL (0.6ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('lorem ipsum', 1, '2011-05-28 17:32:47.590062', '2011-05-28 17:32:47.590062')
+  [1m[35mAREL (0.6ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('lorem ipsum', 1, '2011-05-28 17:32:47.590062', '2011-05-28 17:32:47.590062')
   [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1
   [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:47.597139', '2011-05-28 17:32:47.597139', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')[0m
@@ -3762,9 +3762,9 @@ Completed 200 OK in 12ms (Views: 9.6ms | ActiveRecord: 1.6ms)
   [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-190@example.com', '2011-05-28 17:32:47.622180', '2011-05-28 17:32:47.622180', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')[0m
   [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('person-191@example.com')) LIMIT 1
   [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-191@example.com', '2011-05-28 17:32:47.626280', '2011-05-28 17:32:47.626280', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:47.628071', '2011-05-28 17:32:47.628071')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:47.629551', '2011-05-28 17:32:47.629551')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:47.630850', '2011-05-28 17:32:47.630850')
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:47.628071', '2011-05-28 17:32:47.628071')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:47.629551', '2011-05-28 17:32:47.629551')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:47.630850', '2011-05-28 17:32:47.630850')
   [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "relationships" ("follower_id", "followed_id", "created_at", "updated_at") VALUES (1, 2, '2011-05-28 17:32:47.632223', '2011-05-28 17:32:47.632223')[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('mhartl@example.com')) LIMIT 1
   [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'mhartl@example.com', '2011-05-28 17:32:47.637079', '2011-05-28 17:32:47.637079', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')[0m
@@ -3772,9 +3772,9 @@ Completed 200 OK in 12ms (Views: 9.6ms | ActiveRecord: 1.6ms)
   [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-192@example.com', '2011-05-28 17:32:47.640101', '2011-05-28 17:32:47.640101', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')[0m
   [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('person-193@example.com')) LIMIT 1
   [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-193@example.com', '2011-05-28 17:32:47.642737', '2011-05-28 17:32:47.642737', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:47.699342', '2011-05-28 17:32:47.699342')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:47.700900', '2011-05-28 17:32:47.700900')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:47.702344', '2011-05-28 17:32:47.702344')
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:47.699342', '2011-05-28 17:32:47.699342')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:47.700900', '2011-05-28 17:32:47.700900')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:47.702344', '2011-05-28 17:32:47.702344')
   [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "relationships" ("follower_id", "followed_id", "created_at", "updated_at") VALUES (1, 2, '2011-05-28 17:32:47.703662', '2011-05-28 17:32:47.703662')[0m
   [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE (user_id IN (SELECT followed_id FROM relationships
  WHERE follower_id = 1) OR user_id = 1) ORDER BY posts.created_at DESC
@@ -3784,9 +3784,9 @@ Completed 200 OK in 12ms (Views: 9.6ms | ActiveRecord: 1.6ms)
   [1m[35mAREL (0.1ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-194@example.com', '2011-05-28 17:32:47.713054', '2011-05-28 17:32:47.713054', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')
   [1m[36mSQL (0.1ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('person-195@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.1ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-195@example.com', '2011-05-28 17:32:47.715446', '2011-05-28 17:32:47.715446', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:47.717630', '2011-05-28 17:32:47.717630')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:47.719158', '2011-05-28 17:32:47.719158')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:47.720514', '2011-05-28 17:32:47.720514')[0m
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:47.717630', '2011-05-28 17:32:47.717630')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:47.719158', '2011-05-28 17:32:47.719158')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:47.720514', '2011-05-28 17:32:47.720514')[0m
   [1m[35mAREL (0.2ms)[0m  INSERT INTO "relationships" ("follower_id", "followed_id", "created_at", "updated_at") VALUES (1, 2, '2011-05-28 17:32:47.721767', '2011-05-28 17:32:47.721767')
   [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (user_id IN (SELECT followed_id FROM relationships
  WHERE follower_id = 1) OR user_id = 1) ORDER BY posts.created_at DESC[0m
@@ -3796,9 +3796,9 @@ Completed 200 OK in 12ms (Views: 9.6ms | ActiveRecord: 1.6ms)
   [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-196@example.com', '2011-05-28 17:32:47.731219', '2011-05-28 17:32:47.731219', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')[0m
   [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('person-197@example.com')) LIMIT 1
   [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-197@example.com', '2011-05-28 17:32:47.733581', '2011-05-28 17:32:47.733581', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:47.735645', '2011-05-28 17:32:47.735645')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:47.737132', '2011-05-28 17:32:47.737132')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:47.738323', '2011-05-28 17:32:47.738323')
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('foo', 1, '2011-05-28 17:32:47.735645', '2011-05-28 17:32:47.735645')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('bar', 2, '2011-05-28 17:32:47.737132', '2011-05-28 17:32:47.737132')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('baz', 3, '2011-05-28 17:32:47.738323', '2011-05-28 17:32:47.738323')
   [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "relationships" ("follower_id", "followed_id", "created_at", "updated_at") VALUES (1, 2, '2011-05-28 17:32:47.739541', '2011-05-28 17:32:47.739541')[0m
   [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE (user_id IN (SELECT followed_id FROM relationships
  WHERE follower_id = 1) OR user_id = 1) ORDER BY posts.created_at DESC
@@ -3890,17 +3890,17 @@ Completed 200 OK in 12ms (Views: 9.6ms | ActiveRecord: 1.6ms)
   [1m[35mAREL (0.1ms)[0m  UPDATE "users" SET "admin" = 't', "updated_at" = '2011-05-28 17:32:47.961459' WHERE "users"."id" = 1
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('user@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Example User', 'user@example.com', '2011-05-28 17:32:47.966071', '2011-05-28 17:32:47.966071', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:47.967490', '2011-05-28 17:32:47.968268')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:47.969134', '2011-05-28 17:32:47.969668')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:47.967490', '2011-05-28 17:32:47.968268')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:47.969134', '2011-05-28 17:32:47.969668')
   [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('user@example.com')) LIMIT 1[0m
   [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Example User', 'user@example.com', '2011-05-28 17:32:47.976473', '2011-05-28 17:32:47.976473', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:47.977884', '2011-05-28 17:32:47.978598')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:47.979341', '2011-05-28 17:32:47.979721')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:47.977884', '2011-05-28 17:32:47.978598')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:47.979341', '2011-05-28 17:32:47.979721')
   [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".user_id = 1) ORDER BY posts.created_at DESC[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('user@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Example User', 'user@example.com', '2011-05-28 17:32:47.984966', '2011-05-28 17:32:47.984966', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:47.986300', '2011-05-28 17:32:47.987049')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:47.987815', '2011-05-28 17:32:47.988203')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:47.986300', '2011-05-28 17:32:47.987049')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:47.987815', '2011-05-28 17:32:47.988203')[0m
   [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".user_id = 1) ORDER BY posts.created_at DESC
   [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = 2[0m
   [1m[35mAREL (0.1ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = 1
@@ -3911,32 +3911,32 @@ Completed 200 OK in 12ms (Views: 9.6ms | ActiveRecord: 1.6ms)
   [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 ORDER BY posts.created_at DESC LIMIT 1[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('user@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Example User', 'user@example.com', '2011-05-28 17:32:47.998105', '2011-05-28 17:32:47.998105', '5c8f95fa6102c6cb6fd360ea0d7fc0ec7b5f012ca7400ae775115c30a157d337', '31deab9db90c9dbae0f54800e10484f9e27b5f019e908bba6bc92190d473f13b', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:47.999700', '2011-05-28 17:32:48.000433')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:48.001195', '2011-05-28 17:32:48.001573')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:47.999700', '2011-05-28 17:32:48.000433')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:48.001195', '2011-05-28 17:32:48.001573')[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('user@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Example User', 'user@example.com', '2011-05-28 17:32:48.006709', '2011-05-28 17:32:48.006709', '1e43919216635089439f4cff5eafb858daa62431d04506e9def2490ea360bf37', '9a9b546d8f2674d840ae89e77435f0a8abf4fc4422902271378a458c2de65752', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:48.008066', '2011-05-28 17:32:48.061496')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:48.062629', '2011-05-28 17:32:48.063307')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:48.008066', '2011-05-28 17:32:48.061496')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:48.062629', '2011-05-28 17:32:48.063307')[0m
   [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE (user_id IN (SELECT followed_id FROM relationships
  WHERE follower_id = 1) OR user_id = 1) ORDER BY posts.created_at DESC
   [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (user_id IN (SELECT followed_id FROM relationships
  WHERE follower_id = 1) OR user_id = 1) ORDER BY posts.created_at DESC[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('user@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Example User', 'user@example.com', '2011-05-28 17:32:48.071193', '2011-05-28 17:32:48.071193', '1e43919216635089439f4cff5eafb858daa62431d04506e9def2490ea360bf37', '9a9b546d8f2674d840ae89e77435f0a8abf4fc4422902271378a458c2de65752', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:48.072474', '2011-05-28 17:32:48.073191')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:48.073931', '2011-05-28 17:32:48.074299')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:48.072474', '2011-05-28 17:32:48.073191')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:48.073931', '2011-05-28 17:32:48.074299')[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('person-205@example.com')) LIMIT 1
   [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-205@example.com', '2011-05-28 17:32:48.076542', '2011-05-28 17:32:48.076542', '1e43919216635089439f4cff5eafb858daa62431d04506e9def2490ea360bf37', '9a9b546d8f2674d840ae89e77435f0a8abf4fc4422902271378a458c2de65752', 'f')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 2, '2011-05-28 17:32:48.077968', '2011-05-28 17:32:48.077968')
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 2, '2011-05-28 17:32:48.077968', '2011-05-28 17:32:48.077968')
   [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE (user_id IN (SELECT followed_id FROM relationships
  WHERE follower_id = 1) OR user_id = 1) ORDER BY posts.created_at DESC[0m
   [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('user@example.com')) LIMIT 1
   [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Example User', 'user@example.com', '2011-05-28 17:32:48.085043', '2011-05-28 17:32:48.085043', '1e43919216635089439f4cff5eafb858daa62431d04506e9def2490ea360bf37', '9a9b546d8f2674d840ae89e77435f0a8abf4fc4422902271378a458c2de65752', 'f')[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:48.086359', '2011-05-28 17:32:48.087175')
-  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:48.088191', '2011-05-28 17:32:48.088691')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-27 17:32:48.086359', '2011-05-28 17:32:48.087175')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 1, '2011-05-28 16:32:48.088191', '2011-05-28 17:32:48.088691')[0m
   [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('person-206@example.com')) LIMIT 1
   [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "encrypted_password", "salt", "admin") VALUES ('Michael Hartl', 'person-206@example.com', '2011-05-28 17:32:48.091441', '2011-05-28 17:32:48.091441', '1e43919216635089439f4cff5eafb858daa62431d04506e9def2490ea360bf37', '9a9b546d8f2674d840ae89e77435f0a8abf4fc4422902271378a458c2de65752', 'f')[0m
-  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 2, '2011-05-28 17:32:48.092747', '2011-05-28 17:32:48.092747')
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Foo bar', 2, '2011-05-28 17:32:48.092747', '2011-05-28 17:32:48.092747')
   [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "relationships" ("follower_id", "followed_id", "created_at", "updated_at") VALUES (1, 2, '2011-05-28 17:32:48.094175', '2011-05-28 17:32:48.094175')[0m
   [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE (user_id IN (SELECT followed_id FROM relationships
  WHERE follower_id = 1) OR user_id = 1) ORDER BY posts.created_at DESC
@@ -4503,7 +4503,7 @@ Completed 200 OK in 12ms (Views: 9.5ms | ActiveRecord: 0.8ms)
 
 Started POST "/posts" for 127.0.0.1 at 2011-05-28 13:32:48 -0400
   Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "post"=>{"content"=>""}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "post"=>{"title"=>""}, "commit"=>"Submit"}
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
 Rendered shared/_error_messages.html.erb (1.7ms)
 Rendered shared/_post_form.html.erb (2.9ms)
@@ -4580,9 +4580,9 @@ Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.8ms)
 
 Started POST "/posts" for 127.0.0.1 at 2011-05-28 13:32:49 -0400
   Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "post"=>{"content"=>"Lorem ipsum dolor sit amet"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "post"=>{"title"=>"Lorem ipsum dolor sit amet"}, "commit"=>"Submit"}
   [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:49.023503', '2011-05-28 17:32:49.023503')[0m
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Lorem ipsum dolor sit amet', 1, '2011-05-28 17:32:49.023503', '2011-05-28 17:32:49.023503')[0m
 Redirected to http://www.example.com/
 Completed 302 Found in 3ms
 

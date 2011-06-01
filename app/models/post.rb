@@ -4,19 +4,19 @@
 # Table name: posts
 #
 #  id         :integer         not null, primary key
-#  content    :string(255)
+#  title    :string(255)
 #  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
 #
 
 class Post < ActiveRecord::Base
-  attr_accessible :content
+  attr_accessible :title
   
   belongs_to :user
   has_many :comments, :dependent => :destroy
   
-  validates :content, :presence => true, :length => { :maximum => 600 }
+  validates :title, :presence => true, :length => { :maximum => 600 }
   validates :user_id, :presence => true
   
   default_scope :order => 'posts.created_at DESC'

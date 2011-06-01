@@ -47,7 +47,7 @@ Migrating to AddAdminToUsers (20100829021049)
   [1m[35mSQL (0.5ms)[0m  ALTER TABLE "users" ADD "admin" boolean DEFAULT 'f'
   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100829021049')[0m
 Migrating to CreatePosts (20100829210229)
-  [1m[35mSQL (0.4ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[35mSQL (0.4ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
   [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("posts")[0m
   [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_posts_on_user_id" ON "posts" ("user_id")
   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100829210229')[0m
@@ -193,9 +193,9 @@ Completed 200 OK in 178ms (Views: 117.1ms | ActiveRecord: 3.1ms)
 
 Started POST "/posts" for 127.0.0.1 at 2011-05-28 11:42:00 -0400
   Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "post"=>{"content"=>"I am testing this post"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "post"=>{"title"=>"I am testing this post"}, "commit"=>"Submit"}
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mAREL (0.3ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('I am testing this post', 1, '2011-05-28 15:42:01.131892', '2011-05-28 15:42:01.131892')
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('I am testing this post', 1, '2011-05-28 15:42:01.131892', '2011-05-28 15:42:01.131892')
 Redirected to http://localhost:3000/
 Completed 302 Found in 147ms
 
@@ -744,7 +744,7 @@ Migrating to AddAdminToUsers (20100829021049)
   [1m[35mSQL (0.9ms)[0m  COMMIT
 Migrating to CreatePosts (20100829210229)
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
-  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "posts" ("id" serial primary key, "content" character varying(255), "user_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "posts" ("id" serial primary key, "title" character varying(255), "user_id" integer, "created_at" timestamp, "updated_at" timestamp) 
   [1m[36mSQL (0.9ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
  FROM pg_class t, pg_class i, pg_index d
  WHERE i.relkind = 'i'
@@ -1307,7 +1307,7 @@ Completed 200 OK in 143ms (Views: 54.6ms | ActiveRecord: 4.8ms)
 
 Started POST "/posts" for 127.0.0.1 at 2011-05-28 12:37:24 -0400
   Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "post"=>{"content"=>"Testing LocalHost"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "post"=>{"title"=>"Testing LocalHost"}, "commit"=>"Submit"}
   [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -1351,7 +1351,7 @@ Started POST "/posts" for 127.0.0.1 at 2011-05-28 12:37:24 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"posts"'::regclass
-  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('Testing LocalHost', 1, '2011-05-28 16:37:24.816462', '2011-05-28 16:37:24.816462') RETURNING "id"[0m
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('Testing LocalHost', 1, '2011-05-28 16:37:24.816462', '2011-05-28 16:37:24.816462') RETURNING "id"[0m
   [1m[35mSQL (40.3ms)[0m  COMMIT
 Redirected to http://localhost:3000/
 Completed 302 Found in 154ms
@@ -1509,7 +1509,7 @@ Completed 200 OK in 212ms (Views: 81.5ms | ActiveRecord: 53.3ms)
   [1m[35mSQL (0.1ms)[0m   SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-  [1m[36mSQL (2.1ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
   [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("posts")
   [1m[36mSQL (2.2ms)[0m  [1mCREATE INDEX "index_posts_on_user_id" ON "posts" ("user_id")[0m
   [1m[35mSQL (0.2ms)[0m   SELECT name
@@ -1577,7 +1577,7 @@ Completed 200 OK in 212ms (Views: 81.5ms | ActiveRecord: 53.3ms)
   [1m[35mSQL (0.1ms)[0m   SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-  [1m[36mSQL (2.5ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[36mSQL (2.5ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
   [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("posts")
   [1m[36mSQL (3.6ms)[0m  [1mCREATE INDEX "index_posts_on_user_id" ON "posts" ("user_id")[0m
   [1m[35mSQL (0.2ms)[0m   SELECT name
@@ -2371,7 +2371,7 @@ Completed 200 OK in 205ms (Views: 70.1ms | ActiveRecord: 4.9ms)
 
 Started POST "/posts" for 127.0.0.1 at 2011-05-29 14:26:36 -0400
   Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Hde0Y7q3clm90ZS+NK2kir/GbVhmIq3OhrUdxT8WJMg=", "post"=>{"content"=>"testing"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Hde0Y7q3clm90ZS+NK2kir/GbVhmIq3OhrUdxT8WJMg=", "post"=>{"title"=>"testing"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -2420,7 +2420,7 @@ Started POST "/posts" for 127.0.0.1 at 2011-05-29 14:26:36 -0400
  AND cons.contype = 'p'
  AND dep.refobjid = '"posts"'::regclass
 [0m
-  [1m[35mSQL (11.4ms)[0m  INSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('testing', 4, '2011-05-29 18:26:36.182990', '2011-05-29 18:26:36.182990') RETURNING "id"
+  [1m[35mSQL (11.4ms)[0m  INSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('testing', 4, '2011-05-29 18:26:36.182990', '2011-05-29 18:26:36.182990') RETURNING "id"
   [1m[36mSQL (0.8ms)[0m  [1mCOMMIT[0m
 Redirected to http://localhost:3000/
 Completed 302 Found in 235ms
@@ -2517,7 +2517,7 @@ Completed 200 OK in 203ms (Views: 69.2ms | ActiveRecord: 4.8ms)
 
 Started POST "/posts" for 127.0.0.1 at 2011-05-29 14:26:50 -0400
   Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Hde0Y7q3clm90ZS+NK2kir/GbVhmIq3OhrUdxT8WJMg=", "post"=>{"content"=>"hey hey"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Hde0Y7q3clm90ZS+NK2kir/GbVhmIq3OhrUdxT8WJMg=", "post"=>{"title"=>"hey hey"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -2564,7 +2564,7 @@ Started POST "/posts" for 127.0.0.1 at 2011-05-29 14:26:50 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"posts"'::regclass
-  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('hey hey', 4, '2011-05-29 18:26:51.084211', '2011-05-29 18:26:51.084211') RETURNING "id"[0m
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('hey hey', 4, '2011-05-29 18:26:51.084211', '2011-05-29 18:26:51.084211') RETURNING "id"[0m
   [1m[35mSQL (1.2ms)[0m  COMMIT
 Redirected to http://localhost:3000/
 Completed 302 Found in 148ms
@@ -2688,7 +2688,7 @@ Completed 200 OK in 209ms (Views: 109.9ms | ActiveRecord: 4.8ms)
 
 Started POST "/posts" for 127.0.0.1 at 2011-05-29 14:27:02 -0400
   Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Hde0Y7q3clm90ZS+NK2kir/GbVhmIq3OhrUdxT8WJMg=", "post"=>{"content"=>"what up dawg?"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Hde0Y7q3clm90ZS+NK2kir/GbVhmIq3OhrUdxT8WJMg=", "post"=>{"title"=>"what up dawg?"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -2735,7 +2735,7 @@ Started POST "/posts" for 127.0.0.1 at 2011-05-29 14:27:02 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"posts"'::regclass
-  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('what up dawg?', 4, '2011-05-29 18:27:02.444774', '2011-05-29 18:27:02.444774') RETURNING "id"[0m
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('what up dawg?', 4, '2011-05-29 18:27:02.444774', '2011-05-29 18:27:02.444774') RETURNING "id"[0m
   [1m[35mSQL (18.6ms)[0m  COMMIT
 Redirected to http://localhost:3000/
 Completed 302 Found in 133ms
@@ -3402,7 +3402,7 @@ Migrating to AddDescriptiontoUsers (20110529155541)
 Migrating to RenameMicropostsPost (20110529181641)
 Migrating to CreateComments (20110529183848)
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
-  [1m[35mSQL (141.5ms)[0m  CREATE TABLE "comments" ("id" serial primary key, "content" text, "user_id" integer, "post_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35mSQL (141.5ms)[0m  CREATE TABLE "comments" ("id" serial primary key, "title" text, "user_id" integer, "post_id" integer, "created_at" timestamp, "updated_at" timestamp) 
   [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -3830,7 +3830,7 @@ Migrating to AddDescriptiontoUsers (20110529155541)
 Migrating to RenameMicropostsPost (20110529181641)
 Migrating to CreateComments (20110529183848)
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
-  [1m[35mSQL (51.9ms)[0m  CREATE TABLE "comments" ("id" serial primary key, "content" text, "user_id" integer, "post_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35mSQL (51.9ms)[0m  CREATE TABLE "comments" ("id" serial primary key, "title" text, "user_id" integer, "post_id" integer, "created_at" timestamp, "updated_at" timestamp) 
   [1m[36mSQL (0.9ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
  FROM pg_class t, pg_class i, pg_index d
  WHERE i.relkind = 'i'
@@ -4114,7 +4114,7 @@ Migrating to RenameMicropostsPost (20110529181641)
   [1m[36mSQL (0.7ms)[0m  [1mCOMMIT[0m
 Migrating to CreateComments (20110529183848)
   [1m[35mSQL (0.1ms)[0m  BEGIN
-  [1m[36mSQL (17.5ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "content" text, "user_id" integer, "post_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[36mSQL (17.5ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "title" text, "user_id" integer, "post_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
   [1m[35mSQL (0.9ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
  FROM pg_class t, pg_class i, pg_index d
  WHERE i.relkind = 'i'
@@ -4678,7 +4678,7 @@ Migrating to AddDescriptiontoUsers (20110529155541)
 Migrating to RenameMicropostsPost (20110529181641)
 Migrating to CreateComments (20110529183848)
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
-  [1m[35mSQL (43.0ms)[0m  CREATE TABLE "comments" ("id" serial primary key, "content" text, "user_id" integer, "post_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35mSQL (43.0ms)[0m  CREATE TABLE "comments" ("id" serial primary key, "title" text, "user_id" integer, "post_id" integer, "created_at" timestamp, "updated_at" timestamp) 
   [1m[36mSQL (0.9ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
  FROM pg_class t, pg_class i, pg_index d
  WHERE i.relkind = 'i'
@@ -5163,7 +5163,7 @@ Completed 200 OK in 221ms (Views: 115.0ms | ActiveRecord: 5.2ms)
 
 Started POST "/posts" for 127.0.0.1 at 2011-05-29 15:15:09 -0400
   Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "post"=>{"content"=>"what up dawg?"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "post"=>{"title"=>"what up dawg?"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -5210,7 +5210,7 @@ Started POST "/posts" for 127.0.0.1 at 2011-05-29 15:15:09 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"posts"'::regclass
-  [1m[36mSQL (7.6ms)[0m  [1mINSERT INTO "posts" ("content", "user_id", "created_at", "updated_at") VALUES ('what up dawg?', 4, '2011-05-29 19:15:09.281867', '2011-05-29 19:15:09.281867') RETURNING "id"[0m
+  [1m[36mSQL (7.6ms)[0m  [1mINSERT INTO "posts" ("title", "user_id", "created_at", "updated_at") VALUES ('what up dawg?', 4, '2011-05-29 19:15:09.281867', '2011-05-29 19:15:09.281867') RETURNING "id"[0m
   [1m[35mSQL (1.1ms)[0m  COMMIT
 Redirected to http://localhost:3000/
 Completed 302 Found in 237ms
@@ -6075,7 +6075,7 @@ ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
     1: <%= form_for(@post) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_post_form.html.erb:1:in `_app_views_shared__post_form_html_erb___3219380652281848037_2159364900_1875912620389141003'
   app/views/shared/_feed_home.html.erb:5:in `_app_views_shared__feed_home_html_erb___2454888730637972871_2159905000_3150716591387373843'
   app/views/posts/index.html.erb:1:in `_app_views_posts_index_html_erb__4405993877693428986_2159955280_948275426606650607'
@@ -7332,7 +7332,7 @@ ActionView::Template::Error (undefined method `comments_path' for #<#<Class:0x00
     1: <%= form_for(@comment) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_comment_form.html.erb:1:in `_app_views_shared__comment_form_html_erb___1818689567978987282_2169216500_2959654547400464994'
   app/views/posts/show.html.erb:4:in `_app_views_posts_show_html_erb___3284227099359206361_2189593020_948275426606650607'
 
@@ -7393,7 +7393,7 @@ ActionView::Template::Error (undefined method `comments_path' for #<#<Class:0x00
     1: <%= form_for(@comment) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_comment_form.html.erb:1:in `_app_views_shared__comment_form_html_erb___1818689567978987282_2189638800_2959654547400464994'
   app/views/posts/show.html.erb:4:in `_app_views_posts_show_html_erb___3284227099359206361_2159127000_948275426606650607'
 
@@ -7460,7 +7460,7 @@ ActionView::Template::Error (undefined method `comments_path' for #<#<Class:0x00
     1: <%= form_for(@comment) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_comment_form.html.erb:1:in `_app_views_shared__comment_form_html_erb___1818689567978987282_2169141580_2959654547400464994'
   app/views/posts/show.html.erb:4:in `_app_views_posts_show_html_erb___3284227099359206361_2189518500_948275426606650607'
 
@@ -7521,7 +7521,7 @@ ActionView::Template::Error (undefined method `comments_path' for #<#<Class:0x00
     1: <%= form_for(@comment) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_comment_form.html.erb:1:in `_app_views_shared__comment_form_html_erb___1818689567978987282_2189604960_2959654547400464994'
   app/views/posts/show.html.erb:4:in `_app_views_posts_show_html_erb___3284227099359206361_2158824500_948275426606650607'
 
@@ -7582,7 +7582,7 @@ ActionView::Template::Error (undefined method `comments_path' for #<#<Class:0x00
     1: <%= form_for(@comment) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_comment_form.html.erb:1:in `_app_views_shared__comment_form_html_erb___1818689567978987282_2168529340_2959654547400464994'
   app/views/posts/show.html.erb:4:in `_app_views_posts_show_html_erb___3284227099359206361_2169558720_948275426606650607'
 
@@ -7898,7 +7898,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 18:50:01 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"erwqdafd"}, "commit"=>"Submit", "belongs_to"=>:posts}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"erwqdafd"}, "commit"=>"Submit", "belongs_to"=>:posts}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8033,7 +8033,7 @@ Completed 200 OK in 193ms (Views: 77.2ms | ActiveRecord: 5.0ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 18:50:23 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdsfs"}, "commit"=>"Submit", "belongs_to"=>:posts}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdsfs"}, "commit"=>"Submit", "belongs_to"=>:posts}
   [1m[36mSQL (2.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8068,7 +8068,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 18:51:06 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdsfs"}, "commit"=>"Submit", "belongs_to"=>:posts}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdsfs"}, "commit"=>"Submit", "belongs_to"=>:posts}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8100,7 +8100,7 @@ ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
     1: <%= form_for(@post) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_post_form.html.erb:1:in `_app_views_shared__post_form_html_erb___3219380652281848037_2170133480_1875912620389141003'
   app/views/shared/_feed_home.html.erb:5:in `_app_views_shared__feed_home_html_erb___2454888730637972871_2170148940_3150716591387373843'
   app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___616875184065944944_2170161420_948275426606650607'
@@ -8113,7 +8113,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 18:51:39 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdsfs"}, "commit"=>"Submit", "belongs_to"=>:posts}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdsfs"}, "commit"=>"Submit", "belongs_to"=>:posts}
   [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8140,7 +8140,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 18:52:01 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdsfs"}, "commit"=>"Submit", "belongs_to"=>:posts}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdsfs"}, "commit"=>"Submit", "belongs_to"=>:posts}
   [1m[35mSQL (1.4ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8173,7 +8173,7 @@ ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
     1: <%= form_for(@post) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_post_form.html.erb:1:in `_app_views_shared__post_form_html_erb___3219380652281848037_2189905120_1875912620389141003'
   app/views/shared/_feed_home.html.erb:5:in `_app_views_shared__feed_home_html_erb___2454888730637972871_2189920260_3150716591387373843'
   app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___616875184065944944_2190001800_948275426606650607'
@@ -8186,7 +8186,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 18:52:07 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdsfs"}, "commit"=>"Submit", "belongs_to"=>:posts}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdsfs"}, "commit"=>"Submit", "belongs_to"=>:posts}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8219,7 +8219,7 @@ ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
     1: <%= form_for(@post) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_post_form.html.erb:1:in `_app_views_shared__post_form_html_erb___3219380652281848037_2190042220_1875912620389141003'
   app/views/shared/_feed_home.html.erb:5:in `_app_views_shared__feed_home_html_erb___2454888730637972871_2190072180_3150716591387373843'
   app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___616875184065944944_2190083180_948275426606650607'
@@ -8232,7 +8232,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 18:54:02 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdsfs"}, "commit"=>"Submit", "belongs_to"=>:posts}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdsfs"}, "commit"=>"Submit", "belongs_to"=>:posts}
   [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8265,7 +8265,7 @@ ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
     1: <%= form_for(@post) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_post_form.html.erb:1:in `_app_views_shared__post_form_html_erb___3219380652281848037_2170005700_1875912620389141003'
   app/views/shared/_feed_home.html.erb:5:in `_app_views_shared__feed_home_html_erb___2454888730637972871_2170020380_3150716591387373843'
   app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___616875184065944944_2170030900_948275426606650607'
@@ -8278,7 +8278,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 18:54:07 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdsfs"}, "commit"=>"Submit", "belongs_to"=>:posts}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdsfs"}, "commit"=>"Submit", "belongs_to"=>:posts}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8311,7 +8311,7 @@ ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
     1: <%= form_for(@post) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_post_form.html.erb:1:in `_app_views_shared__post_form_html_erb___3219380652281848037_2170032100_1875912620389141003'
   app/views/shared/_feed_home.html.erb:5:in `_app_views_shared__feed_home_html_erb___2454888730637972871_2170047800_3150716591387373843'
   app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___616875184065944944_2170059320_948275426606650607'
@@ -8324,7 +8324,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 18:54:52 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdsfs"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdsfs"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8357,7 +8357,7 @@ ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
     1: <%= form_for(@post) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_post_form.html.erb:1:in `_app_views_shared__post_form_html_erb___3219380652281848037_2189907120_1875912620389141003'
   app/views/shared/_feed_home.html.erb:5:in `_app_views_shared__feed_home_html_erb___2454888730637972871_2189992720_3150716591387373843'
   app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___616875184065944944_2190006680_948275426606650607'
@@ -8370,7 +8370,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 18:57:27 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdsfs"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdsfs"}, "commit"=>"Submit"}
   [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8403,7 +8403,7 @@ ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
     1: <%= form_for(@post) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_post_form.html.erb:1:in `_app_views_shared__post_form_html_erb___3219380652281848037_2189708680_1875912620389141003'
   app/views/shared/_feed_home.html.erb:5:in `_app_views_shared__feed_home_html_erb___2454888730637972871_2189734420_3150716591387373843'
   app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___616875184065944944_2189746000_948275426606650607'
@@ -8416,7 +8416,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 18:57:30 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdsfs"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdsfs"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8449,7 +8449,7 @@ ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
     1: <%= form_for(@post) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_post_form.html.erb:1:in `_app_views_shared__post_form_html_erb___3219380652281848037_2189771520_1875912620389141003'
   app/views/shared/_feed_home.html.erb:5:in `_app_views_shared__feed_home_html_erb___2454888730637972871_2189787880_3150716591387373843'
   app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___616875184065944944_2189798820_948275426606650607'
@@ -8462,7 +8462,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:03:56 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdsfs"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdsfs"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8495,7 +8495,7 @@ ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
     1: <%= form_for(@post) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_post_form.html.erb:1:in `_app_views_shared__post_form_html_erb___3219380652281848037_2189855380_1875912620389141003'
   app/views/shared/_feed_home.html.erb:5:in `_app_views_shared__feed_home_html_erb___2454888730637972871_2189900740_3150716591387373843'
   app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___616875184065944944_2189912440_948275426606650607'
@@ -8508,7 +8508,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:04:57 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdsfs"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdsfs"}, "commit"=>"Submit"}
   [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8664,7 +8664,7 @@ Completed 200 OK in 195ms (Views: 78.9ms | ActiveRecord: 4.9ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:05:34 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"contact"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"contact"}, "commit"=>"Submit"}
   [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8796,7 +8796,7 @@ Completed 200 OK in 213ms (Views: 39.9ms | ActiveRecord: 5.1ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:06:07 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdasfds"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdasfds"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8831,7 +8831,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:06:49 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdasfds"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdasfds"}, "commit"=>"Submit"}
   [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -8917,13 +8917,13 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
 [0m
-  [1m[35mSQL (7.7ms)[0m  INSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('hello', 1, 1, '2011-05-29 23:09:18.407928', '2011-05-29 23:09:18.407928') RETURNING "id"
+  [1m[35mSQL (7.7ms)[0m  INSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('hello', 1, 1, '2011-05-29 23:09:18.407928', '2011-05-29 23:09:18.407928') RETURNING "id"
   [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
 
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:10:39 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdasfds"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdasfds"}, "commit"=>"Submit"}
 Completed   in 12ms
 
 ActiveRecord::RecordNotFound (Couldn't find Post without an ID):
@@ -8936,7 +8936,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:11:02 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdasfds"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdasfds"}, "commit"=>"Submit"}
   [1m[36mSQL (0.6ms)[0m  [1m SELECT COUNT(*)
  FROM pg_tables
  WHERE tablename = 'posts'
@@ -8961,7 +8961,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:11:17 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdasfds"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdasfds"}, "commit"=>"Submit"}
   [1m[35mSQL (0.6ms)[0m   SELECT COUNT(*)
  FROM pg_tables
  WHERE tablename = 'posts'
@@ -8986,7 +8986,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:11:44 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdasfds"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdasfds"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9051,7 +9051,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:11:44 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
-  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('dafdasfds', 4, 1, '2011-05-29 23:11:44.685626', '2011-05-29 23:11:44.685626') RETURNING "id"[0m
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('dafdasfds', 4, 1, '2011-05-29 23:11:44.685626', '2011-05-29 23:11:44.685626') RETURNING "id"[0m
   [1m[35mSQL (1.0ms)[0m  COMMIT
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.1ms)[0m  COMMIT
@@ -9064,7 +9064,7 @@ Completed 200 OK in 295ms (Views: 14.4ms | ActiveRecord: 12.1ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:12:33 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdasfdsasdfadsf"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdasfdsasdfadsf"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9097,7 +9097,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:13:27 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdasfdsasdfadsfdsafadsfa"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdasfdsasdfadsfdsafadsfa"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9132,7 +9132,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:17:42 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdasfdsasdfadsfdsafadsfa"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdasfdsasdfadsfdsafadsfa"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9160,7 +9160,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:18:11 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdasfdsasdfadsfdsafadsfa"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdasfdsasdfadsfdsafadsfa"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9196,7 +9196,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:18:23 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdasfdsasdfadsfdsafadsfa"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdasfdsasdfadsfdsafadsfa"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9232,7 +9232,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:18:40 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdasfdsasdfadsfdsafadsfa"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdasfdsasdfadsfdsafadsfa"}, "commit"=>"Submit"}
   [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9268,7 +9268,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:18:43 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdasfdsasdfadsfdsafadsfa"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdasfdsasdfadsfdsafadsfa"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9304,7 +9304,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 19:19:13 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdasfdsasdfadsfdsafadsfa"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdasfdsasdfadsfdsafadsfa"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9441,7 +9441,7 @@ Completed 200 OK in 236ms (Views: 77.6ms | ActiveRecord: 5.0ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:07:12 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"adfadsf"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"adfadsf"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9477,7 +9477,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:08:02 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"adfadsf"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"adfadsf"}, "commit"=>"Submit"}
   [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9513,7 +9513,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:08:06 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"adfadsf"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"adfadsf"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9549,7 +9549,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:08:41 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"adfadsf"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"adfadsf"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9585,7 +9585,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:09:11 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"adfadsf"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"adfadsf"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9632,7 +9632,7 @@ WARNING: Can't mass-assign protected attributes: post_id
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:14:24 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"adfadsf"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"adfadsf"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9774,7 +9774,7 @@ Completed 200 OK in 214ms (Views: 26.9ms | ActiveRecord: 4.9ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:16:59 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"adsfda"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"adsfda"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9902,7 +9902,7 @@ Completed 200 OK in 261ms (Views: 85.4ms | ActiveRecord: 5.0ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:25:12 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdasfa"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdasfa"}, "commit"=>"Submit"}
 Completed   in 0ms
 
 NoMethodError (You have a nil object when you didn't expect it!
@@ -9917,7 +9917,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:26:05 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdasfa"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdasfa"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -9950,7 +9950,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:26:32 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dsafdasfa"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dsafdasfa"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10147,7 +10147,7 @@ Completed 200 OK in 310ms (Views: 70.7ms | ActiveRecord: 5.4ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:28:05 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"ewrerdfad"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"ewrerdfad"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10183,7 +10183,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:29:12 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"ewrerdfad"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"ewrerdfad"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10273,7 +10273,7 @@ Completed 200 OK in 212ms (Views: 32.3ms | ActiveRecord: 6.2ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:30:49 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dafdfad", "post_id"=>""}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dafdfad", "post_id"=>""}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10362,7 +10362,7 @@ Completed 200 OK in 212ms (Views: 32.1ms | ActiveRecord: 8.2ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:31:20 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"adsfadsf", "post_id"=>""}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"adsfadsf", "post_id"=>""}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10452,7 +10452,7 @@ Completed 200 OK in 221ms (Views: 41.7ms | ActiveRecord: 5.8ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:32:08 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"asdfdsaf", "post_id"=>""}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"asdfdsaf", "post_id"=>""}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10541,7 +10541,7 @@ Completed 200 OK in 223ms (Views: 29.0ms | ActiveRecord: 5.2ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:33:06 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"asdfasdfa", "post_id"=>""}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"asdfasdfa", "post_id"=>""}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10577,7 +10577,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:34:19 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"asdfasdfadasfdaf", "post_id"=>"3"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"asdfasdfadasfdaf", "post_id"=>"3"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10613,7 +10613,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:35:17 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"asdfasdfadasfdafasfdasfsa", "post_id"=>"1"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"asdfasdfadasfdafasfdasfsa", "post_id"=>"1"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10649,7 +10649,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:36:33 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"asdfasdfadasfdafasfdasfsaadsfadsfds", "post_id"=>""}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"asdfasdfadasfdafasfdasfsaadsfadsfds", "post_id"=>""}, "commit"=>"Submit"}
   [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10685,7 +10685,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:36:59 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"asdfasdfadasfdafasfdasfsaadsfadsfds", "post_id"=>"1"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"asdfasdfadasfdafasfdasfsaadsfadsfds", "post_id"=>"1"}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10721,7 +10721,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:37:27 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"asdfasdfadasfdafasfdasfsaadsfadsfdsadsfdsfdasf", "post_id"=>""}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"asdfasdfadasfdafasfdasfsaadsfadsfdsadsfdsfdasf", "post_id"=>""}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10757,7 +10757,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:43:36 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"asdfasdfadasfdafasfdasfsaadsfadsfdsadsfdsfdasf", "post_id"=>""}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"asdfasdfadasfdafasfdasfsaadsfadsfdsadsfdsfdasf", "post_id"=>""}, "commit"=>"Submit"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10785,7 +10785,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:50:37 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"asdfasdfadasfdafasfdasfsaadsfadsfdsadsfdsfdasf", "post_id"=>""}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"asdfasdfadasfdafasfdasfsaadsfadsfdsadsfdsfdasf", "post_id"=>""}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10832,7 +10832,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:50:37 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
-  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('asdfasdfadasfdafasfdasfsaadsfadsfdsadsfdsfdasf', 4, NULL, '2011-05-30 00:50:37.408466', '2011-05-30 00:50:37.408466') RETURNING "id"[0m
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('asdfasdfadasfdafasfdasfsaadsfadsfdsadsfdsfdasf', 4, NULL, '2011-05-30 00:50:37.408466', '2011-05-30 00:50:37.408466') RETURNING "id"[0m
   [1m[35mSQL (9.4ms)[0m  COMMIT
   [1m[36mSQL (0.7ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.1ms)[0m  COMMIT
@@ -10845,7 +10845,7 @@ Completed 200 OK in 189ms (Views: 14.3ms | ActiveRecord: 15.8ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:53:32 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"asdfasdfadasfdafasfdasfsaadsfadsfdsadsfdsfdasf", "post_id"=>"1"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"asdfasdfadasfdafasfdasfsaadsfadsfdsadsfdsfdasf", "post_id"=>"1"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -10892,7 +10892,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:53:32 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
-  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('asdfasdfadasfdafasfdasfsaadsfadsfdsadsfdsfdasf', 4, 1, '2011-05-30 00:53:33.138311', '2011-05-30 00:53:33.138311') RETURNING "id"[0m
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('asdfasdfadasfdafasfdasfsaadsfadsfdsadsfdsfdasf', 4, 1, '2011-05-30 00:53:33.138311', '2011-05-30 00:53:33.138311') RETURNING "id"[0m
   [1m[35mSQL (0.9ms)[0m  COMMIT
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.1ms)[0m  COMMIT
@@ -10955,7 +10955,7 @@ Completed   in 276ms
 ActionView::Template::Error (undefined method `{:post_id=>2}' for #<Comment:0x000001050ebf90>):
     3:   <%= render 'shared/error_messages', :object => f.object %>
     4:   <div class="field">
-    5:     <%= f.text_area :content %>
+    5:     <%= f.text_area :title %>
     6: 	<div><%= f.hidden_field  :post_id => @post.id%></div>
     7:   </div>
     8:   <div class="actions">
@@ -11024,7 +11024,7 @@ Completed 200 OK in 205ms (Views: 26.7ms | ActiveRecord: 7.0ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:56:35 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"fdasfdas", "post_id"=>"#<Post:0x00000102bdf878>"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"fdasfdas", "post_id"=>"#<Post:0x00000102bdf878>"}, "commit"=>"Submit"}
   [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -11071,7 +11071,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:56:35 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
-  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('fdasfdas', 4, 0, '2011-05-30 00:56:35.621506', '2011-05-30 00:56:35.621506') RETURNING "id"[0m
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('fdasfdas', 4, 0, '2011-05-30 00:56:35.621506', '2011-05-30 00:56:35.621506') RETURNING "id"[0m
   [1m[35mSQL (0.9ms)[0m  COMMIT
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.1ms)[0m  COMMIT
@@ -11084,7 +11084,7 @@ Completed 200 OK in 198ms (Views: 26.1ms | ActiveRecord: 7.2ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:57:13 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"fdasfdas", "post_id"=>"#<Post:0x00000102bdf878>"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"fdasfdas", "post_id"=>"#<Post:0x00000102bdf878>"}, "commit"=>"Submit"}
   [1m[36mSQL (1.3ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -11131,7 +11131,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 20:57:13 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
-  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('fdasfdas', 4, 0, '2011-05-30 00:57:14.037605', '2011-05-30 00:57:14.037605') RETURNING "id"[0m
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('fdasfdas', 4, 0, '2011-05-30 00:57:14.037605', '2011-05-30 00:57:14.037605') RETURNING "id"[0m
   [1m[35mSQL (0.9ms)[0m  COMMIT
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.1ms)[0m  COMMIT
@@ -11144,7 +11144,7 @@ Completed 200 OK in 203ms (Views: 14.1ms | ActiveRecord: 7.2ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:01:58 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"fdasfdas", "post_id"=>"#<Post:0x00000102bdf878>"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"fdasfdas", "post_id"=>"#<Post:0x00000102bdf878>"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -11191,7 +11191,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:01:58 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
-  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('fdasfdas', 4, 0, '2011-05-30 01:01:58.664769', '2011-05-30 01:01:58.664769') RETURNING "id"[0m
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('fdasfdas', 4, 0, '2011-05-30 01:01:58.664769', '2011-05-30 01:01:58.664769') RETURNING "id"[0m
   [1m[35mSQL (4.7ms)[0m  COMMIT
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.1ms)[0m  COMMIT
@@ -11204,7 +11204,7 @@ Completed 200 OK in 189ms (Views: 15.3ms | ActiveRecord: 10.7ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:02:03 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"fdasfdasdafdfadsfds", "post_id"=>"#<Post:0x00000102bdf878>"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"fdasfdasdafdfadsfds", "post_id"=>"#<Post:0x00000102bdf878>"}, "commit"=>"Submit"}
   [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -11251,7 +11251,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:02:03 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
-  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('fdasfdasdafdfadsfds', 4, 0, '2011-05-30 01:02:03.573321', '2011-05-30 01:02:03.573321') RETURNING "id"[0m
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('fdasfdasdafdfadsfds', 4, 0, '2011-05-30 01:02:03.573321', '2011-05-30 01:02:03.573321') RETURNING "id"[0m
   [1m[35mSQL (1.0ms)[0m  COMMIT
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.1ms)[0m  COMMIT
@@ -11264,7 +11264,7 @@ Completed 200 OK in 184ms (Views: 14.9ms | ActiveRecord: 6.8ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:03:55 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"fdasfdasdafdfadsfdsadsfadsf", "post_id"=>"#<Post:0x00000102bdf878>"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"fdasfdasdafdfadsfdsadsfadsf", "post_id"=>"#<Post:0x00000102bdf878>"}, "commit"=>"Submit"}
   [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -11341,7 +11341,7 @@ Completed   in 282ms
 ActionView::Template::Error (undefined method `{:value=>2}' for #<Comment:0x00000102b19ec0>):
     3:   <%= render 'shared/error_messages', :object => f.object %>
     4:   <div class="field">
-    5:     <%= f.text_area :content %>
+    5:     <%= f.text_area :title %>
     6: 	<div><%= f.hidden_field :value =>   @post.id%></div>
     7:   </div>
     8:   <div class="actions">
@@ -11407,7 +11407,7 @@ Completed   in 193ms
 ActionView::Template::Error (undefined method `2' for #<Comment:0x00000105128710>):
     3:   <%= render 'shared/error_messages', :object => f.object %>
     4:   <div class="field">
-    5:     <%= f.text_area :content %>
+    5:     <%= f.text_area :title %>
     6: 	<div><%= f.hidden_field @post.id%></div>
     7:   </div>
     8:   <div class="actions">
@@ -11476,7 +11476,7 @@ Completed 200 OK in 271ms (Views: 70.1ms | ActiveRecord: 5.3ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:08:13 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dfdasdfs", "id"=>""}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dfdasdfs", "id"=>""}, "commit"=>"Submit"}
   [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -11512,7 +11512,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:08:40 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dfdasdfsadsfadsfasd", "id"=>""}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dfdasdfsadsfadsfasd", "id"=>""}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -11548,7 +11548,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:09:15 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"dfdasdfsadsfadsfasd", "id"=>""}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"dfdasdfsadsfadsfasd", "id"=>""}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -11687,7 +11687,7 @@ Completed   in 272ms
 ActionView::Template::Error (undefined method `merge' for 2:Fixnum):
     3:   <%= render 'shared/error_messages', :object => f.object %>
     4:   <div class="field">
-    5:     <%= f.text_area :content %>
+    5:     <%= f.text_area :title %>
     6: 	<div><%= f.hidden_field :post_id, @post.id %></div>
     7:   </div>
     8:   <div class="actions">
@@ -11753,7 +11753,7 @@ Completed   in 211ms
 ActionView::Template::Error (undefined method `merge' for 2:Fixnum):
     3:   <%= render 'shared/error_messages', :object => f.object %>
     4:   <div class="field">
-    5:     <%= f.text_area :content %>
+    5:     <%= f.text_area :title %>
     6: 	<div><%= f.hidden_field :post_id, @post.id.to_i %></div>
     7:   </div>
     8:   <div class="actions">
@@ -11819,7 +11819,7 @@ Completed   in 215ms
 ActionView::Template::Error (undefined method `merge' for 2.0:Float):
     3:   <%= render 'shared/error_messages', :object => f.object %>
     4:   <div class="field">
-    5:     <%= f.text_area :content %>
+    5:     <%= f.text_area :title %>
     6: 	<div><%= f.hidden_field :post_id, @post.id.to_f %></div>
     7:   </div>
     8:   <div class="actions">
@@ -11885,7 +11885,7 @@ Completed   in 254ms
 ActionView::Template::Error (undefined method `merge' for 2.0:Float):
     3:   <%= render 'shared/error_messages', :object => f.object %>
     4:   <div class="field">
-    5:     <%= f.text_area :content %>
+    5:     <%= f.text_area :title %>
     6: 	<div><%= f.hidden_field :post_id, @post.id.to_f %></div>
     7:   </div>
     8:   <div class="actions">
@@ -11948,10 +11948,10 @@ Rendered shared/_comment_form.html.erb (3.9ms)
 Rendered posts/show.html.erb within layouts/application (13.8ms)
 Completed   in 191ms
 
-ActionView::Template::Error (undefined method `{:post_id=>#<Post id: 2, content: "Non subscribed", user_id: 3, created_at: "2011-05-29 14:11:34", updated_at: "2011-05-29 14:11:34">}' for #<Comment:0x00000102b3dd98>):
+ActionView::Template::Error (undefined method `{:post_id=>#<Post id: 2, title: "Non subscribed", user_id: 3, created_at: "2011-05-29 14:11:34", updated_at: "2011-05-29 14:11:34">}' for #<Comment:0x00000102b3dd98>):
     3:   <%= render 'shared/error_messages', :object => f.object %>
     4:   <div class="field">
-    5:     <%= f.text_area :content %>
+    5:     <%= f.text_area :title %>
     6: 	<div><%= f.hidden_field :post_id => @post %></div>
     7:   </div>
     8:   <div class="actions">
@@ -12017,7 +12017,7 @@ Completed   in 218ms
 ActionView::Template::Error (undefined method `{:post_id=>2}' for #<Comment:0x00000102a92ee8>):
     3:   <%= render 'shared/error_messages', :object => f.object %>
     4:   <div class="field">
-    5:     <%= f.text_area :content %>
+    5:     <%= f.text_area :title %>
     6: 	<div><%= f.hidden_field :post_id => @post.id %></div>
     7:   </div>
     8:   <div class="actions">
@@ -12083,7 +12083,7 @@ Function body:           def _app_views_shared__comment_form_html_erb___18186895
 ');@output_buffer.append=  form_for @comment do |f| @output_buffer.safe_concat('
 ');@output_buffer.safe_concat('  ');@output_buffer.append= ( render 'shared/error_messages', :object => f.object );@output_buffer.safe_concat('
 ');@output_buffer.safe_concat('  <div class="field">
-    ');@output_buffer.append= ( f.text_area :content );@output_buffer.safe_concat('
+    ');@output_buffer.append= ( f.text_area :title );@output_buffer.safe_concat('
 ');@output_buffer.safe_concat('	<div>');@output_buffer.append= ( f.hidden_field :post_id = @post.id );@output_buffer.safe_concat('</div>
   </div>
   <div class="actions">
@@ -12188,7 +12188,7 @@ Backtrace: /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/l
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/application.rb:168:in `call'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/application.rb:77:in `method_missing'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/rack/log_tailer.rb:14:in `call'
-/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/content_length.rb:13:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/title_length.rb:13:in `call'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/handler/webrick.rb:52:in `service'
 /Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
 /Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
@@ -12202,7 +12202,7 @@ ActionView::Template::Error (/Users/skline/NutraNation/app/views/shared/_comment
 ...                               ^):
     3:   <%= render 'shared/error_messages', :object => f.object %>
     4:   <div class="field">
-    5:     <%= f.text_area :content %>
+    5:     <%= f.text_area :title %>
     6: 	<div><%= f.hidden_field :post_id = @post.id %></div>
     7:   </div>
     8:   <div class="actions">
@@ -12270,7 +12270,7 @@ Function body:           def _app_views_shared__comment_form_html_erb___18186895
 ');@output_buffer.append=  form_for (@comment, :post_id =>  @post.id  do |f| @output_buffer.safe_concat('
 ');@output_buffer.safe_concat('  ');@output_buffer.append= ( render 'shared/error_messages', :object => f.object );@output_buffer.safe_concat('
 ');@output_buffer.safe_concat('  <div class="field">
-    ');@output_buffer.append= ( f.text_area :content );@output_buffer.safe_concat('
+    ');@output_buffer.append= ( f.text_area :title );@output_buffer.safe_concat('
 ');@output_buffer.safe_concat('	<div>');@output_buffer.append= ( f.hidden_field :post_id  );@output_buffer.safe_concat('</div>
   </div>
   <div class="actions">
@@ -12375,7 +12375,7 @@ Backtrace: /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/l
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/application.rb:168:in `call'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/application.rb:77:in `method_missing'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/rack/log_tailer.rb:14:in `call'
-/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/content_length.rb:13:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/title_length.rb:13:in `call'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/handler/webrick.rb:52:in `service'
 /Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
 /Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
@@ -12395,7 +12395,7 @@ ActionView::Template::Error (/Users/skline/NutraNation/app/views/shared/_comment
     2: <%= form_for (@comment, :post_id =>  @post.id  do |f| %>
     3:   <%= render 'shared/error_messages', :object => f.object %>
     4:   <div class="field">
-    5:     <%= f.text_area :content %>
+    5:     <%= f.text_area :title %>
   app/views/posts/show.html.erb:4:in `_app_views_posts_show_html_erb___3284227099359206361_2189821320_948275426606650607'
 
 Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
@@ -12459,7 +12459,7 @@ Function body:           def _app_views_shared__comment_form_html_erb___18186895
 ');@output_buffer.append=  form_for (@comment, :post_id =>  @post.id)  do |f| @output_buffer.safe_concat('
 ');@output_buffer.safe_concat('  ');@output_buffer.append= ( render 'shared/error_messages', :object => f.object );@output_buffer.safe_concat('
 ');@output_buffer.safe_concat('  <div class="field">
-    ');@output_buffer.append= ( f.text_area :content );@output_buffer.safe_concat('
+    ');@output_buffer.append= ( f.text_area :title );@output_buffer.safe_concat('
 ');@output_buffer.safe_concat('	<div>');@output_buffer.append= ( f.hidden_field :post_id  );@output_buffer.safe_concat('</div>
   </div>
   <div class="actions">
@@ -12564,7 +12564,7 @@ Backtrace: /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/l
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/application.rb:168:in `call'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/application.rb:77:in `method_missing'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/rack/log_tailer.rb:14:in `call'
-/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/content_length.rb:13:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/title_length.rb:13:in `call'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/handler/webrick.rb:52:in `service'
 /Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
 /Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
@@ -12584,7 +12584,7 @@ ActionView::Template::Error (/Users/skline/NutraNation/app/views/shared/_comment
     2: <%= form_for (@comment, :post_id =>  @post.id)  do |f| %>
     3:   <%= render 'shared/error_messages', :object => f.object %>
     4:   <div class="field">
-    5:     <%= f.text_area :content %>
+    5:     <%= f.text_area :title %>
   app/views/posts/show.html.erb:4:in `_app_views_posts_show_html_erb___3284227099359206361_2170416040_948275426606650607'
 
 Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
@@ -12648,7 +12648,7 @@ Function body:           def _app_views_shared__comment_form_html_erb___18186895
 ');@output_buffer.append=  form_for (@comment :post_id =>  @post.id)  do |f| @output_buffer.safe_concat('
 ');@output_buffer.safe_concat('  ');@output_buffer.append= ( render 'shared/error_messages', :object => f.object );@output_buffer.safe_concat('
 ');@output_buffer.safe_concat('  <div class="field">
-    ');@output_buffer.append= ( f.text_area :content );@output_buffer.safe_concat('
+    ');@output_buffer.append= ( f.text_area :title );@output_buffer.safe_concat('
 ');@output_buffer.safe_concat('	<div>');@output_buffer.append= ( f.hidden_field :post_id  );@output_buffer.safe_concat('</div>
   </div>
   <div class="actions">
@@ -12753,7 +12753,7 @@ Backtrace: /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/l
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/application.rb:168:in `call'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/application.rb:77:in `method_missing'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/rack/log_tailer.rb:14:in `call'
-/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/content_length.rb:13:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/title_length.rb:13:in `call'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/handler/webrick.rb:52:in `service'
 /Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
 /Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
@@ -12773,7 +12773,7 @@ ActionView::Template::Error (/Users/skline/NutraNation/app/views/shared/_comment
     2: <%= form_for (@comment :post_id =>  @post.id)  do |f| %>
     3:   <%= render 'shared/error_messages', :object => f.object %>
     4:   <div class="field">
-    5:     <%= f.text_area :content %>
+    5:     <%= f.text_area :title %>
   app/views/posts/show.html.erb:4:in `_app_views_posts_show_html_erb___3284227099359206361_2169785680_948275426606650607'
 
 Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (41.8ms)
@@ -12834,7 +12834,7 @@ Function body:           def _app_views_shared__comment_form_html_erb___18186895
 ');@output_buffer.append=  form_for (@comment, :remote => true)  do |f| @output_buffer.safe_concat('
 ');@output_buffer.safe_concat('  ');@output_buffer.append= ( render 'shared/error_messages', :object => f.object );@output_buffer.safe_concat('
 ');@output_buffer.safe_concat('  <div class="field">
-    ');@output_buffer.append= ( f.text_area :content );@output_buffer.safe_concat('
+    ');@output_buffer.append= ( f.text_area :title );@output_buffer.safe_concat('
 ');@output_buffer.safe_concat('	<div>');@output_buffer.append= ( f.hidden_field :post_id  );@output_buffer.safe_concat('</div>
   </div>
   <div class="actions">
@@ -12939,7 +12939,7 @@ Backtrace: /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/l
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/application.rb:168:in `call'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/application.rb:77:in `method_missing'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/rack/log_tailer.rb:14:in `call'
-/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/content_length.rb:13:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/title_length.rb:13:in `call'
 /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/handler/webrick.rb:52:in `service'
 /Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
 /Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
@@ -12956,7 +12956,7 @@ ActionView::Template::Error (/Users/skline/NutraNation/app/views/shared/_comment
     2: <%= form_for (@comment, :remote => true)  do |f| %>
     3:   <%= render 'shared/error_messages', :object => f.object %>
     4:   <div class="field">
-    5:     <%= f.text_area :content %>
+    5:     <%= f.text_area :title %>
   app/views/posts/show.html.erb:4:in `_app_views_posts_show_html_erb___3284227099359206361_2189756360_948275426606650607'
 
 Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
@@ -13066,7 +13066,7 @@ Completed 200 OK in 468ms (Views: 27.0ms | ActiveRecord: 5.4ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:20:03 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"asfadsfa", "post_id"=>"#<Post:0x0000010512d580>"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"asfadsfa", "post_id"=>"#<Post:0x0000010512d580>"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -13113,7 +13113,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:20:03 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
-  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('asfadsfa', 4, 0, '2011-05-30 01:20:04.154875', '2011-05-30 01:20:04.154875') RETURNING "id"[0m
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('asfadsfa', 4, 0, '2011-05-30 01:20:04.154875', '2011-05-30 01:20:04.154875') RETURNING "id"[0m
   [1m[35mSQL (1.8ms)[0m  COMMIT
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.1ms)[0m  COMMIT
@@ -13126,7 +13126,7 @@ Completed 200 OK in 147ms (Views: 15.5ms | ActiveRecord: 8.4ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:20:20 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"asfadsfa", "post_id"=>"#<Post:0x0000010512d580>"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"asfadsfa", "post_id"=>"#<Post:0x0000010512d580>"}, "commit"=>"Submit"}
   [1m[36mSQL (2.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -13173,7 +13173,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:20:20 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
-  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('asfadsfa', 4, 0, '2011-05-30 01:20:21.093906', '2011-05-30 01:20:21.093906') RETURNING "id"[0m
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('asfadsfa', 4, 0, '2011-05-30 01:20:21.093906', '2011-05-30 01:20:21.093906') RETURNING "id"[0m
   [1m[35mSQL (1.0ms)[0m  COMMIT
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.1ms)[0m  COMMIT
@@ -13186,7 +13186,7 @@ Completed 200 OK in 135ms (Views: 13.3ms | ActiveRecord: 8.2ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:20:47 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"asfadsfafdsgf", "post_id"=>"#<Post:0x0000010512d580>"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"asfadsfafdsgf", "post_id"=>"#<Post:0x0000010512d580>"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -13233,7 +13233,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:20:47 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
-  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('asfadsfafdsgf', 4, 0, '2011-05-30 01:20:47.242998', '2011-05-30 01:20:47.242998') RETURNING "id"[0m
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('asfadsfafdsgf', 4, 0, '2011-05-30 01:20:47.242998', '2011-05-30 01:20:47.242998') RETURNING "id"[0m
   [1m[35mSQL (1.1ms)[0m  COMMIT
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.1ms)[0m  COMMIT
@@ -13419,7 +13419,7 @@ Completed 200 OK in 312ms (Views: 128.7ms | ActiveRecord: 5.2ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:28:34 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"test", "post_id"=>"2"}, "commit"=>"Submit"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"test", "post_id"=>"2"}, "commit"=>"Submit"}
   [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -13466,7 +13466,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 21:28:34 -0400
  AND attr.attnum = cons.conkey[1]
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
-  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('test', 4, 2, '2011-05-30 01:28:34.914835', '2011-05-30 01:28:34.914835') RETURNING "id"[0m
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('test', 4, 2, '2011-05-30 01:28:34.914835', '2011-05-30 01:28:34.914835') RETURNING "id"[0m
   [1m[35mSQL (15.8ms)[0m  COMMIT
   [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.1ms)[0m  COMMIT
@@ -14235,7 +14235,7 @@ ActionView::Template::Error (undefined method `user' for nil:NilClass):
     3:     <%= link_to gravatar_for(comment.user), comment.user %>
     4:   </td>
     5:   <td class="post">
-    6:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    6:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
   app/views/shared/_comment.html.erb:3:in `_app_views_shared__comment_html_erb___3279747252837698828_2189991920__636176316770348999'
   app/views/posts/show.html.erb:4:in `_app_views_posts_show_html_erb___3284227099359206361_2169941180_948275426606650607'
 
@@ -14348,7 +14348,7 @@ ActionView::Template::Error (undefined method `user' for nil:NilClass):
     3:     <%= link_to gravatar_for(comment.user), comment.user %>
     4:   </td>
     5:   <td class="post">
-    6:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    6:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
   app/views/shared/_comment.html.erb:3:in `_app_views_shared__comment_html_erb___3279747252837698828_2170212340__636176316770348999'
   app/views/posts/show.html.erb:4:in `_app_views_posts_show_html_erb___3284227099359206361_2170393960_948275426606650607'
 
@@ -14417,11 +14417,11 @@ Rendered shared/_comment.html.erb (1.0ms)
 Rendered posts/show.html.erb within layouts/application (13.7ms)
 Completed   in 255ms
 
-ActionView::Template::Error (undefined method `content' for nil:NilClass):
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
     3:     
     4:   </td>
     5:   <td class="post">
-    6:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    6:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
     7:     <span class="timestamp">
     8:       <%= link_to comment.user.name, comment.user %> posted <%= time_ago_in_words(comment.created_at) %> ago.
     9:     </span>
@@ -14503,7 +14503,7 @@ ActionView::Template::Error (undefined method `user' for nil:NilClass):
     3:     <%= link_to gravatar_for(comment.user), comment.user %>
     4:   </td>
     5:   <td class="post">
-    6:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    6:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
   app/views/shared/_comment.html.erb:3:in `_app_views_shared__comment_html_erb___3279747252837698828_2170340180__636176316770348999'
   app/views/posts/show.html.erb:4:in `_app_views_posts_show_html_erb___3284227099359206361_2170497940_948275426606650607'
 
@@ -14567,7 +14567,7 @@ ActionView::Template::Error (undefined method `user' for nil:NilClass):
     3:     <%= link_to gravatar_for(comment.user), comment.user %>
     4:   </td>
     5:   <td class="post">
-    6:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    6:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
   app/views/shared/_comment.html.erb:3:in `_app_views_shared__comment_html_erb___3279747252837698828_2169975040__3127050782796201596'
   app/views/posts/show.html.erb:4:in `_app_views_posts_show_html_erb___3284227099359206361_2170112320_948275426606650607'
 
@@ -14631,7 +14631,7 @@ ActionView::Template::Error (undefined method `user' for nil:NilClass):
     3:     <%= link_to gravatar_for(comment.user), comment.user %>
     4:   </td>
     5:   <td class="post">
-    6:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    6:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
   app/views/shared/_comment.html.erb:3:in `_app_views_shared__comment_html_erb___3279747252837698828_2189672320__3127050782796201596'
   app/views/posts/show.html.erb:4:in `_app_views_posts_show_html_erb___3284227099359206361_2189834360_948275426606650607'
 
@@ -14695,7 +14695,7 @@ ActionView::Template::Error (undefined method `user' for nil:NilClass):
     3:     <%= link_to gravatar_for(comment.user), comment.user %>
     4:   </td>
     5:   <td class="post">
-    6:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    6:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
   app/views/shared/_comment.html.erb:3:in `_app_views_shared__comment_html_erb___3279747252837698828_2170346800__3127050782796201596'
   app/views/posts/show.html.erb:5:in `_app_views_posts_show_html_erb___3284227099359206361_2189431420_948275426606650607'
 
@@ -14921,7 +14921,7 @@ ActionView::Template::Error (undefined method `user' for nil:NilClass):
     3:     <%= link_to gravatar_for(comment.user), comment.user %>
     4:   </td>
     5:   <td class="post">
-    6:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    6:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
   app/views/shared/_comment.html.erb:3:in `_app_views_shared__comment_html_erb___3279747252837698828_2169442220__3127050782796201596'
   app/views/posts/show.html.erb:5:in `_app_views_posts_show_html_erb___3284227099359206361_2169797100_948275426606650607'
 
@@ -14985,7 +14985,7 @@ ActionView::Template::Error (undefined method `user' for nil:NilClass):
     3:     <%= link_to gravatar_for(comment.user), comment.user %>
     4:   </td>
     5:   <td class="post">
-    6:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    6:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
   app/views/shared/_comment.html.erb:3:in `_app_views_shared__comment_html_erb___3279747252837698828_2189442120__636176316770348999'
   app/views/posts/show.html.erb:5:in `_app_views_posts_show_html_erb___3284227099359206361_2189686040_948275426606650607'
 
@@ -15049,7 +15049,7 @@ ActionView::Template::Error (undefined method `user' for nil:NilClass):
     3:     <%= link_to gravatar_for(comment.user), comment.user %>
     4:   </td>
     5:   <td class="post">
-    6:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    6:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
   app/views/shared/_comment.html.erb:3:in `_app_views_shared__comment_html_erb___3279747252837698828_2170212680__636176316770348999'
   app/views/posts/show.html.erb:5:in `_app_views_posts_show_html_erb___3284227099359206361_2170413220_948275426606650607'
 
@@ -15113,7 +15113,7 @@ ActionView::Template::Error (undefined method `user' for nil:NilClass):
     3:     <%= link_to gravatar_for(comment.user), comment.user %>
     4:   </td>
     5:   <td class="post">
-    6:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    6:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
   app/views/shared/_comment.html.erb:3:in `_app_views_shared__comment_html_erb___3279747252837698828_2169498860__3127050782796201596'
   app/views/posts/show.html.erb:5:in `_app_views_posts_show_html_erb___3284227099359206361_2169951340_948275426606650607'
 
@@ -15188,7 +15188,7 @@ ActionView::Template::Error (undefined method `user' for nil:NilClass):
     3:     <%= link_to gravatar_for(comment.user), comment.user %>
     4:   </td>
     5:   <td class="post">
-    6:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    6:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
   app/views/shared/_comment.html.erb:3:in `_app_views_shared__comment_html_erb___3279747252837698828_2170356620__636176316770348999'
   app/views/posts/show.html.erb:5:in `_app_views_posts_show_html_erb___3284227099359206361_2189429940_948275426606650607'
 
@@ -15596,7 +15596,7 @@ ActionView::Template::Error (undefined method `user' for #<ActiveRecord::Relatio
     3:     <%= link_to gravatar_for(comment.user), comment.user %>
     4:   </td>
     5:   <td class="post">
-    6:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    6:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
   app/views/shared/_comment.html.erb:3:in `_app_views_shared__comment_html_erb___3279747252837698828_2170143120_2896798845116746831'
   app/views/posts/show.html.erb:5:in `_app_views_posts_show_html_erb___3284227099359206361_2170311660_948275426606650607'
 
@@ -15660,7 +15660,7 @@ ActionView::Template::Error (undefined method `user' for #<ActiveRecord::Relatio
     3:     <%= link_to gravatar_for(comment.user), comment.user %>
     4:   </td>
     5:   <td class="post">
-    6:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    6:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
   app/views/shared/_comment.html.erb:3:in `_app_views_shared__comment_html_erb___3279747252837698828_2169291100_2896798845116746831'
   app/views/posts/show.html.erb:5:in `_app_views_posts_show_html_erb___3284227099359206361_2169537240_948275426606650607'
 
@@ -15718,11 +15718,11 @@ Rendered shared/_comment.html.erb (2.2ms)
 Rendered posts/show.html.erb within layouts/application (12.4ms)
 Completed   in 217ms
 
-ActionView::Template::Error (undefined method `content' for #<ActiveRecord::Relation:0x000001050775f0>):
+ActionView::Template::Error (undefined method `title' for #<ActiveRecord::Relation:0x000001050775f0>):
     1: <tr>
     2:   
     3:   <td class="post">
-    4:     <span class="content"><%= link_to wrap(comment.content), comment %></span>
+    4:     <span class="title"><%= link_to wrap(comment.title), comment %></span>
     5:     <span class="timestamp">
     6:       <%= link_to comment.user.name, comment.user %> posted <%= time_ago_in_words(comment.created_at) %> ago.
     7:     </span>
@@ -17542,7 +17542,7 @@ Completed 200 OK in 210ms (Views: 28.5ms | ActiveRecord: 5.1ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 22:17:53 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"testing comments", "post_id"=>"7"}, "commit"=>"Add Comment"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"testing comments", "post_id"=>"7"}, "commit"=>"Add Comment"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -17591,7 +17591,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 22:17:53 -0400
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
 [0m
-  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('testing comments', 4, 7, '2011-05-30 02:17:53.664202', '2011-05-30 02:17:53.664202') RETURNING "id"
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('testing comments', 4, 7, '2011-05-30 02:17:53.664202', '2011-05-30 02:17:53.664202') RETURNING "id"
   [1m[36mSQL (47.4ms)[0m  [1mCOMMIT[0m
   [1m[35mSQL (0.1ms)[0m  BEGIN
   [1m[36mSQL (0.1ms)[0m  [1mCOMMIT[0m
@@ -17604,7 +17604,7 @@ Completed 200 OK in 228ms (Views: 14.7ms | ActiveRecord: 53.3ms)
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 22:18:28 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"testing comments", "post_id"=>"7"}, "commit"=>"Add Comment"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"testing comments", "post_id"=>"7"}, "commit"=>"Add Comment"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -17653,7 +17653,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 22:18:28 -0400
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
 [0m
-  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('testing comments', 4, 7, '2011-05-30 02:18:29.055815', '2011-05-30 02:18:29.055815') RETURNING "id"
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('testing comments', 4, 7, '2011-05-30 02:18:29.055815', '2011-05-30 02:18:29.055815') RETURNING "id"
   [1m[36mSQL (1.0ms)[0m  [1mCOMMIT[0m
   [1m[35mSQL (0.1ms)[0m  BEGIN
   [1m[36mSQL (0.1ms)[0m  [1mCOMMIT[0m
@@ -17667,7 +17667,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 22:18:45 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"testing comments", "post_id"=>"7"}, "commit"=>"Add Comment"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"testing comments", "post_id"=>"7"}, "commit"=>"Add Comment"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -17716,7 +17716,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 22:18:45 -0400
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
 [0m
-  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('testing comments', 4, 7, '2011-05-30 02:18:45.707570', '2011-05-30 02:18:45.707570') RETURNING "id"
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('testing comments', 4, 7, '2011-05-30 02:18:45.707570', '2011-05-30 02:18:45.707570') RETURNING "id"
   [1m[36mSQL (1.0ms)[0m  [1mCOMMIT[0m
   [1m[35mSQL (0.1ms)[0m  BEGIN
   [1m[36mSQL (0.1ms)[0m  [1mCOMMIT[0m
@@ -17729,7 +17729,7 @@ ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
     1: <%= form_for(@post) do |f| %>
     2:   <%= render 'shared/error_messages', :object => f.object %>
     3:   <div class="field">
-    4:     <%= f.text_area :content %>
+    4:     <%= f.text_area :title %>
   app/views/shared/_post_form.html.erb:1:in `_app_views_shared__post_form_html_erb___3219380652281848037_2170461540_1875912620389141003'
   app/views/shared/_feed_home.html.erb:5:in `_app_views_shared__feed_home_html_erb___2454888730637972871_2170502680_3150716591387373843'
   app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___616875184065944944_2189435260_948275426606650607'
@@ -17742,7 +17742,7 @@ Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib
 
 Started POST "/comments" for 127.0.0.1 at 2011-05-29 22:19:06 -0400
   Processing by CommentsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"content"=>"testing comments", "post_id"=>"7"}, "commit"=>"Add Comment"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sgC8r2IY7tQFs4Hm+pcNZQB2WWbJeXF2XvJHfjBt4AU=", "comment"=>{"title"=>"testing comments", "post_id"=>"7"}, "commit"=>"Add Comment"}
   [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
  FROM pg_attribute a LEFT JOIN pg_attrdef d
  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
@@ -17791,7 +17791,7 @@ Started POST "/comments" for 127.0.0.1 at 2011-05-29 22:19:06 -0400
  AND cons.contype = 'p'
  AND dep.refobjid = '"comments"'::regclass
 [0m
-  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("content", "user_id", "post_id", "created_at", "updated_at") VALUES ('testing comments', 4, 7, '2011-05-30 02:19:06.657141', '2011-05-30 02:19:06.657141') RETURNING "id"
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('testing comments', 4, 7, '2011-05-30 02:19:06.657141', '2011-05-30 02:19:06.657141') RETURNING "id"
   [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
   [1m[35mSQL (0.1ms)[0m  BEGIN
   [1m[36mSQL (0.1ms)[0m  [1mCOMMIT[0m
@@ -19328,3 +19328,1100 @@ Completed 200 OK in 114ms (Views: 43.0ms | ActiveRecord: 1.8ms)
  WHERE a.attrelid = '"users"'::regclass
  AND a.attnum > 0 AND NOT a.attisdropped
  ORDER BY a.attnum
+
+
+Started GET "/" for 127.0.0.1 at 2011-05-30 14:08:52 -0400
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (0.5ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  Processing by PagesController#home as HTML
+  [1m[36mSQL (18.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (23.8ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered shared/_splash.html.erb (2.2ms)
+Rendered layouts/_stylesheets.html.erb (3.7ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered layouts/_header.html.erb (2.4ms)
+Rendered layouts/_footer.html.erb (0.8ms)
+Rendered pages/home.html.erb within layouts/application (22.7ms)
+Completed 200 OK in 203ms (Views: 28.3ms | ActiveRecord: 44.8ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2011-05-30 14:08:54 -0400
+  Processing by SessionsController#new as HTML
+Rendered layouts/_stylesheets.html.erb (1.2ms)
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered layouts/_header.html.erb (148.0ms)
+Rendered layouts/_footer.html.erb (0.9ms)
+Rendered sessions/new.html.erb within layouts/application (270.8ms)
+Completed 200 OK in 277ms (Views: 274.6ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-05-30 14:09:00 -0400
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u/5gKtp4evGWscPgTiwNWLrK2XkHpUl9wwpljVOA4Wg=", "session"=>{"email"=>"spencer.kline@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35mSQL (1.2ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (23.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'spencer.kline@gmail.com' LIMIT 1
+Rendered layouts/_stylesheets.html.erb (1.7ms)
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (5.4ms)
+Rendered layouts/_footer.html.erb (1.2ms)
+Rendered sessions/new.html.erb within layouts/application (16.1ms)
+Completed 200 OK in 189ms (Views: 19.2ms | ActiveRecord: 26.3ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-05-30 14:09:06 -0400
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u/5gKtp4evGWscPgTiwNWLrK2XkHpUl9wwpljVOA4Wg=", "session"=>{"email"=>"spencerkline@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mSQL (1.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'spencerkline@gmail.com' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 126ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-05-30 14:09:06 -0400
+  Processing by PagesController#home as HTML
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (3.9ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPost Load (2.3ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC
+Rendered shared/_error_messages.html.erb (0.8ms)
+Rendered shared/_post_form.html.erb (9.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered shared/_feed_item.html.erb (58.4ms)
+Rendered shared/_feed.html.erb (65.2ms)
+  [1m[35mSQL (135.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".user_id = 4)
+Rendered shared/_user_info.html.erb (159.8ms)
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".followed_id WHERE (("relationships".follower_id = 4))[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".follower_id WHERE (("relationships".followed_id = 4))
+Rendered shared/_stats.html.erb (80.4ms)
+Rendered shared/_feed_home.html.erb (325.6ms)
+Rendered layouts/_stylesheets.html.erb (1.2ms)
+Rendered layouts/_header.html.erb (2.7ms)
+Rendered layouts/_footer.html.erb (0.8ms)
+Rendered pages/home.html.erb within layouts/application (338.0ms)
+Completed 200 OK in 543ms (Views: 205.1ms | ActiveRecord: 149.0ms)
+
+
+Started GET "/posts/7" for 127.0.0.1 at 2011-05-30 14:09:08 -0400
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (2.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 7 ORDER BY posts.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered shared/_feed_item.html.erb (7.6ms)
+  [1m[36mComment Load (1.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 7)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_comment.html.erb (13.6ms)
+Rendered shared/_error_messages.html.erb (0.6ms)
+Rendered shared/_comment_form.html.erb (3.9ms)
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+Rendered layouts/_header.html.erb (2.1ms)
+Rendered layouts/_footer.html.erb (0.8ms)
+Rendered posts/show.html.erb within layouts/application (41.8ms)
+Completed 200 OK in 227ms (Views: 46.4ms | ActiveRecord: 7.4ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2011-05-30 14:09:13 -0400
+  Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u/5gKtp4evGWscPgTiwNWLrK2XkHpUl9wwpljVOA4Wg=", "comment"=>{"title"=>"testing", "post_id"=>"7"}, "commit"=>"Add Comment"}
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (1.3ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (60.6ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"comments"'::regclass
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('testing', 4, 7, '2011-05-30 18:09:13.693285', '2011-05-30 18:09:13.693285') RETURNING "id"[0m
+  [1m[35mSQL (1.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  COMMIT
+Completed   in 212ms
+
+NoMethodError (undefined method `rend' for #<CommentsController:0x00000101103338>):
+  app/controllers/comments_controller.rb:7:in `create'
+
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (34.9ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (44.7ms)
+
+
+Started GET "/posts/7" for 127.0.0.1 at 2011-05-30 14:09:25 -0400
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 7 ORDER BY posts.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered shared/_feed_item.html.erb (15.3ms)
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 7)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered shared/_comment.html.erb (21.3ms)
+Rendered shared/_error_messages.html.erb (0.7ms)
+Rendered shared/_comment_form.html.erb (3.8ms)
+Rendered layouts/_stylesheets.html.erb (1.1ms)
+Rendered layouts/_header.html.erb (3.3ms)
+Rendered layouts/_footer.html.erb (0.9ms)
+Rendered posts/show.html.erb within layouts/application (63.2ms)
+Completed 200 OK in 302ms (Views: 69.2ms | ActiveRecord: 72.0ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2011-05-30 14:09:29 -0400
+  Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u/5gKtp4evGWscPgTiwNWLrK2XkHpUl9wwpljVOA4Wg=", "comment"=>{"title"=>"work", "post_id"=>"7"}, "commit"=>"Add Comment"}
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (2.0ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"comments"'::regclass
+[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('work', 4, 7, '2011-05-30 18:09:29.861482', '2011-05-30 18:09:29.861482') RETURNING "id"
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+Completed   in 243ms
+
+ActionView::MissingTemplate (Missing template posts/#{@comment.post_id} with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/Users/skline/NutraNation1/app/views", "/Users/skline/NutraNation1", "/"):
+  app/controllers/comments_controller.rb:7:in `create'
+
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (2.3ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2011-05-30 14:10:02 -0400
+  Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u/5gKtp4evGWscPgTiwNWLrK2XkHpUl9wwpljVOA4Wg=", "comment"=>{"title"=>"testing", "post_id"=>"7"}, "commit"=>"Add Comment"}
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (1.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (1.9ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"comments"'::regclass
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('testing', 4, 7, '2011-05-30 18:10:02.490066', '2011-05-30 18:10:02.490066') RETURNING "id"[0m
+  [1m[35mSQL (1.8ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  COMMIT
+Completed   in 208ms
+
+ActionView::MissingTemplate (Missing template posts/7 with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/Users/skline/NutraNation1/app/views", "/Users/skline/NutraNation1", "/"):
+  app/controllers/comments_controller.rb:7:in `create'
+
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (1.2ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2011-05-30 14:10:28 -0400
+  Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u/5gKtp4evGWscPgTiwNWLrK2XkHpUl9wwpljVOA4Wg=", "comment"=>{"title"=>"testing", "post_id"=>"7"}, "commit"=>"Add Comment"}
+  [1m[36mSQL (1.3ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (2.9ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"comments"'::regclass
+[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('testing', 4, 7, '2011-05-30 18:10:29.148730', '2011-05-30 18:10:29.148730') RETURNING "id"
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (2.0ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+Completed   in 186ms
+
+ActionView::MissingTemplate (Missing template /posts/7 with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/Users/skline/NutraNation1/app/views", "/Users/skline/NutraNation1", "/"):
+  app/controllers/comments_controller.rb:7:in `create'
+
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.8ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2011-05-30 14:12:00 -0400
+  Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u/5gKtp4evGWscPgTiwNWLrK2XkHpUl9wwpljVOA4Wg=", "comment"=>{"title"=>"testing", "post_id"=>"7"}, "commit"=>"Add Comment"}
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.2ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"comments"'::regclass
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("title", "user_id", "post_id", "created_at", "updated_at") VALUES ('testing', 4, 7, '2011-05-30 18:12:01.168585', '2011-05-30 18:12:01.168585') RETURNING "id"[0m
+  [1m[35mSQL (0.9ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  COMMIT
+Completed   in 182ms
+
+ActionView::MissingTemplate (Missing template /posts/7 with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/Users/skline/NutraNation1/app/views", "/Users/skline/NutraNation1", "/"):
+  app/controllers/comments_controller.rb:7:in `create'
+
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (2.0ms)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.2ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (108.8ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (16.5ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (1.6ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (2.3ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (17.9ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateUsers (20100821203213)
+Migrating to AddEmailUniquenessIndex (20100822012431)
+Migrating to AddPasswordToUsers (20100822204528)
+Migrating to AddSaltToUsers (20100822233125)
+Migrating to AddAdminToUsers (20100829021049)
+Migrating to CreateMicroposts (20100829210229)
+Migrating to CreateRelationships (20100831012055)
+Migrating to AddDescriptiontoUsers (20110529155541)
+Migrating to RenameMicropostsPost (20110529181641)
+Migrating to CreateComments (20110529183848)
+Migrating to AddTitletoPost (20110601022735)
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (31.4ms)[0m  ALTER TABLE "posts" RENAME COLUMN "content" TO "title"
+  [1m[36mSQL (26.2ms)[0m  [1mALTER TABLE "posts" ADD COLUMN "content" text[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (2.8ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+[0m
+  [1m[35mPK and custom sequence (24.2ms)[0m   SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+  [1m[36mSQL (10.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110601022735')[0m
+  [1m[35mPK and serial sequence (1.8ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+  [1m[36mPK and custom sequence (0.8ms)[0m  [1m SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+[0m
+  [1m[35mSQL (8.8ms)[0m  COMMIT
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (1.1ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (2.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (3.0ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"comments"'::regclass
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW search_path[0m
+  [1m[35mSQL (9.2ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'comments'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mColumns for index index_comments_on_post_id on comments (0.6ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16523
+ AND a.attnum IN (4)
+[0m
+  [1m[35mColumns for index index_comments_on_user_id on comments (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16523
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.9ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"posts"'::regclass
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_microposts_on_user_id on posts (0.3ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16512
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"relationships"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.8ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"relationships"'::regclass
+  [1m[36mSQL (1.2ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'relationships'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_relationships_on_followed_id on relationships (0.6ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16492
+ AND a.attnum IN (3)
+  [1m[36mColumns for index index_relationships_on_follower_id on relationships (0.2ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16492
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_relationships_on_follower_id_and_followed_id on relationships (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16492
+ AND a.attnum IN (2,3)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (8.5ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"users"'::regclass
+  [1m[36mSQL (1.5ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_email on users (0.7ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16500
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.4ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.2ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (41.1ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.8ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (93.2ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (3.4ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (35.5ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateUsers (20100821203213)
+Migrating to AddEmailUniquenessIndex (20100822012431)
+Migrating to AddPasswordToUsers (20100822204528)
+Migrating to AddSaltToUsers (20100822233125)
+Migrating to AddAdminToUsers (20100829021049)
+Migrating to CreateMicroposts (20100829210229)
+Migrating to CreateRelationships (20100831012055)
+Migrating to AddDescriptiontoUsers (20110529155541)
+Migrating to RenameMicropostsPost (20110529181641)
+Migrating to CreateComments (20110529183848)
+Migrating to AddTitletoPost (20110601022735)
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  ALTER TABLE "posts" RENAME COLUMN "content" TO "title"
+  [1m[36mSQL (17.8ms)[0m  [1mALTER TABLE "posts" ADD COLUMN "content" text[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (38.3ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+[0m
+  [1m[35mPK and custom sequence (9.0ms)[0m   SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+  [1m[36mSQL (57.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110601022735')[0m
+  [1m[35mPK and serial sequence (2.7ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+  [1m[36mPK and custom sequence (1.2ms)[0m  [1m SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+[0m
+  [1m[35mSQL (2.9ms)[0m  COMMIT
+  [1m[36mSQL (1.2ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (2.4ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.8ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"comments"'::regclass
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW search_path[0m
+  [1m[35mSQL (1.9ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'comments'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mColumns for index index_comments_on_post_id on comments (0.4ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16577
+ AND a.attnum IN (4)
+[0m
+  [1m[35mColumns for index index_comments_on_user_id on comments (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16577
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.1ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"posts"'::regclass
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_microposts_on_user_id on posts (0.3ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16566
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"relationships"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (5.4ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"relationships"'::regclass
+  [1m[36mSQL (4.1ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'relationships'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_relationships_on_followed_id on relationships (0.7ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16546
+ AND a.attnum IN (3)
+  [1m[36mColumns for index index_relationships_on_follower_id on relationships (0.5ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16546
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_relationships_on_follower_id_and_followed_id on relationships (1.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16546
+ AND a.attnum IN (2,3)
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.0ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"users"'::regclass
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_email on users (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16554
+ AND a.attnum IN (3)

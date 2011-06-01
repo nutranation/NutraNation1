@@ -1,7 +1,7 @@
 module PostsHelper
 
-  def wrap(content)
-    sanitize(raw(content.split.map{ |s| wrap_long_string(s) }.join(' ')))
+  def wrap(title)
+    sanitize(raw(title.split.map{ |s| wrap_long_string(s) }.join(' ')))
   end
 
   private

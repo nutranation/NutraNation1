@@ -3,7 +3,7 @@
     <%= link_to gravatar_for(feed_item.user), feed_item.user %>
   </td>
   <td class="post">
-    <span class="content"><%= link_to wrap(feed_item.content), feed_item %></span>
+    <span class="title"><%= link_to wrap(feed_item.title), feed_item %></span>
     <span class="timestamp">
       <%= link_to feed_item.user.name, feed_item.user %> posted <%= time_ago_in_words(feed_item.created_at) %> ago.
     </span>
@@ -12,7 +12,7 @@
     <td>
       <%= link_to "delete", feed_item, :method => :delete,
                                        :confirm => "You sure?",
-                                       :title => feed_item.content %>
+                                       :title => feed_item.title %>
     </td>
   <% end %>
 </tr>

@@ -18,7 +18,7 @@ describe PagesController do
       it "should have the right title" do
         get 'home'
         response.should have_selector("title",
-                                      :content => "#{@base_title} | Home")
+                                      :title => "#{@base_title} | Home")
       end
 
       it "should have a non-blank body" do
@@ -37,9 +37,9 @@ describe PagesController do
       it "should have the right follower/following counts" do
         get :home
         response.should have_selector('a', :href => following_user_path(@user),
-                                           :content => "0 following")
+                                           :title => "0 following")
         response.should have_selector('a', :href => followers_user_path(@user),
-                                           :content => "1 follower")
+                                           :title => "1 follower")
       end
     end
 
@@ -54,7 +54,7 @@ describe PagesController do
     it "should have the right title" do
       get 'contact'
       response.should have_selector("title",
-                                    :content => "#{@base_title} | Contact")
+                                    :title => "#{@base_title} | Contact")
     end
   end
 
@@ -67,7 +67,7 @@ describe PagesController do
     it "should have the right title" do
       get 'about'
       response.should have_selector("title",
-                                    :content => "#{@base_title} | About")
+                                    :title => "#{@base_title} | About")
     end
   end
 
@@ -80,7 +80,7 @@ describe PagesController do
     it "should have the right title" do
       get 'help'
       response.should have_selector("title",
-                                    :content => "#{@base_title} | Help")
+                                    :title => "#{@base_title} | Help")
     end
   end
 end

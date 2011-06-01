@@ -14,6 +14,6 @@ Factory.sequence :name do |n|
 end
 
 Factory.define :post do |post|
-  post.content "Foo bar"
+  post.title "Foo bar"
   post.association :user
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110529183848) do
+ActiveRecord::Schema.define(:version => 20110601022735) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -24,10 +24,11 @@ ActiveRecord::Schema.define(:version => 20110529183848) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "posts", :force => true do |t|
-    t.text     "content"
+    t.text     "title"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "content"
   end
 
   add_index "posts", ["user_id"], :name => "index_microposts_on_user_id"

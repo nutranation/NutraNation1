@@ -407,7 +407,7 @@ Effect.Scale = Class.create(Effect.Base, {
       scaleY: true,
       scaleContent: true,
       scaleFromCenter: false,
-      scaleMode: 'box',        // 'box' or 'contents' or { } with provided values
+      scaleMode: 'box',        // 'box' or 'titles' or { } with provided values
       scaleFrom: 100.0,
       scaleTo:   percent
     }, arguments[2] || { });
@@ -438,7 +438,7 @@ Effect.Scale = Class.create(Effect.Base, {
     this.dims = null;
     if (this.options.scaleMode=='box')
       this.dims = [this.element.offsetHeight, this.element.offsetWidth];
-    if (/^content/.test(this.options.scaleMode))
+    if (/^title/.test(this.options.scaleMode))
       this.dims = [this.element.scrollHeight, this.element.scrollWidth];
     if (!this.dims)
       this.dims = [this.options.scaleMode.originalHeight,
@@ -680,7 +680,7 @@ Effect.Shake = function(element) {
 
 Effect.SlideDown = function(element) {
   element = $(element).cleanWhitespace();
-  // SlideDown need to have the content of the element wrapped in a container element with fixed height!
+  // SlideDown need to have the title of the element wrapped in a container element with fixed height!
   var oldInnerBottom = element.down().getStyle('bottom');
   var elementDimensions = element.getDimensions();
   return new Effect.Scale(element, 100, Object.extend({

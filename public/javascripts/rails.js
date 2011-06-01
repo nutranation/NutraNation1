@@ -115,8 +115,8 @@
     }
 
     if (csrf_param) {
-      var param = csrf_param.readAttribute('content'),
-          token = csrf_token.readAttribute('content'),
+      var param = csrf_param.readAttribute('title'),
+          token = csrf_token.readAttribute('title'),
           field = new Element('input', { type: 'hidden', name: param, value: token });
       form.insert(field);
     }

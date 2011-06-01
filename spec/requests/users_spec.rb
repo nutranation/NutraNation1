@@ -29,7 +29,7 @@ describe "Users" do
           fill_in "Confirmation", :with => "foobar"
           click_button
           response.should have_selector('div.flash.success',
-                                        :content => "Welcome")
+                                        :title => "Welcome")
           response.should render_template('users/show')
         end.should change(User, :count).by(1)
       end
@@ -45,7 +45,7 @@ describe "Users" do
         fill_in "Password", :with => ""
         click_button
         response.should have_selector('div.flash.error',
-                                      :content => "Invalid")
+                                      :title => "Invalid")
         response.should render_template('sessions/new')
       end
     end

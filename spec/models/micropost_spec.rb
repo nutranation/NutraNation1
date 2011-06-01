@@ -4,7 +4,7 @@ describe Post do
 
   before(:each) do
     @user = Factory(:user)
-    @attr = { :content => "lorem ipsum" }
+    @attr = { :title => "lorem ipsum" }
   end
   
   it "should create a new instance with valid attributes" do
@@ -33,12 +33,12 @@ describe Post do
       Post.new(@attr).should_not be_valid
     end
 
-    it "should require nonblank content" do
-      @user.posts.build(:content => "    ").should_not be_valid
+    it "should require nonblank title" do
+      @user.posts.build(:title => "    ").should_not be_valid
     end
     
-    it "should reject long content" do
-      @user.posts.build(:content => "a" * 141).should_not be_valid
+    it "should reject long title" do
+      @user.posts.build(:title => "a" * 141).should_not be_valid
     end
   end
 
@@ -48,9 +48,9 @@ describe Post do
       @other_user = Factory(:user, :email => Factory.next(:email))
       @third_user = Factory(:user, :email => Factory.next(:email))
       
-      @user_post  = @user.posts.create!(:content => "foo")
-      @other_post = @other_user.posts.create!(:content => "bar")
-      @third_post = @third_user.posts.create!(:content => "baz")
+      @user_post  = @user.posts.create!(:title => "foo")
+      @other_post = @other_user.posts.create!(:title => "bar")
+      @third_post = @third_user.posts.create!(:title => "baz")
       
       @user.follow!(@other_user)
     end

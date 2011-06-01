@@ -265,7 +265,7 @@ hr.space {
    [http://www.positioniseverything.net/easyclearing.html] */
 
 .clearfix:after, .container:after {
-  content: "\0020";
+  title: "\0020";
   display: block;
   height: 0;
   clear: both;

@@ -1,6 +1,6 @@
 <tr>
   <td class="post">
-    <span class="content"><%= link_to post.content, post %></span>
+    <span class="title"><%= link_to post.title, post %></span>
     <span class="timestamp">
       Posted <%= time_ago_in_words(post.created_at) %> ago.
     </span>
@@ -10,7 +10,7 @@
     <td>
       <%= link_to "delete", post, :method => :delete,
                                        :confirm => "You sure?",
-                                       :title => post.content %>
+                                       :title => post.title %>
     </td>
   <% end %>
 </tr>

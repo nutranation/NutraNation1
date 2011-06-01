@@ -1458,7 +1458,7 @@ Ajax.Base = Class.create({
     this.options = {
       method:       'post',
       asynchronous: true,
-      contentType:  'application/x-www-form-urlencoded',
+      titleType:  'application/x-www-form-urlencoded',
       encoding:     'UTF-8',
       parameters:   '',
       evalJSON:     true,
@@ -1542,7 +1542,7 @@ Ajax.Request = Class.create(Ajax.Base, {
     };
 
     if (this.method == 'post') {
-      headers['Content-type'] = this.options.contentType +
+      headers['Content-type'] = this.options.titleType +
         (this.options.encoding ? '; charset=' + this.options.encoding : '');
 
       /* Force "Connection: close" for older Mozilla browsers to work
@@ -1592,10 +1592,10 @@ Ajax.Request = Class.create(Ajax.Base, {
         this.dispatchException(e);
       }
 
-      var contentType = response.getHeader('Content-type');
+      var titleType = response.getHeader('Content-type');
       if (this.options.evalJS == 'force'
-          || (this.options.evalJS && this.isSameOrigin() && contentType
-          && contentType.match(/^\s*(text|application)\/(x-)?(java|ecma)script(;.*)?\s*$/i)))
+          || (this.options.evalJS && this.isSameOrigin() && titleType
+          && titleType.match(/^\s*(text|application)\/(x-)?(java|ecma)script(;.*)?\s*$/i)))
         this.evalResponse();
     }
 
@@ -1962,25 +1962,25 @@ Element.Methods = {
       return isBuggy;
     })();
 
-    function update(element, content) {
+    function update(element, title) {
       element = $(element);
 
       var descendants = element.getElementsByTagName('*'),
        i = descendants.length;
       while (i--) purgeElement(descendants[i]);
 
-      if (content && content.toElement)
-        content = content.toElement();
+      if (title && title.toElement)
+        title = title.toElement();
 
-      if (Object.isElement(content))
-        return element.update().insert(content);
+      if (Object.isElement(title))
+        return element.update().insert(title);
 
-      content = Object.toHTML(content);
+      title = Object.toHTML(title);
 
       var tagName = element.tagName.toUpperCase();
 
       if (tagName === 'SCRIPT' && SCRIPT_ELEMENT_REJECTS_TEXTNODE_APPENDING) {
-        element.text = content;
+        element.text = title;
         return element;
       }
 
@@ -1989,37 +1989,37 @@ Element.Methods = {
           while (element.firstChild) {
             element.removeChild(element.firstChild);
           }
-          Element._getContentFromAnonymousElement(tagName, content.stripScripts())
+          Element._getContentFromAnonymousElement(tagName, title.stripScripts())
             .each(function(node) {
               element.appendChild(node)
             });
         }
         else {
-          element.innerHTML = content.stripScripts();
+          element.innerHTML = title.stripScripts();
         }
       }
       else {
-        element.innerHTML = content.stripScripts();
+        element.innerHTML = title.stripScripts();
       }
 
-      content.evalScripts.bind(content).defer();
+      title.evalScripts.bind(title).defer();
       return element;
     }
 
     return update;
   })(),
 
-  replace: function(element, content) {
+  replace: function(element, title) {
     element = $(element);
-    if (content && content.toElement) content = content.toElement();
-    else if (!Object.isElement(content)) {
-      content = Object.toHTML(content);
+    if (title && title.toElement) title = title.toElement();
+    else if (!Object.isElement(title)) {
+      title = Object.toHTML(title);
       var range = element.ownerDocument.createRange();
       range.selectNode(element);
-      content.evalScripts.bind(content).defer();
-      content = range.createContextualFragment(content.stripScripts());
+      title.evalScripts.bind(title).defer();
+      title = range.createContextualFragment(title.stripScripts());
     }
-    element.parentNode.replaceChild(content, element);
+    element.parentNode.replaceChild(title, element);
     return element;
   },
 
@@ -2030,30 +2030,30 @@ Element.Methods = {
         Object.isElement(insertions) || (insertions && (insertions.toElement || insertions.toHTML)))
           insertions = {bottom:insertions};
 
-    var content, insert, tagName, childNodes;
+    var title, insert, tagName, childNodes;
 
     for (var position in insertions) {
-      content  = insertions[position];
+      title  = insertions[position];
       position = position.toLowerCase();
       insert = Element._insertionTranslations[position];
 
-      if (content && content.toElement) content = content.toElement();
-      if (Object.isElement(content)) {
-        insert(element, content);
+      if (title && title.toElement) title = title.toElement();
+      if (Object.isElement(title)) {
+        insert(element, title);
         continue;
       }
 
-      content = Object.toHTML(content);
+      title = Object.toHTML(title);
 
       tagName = ((position == 'before' || position == 'after')
         ? element.parentNode : element).tagName.toUpperCase();
 
-      childNodes = Element._getContentFromAnonymousElement(tagName, content.stripScripts());
+      childNodes = Element._getContentFromAnonymousElement(tagName, title.stripScripts());
 
       if (position == 'top' || position == 'after') childNodes.reverse();
       childNodes.each(insert.curry(element));
 
-      content.evalScripts.bind(content).defer();
+      title.evalScripts.bind(title).defer();
     }
 
     return element;
@@ -2879,30 +2879,30 @@ else if (Prototype.Browser.WebKit) {
 }
 
 if ('outerHTML' in document.documentElement) {
-  Element.Methods.replace = function(element, content) {
+  Element.Methods.replace = function(element, title) {
     element = $(element);
 
-    if (content && content.toElement) content = content.toElement();
-    if (Object.isElement(content)) {
-      element.parentNode.replaceChild(content, element);
+    if (title && title.toElement) title = title.toElement();
+    if (Object.isElement(title)) {
+      element.parentNode.replaceChild(title, element);
       return element;
     }
 
-    content = Object.toHTML(content);
+    title = Object.toHTML(title);
     var parent = element.parentNode, tagName = parent.tagName.toUpperCase();
 
     if (Element._insertionTranslations.tags[tagName]) {
       var nextSibling = element.next(),
-          fragments = Element._getContentFromAnonymousElement(tagName, content.stripScripts());
+          fragments = Element._getContentFromAnonymousElement(tagName, title.stripScripts());
       parent.removeChild(element);
       if (nextSibling)
         fragments.each(function(node) { parent.insertBefore(node, nextSibling) });
       else
         fragments.each(function(node) { parent.appendChild(node) });
     }
-    else element.outerHTML = content.stripScripts();
+    else element.outerHTML = title.stripScripts();
 
-    content.evalScripts.bind(content).defer();
+    title.evalScripts.bind(title).defer();
     return element;
   };
 }
@@ -5777,20 +5777,20 @@ var Toggle = { display: Element.toggle };
 Element.Methods.childOf = Element.Methods.descendantOf;
 
 var Insertion = {
-  Before: function(element, content) {
-    return Element.insert(element, {before:content});
+  Before: function(element, title) {
+    return Element.insert(element, {before:title});
   },
 
-  Top: function(element, content) {
-    return Element.insert(element, {top:content});
+  Top: function(element, title) {
+    return Element.insert(element, {top:title});
   },
 
-  Bottom: function(element, content) {
-    return Element.insert(element, {bottom:content});
+  Bottom: function(element, title) {
+    return Element.insert(element, {bottom:title});
   },
 
-  After: function(element, content) {
-    return Element.insert(element, {after:content});
+  After: function(element, title) {
+    return Element.insert(element, {after:title});
   }
 };
 

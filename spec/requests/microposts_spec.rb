@@ -16,7 +16,7 @@ describe "Posts" do
       it "should not make a new post" do
         lambda do
           visit root_path
-          fill_in :post_content, :with => ""
+          fill_in :post_title, :with => ""
           click_button
           response.should render_template('pages/home')
           response.should have_selector('div#error_explanation')
@@ -26,12 +26,12 @@ describe "Posts" do
     
     describe "success" do
       it "should make a new post" do
-        content = "Lorem ipsum dolor sit amet"
+        title = "Lorem ipsum dolor sit amet"
         lambda do
           visit root_path
-          fill_in :post_content, :with => content
+          fill_in :post_title, :with => title
           click_button
-          response.should have_selector('span.content', :content => content)
+          response.should have_selector('span.title', :title => title)
         end.should change(Post, :count).by(1)
       end
     end

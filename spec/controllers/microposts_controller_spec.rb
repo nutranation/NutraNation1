@@ -24,7 +24,7 @@ describe PostsController do
     describe "failure" do
 
       before(:each) do
-        @attr = { :content => "" }
+        @attr = { :title => "" }
       end
 
       it "should not create a post" do
@@ -42,7 +42,7 @@ describe PostsController do
     describe "success" do
       
       before(:each) do
-        @attr = { :content => "Lorem ipsum dolor sit amet" }
+        @attr = { :title => "Lorem ipsum dolor sit amet" }
       end
       
       it "should create a post" do
