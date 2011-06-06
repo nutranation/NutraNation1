@@ -149,7 +149,7 @@ div.field, div.actions {
 
 
 
-textarea.description{
+textarea.expertise{
 	width: 160px;
 	height: 65px;
 	padding: 5px;
@@ -247,6 +247,9 @@ table.posts tr td.post span.timestamp {
   color: #666;
 }
 
+span.no-follow{
+  font-size: 125%;
+}
 
 div.user_info img {
   padding-right: 0.1em;
@@ -254,6 +257,10 @@ div.user_info img {
 
 div.comments{
  margin-left: 2em;
+}
+div.comment-feed{
+ font-size: 85%;
+ vertical-align: top;
 }
 
 table.comments tr {

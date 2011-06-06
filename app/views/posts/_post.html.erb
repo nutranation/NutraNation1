@@ -1,12 +1,21 @@
 <tr>
+  <td class="gravatar">
+    <%= link_to gravatar_for(post.user), post.user %>
+  </td>
   <td class="post">
-    <span class="title"><%= link_to post.title, post %></span>
+	<% if @unique %>
+		<span class="title" style = "font-size: 120%"><strong><%= wrap(post.title)%></strong></span><br>
+	<% else %>
+    	<span class="title" style = "font-size: 120%"><%= link_to wrap(post.title), post %></span><br>
+	<% end %>
+	<% if post.content %>
+   		<span class "post"><%= wrap(post.content) %><span>
+	<% end %>
     <span class="timestamp">
-      Posted <%= time_ago_in_words(post.created_at) %> ago.
+      <%= link_to post.user.name, post.user %> posted <%= time_ago_in_words(post.created_at) %> ago.
     </span>
   </td>
-  <% user = post.user rescue User.find(post.user_id) %>
-  <% if current_user?(user) %>
+  <% if current_user?(post.user) %>
     <td>
       <%= link_to "delete", post, :method => :delete,
                                        :confirm => "You sure?",

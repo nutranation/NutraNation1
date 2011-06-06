@@ -14,6 +14,14 @@
     <span class="timestamp">
       <%= link_to feed_item.user.name, feed_item.user %> posted <%= time_ago_in_words(feed_item.created_at) %> ago.
     </span>
+	<% comment = Comment.where("post_id = ?", feed_item.id).last %>
+	<% if comment %>
+		<div class = "comment-feed">
+		  <table class="comment-feed" >
+		    <%= render :partial => 'shared/comment', :object => comment %>
+		  </table>
+		</div>
+	<% end %>
   </td>
   <% if current_user?(feed_item.user) %>
     <td>

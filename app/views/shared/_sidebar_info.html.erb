@@ -1,3 +1,10 @@
-<strong>Name:</strong> <%= @user.name %><br />
-<strong>Description:</strong>  <%= @user.description %><br />
+<% if @user.expertise %>
+  <strong>Expertise:</strong>  <%= @user.expertise %><br />
+<% end %>
+<% if @user.occupation %>
+  <strong>Occupation:</strong>  <%= @user.occupation %><br />
+<% end %>
+<% if @user.city && @user.state %>
+  <strong>Location:</strong>  <%= @user.city %>, <%= @user.state %><br />
+<% end %>
 <strong>Posts:</strong> <%= @user.posts.count %>

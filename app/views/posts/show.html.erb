@@ -1,5 +1,5 @@
 <table class="posts" summary="Status feed">
-  <%= render :partial => 'shared/feed_item', :object => @post %>
+  <%= render :partial => 'post', :object => @post %>
 </table>
 
 <div class = "comments">
@@ -7,8 +7,6 @@
     <%= render :partial => 'shared/comment', :collection => @c_comment %>
   </table>
 </div>
-
-	
 <%= render 'shared/comment_form' %>
 	
 
