@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   
   has_many :posts,    :dependent => :destroy
   has_many :comments,    :dependent => :destroy
+  has_many :events,    :dependent => :destroy
   has_many :relationships, :dependent => :destroy,
                            :foreign_key => "follower_id"
   has_many :reverse_relationships, :dependent => :destroy,

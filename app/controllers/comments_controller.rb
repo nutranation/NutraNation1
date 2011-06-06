@@ -1,15 +1,14 @@
 class CommentsController < ApplicationController
   
   def create
-     @comment = current_user.comments.build(params[:comment])
-     @refresh = "/posts/#{@comment.post_id}"
-     if @comment.save
-       @refresh = "/posts/#{@comment.post_id}"
-       redirect_to( @refresh, :flash => { :success => "Comment created!" })
-     else
-       redirect_to( @refresh)
-     end
-   end
+    @comment = current_user.comments.build(params[:comment])
+    @refresh = "/posts/#{@comment.post_id}"
+    if @comment.save
+      redirect_to( @refresh, :flash => { :success => "Comment created!" })
+    else
+      redirect_to( @refresh)
+    end
+  end
    
    
    def destroy

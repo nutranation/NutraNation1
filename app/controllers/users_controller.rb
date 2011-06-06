@@ -45,14 +45,14 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @title = "Edit user"
+    @title = "Edit Profile"
   end
   
   def update
     if @user.update_attributes(params[:user])
       redirect_to @user, :flash => { :success => "Profile updated." }
     else
-      @title = "Edit user"
+      @title = "Edit Profile"
       render 'edit'
     end
   end

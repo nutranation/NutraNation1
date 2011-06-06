@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110601022735) do
+ActiveRecord::Schema.define(:version => 20110606015027) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(:version => 20110601022735) do
 
   add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "time"
+    t.string   "location"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", :force => true do |t|
     t.text     "title"
@@ -53,6 +63,9 @@ ActiveRecord::Schema.define(:version => 20110601022735) do
     t.string   "salt"
     t.boolean  "admin",              :default => false
     t.text     "expertise"
+    t.string   "occupation"
+    t.string   "city"
+    t.string   "state"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
