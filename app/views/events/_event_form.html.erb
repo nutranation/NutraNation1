@@ -1,0 +1,22 @@
+<%= form_for @event  do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <strong>Title</strong>
+  <div class="field">
+    <%= f.text_field :title  %>
+  </div>
+  <strong>Description</strong>
+  <div class="field">
+    <%= f.text_area :description, :class => "comment" %>
+  </div>
+  <strong>Location</strong>
+  <div class="field">
+    <%= f.text_field :location  %>
+  </div>
+  <strong>Time</strong>
+  <div class="field">
+    <%= f.text_field :time  %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add Event" %>
+  </div>
+<% end %>
