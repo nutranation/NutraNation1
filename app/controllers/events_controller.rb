@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     date = DateTime.civil(params[:start_date][:year].to_i, params[:start_date][:month].to_i, params[:start_date][:day].to_i, params[:start_date][:hour].to_i, params[:start_date][:minute].to_i)
     @event.start_date = date
     if @event.save
-      redirect_to root_path, :flash => { :success => "Event Created!" }
+      redirect_to events_path, :flash => { :success => "Event Created!" }
     else
       @feed_items = []
       render 'pages/home'
