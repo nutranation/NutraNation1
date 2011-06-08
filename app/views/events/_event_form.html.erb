@@ -14,7 +14,7 @@
   </div>
   <strong>Time</strong>
   <div class="field">
-    <%= f.text_field :time  %>
+    <%= select_datetime Date.today, :prefix => :start_date %>
   </div>
   <div class="actions">
     <%= f.submit "Add Event" %>

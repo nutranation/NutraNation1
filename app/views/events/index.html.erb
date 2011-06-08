@@ -1,1 +1,4 @@
-<%= render :partial => 'event_form' %>
+<table> 
+<%= render :partial => 'event_item', :collection =>  @all_events%>
+</table>
+<%= link_to "Add Event", new_event_path %>

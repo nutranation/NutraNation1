@@ -21226,3 +21226,2098 @@ Migrating to CreateEvents (20110606015027)
  AND a.attnum > 0 AND NOT a.attisdropped
  ORDER BY a.attnum
 [0m
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (79.0ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (49.4ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (17.7ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (14.2ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateUsers (20100821203213)
+Migrating to AddEmailUniquenessIndex (20100822012431)
+Migrating to AddPasswordToUsers (20100822204528)
+Migrating to AddSaltToUsers (20100822233125)
+Migrating to AddAdminToUsers (20100829021049)
+Migrating to CreateMicroposts (20100829210229)
+Migrating to CreateRelationships (20100831012055)
+Migrating to AddDescriptiontoUsers (20110529155541)
+Migrating to RenameMicropostsPost (20110529181641)
+Migrating to CreateComments (20110529183848)
+Migrating to AddTitletoPost (20110601022735)
+Migrating to RenameDescriptionAddCityStatetoUsers (20110606005922)
+Migrating to CreateEvents (20110606015027)
+Migrating to AddMoreDateGranularitytoEvents (20110608011847)
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (11.3ms)[0m  ALTER TABLE "events" RENAME COLUMN "time" TO "start_date"
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (14.5ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+  [1m[36mPK and custom sequence (16.8ms)[0m  [1m SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+[0m
+  [1m[35mSQL (9.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110608011847')
+  [1m[36mPK and serial sequence (1.7ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+[0m
+  [1m[35mPK and custom sequence (0.8ms)[0m   SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+  [1m[36mSQL (6.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (1.8ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"comments"'::regclass
+[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW search_path
+  [1m[36mSQL (4.4ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'comments'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_comments_on_post_id on comments (0.4ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16620
+ AND a.attnum IN (4)
+  [1m[36mColumns for index index_comments_on_user_id on comments (0.2ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16620
+ AND a.attnum IN (3)
+[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"events"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (1.8ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"events"'::regclass
+[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'events'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (1.8ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"posts"'::regclass
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_microposts_on_user_id on posts (0.3ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16631
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"relationships"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.4ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"relationships"'::regclass
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'relationships'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_relationships_on_followed_id on relationships (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (3)
+  [1m[36mColumns for index index_relationships_on_follower_id on relationships (0.1ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_relationships_on_follower_id_and_followed_id on relationships (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (2,3)
+  [1m[36mSQL (1.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.0ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"users"'::regclass
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_email on users (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16608
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (0.4ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (2.5ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (4.5ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to AddMoreDateGranularitytoEvents (20110608011847)
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mALTER TABLE "events" RENAME COLUMN "start_date" TO "time"[0m
+  [1m[35mSQL (310.7ms)[0m  ALTER TABLE "events" ALTER COLUMN "time" TYPE character varying(255)
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mAREL (0.6ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110608011847'
+  [1m[36mSQL (2.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (1.1ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (1.3ms)[0m  [1m SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (2.7ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"comments"'::regclass
+[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW search_path
+  [1m[36mSQL (1.4ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'comments'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_comments_on_post_id on comments (0.3ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16620
+ AND a.attnum IN (4)
+  [1m[36mColumns for index index_comments_on_user_id on comments (0.1ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16620
+ AND a.attnum IN (3)
+[0m
+  [1m[35mSQL (8.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"events"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (1.9ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"events"'::regclass
+[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'events'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.0ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"posts"'::regclass
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_microposts_on_user_id on posts (0.3ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16631
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"relationships"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (1.8ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"relationships"'::regclass
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'relationships'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_relationships_on_followed_id on relationships (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (3)
+  [1m[36mColumns for index index_relationships_on_follower_id on relationships (0.1ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_relationships_on_follower_id_and_followed_id on relationships (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (2,3)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (1.8ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"users"'::regclass
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_email on users (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16608
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateUsers (20100821203213)
+Migrating to AddEmailUniquenessIndex (20100822012431)
+Migrating to AddPasswordToUsers (20100822204528)
+Migrating to AddSaltToUsers (20100822233125)
+Migrating to AddAdminToUsers (20100829021049)
+Migrating to CreateMicroposts (20100829210229)
+Migrating to CreateRelationships (20100831012055)
+Migrating to AddDescriptiontoUsers (20110529155541)
+Migrating to RenameMicropostsPost (20110529181641)
+Migrating to CreateComments (20110529183848)
+Migrating to AddTitletoPost (20110601022735)
+Migrating to RenameDescriptionAddCityStatetoUsers (20110606005922)
+Migrating to CreateEvents (20110606015027)
+Migrating to AddMoreDateGranularitytoEvents (20110608011847)
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mALTER TABLE "events" RENAME COLUMN "time" TO "start_date"[0m
+  [1m[35mSQL (0.7ms)[0m  ALTER TABLE "events" ALTER COLUMN "start_date" TYPE timestamp
+PGError: ERROR:  column "start_date" cannot be cast to type timestamp without time zone
+: ALTER TABLE "events" ALTER COLUMN "start_date" TYPE timestamp
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (0.4ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (280.7ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (64.8ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (10.3ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateEvents (20110606015027)
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (36.6ms)[0m  [1mDROP TABLE "events"[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAREL (0.6ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110606015027'[0m
+  [1m[35mSQL (2.3ms)[0m  COMMIT
+  [1m[36mSQL (3.2ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (4.3ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.7ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"comments"'::regclass
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW search_path[0m
+  [1m[35mSQL (1.5ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'comments'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mColumns for index index_comments_on_post_id on comments (0.3ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16620
+ AND a.attnum IN (4)
+[0m
+  [1m[35mColumns for index index_comments_on_user_id on comments (0.6ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16620
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (1.8ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"posts"'::regclass
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_microposts_on_user_id on posts (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16631
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"relationships"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (1.7ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"relationships"'::regclass
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'relationships'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_relationships_on_followed_id on relationships (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (3)
+  [1m[36mColumns for index index_relationships_on_follower_id on relationships (0.2ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_relationships_on_follower_id_and_followed_id on relationships (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (2,3)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.2ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"users"'::regclass
+  [1m[36mSQL (3.2ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_email on users (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16608
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateUsers (20100821203213)
+Migrating to AddEmailUniquenessIndex (20100822012431)
+Migrating to AddPasswordToUsers (20100822204528)
+Migrating to AddSaltToUsers (20100822233125)
+Migrating to AddAdminToUsers (20100829021049)
+Migrating to CreateMicroposts (20100829210229)
+Migrating to CreateRelationships (20100831012055)
+Migrating to AddDescriptiontoUsers (20110529155541)
+Migrating to RenameMicropostsPost (20110529181641)
+Migrating to CreateComments (20110529183848)
+Migrating to AddTitletoPost (20110601022735)
+Migrating to RenameDescriptionAddCityStatetoUsers (20110606005922)
+Migrating to CreateEvents (20110606015027)
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (58.6ms)[0m  [1mCREATE TABLE "events" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "time" character varying(255), "location" character varying(255), "user_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (3.0ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+[0m
+  [1m[35mPK and custom sequence (14.9ms)[0m   SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110606015027')[0m
+  [1m[35mPK and serial sequence (1.6ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+  [1m[36mPK and custom sequence (0.9ms)[0m  [1m SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+[0m
+  [1m[35mSQL (1.0ms)[0m  COMMIT
+Migrating to AddMoreDateGranularitytoEvents (20110608011847)
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  ALTER TABLE "events" RENAME COLUMN "time" TO "start_date"
+  [1m[36mSQL (0.4ms)[0m  [1mALTER TABLE "events" ALTER COLUMN "start_date" TYPE timestamp[0m
+PGError: ERROR:  column "start_date" cannot be cast to type timestamp without time zone
+: ALTER TABLE "events" ALTER COLUMN "start_date" TYPE timestamp
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (0.4ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (59.9ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (2.2ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (1.9ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateEvents (20110606015027)
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.6ms)[0m  [1mDROP TABLE "events"[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAREL (0.6ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110606015027'[0m
+  [1m[35mSQL (1.6ms)[0m  COMMIT
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (1.1ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.9ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"comments"'::regclass
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW search_path[0m
+  [1m[35mSQL (1.4ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'comments'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mColumns for index index_comments_on_post_id on comments (0.2ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16620
+ AND a.attnum IN (4)
+[0m
+  [1m[35mColumns for index index_comments_on_user_id on comments (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16620
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (6.2ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"posts"'::regclass
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_microposts_on_user_id on posts (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16631
+ AND a.attnum IN (3)
+  [1m[36mSQL (3.4ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"relationships"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (3.2ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"relationships"'::regclass
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'relationships'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_relationships_on_followed_id on relationships (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (3)
+  [1m[36mColumns for index index_relationships_on_follower_id on relationships (0.1ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_relationships_on_follower_id_and_followed_id on relationships (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (2,3)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (1.9ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"users"'::regclass
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_email on users (0.3ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16608
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateUsers (20100821203213)
+Migrating to AddEmailUniquenessIndex (20100822012431)
+Migrating to AddPasswordToUsers (20100822204528)
+Migrating to AddSaltToUsers (20100822233125)
+Migrating to AddAdminToUsers (20100829021049)
+Migrating to CreateMicroposts (20100829210229)
+Migrating to CreateRelationships (20100831012055)
+Migrating to AddDescriptiontoUsers (20110529155541)
+Migrating to RenameMicropostsPost (20110529181641)
+Migrating to CreateComments (20110529183848)
+Migrating to AddTitletoPost (20110601022735)
+Migrating to RenameDescriptionAddCityStatetoUsers (20110606005922)
+Migrating to CreateEvents (20110606015027)
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (25.0ms)[0m  [1mCREATE TABLE "events" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "time" character varying(255), "location" character varying(255), "user_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (1.7ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+[0m
+  [1m[35mPK and custom sequence (1.1ms)[0m   SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110606015027')[0m
+  [1m[35mPK and serial sequence (7.4ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+  [1m[36mPK and custom sequence (0.9ms)[0m  [1m SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+[0m
+  [1m[35mSQL (3.7ms)[0m  COMMIT
+Migrating to AddMoreDateGranularitytoEvents (20110608011847)
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  ALTER TABLE "events" RENAME COLUMN "time" TO "start_date"
+  [1m[36mSQL (1.3ms)[0m  [1mALTER TABLE "events" ALTER COLUMN "start_date" TYPE timestamp[0m
+PGError: ERROR:  column "start_date" cannot be cast to type timestamp without time zone
+: ALTER TABLE "events" ALTER COLUMN "start_date" TYPE timestamp
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (0.4ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (76.3ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (7.7ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (13.1ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateEvents (20110606015027)
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.9ms)[0m  [1mDROP TABLE "events"[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAREL (0.6ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110606015027'[0m
+  [1m[35mSQL (2.4ms)[0m  COMMIT
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (1.5ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.9ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"comments"'::regclass
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW search_path[0m
+  [1m[35mSQL (1.6ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'comments'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mColumns for index index_comments_on_post_id on comments (0.3ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16620
+ AND a.attnum IN (4)
+[0m
+  [1m[35mColumns for index index_comments_on_user_id on comments (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16620
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.0ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"posts"'::regclass
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_microposts_on_user_id on posts (1.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16631
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"relationships"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (1.8ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"relationships"'::regclass
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'relationships'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_relationships_on_followed_id on relationships (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (3)
+  [1m[36mColumns for index index_relationships_on_follower_id on relationships (0.1ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_relationships_on_follower_id_and_followed_id on relationships (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (2,3)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.3ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"users"'::regclass
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_email on users (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16608
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateUsers (20100821203213)
+Migrating to AddEmailUniquenessIndex (20100822012431)
+Migrating to AddPasswordToUsers (20100822204528)
+Migrating to AddSaltToUsers (20100822233125)
+Migrating to AddAdminToUsers (20100829021049)
+Migrating to CreateMicroposts (20100829210229)
+Migrating to CreateRelationships (20100831012055)
+Migrating to AddDescriptiontoUsers (20110529155541)
+Migrating to RenameMicropostsPost (20110529181641)
+Migrating to CreateComments (20110529183848)
+Migrating to AddTitletoPost (20110601022735)
+Migrating to RenameDescriptionAddCityStatetoUsers (20110606005922)
+Migrating to CreateEvents (20110606015027)
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (10.9ms)[0m  [1mCREATE TABLE "events" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "time" character varying(255), "location" character varying(255), "user_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (1.7ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+[0m
+  [1m[35mPK and custom sequence (1.2ms)[0m   SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110606015027')[0m
+  [1m[35mPK and serial sequence (1.6ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+  [1m[36mPK and custom sequence (1.0ms)[0m  [1m SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+[0m
+  [1m[35mSQL (2.2ms)[0m  COMMIT
+Migrating to AddMoreDateGranularitytoEvents (20110608011847)
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  ALTER TABLE "events" DROP "time"
+  [1m[36mSQL (0.2ms)[0m  [1mALTER TABLE "events" ADD COLUMN "start_date" timestamp[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (6.2ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+[0m
+  [1m[35mPK and custom sequence (1.0ms)[0m   SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110608011847')[0m
+  [1m[35mPK and serial sequence (1.5ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+  [1m[36mPK and custom sequence (0.7ms)[0m  [1m SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+[0m
+  [1m[35mSQL (2.1ms)[0m  COMMIT
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (1.8ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"comments"'::regclass
+  [1m[36mSQL (3.1ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'comments'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_comments_on_post_id on comments (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16620
+ AND a.attnum IN (4)
+  [1m[36mColumns for index index_comments_on_user_id on comments (0.3ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16620
+ AND a.attnum IN (3)
+[0m
+  [1m[35mSQL (1.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"events"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (1.9ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"events"'::regclass
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'events'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (1.8ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"posts"'::regclass
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_microposts_on_user_id on posts (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16631
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"relationships"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.5ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"relationships"'::regclass
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'relationships'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_relationships_on_followed_id on relationships (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (3)
+  [1m[36mColumns for index index_relationships_on_follower_id on relationships (0.1ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_relationships_on_follower_id_and_followed_id on relationships (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16600
+ AND a.attnum IN (2,3)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (1.9ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"users"'::regclass
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_email on users (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16608
+ AND a.attnum IN (3)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (0.5ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (15.8ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (1.1ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (16.2ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateUsers (20100821203213)
+Migrating to AddEmailUniquenessIndex (20100822012431)
+Migrating to AddPasswordToUsers (20100822204528)
+Migrating to AddSaltToUsers (20100822233125)
+Migrating to AddAdminToUsers (20100829021049)
+Migrating to CreateMicroposts (20100829210229)
+Migrating to CreateRelationships (20100831012055)
+Migrating to AddDescriptiontoUsers (20110529155541)
+Migrating to RenameMicropostsPost (20110529181641)
+Migrating to CreateComments (20110529183848)
+Migrating to AddTitletoPost (20110601022735)
+Migrating to RenameDescriptionAddCityStatetoUsers (20110606005922)
+Migrating to CreateEvents (20110606015027)
+Migrating to AddMoreDateGranularitytoEvents (20110608011847)
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  ALTER TABLE "events" DROP "time"
+  [1m[36mSQL (0.3ms)[0m  [1mALTER TABLE "events" ADD COLUMN "start_date" timestamp[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (19.7ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+[0m
+  [1m[35mPK and custom sequence (1.9ms)[0m   SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110608011847')[0m
+  [1m[35mPK and serial sequence (2.6ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"schema_migrations"'::regclass
+  [1m[36mPK and custom sequence (0.9ms)[0m  [1m SELECT attr.attname,
+ CASE
+ WHEN split_part(def.adsrc, '''', 2) ~ '.' THEN
+ substr(split_part(def.adsrc, '''', 2),
+ strpos(split_part(def.adsrc, '''', 2), '.')+1)
+ ELSE split_part(def.adsrc, '''', 2)
+ END
+ FROM pg_class t
+ JOIN pg_attribute attr ON (t.oid = attrelid)
+ JOIN pg_attrdef def ON (adrelid = attrelid AND adnum = attnum)
+ JOIN pg_constraint cons ON (conrelid = adrelid AND adnum = conkey[1])
+ WHERE t.oid = '"schema_migrations"'::regclass
+ AND cons.contype = 'p'
+ AND def.adsrc ~* 'nextval'
+[0m
+  [1m[35mSQL (0.9ms)[0m  COMMIT
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'schema_migrations'
+ 
+[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"schema_migrations"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (1.4ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (4.3ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"comments"'::regclass
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW search_path[0m
+  [1m[35mSQL (2.0ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'comments'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mColumns for index index_comments_on_post_id on comments (0.3ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16759
+ AND a.attnum IN (4)
+[0m
+  [1m[35mColumns for index index_comments_on_user_id on comments (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16759
+ AND a.attnum IN (3)
+  [1m[36mSQL (1.9ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"events"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (1.8ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"events"'::regclass
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'events'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (1.8ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"posts"'::regclass
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mColumns for index index_microposts_on_user_id on posts (0.2ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16770
+ AND a.attnum IN (3)
+[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"relationships"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (1.7ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"relationships"'::regclass
+[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'relationships'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mColumns for index index_relationships_on_followed_id on relationships (0.2ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16751
+ AND a.attnum IN (3)
+[0m
+  [1m[35mColumns for index index_relationships_on_follower_id on relationships (0.1ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16751
+ AND a.attnum IN (2)
+  [1m[36mColumns for index index_relationships_on_follower_id_and_followed_id on relationships (0.2ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16751
+ AND a.attnum IN (2,3)
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (2.0ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"users"'::regclass
+[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t, pg_class i, pg_index d
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
+ ORDER BY i.relname
+  [1m[36mColumns for index index_users_on_email on users (0.2ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16736
+ AND a.attnum IN (3)
+[0m
