@@ -3,8 +3,8 @@
 		<strong>Title: </strong> <%= event_item.title %>
 	</td>
 	<td>
-	 <strong>Description: </strong>
-	 <%= event_item.description %>
+		<strong>Description: </strong>
+		<%= event_item.description %>
 	</td>
 	<td>
 		<strong>Location: </strong>
@@ -14,4 +14,11 @@
 		<strong>Time: </strong>
 		<%= event_item.start_date %>
 	</td>
+	<% if current_user?(event_item.user) %>
+	<td>
+		<%= link_to "delete", event_item, :method => :delete,
+		:confirm => "You sure?",
+		:content => event_item.title %>
+	</td>
+	<% end %>
 </tr>
