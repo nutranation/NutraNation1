@@ -17,4 +17,11 @@ class EventsController < ApplicationController
       render 'pages/home'
     end
   end
+  
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to events_path, :flash => { :success => "Event deleted!" }
+  end
+  
 end
