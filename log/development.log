@@ -24077,3 +24077,735 @@ Rendered layouts/_header.html.erb (2.3ms)
 Rendered layouts/_footer.html.erb (0.7ms)
 Rendered users/edit.html.erb within layouts/application (18.9ms)
 Completed 200 OK in 157ms (Views: 23.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/4/edit" for 127.0.0.1 at 2011-06-09 20:41:07 -0400
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+ERROR: compiling _app_views_users_edit_html_erb___781606678658607434_2163419660__1873236590074152194 RAISED /Users/skline/NutraNation1/app/views/users/edit.html.erb:3: syntax error, unexpected tASSOC, expecting '}'
+...orm_for(@user)  { :multipart => true } do |f| @output_buffer...
+...                               ^
+/Users/skline/NutraNation1/app/views/users/edit.html.erb:16: syntax error, unexpected keyword_ensure, expecting $end
+Function body:           def _app_views_users_edit_html_erb___781606678658607434_2163419660__1873236590074152194(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "users/edit";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h1>Edit user</h1>
+
+');@output_buffer.append=  form_for(@user)  { :multipart => true } do |f| @output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( render 'shared/error_messages', :object => f.object );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( render 'fields', :f => f );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  <div class="actions">
+    ');@output_buffer.append= ( f.submit "Update" );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+'); end 
+@output_buffer.safe_concat('
+<div>
+  ');@output_buffer.append= ( gravatar_for @user );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  <a href="http://gravatar.com/emails">change</a>
+</div>
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_view/template.rb:255:in `module_eval'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_view/template.rb:255:in `compile'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_view/template.rb:134:in `block in render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/notifications.rb:54:in `instrument'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_view/template.rb:127:in `render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:59:in `block in _render_template'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `block in instrument'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:56:in `_render_template'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:26:in `render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:115:in `_render_template'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:93:in `render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/rendering.rb:17:in `render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/benchmark.rb:309:in `realtime'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activerecord-3.0.7/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:14:in `default_render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:6:in `send_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/base.rb:150:in `process_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/rendering.rb:11:in `process_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:446:in `_run__2196760478368602703__process_action__3234322500455024533__callbacks'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:94:in `run_callbacks'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `block in instrument'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/base.rb:119:in `process'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:41:in `process'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal.rb:138:in `dispatch'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal.rb:178:in `block in action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:62:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:27:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `block in call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `block in recognize'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:96:in `optimized_each'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:493:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/methodoverride.rb:24:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:32:in `block in call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activerecord-3.0.7/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:12:in `cache'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:31:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activerecord-3.0.7/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/sendfile.rb:107:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/rack/logger.rb:13:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/runtime.rb:17:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/lock.rb:11:in `block in call'
+<internal:prelude>:10:in `synchronize'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/lock.rb:11:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/static.rb:30:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/application.rb:168:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/application.rb:77:in `method_missing'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/content_length.rb:13:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/handler/webrick.rb:52:in `service'
+/Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+Rendered users/edit.html.erb within layouts/application (56.8ms)
+Completed   in 192ms
+
+ActionView::Template::Error (/Users/skline/NutraNation1/app/views/users/edit.html.erb:3: syntax error, unexpected tASSOC, expecting '}'
+...orm_for(@user)  { :multipart => true } do |f| @output_buffer...
+...                               ^
+/Users/skline/NutraNation1/app/views/users/edit.html.erb:16: syntax error, unexpected keyword_ensure, expecting $end):
+    1: <h1>Edit user</h1>
+    2: 
+    3: <%= form_for(@user)  { :multipart => true } do |f| %>
+    4:   <%= render 'shared/error_messages', :object => f.object %>
+    5:   <%= render 'fields', :f => f %>
+    6:   <div class="actions">
+  
+
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.6ms)
+
+
+Started GET "/users/4/edit" for 127.0.0.1 at 2011-06-09 20:41:53 -0400
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_error_messages.html.erb (0.7ms)
+Rendered users/_fields.html.erb (5.7ms)
+Rendered layouts/_stylesheets.html.erb (1.3ms)
+Rendered layouts/_header.html.erb (2.2ms)
+Rendered layouts/_footer.html.erb (0.8ms)
+Rendered users/edit.html.erb within layouts/application (19.8ms)
+Completed 200 OK in 153ms (Views: 23.7ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/users/4" for 127.0.0.1 at 2011-06-09 20:42:00 -0400
+  Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J2AhRxhVsxwRnFe2dc+Z1ro/13z9l7EbxRcwb9xyhF8=", "user"=>{"name"=>"Spencer Kline", "email"=>"spencerkline@gmail.com", "expertise"=>"fdas", "occupation"=>"", "city"=>"", "state"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Update", "id"=>"4"}
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('spencerkline@gmail.com')) AND ("users".id <> 4) LIMIT 1[0m
+[paperclip] Saving attachments.
+  [1m[35mSQL (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 140ms
+
+
+Started GET "/users/4" for 127.0.0.1 at 2011-06-09 20:42:00 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".user_id = 4) ORDER BY posts.created_at DESC LIMIT 30 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered users/_follow_form.html.erb (0.6ms)
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE ("posts".user_id = 4)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered posts/_post.html.erb (18.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".user_id = 4)
+Rendered shared/_sidebar_info.html.erb (1.6ms)
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".followed_id WHERE (("relationships".follower_id = 4))[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".follower_id WHERE (("relationships".followed_id = 4))
+Rendered shared/_stats.html.erb (23.7ms)
+Rendered layouts/_stylesheets.html.erb (1.1ms)
+Rendered layouts/_header.html.erb (2.6ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+Rendered users/show.html.erb within layouts/application (98.7ms)
+Completed 200 OK in 249ms (Views: 100.2ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/users/4/edit" for 127.0.0.1 at 2011-06-09 20:42:02 -0400
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered shared/_error_messages.html.erb (0.6ms)
+Rendered users/_fields.html.erb (5.4ms)
+Rendered layouts/_stylesheets.html.erb (2.7ms)
+Rendered layouts/_header.html.erb (2.2ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+Rendered users/edit.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 152ms (Views: 24.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/4/edit" for 127.0.0.1 at 2011-06-09 20:42:46 -0400
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+ERROR: compiling _app_views_users_edit_html_erb___781606678658607434_2181043460__1873236590074152194 RAISED /Users/skline/NutraNation1/app/views/users/edit.html.erb:3: syntax error, unexpected tASSOC, expecting keyword_end
+...end=  form_for(@user), :html => { :multipart => true } do |f...
+...                               ^
+/Users/skline/NutraNation1/app/views/users/edit.html.erb:3: syntax error, unexpected keyword_do_block, expecting keyword_end
+...ml => { :multipart => true } do |f| @output_buffer.safe_conc...
+...                               ^
+/Users/skline/NutraNation1/app/views/users/edit.html.erb:16: syntax error, unexpected keyword_ensure, expecting $end
+Function body:           def _app_views_users_edit_html_erb___781606678658607434_2181043460__1873236590074152194(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "users/edit";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h1>Edit user</h1>
+
+');@output_buffer.append=  form_for(@user), :html => { :multipart => true } do |f| @output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( render 'shared/error_messages', :object => f.object );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( render 'fields', :f => f );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  <div class="actions">
+    ');@output_buffer.append= ( f.submit "Update" );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+'); end 
+@output_buffer.safe_concat('
+<div>
+  ');@output_buffer.append= ( gravatar_for @user );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  <a href="http://gravatar.com/emails">change</a>
+</div>
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_view/template.rb:255:in `module_eval'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_view/template.rb:255:in `compile'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_view/template.rb:134:in `block in render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/notifications.rb:54:in `instrument'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_view/template.rb:127:in `render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:59:in `block in _render_template'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `block in instrument'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:56:in `_render_template'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:26:in `render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:115:in `_render_template'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:93:in `render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/rendering.rb:17:in `render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/benchmark.rb:309:in `realtime'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activerecord-3.0.7/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:14:in `default_render'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:6:in `send_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/base.rb:150:in `process_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/rendering.rb:11:in `process_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:446:in `_run__2196760478368602703__process_action__3234322500455024533__callbacks'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:94:in `run_callbacks'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `block in instrument'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/base.rb:119:in `process'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:41:in `process'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal.rb:138:in `dispatch'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_controller/metal.rb:178:in `block in action'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:62:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:27:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `block in call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `block in recognize'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:96:in `optimized_each'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:493:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/methodoverride.rb:24:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:32:in `block in call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activerecord-3.0.7/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:12:in `cache'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:31:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activerecord-3.0.7/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/sendfile.rb:107:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/rack/logger.rb:13:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/runtime.rb:17:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/activesupport-3.0.7/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/lock.rb:11:in `block in call'
+<internal:prelude>:10:in `synchronize'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/lock.rb:11:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/static.rb:30:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/application.rb:168:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/application.rb:77:in `method_missing'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/railties-3.0.7/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/content_length.rb:13:in `call'
+/Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/rack-1.2.2/lib/rack/handler/webrick.rb:52:in `service'
+/Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/Users/skline/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+Rendered users/edit.html.erb within layouts/application (0.9ms)
+Completed   in 161ms
+
+ActionView::Template::Error (/Users/skline/NutraNation1/app/views/users/edit.html.erb:3: syntax error, unexpected tASSOC, expecting keyword_end
+...end=  form_for(@user), :html => { :multipart => true } do |f...
+...                               ^
+/Users/skline/NutraNation1/app/views/users/edit.html.erb:3: syntax error, unexpected keyword_do_block, expecting keyword_end
+...ml => { :multipart => true } do |f| @output_buffer.safe_conc...
+...                               ^
+/Users/skline/NutraNation1/app/views/users/edit.html.erb:16: syntax error, unexpected keyword_ensure, expecting $end):
+    1: <h1>Edit user</h1>
+    2: 
+    3: <%= form_for(@user), :html => { :multipart => true } do |f| %>
+    4:   <%= render 'shared/error_messages', :object => f.object %>
+    5:   <%= render 'fields', :f => f %>
+    6:   <div class="actions">
+  
+
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.6ms)
+
+
+Started GET "/users/4/edit" for 127.0.0.1 at 2011-06-09 20:43:03 -0400
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered shared/_error_messages.html.erb (0.7ms)
+Rendered users/_fields.html.erb (13.2ms)
+Rendered layouts/_stylesheets.html.erb (1.1ms)
+Rendered layouts/_header.html.erb (2.6ms)
+Rendered layouts/_footer.html.erb (0.8ms)
+Rendered users/edit.html.erb within layouts/application (29.2ms)
+Completed 200 OK in 215ms (Views: 42.3ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/users/4" for 127.0.0.1 at 2011-06-09 20:43:10 -0400
+  Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J2AhRxhVsxwRnFe2dc+Z1ro/13z9l7EbxRcwb9xyhF8=", "user"=>{"name"=>"Spencer Kline", "email"=>"spencerkline@gmail.com", "expertise"=>"fdas", "occupation"=>"", "city"=>"", "state"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Update", "id"=>"4"}
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('spencerkline@gmail.com')) AND ("users".id <> 4) LIMIT 1
+[paperclip] Saving attachments.
+  [1m[36mSQL (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 138ms
+
+
+Started GET "/users/4" for 127.0.0.1 at 2011-06-09 20:43:10 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".user_id = 4) ORDER BY posts.created_at DESC LIMIT 30 OFFSET 0[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered users/_follow_form.html.erb (0.6ms)
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".user_id = 4)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered posts/_post.html.erb (17.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE ("posts".user_id = 4)[0m
+Rendered shared/_sidebar_info.html.erb (1.6ms)
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".followed_id WHERE (("relationships".follower_id = 4))
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".follower_id WHERE (("relationships".followed_id = 4))[0m
+Rendered shared/_stats.html.erb (28.1ms)
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+Rendered layouts/_header.html.erb (2.1ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+Rendered users/show.html.erb within layouts/application (100.1ms)
+Completed 200 OK in 249ms (Views: 101.8ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-06-09 20:43:14 -0400
+  Processing by UsersController#index as HTML
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 30 OFFSET 0[0m
+Rendered users/_user.html.erb (7.1ms)
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+Rendered layouts/_header.html.erb (2.1ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+Rendered users/index.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 159ms (Views: 20.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users/4/edit" for 127.0.0.1 at 2011-06-09 20:43:16 -0400
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_error_messages.html.erb (0.6ms)
+Rendered users/_fields.html.erb (6.1ms)
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+Rendered layouts/_header.html.erb (2.4ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+Rendered users/edit.html.erb within layouts/application (19.6ms)
+Completed 200 OK in 156ms (Views: 23.4ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/users/4" for 127.0.0.1 at 2011-06-09 20:43:37 -0400
+  Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J2AhRxhVsxwRnFe2dc+Z1ro/13z9l7EbxRcwb9xyhF8=", "user"=>{"name"=>"Spencer Kline", "email"=>"spencerkline@gmail.com", "expertise"=>"fdas", "occupation"=>"", "city"=>"", "state"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x0000010404e250 @original_filename="nutra.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"nutra.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/RackMultipart20110609-98946-y7zxr1>>}, "commit"=>"Update", "id"=>"4"}
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+WARNING: Can't mass-assign protected attributes: avatar
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('spencerkline@gmail.com')) AND ("users".id <> 4) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+Rendered shared/_error_messages.html.erb (3.7ms)
+Rendered users/_fields.html.erb (5.7ms)
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+Rendered layouts/_header.html.erb (2.1ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+Rendered users/edit.html.erb within layouts/application (21.8ms)
+Completed 200 OK in 162ms (Views: 25.5ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/users/4" for 127.0.0.1 at 2011-06-09 20:43:52 -0400
+  Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J2AhRxhVsxwRnFe2dc+Z1ro/13z9l7EbxRcwb9xyhF8=", "user"=>{"name"=>"Spencer Kline", "email"=>"spencerkline@gmail.com", "expertise"=>"fdas", "occupation"=>"", "city"=>"", "state"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00000100f987f0 @original_filename="nutra.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"nutra.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/RackMultipart20110609-98946-gk3bge>>}, "commit"=>"Update", "id"=>"4"}
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+WARNING: Can't mass-assign protected attributes: avatar
+  [1m[35mSQL (0.3ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('spencerkline@gmail.com')) AND ("users".id <> 4) LIMIT 1
+[paperclip] Saving attachments.
+  [1m[36mSQL (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 137ms
+
+
+Started GET "/users/4" for 127.0.0.1 at 2011-06-09 20:43:53 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPost Load (3.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".user_id = 4) ORDER BY posts.created_at DESC LIMIT 30 OFFSET 0[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered users/_follow_form.html.erb (0.7ms)
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".user_id = 4)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered posts/_post.html.erb (18.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE ("posts".user_id = 4)[0m
+Rendered shared/_sidebar_info.html.erb (1.6ms)
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".followed_id WHERE (("relationships".follower_id = 4))
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".follower_id WHERE (("relationships".followed_id = 4))[0m
+Rendered shared/_stats.html.erb (53.5ms)
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+Rendered layouts/_header.html.erb (2.2ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+Rendered users/show.html.erb within layouts/application (99.9ms)
+Completed 200 OK in 267ms (Views: 105.2ms | ActiveRecord: 9.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-06-09 20:43:55 -0400
+  Processing by UsersController#index as HTML
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 30 OFFSET 0[0m
+Rendered users/_user.html.erb (7.1ms)
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+Rendered layouts/_header.html.erb (2.0ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+Rendered users/index.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 164ms (Views: 20.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users/4/edit" for 127.0.0.1 at 2011-06-09 20:43:56 -0400
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_error_messages.html.erb (0.6ms)
+Rendered users/_fields.html.erb (5.5ms)
+Rendered layouts/_stylesheets.html.erb (0.9ms)
+Rendered layouts/_header.html.erb (2.2ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+Rendered users/edit.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 155ms (Views: 22.2ms | ActiveRecord: 1.9ms)
