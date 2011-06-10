@@ -2,7 +2,7 @@
   <tr>
     <td class="main">
       <h1>
-        <%= gravatar_for @user %>
+        <%= image_tag(@user.display_image, :alt => "profile",  :width => "75px", :height => "75px") %>
         <%= @user.name %>
       </h1>
       <%= render 'follow_form' if signed_in? %>

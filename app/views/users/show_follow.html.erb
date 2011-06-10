@@ -16,7 +16,7 @@
       <%= render 'shared/stats' %>
       <% if @users.any? %>
         <% @users.each do |user| %>
-          <%= link_to gravatar_for(user, :size => 30), user %>
+          <%= image_tag(user.display_image, :alt => "profile",  :width => "30px", :height => "30px") %> 
         <% end %>
       <% end %>
     </td>
