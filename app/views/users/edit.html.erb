@@ -1,4 +1,4 @@
-<h1>Edit Profile</h1>
+<h1>Edit user</h1>
 
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
@@ -8,3 +8,7 @@
   </div>
 <% end %>
 
+<div>
+  <%= gravatar_for @user %>
+  <a href="http://gravatar.com/emails">change</a>
+</div>
