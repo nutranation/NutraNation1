@@ -28355,3 +28355,903 @@ Rendered layouts/_header.html.erb (2.4ms)
 Rendered layouts/_footer.html.erb (0.8ms)
 Rendered pages/home.html.erb within layouts/application (347.6ms)
 Completed 200 OK in 667ms (Views: 334.4ms | ActiveRecord: 21.6ms)
+
+
+Started GET "/users/4" for 127.0.0.1 at 2011-06-10 19:07:41 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSQL (1.4ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".user_id = 4) ORDER BY posts.created_at DESC LIMIT 30 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered users/_follow_form.html.erb (0.8ms)
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE ("posts".user_id = 4)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered posts/_post.html.erb (62.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".user_id = 4)
+Rendered shared/_sidebar_info.html.erb (1.8ms)
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".followed_id WHERE (("relationships".follower_id = 4))[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".follower_id WHERE (("relationships".followed_id = 4))
+Rendered shared/_stats.html.erb (26.2ms)
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+Rendered layouts/_header.html.erb (2.5ms)
+Rendered layouts/_footer.html.erb (0.8ms)
+Rendered users/show.html.erb within layouts/application (119.3ms)
+Completed 200 OK in 320ms (Views: 121.2ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-06-11 15:43:47 -0400
+  Processing by PagesController#home as HTML
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered shared/_splash.html.erb (0.8ms)
+Rendered layouts/_stylesheets.html.erb (1.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered layouts/_header.html.erb (2.4ms)
+Rendered layouts/_footer.html.erb (0.9ms)
+Rendered pages/home.html.erb within layouts/application (39.8ms)
+Completed 200 OK in 201ms (Views: 53.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2011-06-11 15:43:49 -0400
+  Processing by SessionsController#new as HTML
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (186.8ms)
+Rendered layouts/_footer.html.erb (0.8ms)
+Rendered sessions/new.html.erb within layouts/application (195.7ms)
+Completed 200 OK in 201ms (Views: 198.5ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-06-11 15:43:58 -0400
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WaQG+Xc0EL63kmhUJR5tV1sILpJvD/3VCJiS/rdtI+Y=", "session"=>{"email"=>"spencerkline@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'spencerkline@gmail.com' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 148ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-06-11 15:43:58 -0400
+  Processing by PagesController#home as HTML
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (3.2ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC
+Rendered shared/_error_messages.html.erb (0.7ms)
+Rendered shared/_post_form.html.erb (7.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 11) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 10) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 9) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_feed_item.html.erb (401.3ms)
+Rendered shared/_feed.html.erb (402.8ms)
+Rendered shared/_feed_home.html.erb (414.8ms)
+Rendered pages/home.html.erb within layouts/application (443.1ms)
+Completed   in 692ms
+
+ActionView::Template::Error (no such file to load -- aws/s3 (You may need to install the aws-s3 gem)):
+    1: <tr>
+    2: 	<td class="gravatar">
+    3: 		<%= image_tag(feed_item.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
+    4: 	</td>
+    5: 	<td class="post">
+    6: 		<% if @unique %>
+  app/models/user.rb:86:in `display_image'
+  app/views/shared/_feed_item.html.erb:3:in `_app_views_shared__feed_item_html_erb___72724285970080357_2177216740_1085740904654954819'
+  app/views/shared/_feed.html.erb:3:in `_app_views_shared__feed_html_erb___3581427202011840100_2177260660_1919218616085056935'
+  app/views/shared/_feed_home.html.erb:10:in `_app_views_shared__feed_home_html_erb__3546708748931077797_2178001240__3345972285693660309'
+  app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___4022107907528554404_2178029120__1873236590074152194'
+
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.3ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-06-11 15:46:43 -0400
+  Processing by PagesController#home as HTML
+  [1m[35mSQL (2.2ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC
+Rendered shared/_error_messages.html.erb (1.9ms)
+Rendered shared/_post_form.html.erb (62.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  [1m[35mComment Load (2.2ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 11) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 10) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 9) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_feed_item.html.erb (49.8ms)
+Rendered shared/_feed.html.erb (51.6ms)
+Rendered shared/_feed_home.html.erb (118.2ms)
+Rendered pages/home.html.erb within layouts/application (119.8ms)
+Completed   in 333ms
+
+ActionView::Template::Error (no such file to load -- aws/s3 (You may need to install the aws-s3 gem)):
+    1: <tr>
+    2: 	<td class="gravatar">
+    3: 		<%= image_tag(feed_item.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
+    4: 	</td>
+    5: 	<td class="post">
+    6: 		<% if @unique %>
+  app/models/user.rb:86:in `display_image'
+  app/views/shared/_feed_item.html.erb:3:in `_app_views_shared__feed_item_html_erb___72724285970080357_2181837060_1085740904654954819'
+  app/views/shared/_feed.html.erb:3:in `_app_views_shared__feed_html_erb___3581427202011840100_2181846760_1919218616085056935'
+  app/views/shared/_feed_home.html.erb:10:in `_app_views_shared__feed_home_html_erb__3546708748931077797_2177217740__3345972285693660309'
+  app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___4022107907528554404_2177325080__1873236590074152194'
+
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.5ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (10.3ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (29.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-06-11 15:46:46 -0400
+  Processing by PagesController#home as HTML
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC
+Rendered shared/_error_messages.html.erb (0.7ms)
+Rendered shared/_post_form.html.erb (8.1ms)
+  [1m[36mUser Load (2.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 11) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 10) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 9) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_feed_item.html.erb (45.8ms)
+Rendered shared/_feed.html.erb (47.5ms)
+Rendered shared/_feed_home.html.erb (58.7ms)
+Rendered pages/home.html.erb within layouts/application (60.3ms)
+Completed   in 319ms
+
+ActionView::Template::Error (no such file to load -- aws/s3 (You may need to install the aws-s3 gem)):
+    1: <tr>
+    2: 	<td class="gravatar">
+    3: 		<%= image_tag(feed_item.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
+    4: 	</td>
+    5: 	<td class="post">
+    6: 		<% if @unique %>
+  app/models/user.rb:86:in `display_image'
+  app/views/shared/_feed_item.html.erb:3:in `_app_views_shared__feed_item_html_erb___72724285970080357_2181248380_1085740904654954819'
+  app/views/shared/_feed.html.erb:3:in `_app_views_shared__feed_html_erb___3581427202011840100_2181358580_1919218616085056935'
+  app/views/shared/_feed_home.html.erb:10:in `_app_views_shared__feed_home_html_erb__3546708748931077797_2181631580__3345972285693660309'
+  app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___4022107907528554404_2181645380__1873236590074152194'
+
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.4ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-06-11 15:47:57 -0400
+  Processing by PagesController#home as HTML
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC
+Rendered shared/_error_messages.html.erb (0.6ms)
+Rendered shared/_post_form.html.erb (7.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 11) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 10) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 9) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_feed_item.html.erb (82.1ms)
+Rendered shared/_feed.html.erb (83.6ms)
+Rendered shared/_feed_home.html.erb (93.8ms)
+Rendered pages/home.html.erb within layouts/application (95.3ms)
+Completed   in 269ms
+
+ActionView::Template::Error (no such file to load -- aws/s3 (You may need to install the aws-s3 gem)):
+    1: <tr>
+    2: 	<td class="gravatar">
+    3: 		<%= image_tag(feed_item.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
+    4: 	</td>
+    5: 	<td class="post">
+    6: 		<% if @unique %>
+  app/models/user.rb:86:in `display_image'
+  app/views/shared/_feed_item.html.erb:3:in `_app_views_shared__feed_item_html_erb___72724285970080357_2177183200_1085740904654954819'
+  app/views/shared/_feed.html.erb:3:in `_app_views_shared__feed_html_erb___3581427202011840100_2177197280_1919218616085056935'
+  app/views/shared/_feed_home.html.erb:10:in `_app_views_shared__feed_home_html_erb__3546708748931077797_2177940780__3345972285693660309'
+  app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___4022107907528554404_2177962220__1873236590074152194'
+
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-06-11 15:53:13 -0400
+  Processing by PagesController#home as HTML
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from <class:User> at /Users/skline/NutraNation1/app/models/user.rb:32)
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC
+Rendered shared/_error_messages.html.erb (0.7ms)
+Rendered shared/_post_form.html.erb (47.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 11) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 10) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 9) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_feed_item.html.erb (46.7ms)
+Rendered shared/_feed.html.erb (48.3ms)
+Rendered shared/_feed_home.html.erb (98.7ms)
+Rendered pages/home.html.erb within layouts/application (100.4ms)
+Completed   in 282ms
+
+ActionView::Template::Error (no such file to load -- aws/s3 (You may need to install the aws-s3 gem)):
+    1: <tr>
+    2: 	<td class="gravatar">
+    3: 		<%= image_tag(feed_item.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
+    4: 	</td>
+    5: 	<td class="post">
+    6: 		<% if @unique %>
+  app/models/user.rb:83:in `display_image'
+  app/views/shared/_feed_item.html.erb:3:in `_app_views_shared__feed_item_html_erb___72724285970080357_2181830080_1085740904654954819'
+  app/views/shared/_feed.html.erb:3:in `_app_views_shared__feed_html_erb___3581427202011840100_2181839880_1919218616085056935'
+  app/views/shared/_feed_home.html.erb:10:in `_app_views_shared__feed_home_html_erb__3546708748931077797_2177208020__3345972285693660309'
+  app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___4022107907528554404_2177219420__1873236590074152194'
+
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.9ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-06-11 15:53:16 -0400
+  Processing by PagesController#home as HTML
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC
+Rendered shared/_error_messages.html.erb (0.7ms)
+Rendered shared/_post_form.html.erb (9.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 11) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 10) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 9) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_feed_item.html.erb (43.6ms)
+Rendered shared/_feed.html.erb (45.2ms)
+Rendered shared/_feed_home.html.erb (57.2ms)
+Rendered pages/home.html.erb within layouts/application (58.7ms)
+Completed   in 276ms
+
+ActionView::Template::Error (no such file to load -- aws/s3 (You may need to install the aws-s3 gem)):
+    1: <tr>
+    2: 	<td class="gravatar">
+    3: 		<%= image_tag(feed_item.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
+    4: 	</td>
+    5: 	<td class="post">
+    6: 		<% if @unique %>
+  app/models/user.rb:83:in `display_image'
+  app/views/shared/_feed_item.html.erb:3:in `_app_views_shared__feed_item_html_erb___72724285970080357_2181244700_1085740904654954819'
+  app/views/shared/_feed.html.erb:3:in `_app_views_shared__feed_html_erb___3581427202011840100_2181355300_1919218616085056935'
+  app/views/shared/_feed_home.html.erb:10:in `_app_views_shared__feed_home_html_erb__3546708748931077797_2181629080__3345972285693660309'
+  app/views/pages/home.html.erb:2:in `_app_views_pages_home_html_erb___4022107907528554404_2181643000__1873236590074152194'
+
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.9ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-06-11 15:53:52 -0400
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (16.8ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  Processing by PagesController#home as HTML
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from <class:User> at /Users/skline/NutraNation1/app/models/user.rb:32)
+  [1m[36mSQL (3.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (2.0ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (2.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC
+Rendered shared/_error_messages.html.erb (0.8ms)
+Rendered shared/_post_form.html.erb (8.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  [1m[35mComment Load (0.9ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 11) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 10) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 9) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 8) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 11 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 7) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered shared/_comment.html.erb (24.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 6) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+Rendered shared/_comment.html.erb (2.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 5) ORDER BY comments.id DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1
+Rendered shared/_comment.html.erb (3.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 4) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 3) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_comment.html.erb (4.7ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 2) ORDER BY comments.id DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered shared/_comment.html.erb (3.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 1) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_comment.html.erb (4.6ms)
+Rendered shared/_feed_item.html.erb (2187.1ms)
+Rendered shared/_feed.html.erb (2189.0ms)
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".user_id = 4)
+Rendered shared/_user_info.html.erb (11.7ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".followed_id WHERE (("relationships".follower_id = 4))[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".follower_id WHERE (("relationships".followed_id = 4))
+Rendered shared/_stats.html.erb (29.9ms)
+Rendered shared/_feed_home.html.erb (2267.7ms)
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+Rendered layouts/_header.html.erb (2.2ms)
+Rendered layouts/_footer.html.erb (0.8ms)
+Rendered pages/home.html.erb within layouts/application (2282.5ms)
+Completed 200 OK in 2555ms (Views: 2279.5ms | ActiveRecord: 37.9ms)
+
+
+Started GET "/users/4/edit" for 127.0.0.1 at 2011-06-11 15:54:11 -0400
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered shared/_error_messages.html.erb (0.6ms)
+Rendered users/_fields.html.erb (6.6ms)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_users_edit_html_erb__1880851964932463327_2190391360__3362466925485544667 at /Users/skline/NutraNation1/app/views/users/edit.html.erb:3)
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+Rendered layouts/_header.html.erb (2.3ms)
+Rendered layouts/_footer.html.erb (0.8ms)
+Rendered users/edit.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 176ms (Views: 25.4ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/users/4" for 127.0.0.1 at 2011-06-11 15:55:00 -0400
+  Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WaQG+Xc0EL63kmhUJR5tV1sILpJvD/3VCJiS/rdtI+Y=", "user"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x00000103261958 @original_filename="nutra.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"nutra.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/RackMultipart20110611-60460-6kicwx>>, "name"=>"Spencer Kline", "email"=>"spencerkline@gmail.com", "expertise"=>"", "occupation"=>"", "city"=>"", "state"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Update", "id"=>"4"}
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+[paperclip] /usr/local/bin//identify -format %wx%h '/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/stream20110611-60460-1ewlyg.jpg[0]' 2>/dev/null
+[paperclip] /usr/local/bin//convert '/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/stream20110611-60460-1ewlyg.jpg[0]' -resize "300x300>" '/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/stream20110611-60460-1ewlyg20110611-60460-164c1gw' 2>/dev/null
+[paperclip] /usr/local/bin//identify -format %wx%h '/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/stream20110611-60460-1ewlyg.jpg[0]' 2>/dev/null
+[paperclip] /usr/local/bin//convert '/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/stream20110611-60460-1ewlyg.jpg[0]' -resize "100x100>" '/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/stream20110611-60460-1ewlyg20110611-60460-16mb2d0' 2>/dev/null
+  [1m[35mSQL (7.5ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('spencerkline@gmail.com')) AND ("users".id <> 4) LIMIT 1
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "users" SET "avatar_updated_at" = '2011-06-11 19:55:00.961451', "updated_at" = '2011-06-11 19:55:01.449718' WHERE "users"."id" = 4[0m
+[paperclip] Saving attachments.
+[paperclip] deleting /original/4/nutra.jpg
+[paperclip] deleting /medium/4/nutra.jpg
+[paperclip] deleting /thumb/4/nutra.jpg
+[paperclip] saving /original/4/nutra.jpg
+  [1m[35mSQL (0.4ms)[0m  ROLLBACK
+Completed   in 2278ms
+
+AWS::S3::SignatureDoesNotMatch (The request signature we calculated does not match the signature you provided. Check your key and signing method.):
+  app/controllers/users_controller.rb:52:in `update'
+
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.6ms)
+Rendered /Users/skline/.rvm/gems/ruby-1.9.2-p180@nutra/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-06-11 15:57:55 -0400
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (0.5ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  Processing by PagesController#home as HTML
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from <class:User> at /Users/skline/NutraNation1/app/models/user.rb:32)
+  [1m[36mSQL (3.4ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (1.9ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC
+Rendered shared/_error_messages.html.erb (0.7ms)
+Rendered shared/_post_form.html.erb (8.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  [1m[35mComment Load (0.8ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 11) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 10) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 9) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 8) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 11 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 7) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered shared/_comment.html.erb (23.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 6) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+Rendered shared/_comment.html.erb (2.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 5) ORDER BY comments.id DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1
+Rendered shared/_comment.html.erb (2.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 4) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 3) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_comment.html.erb (2.9ms)
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 2) ORDER BY comments.id DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered shared/_comment.html.erb (3.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 1) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_comment.html.erb (3.2ms)
+Rendered shared/_feed_item.html.erb (2023.4ms)
+Rendered shared/_feed.html.erb (2025.0ms)
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".user_id = 4)
+Rendered shared/_user_info.html.erb (11.4ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".followed_id WHERE (("relationships".follower_id = 4))[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".follower_id WHERE (("relationships".followed_id = 4))
+Rendered shared/_stats.html.erb (28.1ms)
+Rendered shared/_feed_home.html.erb (2079.3ms)
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+Rendered layouts/_header.html.erb (2.3ms)
+Rendered layouts/_footer.html.erb (2.8ms)
+Rendered pages/home.html.erb within layouts/application (2095.8ms)
+Completed 200 OK in 2326ms (Views: 2089.8ms | ActiveRecord: 20.2ms)
+
+
+Started GET "/users/4/edit" for 127.0.0.1 at 2011-06-11 15:58:02 -0400
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSQL (1.4ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered shared/_error_messages.html.erb (0.6ms)
+Rendered users/_fields.html.erb (8.1ms)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_users_edit_html_erb__1796318563118630670_2175265860__1523981129222419012 at /Users/skline/NutraNation1/app/views/users/edit.html.erb:3)
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+Rendered layouts/_header.html.erb (2.2ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+Rendered users/edit.html.erb within layouts/application (22.5ms)
+Completed 200 OK in 174ms (Views: 30.3ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/users/4" for 127.0.0.1 at 2011-06-11 15:58:19 -0400
+  Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WaQG+Xc0EL63kmhUJR5tV1sILpJvD/3VCJiS/rdtI+Y=", "user"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x00000101fec638 @original_filename="nutra.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"nutra.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/RackMultipart20110611-60502-1eipd9e>>, "name"=>"Spencer Kline", "email"=>"spencerkline@gmail.com", "expertise"=>"", "occupation"=>"", "city"=>"", "state"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Update", "id"=>"4"}
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+[paperclip] /usr/local/bin//identify -format %wx%h '/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/stream20110611-60502-1tmhifw.jpg[0]' 2>/dev/null
+[paperclip] /usr/local/bin//convert '/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/stream20110611-60502-1tmhifw.jpg[0]' -resize "300x300>" '/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/stream20110611-60502-1tmhifw20110611-60502-9fy43m' 2>/dev/null
+[paperclip] /usr/local/bin//identify -format %wx%h '/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/stream20110611-60502-1tmhifw.jpg[0]' 2>/dev/null
+[paperclip] /usr/local/bin//convert '/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/stream20110611-60502-1tmhifw.jpg[0]' -resize "100x100>" '/var/folders/zL/zLzUjn0OH1e4x5bGF9bbRU+++TI/-Tmp-/stream20110611-60502-1tmhifw20110611-60502-1nlm12r' 2>/dev/null
+  [1m[35mSQL (0.6ms)[0m  SELECT 1 FROM "users" WHERE (LOWER("users"."email") = LOWER('spencerkline@gmail.com')) AND ("users".id <> 4) LIMIT 1
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "users" SET "avatar_updated_at" = '2011-06-11 19:58:20.545234', "updated_at" = '2011-06-11 19:58:20.773652' WHERE "users"."id" = 4[0m
+[paperclip] Saving attachments.
+[paperclip] saving /original/4/nutra.jpg
+[paperclip] saving /medium/4/nutra.jpg
+[paperclip] saving /thumb/4/nutra.jpg
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 4003ms
+
+
+Started GET "/users/4" for 127.0.0.1 at 2011-06-11 15:58:23 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".user_id = 4) ORDER BY posts.created_at DESC LIMIT 30 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered users/_follow_form.html.erb (0.7ms)
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE ("posts".user_id = 4)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered posts/_post.html.erb (77.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".user_id = 4)
+Rendered shared/_sidebar_info.html.erb (1.8ms)
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".followed_id WHERE (("relationships".follower_id = 4))[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".follower_id WHERE (("relationships".followed_id = 4))
+Rendered shared/_stats.html.erb (29.2ms)
+Rendered layouts/_stylesheets.html.erb (3.0ms)
+Rendered layouts/_header.html.erb (2.4ms)
+Rendered layouts/_footer.html.erb (0.8ms)
+Rendered users/show.html.erb within layouts/application (152.4ms)
+Completed 200 OK in 388ms (Views: 166.2ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-06-11 15:58:30 -0400
+  Processing by PagesController#home as HTML
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"users"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC[0m
+Rendered shared/_error_messages.html.erb (0.7ms)
+Rendered shared/_post_form.html.erb (7.9ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 11) ORDER BY comments.id DESC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 10) ORDER BY comments.id DESC LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 12 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 9) ORDER BY comments.id DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 8) ORDER BY comments.id DESC LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 11 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 7) ORDER BY comments.id DESC LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_comment.html.erb (65.7ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 6) ORDER BY comments.id DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1
+Rendered shared/_comment.html.erb (2.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 5) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 9 LIMIT 1[0m
+Rendered shared/_comment.html.erb (2.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 4) ORDER BY comments.id DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 3) ORDER BY comments.id DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered shared/_comment.html.erb (3.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mComment Load (1.1ms)[0m  SELECT "comments".* FROM "comments" WHERE (post_id = 2) ORDER BY comments.id DESC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+Rendered shared/_comment.html.erb (2.9ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE (post_id = 1) ORDER BY comments.id DESC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered shared/_comment.html.erb (3.0ms)
+Rendered shared/_feed_item.html.erb (225.8ms)
+Rendered shared/_feed.html.erb (228.3ms)
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE ("posts".user_id = 4)[0m
+Rendered shared/_user_info.html.erb (11.2ms)
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".followed_id WHERE (("relationships".follower_id = 4))
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users".id = "relationships".follower_id WHERE (("relationships".followed_id = 4))[0m
+Rendered shared/_stats.html.erb (27.8ms)
+Rendered shared/_feed_home.html.erb (281.4ms)
+Rendered layouts/_stylesheets.html.erb (1.1ms)
+Rendered layouts/_header.html.erb (2.3ms)
+Rendered layouts/_footer.html.erb (1.1ms)
+Rendered pages/home.html.erb within layouts/application (294.4ms)
+Completed 200 OK in 527ms (Views: 288.8ms | ActiveRecord: 12.9ms)
