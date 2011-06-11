@@ -1,0 +1,12 @@
+development:
+  bucket: NutraNation_dev
+  access_key_id: AKIAJGFGXIO6UD54AVTA
+  secret_access_key: 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
+test:
+  bucket: NutraNation_test
+  access_key_id: AKIAJGFGXIO6UD54AVTA
+  secret_access_key: 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
+production:
+  bucket: NutraNation
+  access_key_id: AKIAJGFGXIO6UD54AVTA
+  secret_access_key: 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
