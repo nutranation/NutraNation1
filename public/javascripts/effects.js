@@ -1,6 +1,4 @@
-// script.aculo.us effects.js v1.8.3, Thu Oct 08 11:23:33 +0200 2009
-
-// Copyright (c) 2005-2009 Thomas Fuchs (http://script.aculo.us, http://mir.aculo.us)
+// Copyright (c) 2005-2008 Thomas Fuchs (http://script.aculo.us, http://mir.aculo.us)
 // Contributors:
 //  Justin Palmer (http://encytemedia.com/)
 //  Mark Pilgrim (http://diveintomark.org/)
@@ -147,13 +145,14 @@ var Effect = {
     'blind':  ['BlindDown','BlindUp'],
     'appear': ['Appear','Fade']
   },
-  toggle: function(element, effect, options) {
+  toggle: function(element, effect) {
     element = $(element);
-    effect  = (effect || 'appear').toLowerCase();
-    
-    return Effect[ Effect.PAIRS[ effect ][ element.visible() ? 1 : 0 ] ](element, Object.extend({
+    effect = (effect || 'appear').toLowerCase();
+    var options = Object.extend({
       queue: { position:'end', scope:(element.id || 'global'), limit: 1 }
-    }, options || {}));
+    }, arguments[2] || { });
+    Effect[element.visible() ?
+      Effect.PAIRS[effect][1] : Effect.PAIRS[effect][0]](element, options);
   }
 };
 
@@ -229,6 +228,12 @@ Effect.Queue = Effect.Queues.get('global');
 Effect.Base = Class.create({
   position: null,
   start: function(options) {
+    function codeForEvent(options,eventName){
+      return (
+        (options[eventName+'Internal'] ? 'this.options.'+eventName+'Internal(this);' : '') +
+        (options[eventName] ? 'this.options.'+eventName+'(this);' : '')
+      );
+    }
     if (options && options.transition === false) options.transition = Effect.Transitions.linear;
     this.options      = Object.extend(Object.extend({ },Effect.DefaultOptions), options || { });
     this.currentFrame = 0;
@@ -407,7 +412,7 @@ Effect.Scale = Class.create(Effect.Base, {
       scaleY: true,
       scaleContent: true,
       scaleFromCenter: false,
-      scaleMode: 'box',        // 'box' or 'titles' or { } with provided values
+      scaleMode: 'box',        // 'box' or 'contents' or { } with provided values
       scaleFrom: 100.0,
       scaleTo:   percent
     }, arguments[2] || { });
@@ -438,7 +443,7 @@ Effect.Scale = Class.create(Effect.Base, {
     this.dims = null;
     if (this.options.scaleMode=='box')
       this.dims = [this.element.offsetHeight, this.element.offsetWidth];
-    if (/^title/.test(this.options.scaleMode))
+    if (/^content/.test(this.options.scaleMode))
       this.dims = [this.element.scrollHeight, this.element.scrollWidth];
     if (!this.dims)
       this.dims = [this.options.scaleMode.originalHeight,
@@ -680,7 +685,7 @@ Effect.Shake = function(element) {
 
 Effect.SlideDown = function(element) {
   element = $(element).cleanWhitespace();
-  // SlideDown need to have the title of the element wrapped in a container element with fixed height!
+  // SlideDown need to have the content of the element wrapped in a container element with fixed height!
   var oldInnerBottom = element.down().getStyle('bottom');
   var elementDimensions = element.getDimensions();
   return new Effect.Scale(element, 100, Object.extend({
