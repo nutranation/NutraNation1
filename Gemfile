@@ -9,6 +9,7 @@ gem 'pg', '0.11.0'
 gem 'paperclip'
 gem 'rmagick'
 gem 'aws-s3'
+gem 'jquery-rails', '>= 1.0.3'
 
 group :development do
   gem 'rspec-rails', '2.5.0'
