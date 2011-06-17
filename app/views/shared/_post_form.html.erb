@@ -8,6 +8,11 @@
   <div class="field">
     <%= f.text_area :content %>
   </div>
+	<p><strong>Input Tags</strong> (separate with comma)</p>
+	<div class="field">
+    <%= f.text_area :tag_list, :class => "tags" %>
+  </div>
+	
   <div class="actions">
     <%= f.submit "Submit" %>
   </div>

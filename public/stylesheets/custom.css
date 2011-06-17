@@ -155,6 +155,7 @@ textarea.expertise{
 	padding: 5px;
 }
 
+
 input.feed{
   	width: 398px;	
 }
@@ -308,14 +309,23 @@ form.new_post textarea {
   margin-bottom: 0;
 }
 
+form.new_post textarea.tags {
+  height: 2em;
+  margin-bottom: 0;
+}
+
+
 
 /* Post page */
 div.post{
   color: #5A8DA0;
 }
+div.post span.tags{
+	font-color: #5A8DA0;
+	font-size: 80%;
+}
 
 span.Add-Event{
 	font-size: 250%;
-	
 	
 }

@@ -9,7 +9,10 @@
     	<span class="title" style = "font-size: 120%"><%= link_to wrap(post.title), post %></span><br>
 	<% end %>
 	<% if post.content %>
-   		<span class "post"><%= wrap(post.content) %><span>
+   		<span class "post"><%= wrap(post.content) %><span><br>
+	<% end %>
+	<% if @tags %>
+		<span class "tags" style="color: #5A8DA0; font-size: 80%;"><%= @tags %></span>
 	<% end %>
     <span class="timestamp">
       <%= link_to post.user.name, post.user %> posted <%= time_ago_in_words(post.created_at) %> ago.
