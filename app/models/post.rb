@@ -23,10 +23,11 @@ class Post < ActiveRecord::Base
   
   scope :from_users_followed_by, lambda { |user| followed_by(user) }
   acts_as_taggable
+  
   def find_tags
-    tags = Post.select("t.name").joins("JOIN taggings AS tg ON tg.taggable_id = posts.id AND tg.taggable_type = 'Post' 
-                JOIN tags AS t ON t.id = tg.tag_id").where("posts.id = ?", self.id)
-    tags.collect{|t| t['name']}
+    tags = Tag.joins("JOIN taggings AS tg ON tags.id = tg.tag_id 
+                      JOIN posts AS p ON tg.taggable_id = p.id 
+                      AND tg.taggable_type = 'Post'").where("p.id = ?", self.id)
   end
   
   private

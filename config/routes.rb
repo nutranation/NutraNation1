@@ -7,6 +7,7 @@ NutraNation::Application.routes.draw do
   end
   
   resources :comments
+  resources :tags
   resources :events
   resources :sessions,      :only => [:new, :create, :destroy]
   resources :posts,    :only => [:create, :destroy, :show]

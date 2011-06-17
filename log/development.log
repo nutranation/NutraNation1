@@ -34344,3 +34344,79 @@ Migrating to ActsAsTaggableOnMigration (20110616230417)
  FROM pg_attribute a
  WHERE a.attrelid = 16955
  AND a.attnum IN (3)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (59.4ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mTag Load (1.5ms)[0m  [1mSELECT "tags".* FROM "tags" LIMIT 1[0m
+  [1m[35mSQL (4.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"tags"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (3.0ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'posts'
+ 
+[0m
+  [1m[35mSQL (1.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPost Load (2.1ms)[0m  [1mSELECT "posts".* FROM "posts" JOIN taggings AS t 
+ ON posts.id = t.taggable_id
+ AND t.taggable_type = 'Post' WHERE (t.tag_id = 1) ORDER BY posts.created_at DESC[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" JOIN taggings AS t 
+ ON posts.id = t.taggable_id
+ AND t.taggable_type = 'Post' WHERE (t.tag_id = 1) ORDER BY posts.created_at DESC
+  [1m[36mSQL (1.0ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.5ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.2ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (67.0ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (3.4ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'posts'
+ 
+[0m
+  [1m[35mSQL (2.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPost Load (1.0ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'posts'
+ 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPost Load (1.2ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC LIMIT 1
+  [1m[36mTag Load (1.9ms)[0m  [1mSELECT "tags".* FROM "tags" JOIN taggings AS tg ON tags.id = tg.tag_id 
+ JOIN posts AS p ON tg.taggable_id = p.id 
+ AND tg.taggable_type = 'Post' WHERE (p.id = 14)[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"tags"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mTag Load (3.6ms)[0m  [1mSELECT "tags".* FROM "tags" JOIN taggings AS tg ON tags.id = tg.tag_id 
+ JOIN posts AS p ON tg.taggable_id = p.id 
+ AND tg.taggable_type = 'Post' WHERE (p.id = 14)[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC LIMIT 1
+  [1m[36mTag Load (1.9ms)[0m  [1mSELECT "tags".* FROM "tags" JOIN taggings AS tg ON tags.id = tg.tag_id 
+ JOIN posts AS p ON tg.taggable_id = p.id 
+ AND tg.taggable_type = 'Post' WHERE (p.id = 14)[0m
