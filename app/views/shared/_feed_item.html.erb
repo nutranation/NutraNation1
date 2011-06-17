@@ -9,11 +9,11 @@
 		<span class="title" style = "font-size: 120%"><%= link_to wrap(feed_item.title), feed_item %></span><br>
 		<% end %>
 		<% if feed_item.content %>
-		<span class "post"><%= wrap(feed_item.content) %><span><br>
+		<span class "post"><%= wrap(feed_item.content) %><span>
 		<% end %>
 		<% @tags = feed_item.find_tags.join(", ") %>
 		<% if @tags %>
-			<span class "tags" style="color: #5A8DA0; font-size: 80%;"><%= @tags %></span>
+			<br><span class "tags" style="color: #5A8DA0; font-size: 80%;"><%= @tags %></span>
 		<% end %>
 			<span class="timestamp">
 				<%= link_to feed_item.user.name, feed_item.user %> posted <%= time_ago_in_words(feed_item.created_at) %> ago.

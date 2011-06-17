@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(params[:post])
     @post.tag_list = params[:post][:tag_list]
     if @post.save
-      redirect_to root_path, :flash => { :success => "#{params[:post]}" }
+      redirect_to root_path, :flash => { :success => "Post successful!" }
     else
       @feed_items = []
       render 'pages/home'
