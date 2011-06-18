@@ -12,7 +12,7 @@
    		<span class "post"><%= wrap(post.content) %><span>
 	<% end %>
 	<% if @tags %>
-		<br><span class "tags" style="color: #5A8DA0; font-size: 80%;"><%= @tags %></span>
+		<br><%= render :partial => 'shared/tag', :collection => @tags %></span>
 	<% end %>
     <span class="timestamp">
       <%= link_to post.user.name, post.user %> posted <%= time_ago_in_words(post.created_at) %> ago.
