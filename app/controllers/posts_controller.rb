@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @comment.post_id = @post.id
     @c_comment = Comment.where("post_id = ?", @post.id)
     @unique = true
-    @tags = @post.find_tags.join(", ")
+    @tags = @post.find_tags
   end
 
   def destroy
