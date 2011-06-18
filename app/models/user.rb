@@ -59,8 +59,8 @@ class User < ActiveRecord::Base
     relationships.find_by_followed_id(followed)
   end
 
-  def follow!(followed)
-    relationships.create!(:followed_id => followed.id)
+  def follow!(followed, item_type)
+    relationships.create!(:followed_id => followed.id, :item_type => item_type)
   end
 
   def unfollow!(followed)

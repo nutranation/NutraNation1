@@ -1,9 +1,10 @@
 class RelationshipsController < ApplicationController
   before_filter :authenticate
   
-  def create
+  def create 
     @user = User.find(params[:relationship][:followed_id])
-    current_user.follow!(@user)
+    current_user.follow!(@user, params[:relationship][:item_type])
+  
     respond_to do |format|
       format.html { redirect_to @user }
       format.js

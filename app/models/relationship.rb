@@ -11,11 +11,12 @@
 #
 
 class Relationship < ActiveRecord::Base
-  attr_accessible :followed_id
+  attr_accessible :followed_id, :item_type
   
   belongs_to :follower, :class_name => "User"
   belongs_to :followed, :class_name => "User"
   
   validates :follower_id, :presence => true
   validates :followed_id, :presence => true
+  validates :item_type, :presence => true
 end
