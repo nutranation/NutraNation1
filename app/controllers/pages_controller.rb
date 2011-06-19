@@ -10,9 +10,11 @@ class PagesController < ApplicationController
   end
   
   def subscribed
-    @post = Post.new
-    @feed_items = current_user.feed.paginate(:page => params[:page])
-    @feed_type = :subscribed
+    if signed_in?
+      @post = Post.new
+      @feed_items = current_user.feed.paginate(:page => params[:page])
+      @feed_type = :subscribed
+    end
   end
 
   def contact
