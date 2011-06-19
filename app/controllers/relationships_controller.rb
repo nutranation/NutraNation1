@@ -7,16 +7,19 @@ class RelationshipsController < ApplicationController
         current_user.follow!(@user, params[:relationship][:item_type])
         respond_to do |format|
           format.html { redirect_to @user }
-          format.js { render :action => "create_user" }
           @item_type = 'User'
+          @following = @user
+          format.js { render :action => "create_user" }
         end
       else
         @tag = Tag.find(params[:relationship][:followed_id])
         current_user.follow!(@tag, params[:relationship][:item_type])
         respond_to do |format|
           format.html { redirect_to @tag }
-          format.js { render :action => "create_tag" }
           @item_type = 'Tag'
+          @following = @tag
+          format.js { render :action => "create_user" }
+          
         end
       end
     end
@@ -27,17 +30,20 @@ class RelationshipsController < ApplicationController
         current_user.unfollow!(params[:id])
         respond_to do |format|
           format.html { redirect_to @user }
-          format.js { render :action => "destroy_user" }
           @item_type = 'User'
+          @following = @user
+          format.js { render :action => "destroy_user" }
+         
         end
       else
         r = Relationship.find(params[:id]).followed_id
         @tag = Tag.find r
         current_user.unfollow!(params[:id])
         respond_to do |format|
-          format.html { redirect_to @tag }
-          format.js { render :action => "destroy_tag" }
           @item_type = 'Tag'
+          @following = @tag
+          format.html { redirect_to @tag }
+          format.js { render :action => "destroy_user" }
         end
       end
     end

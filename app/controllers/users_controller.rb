@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @following = @user
     @posts = @user.posts.paginate(:page => params[:page])
     @title = @user.name
     @item_type = 'User'

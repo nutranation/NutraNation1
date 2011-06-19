@@ -1,9 +1,9 @@
 <h1><%=  @tag.name %></h1>
 <div id="follow_form">
 	<% if current_user.following?(@tag, 'Tag') %>
-	  <%= render 'unfollow' %>
+	  <%= render 'shared/unfollow' %>
 	<% else %>
-	  <%= render 'follow' %>
+	  <%= render 'shared/follow' %>
 	<% end %>
 </div>
 <%= render 'shared/feed' %>
