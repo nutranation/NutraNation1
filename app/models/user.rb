@@ -93,6 +93,12 @@ class User < ActiveRecord::Base
     following_ids = { :users => users, :tags => tags, :posts => posts }
   end
   
+  def my_activity
+    Post.select("DISTINCT posts.*").joins("LEFT JOIN comments AS c
+    ON c.post_id = posts.id").where("posts.user_id = :user_id 
+    OR c.user_id = :user_id", :user_id => self.id).order("posts.created_at")
+  end
+  
 
   class << self
     def authenticate(email, submitted_password)

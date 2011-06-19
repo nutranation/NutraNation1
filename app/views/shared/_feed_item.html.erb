@@ -18,7 +18,11 @@
 			<span class="timestamp">
 				<%= link_to feed_item.user.name, feed_item.user %> posted <%= time_ago_in_words(feed_item.created_at) %> ago.
 			</span>
-			<% comment = Comment.where("post_id = ?", feed_item.id).last %>
+			<% if @item_type == 'User' %>
+				<% comment = Comment.where("post_id = ? AND user_id = ?", feed_item.id, @user.id).last %>
+			<% else %>
+				<% comment = Comment.where("post_id = ?", feed_item.id).last %>
+			<% end %>
 			<% if comment %>
 			<div class = "comment-feed">
 				<table class="comment-feed" >
