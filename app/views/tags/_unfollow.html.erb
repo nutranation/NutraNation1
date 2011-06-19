@@ -1,7 +1,0 @@
-<%= form_for(current_user.relationships.where("followed_id = ? AND item_type = ?", @tag.id, 'Tag').first,
-             :html => { :method => :delete },
-             :remote => true) do |f| %>
-	<input id="item_type" name="item_type" size="30"  type="hidden" value="Tag" />
-  <div class="actions"><%= f.submit "Unfollow" %></div>
-
-<% end %>

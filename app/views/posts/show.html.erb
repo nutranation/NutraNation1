@@ -1,3 +1,10 @@
+<div id="follow_form">
+	<% if current_user.following?(@post, 'Post') %>
+	  <%= render 'shared/unfollow' %>
+	<% else %>
+	  <%= render 'shared/follow' %>
+	<% end %>
+</div>
 <table class="posts" summary="Status feed">
   <%= render :partial => 'post', :object => @post %>
 </table>

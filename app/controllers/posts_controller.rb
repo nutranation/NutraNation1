@@ -20,6 +20,8 @@ class PostsController < ApplicationController
     @c_comment = Comment.where("post_id = ?", @post.id)
     @unique = true
     @tags = @post.find_tags
+    @item_type = 'Post'
+    @following = @post
   end
 
   def destroy

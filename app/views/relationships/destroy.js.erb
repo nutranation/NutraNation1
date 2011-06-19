@@ -1,4 +1,4 @@
 $('#follow_form').html("<%= escape_javascript(render('shared/follow')) %>");
 <% if @item_type == 'User'%>
-	$('#followers').html('<%= "#{@user.followers.count} followers" %>');
+	$('#followers').html('<%= "#{@following.followers.count} followers" %>');
 <% end %>
