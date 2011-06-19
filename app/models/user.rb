@@ -52,7 +52,22 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    Post.from_users_followed_by(self)
+    ids = self.following_ids
+    Post.select("DISTINCT posts.*").joins("LEFT JOIN comments AS c
+    ON c.post_id = posts.id
+    LEFT JOIN taggings AS t
+    ON t.taggable_id = posts.id").where("posts.user_id IN(:users)
+    OR c.user_id IN(:users)
+    OR posts.id IN(:posts)
+    OR t.tag_id IN(:tags)", :users => ids[:users], 
+                            :posts => ids[:posts],
+                            :tags => ids[:tags]).order("posts.created_at")
+    
+    
+   
+    
+    
+   
   end
 
   def following?(followed, item_type)
@@ -66,6 +81,24 @@ class User < ActiveRecord::Base
   def unfollow!(followed)
     relationships.find(followed).destroy
   end
+  def following_ids
+    rl = Relationship.where("follower_id = ?", self.id)
+    posts = []
+    users = []
+    tags = []
+    rl.each do |r|
+      case r.item_type
+      when 'User'
+        users << r.followed_id
+      when 'Tag'
+        tags << r.followed_id
+      when 'Post'
+        posts << r.followed_id
+      end
+    end
+    following_ids = { :users => users, :tags => tags, :posts => posts }
+  end
+  
 
   class << self
     def authenticate(email, submitted_password)
