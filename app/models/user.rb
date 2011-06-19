@@ -55,8 +55,8 @@ class User < ActiveRecord::Base
     Post.from_users_followed_by(self)
   end
 
-  def following?(followed)
-    relationships.find_by_followed_id(followed)
+  def following?(followed, item_type)
+    relationships.where("followed_id = ? AND item_type = ?", followed.id, item_type).first
   end
 
   def follow!(followed, item_type)
@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
   end
 
   def unfollow!(followed)
-    relationships.find_by_followed_id(followed).destroy
+    relationships.find(followed).destroy
   end
 
   class << self

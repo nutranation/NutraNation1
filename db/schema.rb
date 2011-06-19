@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110618011255) do
+ActiveRecord::Schema.define(:version => 20110618223851) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(:version => 20110618011255) do
   end
 
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
-  add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
+  add_index "relationships", ["follower_id", "followed_id", "item_type"], :name => "following_index", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
   create_table "taggings", :force => true do |t|
