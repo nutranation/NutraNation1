@@ -62,12 +62,6 @@ class User < ActiveRecord::Base
     OR t.tag_id IN(:tags)", :users => ids[:users], 
                             :posts => ids[:posts],
                             :tags => ids[:tags]).order("posts.created_at")
-    
-    
-   
-    
-    
-   
   end
 
   def following?(followed, item_type)

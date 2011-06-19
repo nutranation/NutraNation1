@@ -3,9 +3,9 @@
      <td class="main">
        <%= render 'shared/post_form' %>
        <% if  @feed_type == :live %>
-	       <strong><%= link_to "Live", root_path %></strong> <%= link_to "Subscriptions", subscribed_path %>
+	       <%= link_to "Subscriptions ", root_path %><strong><%= link_to "Live", live_path  %></strong> 
        <% else %>
-           <%= link_to "Live", root_path %> <strong><%= link_to "Subscriptions", subscribed_path %></strong>
+           <strong><%= link_to "Subscriptions ", root_path %></strong><%= link_to "Live", live_path %> 
        <% end %>
        <%= render 'shared/feed' %>
      </td>
