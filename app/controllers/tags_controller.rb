@@ -6,4 +6,7 @@ class TagsController < ApplicationController
     @following =  @tag
     @feed_items = @tag.all_posts.paginate(:page => params[:page])
   end
+  def index
+    @tags = Tag.all
+  end
 end
