@@ -8,6 +8,7 @@ class RelationshipsController < ApplicationController
         respond_to do |format|
           format.html { redirect_to @user }
           format.js { render :action => "create_user" }
+          @item_type = 'User'
         end
       else
         @tag = Tag.find(params[:relationship][:followed_id])
@@ -15,6 +16,7 @@ class RelationshipsController < ApplicationController
         respond_to do |format|
           format.html { redirect_to @tag }
           format.js { render :action => "create_tag" }
+          @item_type = 'Tag'
         end
       end
     end
@@ -26,6 +28,7 @@ class RelationshipsController < ApplicationController
         respond_to do |format|
           format.html { redirect_to @user }
           format.js { render :action => "destroy_user" }
+          @item_type = 'User'
         end
       else
         r = Relationship.find(params[:id]).followed_id
@@ -34,6 +37,7 @@ class RelationshipsController < ApplicationController
         respond_to do |format|
           format.html { redirect_to @tag }
           format.js { render :action => "destroy_tag" }
+          @item_type = 'Tag'
         end
       end
     end
