@@ -66,6 +66,13 @@ class User < ActiveRecord::Base
   def following_tags
     Tag.joins("JOIN relationships AS r ON r.followed_id = tags.id").where("r.follower_id = ? AND r.item_type = 'Tag'", self.id)
   end
+  def following_users
+    User.joins("JOIN relationships AS r ON r.followed_id = users.id").where("r.follower_id = ? AND r.item_type = 'User'", self.id)
+  end
+  
+  def followed_users
+    User.joins("JOIN relationships AS r ON r.following_id = users.id").where("r.followed_id = ? AND r.item_type = 'User'", self.id)
+  end
 
   def following?(followed, item_type)
     relationships.where("followed_id = ? AND item_type = ?", followed.id, item_type).first
