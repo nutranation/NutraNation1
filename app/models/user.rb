@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
   end
   
   def followed_users
-    User.joins("JOIN relationships AS r ON r.following_id = users.id").where("r.followed_id = ? AND r.item_type = 'User'", self.id)
+    User.joins("JOIN relationships AS r ON r.follower_id = users.id").where("r.followed_id = ? AND r.item_type = 'User'", self.id)
   end
 
   def following?(followed, item_type)
