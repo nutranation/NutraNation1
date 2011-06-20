@@ -2,7 +2,7 @@ NutraNation::Application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :following_tags
     end
   end
   

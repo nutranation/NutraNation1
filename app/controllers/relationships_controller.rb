@@ -8,13 +8,13 @@ class RelationshipsController < ApplicationController
       elsif  params[:relationship][:item_type] == 'Tag' 
         @following = Tag.find(params[:relationship][:followed_id])
         @item_type = 'Tag'
-       elsif  params[:relationship][:item_type] == 'Post' 
-          @following = Post.find(params[:relationship][:followed_id])
-          @item_type = 'Post'
+      elsif  params[:relationship][:item_type] == 'Post' 
+        @following = Post.find(params[:relationship][:followed_id])
+        @item_type = 'Post'
       end
       current_user.follow!(@following, params[:relationship][:item_type])
       respond_to do |format|
-        format.html { redirect_to @tag }
+        format.html { redirect_to @following }
         format.js
       end
     end

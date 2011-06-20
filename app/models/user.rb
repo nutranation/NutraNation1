@@ -63,6 +63,9 @@ class User < ActiveRecord::Base
                             :posts => ids[:posts],
                             :tags => ids[:tags]).order("posts.created_at")
   end
+  def following_tags
+    Tag.joins("JOIN relationships AS r ON r.followed_id = tags.id").where("r.follower_id = ? AND r.item_type = 'Tag'", self.id)
+  end
 
   def following?(followed, item_type)
     relationships.where("followed_id = ? AND item_type = ?", followed.id, item_type).first
