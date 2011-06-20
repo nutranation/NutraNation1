@@ -12,7 +12,7 @@
       <td>
         <a href="<%= followers_user_path(@user) %>">
           <span id="followers" class="stat">
-            <%= pluralize(@user.followed_users .count, "follower") %><br>
+            <%= pluralize(@user.followed_users.count, "follower") %><br>
           </span>
         </a>
       </td>

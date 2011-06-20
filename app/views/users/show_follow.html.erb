@@ -14,10 +14,6 @@
     <td class="sidebar round">
       <%= render 'shared/sidebar_info' %>
       <%= render 'shared/stats' %>
-      <% if @users.any? %>
-        <% @users.each do |user| %>
-          <%= image_tag(user.display_image, :alt => "profile",  :width => "30px", :height => "30px") %> 
-        <% end %>
       <% end %>
     </td>
   </tr>
