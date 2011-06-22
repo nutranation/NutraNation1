@@ -1,6 +1,6 @@
 <tr>
-		<td class = '<%= @content_type %>'id = "<%=  feed_item.id %>">
-			<% @content_type = 'Post' %>
+		<% @content_type = 'Post' %>
+		<td class = '<%= @content_type %>'id = "<%=  feed_item.id %>">	
 			<%= Vote.count(@content_type, feed_item.id) %> Score
 		</td>
 	<td class="gravatar">
