@@ -1,13 +1,15 @@
 <tr>
+		<td>
+			<% @content_type = 'Post' %>
+			<%= Vote.count(@content_type, feed_item.id) %> Score
+		</td>
 	<td class="gravatar">
 		<%= image_tag(feed_item.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
 	</td>
+	
 	<td class="post">
-		<% if @unique %>
-		<span class="title" style = "font-size: 120%"><strong><%= wrap(feed_item.title)%></strong></span><br>
-		<% else %>
+	
 		<span class="title" style = "font-size: 120%"><%= link_to wrap(feed_item.title), feed_item %></span><br>
-		<% end %>
 		<% if feed_item.content %>
 		<span class "post"><%= wrap(feed_item.content) %><span>
 		<% end %>
@@ -18,6 +20,7 @@
 			<span class="timestamp">
 				<%= link_to feed_item.user.name, feed_item.user %> posted <%= time_ago_in_words(feed_item.created_at) %> ago.
 			</span>
+			
 			<% if @item_type == 'User' %>
 				<% comment = Comment.where("post_id = ? AND user_id = ?", feed_item.id, @user.id).last %>
 			<% else %>
@@ -31,6 +34,11 @@
 			</div>
 			<% end %>
 		</td>
+	
+		<td>
+			<% @content_type = 'Post' %>
+			<%= render :partial => 'shared/vote_form', :object => feed_item %>
+		</td>
 		<% if current_user?(feed_item.user) %>
 		<td>
 			<%= link_to "delete", feed_item, :method => :delete,
@@ -38,4 +46,7 @@
 			:title => feed_item.title %>
 		</td>
 		<% end %>
+		
 	</tr>
+
+		

@@ -21,6 +21,7 @@ class PostsController < ApplicationController
     @unique = true
     @tags = @post.find_tags
     @item_type = 'Post'
+    @content_type = @item_type
     @following = @post
   end
 

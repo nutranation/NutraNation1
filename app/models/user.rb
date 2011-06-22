@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :expertise, :occupation, :city, :state, :password, :password_confirmation, :avatar
 
   has_many :posts,    :dependent => :destroy
+  has_many :votes
   has_many :comments,    :dependent => :destroy
   has_many :events,    :dependent => :destroy
   has_many :relationships, :dependent => :destroy,
@@ -80,6 +81,9 @@ class User < ActiveRecord::Base
 
   def follow!(followed, item_type)
     relationships.create!(:followed_id => followed.id, :item_type => item_type)
+  end
+  def vote!(content, content_type)
+    votes.create!(:content_id => content.id, :content_type => content_type)
   end
 
   def unfollow!(followed)

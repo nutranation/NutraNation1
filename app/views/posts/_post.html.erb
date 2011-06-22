@@ -1,4 +1,7 @@
 <tr>
+		<td>
+			<%= Vote.count(@content_type, post.id) %> Score
+		</td>
   <td class="gravatar">
     <%= image_tag(post.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
   </td>
@@ -18,6 +21,9 @@
       <%= link_to post.user.name, post.user %> posted <%= time_ago_in_words(post.created_at) %> ago.
     </span>
   </td>
+	<td>
+		<%= render :partial => 'shared/vote_form', :object => post %>
+	</td>
   <% if current_user?(post.user) %>
     <td>
       <%= link_to "delete", post, :method => :delete,

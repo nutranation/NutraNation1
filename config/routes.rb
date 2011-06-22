@@ -6,6 +6,7 @@ NutraNation::Application.routes.draw do
     end
   end
   
+  resources :votes
   resources :comments
   resources :tags
   resources :events

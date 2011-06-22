@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @feed_items = @user.my_activity.paginate(:page => params[:page])
     @title = @user.name
     @item_type = 'User'
+    @feed_type = true
   end
 
   def following

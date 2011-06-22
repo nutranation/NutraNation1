@@ -1,0 +1,17 @@
+<%= form_for(current_user.votes.
+                          build(:content_id =>  vote_form.id,  :content_type => @content_type, :value => 1 ),
+                          :remote => true) do |f| %>
+  <div><%= f.hidden_field :content_id %></div>
+	<div><%= f.hidden_field :content_type %></div>
+	<div><%= f.hidden_field :value %></div>
+  <div class="actions"><%= f.submit "Up Vote" %></div>
+<% end %>
+<br>
+<%= form_for(current_user.votes.
+                          build(:content_id =>  vote_form.id,  :content_type =>  @content_type, :value => -1 ),
+                          :remote => true) do |f| %>
+  <div><%= f.hidden_field :content_id %></div>
+	<div><%= f.hidden_field :content_type %></div>
+	<div><%= f.hidden_field :value %></div>
+  <div class="actions"><%= f.submit "Down Vote" %></div>
+<% end %>

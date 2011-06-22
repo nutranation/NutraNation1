@@ -15,6 +15,7 @@ class Post < ActiveRecord::Base
   
   belongs_to :user
   has_many :comments, :dependent => :destroy
+  has_many :votes, :as => :imageable, :dependent => :destroy
   
   validates :title, :presence => true, :length => { :maximum => 600 }
   validates :user_id, :presence => true
@@ -28,6 +29,7 @@ class Post < ActiveRecord::Base
                       JOIN posts AS p ON tg.taggable_id = p.id 
                       AND tg.taggable_type = 'Post'").where("p.id = ?", self.id)
   end
+
   
   
   private

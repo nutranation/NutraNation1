@@ -1,15 +1,26 @@
 <tr>
-  <% unless @feed_type || @item_type %>
+	  <% unless @feed_type %>
+	<td>
+		<% @content_type = 'Comment' %>
+		<%= Vote.count(@content_type, comment.id) %> Score
+	</td>
+
     <td class="gravatar">
       <%= image_tag(comment.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
   	</td>
  <% end %>
+
   <td class="comments">
     <span class="content"> <%= wrap(comment.content) %> </span>
     <span class="timestamp">
       <%= link_to comment.user.name, comment.user %> posted <%= time_ago_in_words(comment.created_at) %> ago.
     </span>
   </td>
+  <% unless @feed_type %>
+		<td>
+			<%= render :partial => 'shared/vote_form', :object => comment %>
+		</td>
+	<% end %>
   <% if current_user?(comment.user) %>
     <td>
       <%= link_to "delete", comment, :method => :delete,
@@ -18,4 +29,3 @@
     </td>
   <% end %>
 </tr>
-
