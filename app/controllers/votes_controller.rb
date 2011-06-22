@@ -2,8 +2,10 @@ class VotesController < ApplicationController
   def create
     if params[:vote][:content_type] == 'Post'
       @content = Post.find(params[:vote][:content_id])
+      @content_type = params[:vote][:content_type]
     else
       @content = Comment.find(params[:vote][:content_id])
+      @content_type =  params[:vote][:content_type]
     end
     @vote = Vote.create(:user_id => current_user.id, 
                         :content_id => params[:vote][:content_id], 

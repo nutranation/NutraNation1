@@ -1,7 +1,8 @@
 <tr>
 	  <% unless @feed_type %>
-	<td>
 		<% @content_type = 'Comment' %>
+	<td class = '<%= @content_type %>'id = '<%=  comment.id %>'>
+	
 		<%= Vote.count(@content_type, comment.id) %> Score
 	</td>
 
