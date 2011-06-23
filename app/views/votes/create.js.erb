@@ -1,1 +1,1 @@
-$("#<%= @content.id %>.<%= @content_type %>").html("<%= Vote.count(@content_type,  @content.id) %> Score");
+$("td#<%= @content.id %>.<%= @content_type %>").html("<%= Vote.count(@content_type,  @content.id) %> Score");

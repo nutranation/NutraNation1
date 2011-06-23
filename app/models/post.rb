@@ -29,7 +29,15 @@ class Post < ActiveRecord::Base
                       JOIN posts AS p ON tg.taggable_id = p.id 
                       AND tg.taggable_type = 'Post'").where("p.id = ?", self.id)
   end
-
+  def order_comments
+    Comment.joins("JOIN (SELECT count(*) AS score, c.id AS id
+          FROM comments AS c
+          JOIN votes AS v
+          ON v.content_id = c.id
+            AND v.content_type = 'Comment'
+          GROUP BY c.id) AS score
+    ON comments.id = score.id").where("comments.post_id = ?", self).order("score.score DESC")
+  end
   
   
   private

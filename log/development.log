@@ -41712,3 +41712,116 @@ Migrating to CreateVotingTable (20110620012250)
  AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('"$user"','public') )
  ORDER BY i.relname
 [0m
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (58.5ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (48.1ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'posts'
+ 
+[0m
+  [1m[35mSQL (2.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPost Load (1.2ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC LIMIT 1[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at ASC LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'posts'
+ 
+[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at ASC LIMIT 1[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at ASC LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'comments'
+ 
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'posts'
+ 
+[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at ASC LIMIT 1[0m
+  [1m[35mComment Load (19.5ms)[0m  SELECT "comments".* FROM "comments" JOIN (SELECT count(*) AS score, c.id AS id
+ FROM comments AS c
+ JOIN votes AS v
+ ON v.content_id = c.id
+ AND v.content_type = 'Comment'
+ GROUP BY c.id) AS score
+ ON comments.id = score.id WHERE (comments.post_id = 1)
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'posts'
+ 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mComment Load (0.8ms)[0m  SELECT "comments".* FROM "comments" JOIN (SELECT count(*) AS score, c.id AS id
+ FROM comments AS c
+ JOIN votes AS v
+ ON v.content_id = c.id
+ AND v.content_type = 'Comment'
+ GROUP BY c.id) AS score
+ ON comments.id = score.id WHERE (comments.post_id = 1)
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"comments"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mComment Load (0.6ms)[0m  SELECT "comments".* FROM "comments" ORDER BY comments.id DESC LIMIT 1
+  [1m[36mSQL (51.7ms)[0m  [1m SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 13 ORDER BY posts.created_at DESC LIMIT 1[0m
+  [1m[35mComment Load (1.4ms)[0m  SELECT "comments".* FROM "comments" JOIN (SELECT count(*) AS score, c.id AS id
+ FROM comments AS c
+ JOIN votes AS v
+ ON v.content_id = c.id
+ AND v.content_type = 'Comment'
+ GROUP BY c.id) AS score
+ ON comments.id = score.id WHERE (comments.post_id = 13) ORDER BY score.score

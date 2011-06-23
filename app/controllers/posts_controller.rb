@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comment.post_id = @post.id
-    @c_comment = Comment.where("post_id = ?", @post.id)
+    @c_comment = @post.order_comments
     @unique = true
     @tags = @post.find_tags
     @item_type = 'Post'
