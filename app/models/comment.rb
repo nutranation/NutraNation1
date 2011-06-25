@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
   attr_accessible :post_id
   
   belongs_to :user
-  belongs_to :post
+  belongs_to :post, :touch => true
   has_many :votes, :as => :imageable, :dependent => :destroy
   
   validates :content, :presence => true, :length => { :maximum => 600 }

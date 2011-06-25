@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def home
-    @title = "Home"
+    @tite = "Live"
     if signed_in?
       @post = Post.new
       @feed_items = Post.all.paginate(:page => params[:page])
@@ -10,6 +10,7 @@ class PagesController < ApplicationController
   end
   
   def subscribed
+    @title = "Home"
     if signed_in?
       @post = Post.new
       @feed_items = current_user.feed.paginate(:page => params[:page])

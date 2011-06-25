@@ -41825,3 +41825,33 @@ Migrating to CreateVotingTable (20110620012250)
  AND v.content_type = 'Comment'
  GROUP BY c.id) AS score
  ON comments.id = score.id WHERE (comments.post_id = 13) ORDER BY score.score
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.2ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (98.0ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (113.8ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'posts'
+ 
+[0m
+  [1m[35mSQL (30.6ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPost Load (1.0ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at
+  [1m[36mPost Load (1.0ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at LIMIT 1[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at[0m
+  [1m[35mPost Load (1.2ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at[0m
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at DESC[0m
+  [1m[35mPost Load (1.2ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at DESC LIMIT 1
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at DESC[0m
