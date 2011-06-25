@@ -29,23 +29,16 @@ class Post < ActiveRecord::Base
                       JOIN posts AS p ON tg.taggable_id = p.id 
                       AND tg.taggable_type = 'Post'").where("p.id = ?", self.id)
   end
+  
   def order_comments
-    Comment.joins("JOIN (SELECT count(*) AS score, c.id AS id
-          FROM comments AS c
-          LEFT JOIN votes AS v
-          ON v.content_id = c.id
-            AND v.content_type = 'Comment'
-          GROUP BY c.id) AS score
+    Comment.joins("JOIN (SELECT COALESCE(sum(value), 0) AS score, c.id AS id
+              FROM comments AS c
+              LEFT JOIN votes AS v
+              ON v.content_id = c.id
+                AND v.content_type = 'Comment'
+              GROUP BY c.id) AS score
     ON comments.id = score.id").where("comments.post_id = ?", self).order("score.score DESC")
   end
   
   
-  private
-  
-    def self.followed_by(user)
-      followed_ids = %(SELECT followed_id FROM relationships
-                       WHERE follower_id = :user_id)
-      where("user_id IN (#{followed_ids}) OR user_id = :user_id",
-            :user_id => user)
-    end
 end
