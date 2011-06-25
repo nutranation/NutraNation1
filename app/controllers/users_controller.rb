@@ -4,14 +4,14 @@ class UsersController < ApplicationController
   before_filter :admin_user,   :only => :destroy
   
   def index
-    @users = User.paginate(:page => params[:page])
+    @users = User.all
     @title = "All users"
   end
   
   def show
     @user = User.find(params[:id])
     @following = @user
-    @feed_items = @user.my_activity.paginate(:page => params[:page])
+    @feed_items = @user.my_activity
     @title = @user.name
     @item_type = 'User'
     @feed_type = true
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   def following
     @title = "Following"
     @user = User.find(params[:id])
-    @users = @user.following_users.paginate(:page => params[:page])
+    @users = @user.following_users
     render 'show_follow'
   end
   
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def followers
     @title = "Followers"
     @user = User.find(params[:id])
-    @users = @user.followed_users.paginate(:page => params[:page])
+    @users = @user.followed_users
     render 'show_follow'
   end
   

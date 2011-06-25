@@ -4,7 +4,7 @@ class TagsController < ApplicationController
     @item_type = "Tag"
     @tag = Tag.find(params[:id])
     @following =  @tag
-    @feed_items = @tag.all_posts.paginate(:page => params[:page])
+    @feed_items = @tag.all_posts
   end
   def index
     @tags = Tag.all
