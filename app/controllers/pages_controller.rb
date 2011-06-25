@@ -17,7 +17,15 @@ class PagesController < ApplicationController
       @feed_type = :subscribed
     end
   end
-
+  
+  def highest_voted
+    @title = "Home"
+    if signed_in?
+      @post = Post.new
+      @feed_items = Post.highest_voted('2011-05-15')
+      @feed_type = :highest_voted
+    end
+  end
   def contact
     @title = "Contact"
   end
