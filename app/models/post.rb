@@ -32,7 +32,7 @@ class Post < ActiveRecord::Base
   def order_comments
     Comment.joins("JOIN (SELECT count(*) AS score, c.id AS id
           FROM comments AS c
-          JOIN votes AS v
+          LEFT JOIN votes AS v
           ON v.content_id = c.id
             AND v.content_type = 'Comment'
           GROUP BY c.id) AS score
