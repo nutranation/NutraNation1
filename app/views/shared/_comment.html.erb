@@ -1,10 +1,10 @@
 <tr>
 	  <% unless @feed_type %>
-		<% @content_type = 'Comment' %>
-	<td class = 'Comment' id = '<%=  comment.id %>'>
+				<% @content_type = 'Comment' %>
+			<td class = 'Comment' id = '<%=  comment.id %>'>
 	
-		<%= Vote.count(@content_type, comment.id) %> Score
-	</td>
+				<%= Vote.count(@content_type, comment.id) %> Score
+			</td>
 
     <td class="gravatar">
       <%= image_tag(comment.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
