@@ -41856,3 +41856,65 @@ Migrating to CreateVotingTable (20110620012250)
   [1m[35mPost Load (1.2ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at DESC LIMIT 1
   [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at DESC[0m
 DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from <class:User> at /Users/skline/NutraNation1/app/models/user.rb:33)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.2ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.2ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (42.3ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (2.4ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'posts'
+ 
+[0m
+  [1m[35mSQL (2.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'posts'
+ 
+[0m
+  [1m[35mPost Load (1.8ms)[0m  SELECT "posts".* FROM "posts" JOIN votes AS v ON v.content_id = posts.id AND v.content_type = 'Post'
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" JOIN votes AS v ON v.content_id = posts.id AND v.content_type = 'Post' GROUP BY posts.id[0m
+PGError: ERROR:  column "posts.title" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "posts".* FROM "posts" JOIN votes AS v ON v.content_i...
+               ^
+: SELECT "posts".* FROM "posts" JOIN votes AS v ON v.content_id = posts.id AND v.content_type = 'Post' GROUP BY posts.id
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" JOIN votes AS v ON v.content_id = posts.id AND v.content_type = 'Post' GROUP BY posts.id, post.title, post.content
+PGError: ERROR:  missing FROM-clause entry for table "post"
+LINE 1: ...id AND v.content_type = 'Post' GROUP BY posts.id, post.title...
+                                                             ^
+: SELECT "posts".* FROM "posts" JOIN votes AS v ON v.content_id = posts.id AND v.content_type = 'Post' GROUP BY posts.id, post.title, post.content
+  [1m[36mPost Load (1.3ms)[0m  [1mSELECT "posts".* FROM "posts" JOIN votes AS v ON v.content_id = posts.id AND v.content_type = 'Post' GROUP BY posts.id, posts.title, posts.content, posts.user_id[0m
+PGError: ERROR:  column "posts.created_at" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "posts".* FROM "posts" JOIN votes AS v ON v.content_i...
+               ^
+: SELECT "posts".* FROM "posts" JOIN votes AS v ON v.content_id = posts.id AND v.content_type = 'Post' GROUP BY posts.id, posts.title, posts.content, posts.user_id
+  [1m[35mPost Load (1.6ms)[0m  SELECT "posts".* FROM "posts" JOIN votes AS v ON v.content_id = posts.id AND v.content_type = 'Post' GROUP BY posts.id, posts.title, posts.content, posts.user_id, posts.created_at, posts.updated_at
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" JOIN votes AS v ON v.content_id = posts.id AND v.content_type = 'Post' GROUP BY posts.id, posts.title, posts.content, posts.user_id, posts.created_at, posts.updated_at[0m
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.1ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.1ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (0.5ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (155.4ms)[0m  [1m SELECT COUNT(*)
+ FROM pg_tables
+ WHERE tablename = 'posts'
+ 
+[0m
+  [1m[35mSQL (13.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"posts"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPost Load (16.4ms)[0m  [1mSELECT "posts".* FROM "posts" JOIN votes AS v 
+ ON v.content_id = posts.id 
+ AND v.content_type = 'Post' WHERE (posts.created_at > '2011-06-14') GROUP BY posts.id, 
+ posts.title, posts.content, posts.user_id, 
+ posts.created_at, posts.updated_at ORDER BY sum(v.value) DESC[0m
