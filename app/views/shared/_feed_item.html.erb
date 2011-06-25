@@ -34,17 +34,19 @@
 			</div>
 			<% end %>
 		</td>
+		
 	
-		<td>
-			<% @content_type = 'Post' %>
-			<%= render :partial => 'shared/vote_form', :object => feed_item %>
-		</td>
 		<% if current_user?(feed_item.user) %>
-		<td>
-			<%= link_to "delete", feed_item, :method => :delete,
-			:confirm => "You sure?",
-			:title => feed_item.title %>
-		</td>
+			<td>
+				<%= link_to "delete", feed_item, :method => :delete,
+				:confirm => "You sure?",
+				:title => feed_item.title %>
+			</td>
+		<% else %>
+			<td>
+				<% @content_type = 'Post' %>
+				<%= render :partial => 'shared/vote_form', :object => feed_item %>
+			</td>
 		<% end %>
 		
 	</tr>

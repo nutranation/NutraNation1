@@ -17,7 +17,7 @@
       <%= link_to comment.user.name, comment.user %> posted <%= time_ago_in_words(comment.created_at) %> ago.
     </span>
   </td>
-  <% unless @feed_type %>
+  <% unless @feed_type || current_user?(comment.user)%>
 		<td>
 			<%= render :partial => 'shared/vote_form', :object => comment %>
 		</td>

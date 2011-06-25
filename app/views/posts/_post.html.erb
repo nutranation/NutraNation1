@@ -23,14 +23,15 @@
       <%= link_to post.user.name, post.user %> posted <%= time_ago_in_words(post.created_at) %> ago.
     </span>
   </td>
-	<td>
-		<%= render :partial => 'shared/vote_form', :object => post %>
-	</td>
   <% if current_user?(post.user) %>
     <td>
       <%= link_to "delete", post, :method => :delete,
                                        :confirm => "You sure?",
                                        :title => post.title %>
     </td>
+	<% else %>
+		<td>
+			<%= render :partial => 'shared/vote_form', :object => post %>
+		</td>
   <% end %>
 </tr>
