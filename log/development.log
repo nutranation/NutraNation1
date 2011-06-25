@@ -41855,3 +41855,4 @@ Migrating to CreateVotingTable (20110620012250)
   [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at DESC[0m
   [1m[35mPost Load (1.2ms)[0m  SELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at DESC LIMIT 1
   [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY posts.created_at DESC, updated_at DESC[0m
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from <class:User> at /Users/skline/NutraNation1/app/models/user.rb:33)

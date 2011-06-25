@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     @tite = "Live"
     if signed_in?
       @post = Post.new
-      @feed_items = Post.all.paginate(:page => params[:page])
+      @feed_items = Post.order('updated_at').paginate(:page => params[:page])
       @feed_type = :live
     end
   end

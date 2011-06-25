@@ -20,7 +20,6 @@ class Post < ActiveRecord::Base
   validates :title, :presence => true, :length => { :maximum => 600 }
   validates :user_id, :presence => true
   
-  default_scope :order => 'posts.updated_at DESC'
   
   scope :from_users_followed_by, lambda { |user| followed_by(user) }
   acts_as_taggable
