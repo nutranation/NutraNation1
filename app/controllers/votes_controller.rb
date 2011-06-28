@@ -15,11 +15,7 @@ class VotesController < ApplicationController
     @vote.save!
     respond_to do |format|
       format.html { redirect_to @content }
-      if params[:vote][:content_type] == 'Post'
-        format.js
-      else
-        format.js {render :action => "create_comment"}
-      end
+      format.js
     end
   end
 end

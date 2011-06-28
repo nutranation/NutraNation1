@@ -1,2 +1,0 @@
-$("td#<%= @content.id %>.<%= @content_type %>").html("<%= Vote.count(@content_type,  @content.id) %> Score");
-$("#container.comments").html("<%= escape_javascript( render :partial => 'shared/comment', :collection => @c_comment) %>");

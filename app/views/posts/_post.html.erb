@@ -29,9 +29,10 @@
                                        :confirm => "You sure?",
                                        :title => post.title %>
     </td>
-	<% else %>
-		<td>
-			<%= render :partial => 'shared/vote_form', :object => post %>
-		</td>
+	<% end %>
+	<% unless current_user.voted?('Post', post.id) || current_user?(post.user) %>
+			<td class = "post-vote">
+				<%= render :partial => 'shared/vote_form', :object => post %>
+			</td>
   <% end %>
 </tr>
