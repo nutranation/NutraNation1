@@ -42,8 +42,10 @@
 				:confirm => "You sure?",
 				:title => feed_item.title %>
 			</td>
-		<% else %>
+		<% end %>
+		<% unless current_user.voted?('Post', feed_item.id) || current_user?(feed_item.user) %>
 			<td>
+				<span class = '<%= @content_type %>'id = "<%=  feed_item.id %>">
 				<% @content_type = 'Post' %>
 				<%= render :partial => 'shared/vote_form', :object => feed_item %>
 			</td>
