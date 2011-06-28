@@ -24,7 +24,7 @@
 			<% if @item_type == 'User' %>
 				<% comment = Comment.where("post_id = ? AND user_id = ?", feed_item.id, @user.id).last %>
 			<% else %>
-				<% comment = feed_item.comments.first%>
+				<% comment = feed_item.comments.last%>
 			<% end %>
 			<% if comment %>
 			<div class = "comment-feed">
