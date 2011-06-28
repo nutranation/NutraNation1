@@ -54,11 +54,7 @@ class User < ActiveRecord::Base
 
   def feed
     ids = self.following_ids
-    Post.select("DISTINCT posts.*,   CASE 
-            WHEN c.user_id IN(1,18,11,14,10) then c.created_at 
-            ELSE posts.updated_at
-       END 
-    AS position").joins("LEFT JOIN comments AS c
+    Post.joins("LEFT JOIN comments AS c
     ON c.post_id = posts.id
     LEFT JOIN taggings AS t
     ON t.taggable_id = posts.id").where("posts.user_id IN(:users)
@@ -66,7 +62,7 @@ class User < ActiveRecord::Base
     OR posts.id IN(:posts)
     OR t.tag_id IN(:tags)", :users => ids[:users], 
                             :posts => ids[:posts],
-                            :tags => ids[:tags]).order("position DESC")
+                            :tags => ids[:tags]).order("posts.updated_at DESC").uniq
   end
   def following_tags
     Tag.joins("JOIN relationships AS r ON r.followed_id = tags.id").where("r.follower_id = ? AND r.item_type = 'Tag'", self.id)
@@ -112,9 +108,9 @@ class User < ActiveRecord::Base
   end
   
   def my_activity
-    Post.select("DISTINCT posts.*").joins("LEFT JOIN comments AS c
+    Post.joins("LEFT JOIN comments AS c
     ON c.post_id = posts.id").where("posts.user_id = :user_id 
-    OR c.user_id = :user_id", :user_id => self.id).order("posts.created_at")
+    OR c.user_id = :user_id", :user_id => self.id).order("posts.created_at").uniq
   end
   
 

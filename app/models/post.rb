@@ -24,11 +24,11 @@ class Post < ActiveRecord::Base
   scope :from_users_followed_by, lambda { |user| followed_by(user) }
   acts_as_taggable
   def self.highest_voted(date)
-    self.joins("JOIN votes AS v 
+    self.joins("LEFT JOIN votes AS v 
                 ON v.content_id = posts.id 
                   AND v.content_type = 'Post'").where("posts.created_at > ?", date).group("posts.id, 
                   posts.title, posts.content, posts.user_id, 
-                  posts.created_at, posts.updated_at").order("sum(v.value) DESC")
+                  posts.created_at, posts.updated_at").order("COALESCE(sum(v.value), 0) DESC")
   end
   
   def find_tags
