@@ -47,11 +47,32 @@ class User < ActiveRecord::Base
   :length => { :within => 6..40 }
 
   before_save :encrypt_password
-
-  def has_password?(submitted_password)
-    encrypted_password == encrypt(submitted_password)
+  
+  def my_activity
+    Post.joins("LEFT JOIN comments AS c
+    ON c.post_id = posts.id").where("posts.user_id = :user_id 
+    OR c.user_id = :user_id", :user_id => self.id).order("posts.created_at").uniq
+  end
+ 
+ 
+  def following?(followed, item_type)
+    relationships.where("followed_id = ? AND item_type = ?", followed.id, item_type).first
+  end
+  
+  def voted?(content_type, content_id)
+    Vote.where("content_type = ? AND content_id = ? AND user_id = ?", content_type, content_id, self.id).first
   end
 
+  def display_image
+    if self.avatar_file_name
+      (self.avatar.url(:thumb))
+    else
+      i = "male.jpeg"
+    end
+  end
+  
+
+  # subscription feed
   def feed
     ids = self.following_ids
     Post.joins("LEFT JOIN comments AS c
@@ -64,6 +85,8 @@ class User < ActiveRecord::Base
                             :posts => ids[:posts],
                             :tags => ids[:tags]).order("posts.updated_at DESC").uniq
   end
+  
+  # helpers for subscription feed
   def following_tags
     Tag.joins("JOIN relationships AS r ON r.followed_id = tags.id").where("r.follower_id = ? AND r.item_type = 'Tag'", self.id)
   end
@@ -75,20 +98,6 @@ class User < ActiveRecord::Base
     User.joins("JOIN relationships AS r ON r.follower_id = users.id").where("r.followed_id = ? AND r.item_type = 'User'", self.id)
   end
 
-  def following?(followed, item_type)
-    relationships.where("followed_id = ? AND item_type = ?", followed.id, item_type).first
-  end
-
-  def follow!(followed, item_type)
-    relationships.create!(:followed_id => followed.id, :item_type => item_type)
-  end
-  def vote!(content, content_type)
-    votes.create!(:content_id => content.id, :content_type => content_type)
-  end
-
-  def unfollow!(followed)
-    relationships.find(followed).destroy
-  end
   def following_ids
     rl = Relationship.where("follower_id = ?", self.id)
     posts = []
@@ -107,33 +116,38 @@ class User < ActiveRecord::Base
     following_ids = { :users => users, :tags => tags, :posts => posts }
   end
   
-  def my_activity
-    Post.joins("LEFT JOIN comments AS c
-    ON c.post_id = posts.id").where("posts.user_id = :user_id 
-    OR c.user_id = :user_id", :user_id => self.id).order("posts.created_at").uniq
+
+## controller helper methods
+  def follow!(followed, item_type)
+    relationships.create!(:followed_id => followed.id, :item_type => item_type)
   end
+
+  def unfollow!(followed)
+    relationships.find(followed).destroy
+  end
+
+  def vote!(content, content_type)
+    votes.create!(:content_id => content.id, :content_type => content_type)
+  end
+
   
+## password methods
+
+  def has_password?(submitted_password)
+    encrypted_password == encrypt(submitted_password)
+  end
 
   class << self
     def authenticate(email, submitted_password)
       user = find_by_email(email)
       (user && user.has_password?(submitted_password)) ? user : nil
     end
-
-  def authenticate_with_salt(id, cookie_salt)
-    user = find_by_id(id)
-    (user && user.salt == cookie_salt) ? user : nil
-  end
-  end
-  def display_image
-    if self.avatar_file_name
-      (self.avatar.url(:thumb))
-    else
-      i = "male.jpeg"
+    def authenticate_with_salt(id, cookie_salt)
+      user = find_by_id(id)
+      (user && user.salt == cookie_salt) ? user : nil
     end
   end
-  private
-
+  
   def encrypt_password
     self.salt = make_salt if new_record?
     self.encrypted_password = encrypt(password)
