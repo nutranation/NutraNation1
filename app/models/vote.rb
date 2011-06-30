@@ -1,5 +1,5 @@
 class Vote < ActiveRecord::Base
-  belongs_to :voteable, :polymorphic => true
+  belongs_to :content, :polymorphic => true
   belongs_to :user
   
   def self.count(content_type, content_id) 

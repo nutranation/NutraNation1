@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
   
   belongs_to :user
   has_many :comments, :dependent => :destroy
-  has_many :votes, :as => :imageable, :dependent => :destroy
+  has_many :votes, :as => :content, :dependent => :destroy
   
   validates :title, :presence => true, :length => { :maximum => 600 }
   validates :user_id, :presence => true

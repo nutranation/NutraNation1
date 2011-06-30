@@ -8,6 +8,7 @@ gem 'rmagick'
 gem 'aws-s3'
 gem 'jquery-rails', '>= 1.0.3'
 gem 'acts-as-taggable-on'
+gem 'rails3-jquery-autocomplete'
 
 group :development do
   gem 'rspec-rails', '2.5.0'

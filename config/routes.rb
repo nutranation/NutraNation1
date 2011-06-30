@@ -5,13 +5,16 @@ NutraNation::Application.routes.draw do
       get :following, :followers, :following_tags, :following_posts
     end
   end
+  resources :posts do
+    get :autocomplete_tag_name, :on => :collection    
+  end
   
   resources :votes
   resources :comments
   resources :tags
   resources :events
   resources :sessions,      :only => [:new, :create, :destroy]
-  resources :posts,    :only => [:create, :destroy, :show]
+  #resources :posts,    :only => [:create, :destroy, :show]
   resources :relationships, :only => [:create, :destroy]
   
   root :to =>'pages#subscribed'
