@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_filter :authenticate
   before_filter :authorized_user, :only => :destroy
-  autocomplete :tag, :name, :full => true
+  autocomplete :tag, :name, :full => true, :display_value => :display
   
   def create
     @post = current_user.posts.build(params[:post])
