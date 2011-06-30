@@ -106,7 +106,7 @@ class User < ActiveRecord::Base
   def following_ids
     rl = Relationship.where("follower_id = ?", self.id)
     posts = []
-    users = []
+    users = [self.id]
     tags = []
     rl.each do |r|
       case r.item_type

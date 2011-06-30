@@ -11,7 +11,7 @@
 	
 		<span class="title" style = "font-size: 120%"><%= link_to wrap(feed_item.title), feed_item %></span><br>
 		<% if feed_item.content %>
-		<span class "post"><%= wrap(feed_item.content) %><span>
+		<span class "post"><%= auto_link(wrap(feed_item.content)).html_safe %><span>
 		<% end %>
 		<% @tags = feed_item.find_tags %>
 		<% if @tags %>

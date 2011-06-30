@@ -8,13 +8,9 @@
     <%= image_tag(post.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
   </td>
   <td class="post">
-	<% if @unique %>
-		<span class="title" style = "font-size: 120%"><strong><%= wrap(post.title)%></strong></span><br>
-	<% else %>
-    	<span class="title" style = "font-size: 120%"><%= link_to wrap(post.title), post %></span><br>
-	<% end %>
+		<span class="title" style = "font-size: 120%"><strong><%= auto_link(wrap(post.title)).html_safe%></strong></span><br>
 	<% if post.content %>
-   		<span class "post"><%= wrap(post.content) %><span>
+   		<span class "post"><%= auto_link(wrap(post.content)).html_safe %><span>
 	<% end %>
 	<% if @tags %>
 		<br><%= render :partial => 'shared/tag', :collection => @tags %></span>
