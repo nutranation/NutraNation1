@@ -16,6 +16,8 @@ class UsersController < ApplicationController
     @item_type = 'User'
     @feed_type = true
   end
+  def show_questions
+  end
 
   def following
     @title = "Following"
@@ -37,6 +39,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @tags = @user.following_tags
     render 'show_tags'
+  end
+  def following_posts
+    @post = Post.new
+    @user = User.find(params[:id])
+    @feed_items  = @user.following_posts
+    @feed_type = :following
+    render 'show_posts'
   end
 
   def new
@@ -72,6 +81,8 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_path, :flash => { :success => "User destroyed." }
   end
+  
+  
 
   private
 

@@ -90,6 +90,11 @@ class User < ActiveRecord::Base
   def following_tags
     Tag.joins("JOIN relationships AS r ON r.followed_id = tags.id").where("r.follower_id = ? AND r.item_type = 'Tag'", self.id)
   end
+  
+  def following_posts
+    Post.joins("JOIN relationships AS r ON r.followed_id = posts.id").where("r.follower_id =? AND r.item_type = 'Post'", self.id).order("posts.updated_at DESC")
+  end
+  
   def following_users
     User.joins("JOIN relationships AS r ON r.followed_id = users.id").where("r.follower_id = ? AND r.item_type = 'User'", self.id)
   end

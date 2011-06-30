@@ -20,7 +20,12 @@
 	</table>
 	<a href="<%= following_tags_user_path(@user) %>">
 		<span id="followers" class="stat">
-			Following <%= pluralize(@user.following_tags.count, "tags") %>
+			Following <%= pluralize(@user.following_tags.count, "tag") %>
+		</span><br>
+	</a>
+	<a href="<%= following_posts_user_path(@user) %>">
+		<span id="followers" class="stat">
+			Following <%= pluralize(@user.following_posts.count, "post") %>
 		</span>
 	</a>
 </div>
