@@ -50,8 +50,17 @@ class User < ActiveRecord::Base
   
   def my_activity
     Post.joins("LEFT JOIN comments AS c
-    ON c.post_id = posts.id").where("posts.user_id = :user_id 
-    OR c.user_id = :user_id", :user_id => self.id).order("posts.created_at").uniq
+    ON c.post_id = posts.id
+    LEFT JOIN votes AS v
+    ON v.content_id = posts.id
+    AND v.content_type = 'Post'").where("posts.user_id = :user_id 
+    OR c.user_id = :user_id
+    OR v.user_id = :user_id", :user_id => self.id).order("CASE
+        WHEN c.user_id = #{self.id} THEN c.created_at
+        WHEN posts.user_Id = #{self.id} THEN posts.created_at
+        WHEN v.user_id = #{self.id} THEN v.created_at
+     END
+     DESC").uniq
   end
  
  
@@ -75,15 +84,28 @@ class User < ActiveRecord::Base
   # subscription feed
   def feed
     ids = self.following_ids
+    users = ids[:users].join(", ")
+    tags = ids[:tags].join(", ")
+    posts = ids[:posts].join(", ")
+    
     Post.joins("LEFT JOIN comments AS c
     ON c.post_id = posts.id
     LEFT JOIN taggings AS t
-    ON t.taggable_id = posts.id").where("posts.user_id IN(:users)
-    OR c.user_id IN(:users)
-    OR posts.id IN(:posts)
-    OR t.tag_id IN(:tags)", :users => ids[:users], 
-                            :posts => ids[:posts],
-                            :tags => ids[:tags]).order("posts.updated_at DESC").uniq
+    ON t.taggable_id = posts.id
+    LEFT JOIN votes AS v
+    ON v.content_id = posts.id
+    AND v.content_type = 'Post'").where("posts.user_id IN(#{users})
+    OR c.user_id IN(#{users})
+    OR posts.id IN(#{posts})
+    OR t.tag_id IN(#{tags})
+    OR v.user_Id IN(#{users})").order("CASE 
+        WHEN posts.user_id IN(#{users}) THEN posts.updated_at
+        WHEN posts.id IN(#{posts}) THEN posts.updated_at
+        WHEN t.tag_id IN(#{tags}) THEN posts.updated_at
+        WHEN v.user_Id IN(#{users}) THEN v.created_at
+        WHEN c.user_id IN(#{users}) THEN c.created_at
+     END
+     DESC").uniq
   end
   
   # helpers for subscription feed
@@ -118,6 +140,15 @@ class User < ActiveRecord::Base
         posts << r.followed_id
       end
     end
+    
+    unless posts.first
+      posts << 'null'
+    end
+    
+    unless tags.first
+      tags << 'null'
+    end
+    
     following_ids = { :users => users, :tags => tags, :posts => posts }
   end
   

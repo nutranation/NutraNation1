@@ -47,5 +47,19 @@ class Post < ActiveRecord::Base
     ON comments.id = score.id").where("comments.post_id = ?", self).order("score.score DESC")
   end
   
+  def up_voted(user)
+    votes = Vote.where("content_id = ? AND content_type = 'Post' AND value = 1", self.id)
+    following = user.following_users
+    match = []
+    votes.each do |v|
+      following.each do |f|
+        if v.user_id == f.id
+          match << f
+        end
+      end
+    end
+    match
+  end
+  
   
 end
