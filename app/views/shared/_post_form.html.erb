@@ -1,6 +1,6 @@
 <%= form_for(@post) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
-  <h1 class="post">Title</h1>
+  <h1 id="post">Title</h1>
   <div class="field">
     <%= f.text_field :title, :class => "feed"  %>
   </div>
@@ -10,7 +10,8 @@
   </div>
 	<p><strong>Input Tags</strong> (separate with comma)</p>
 	<div class="field">
-    <%= f.autocomplete_field :tag_list, autocomplete_tag_name_posts_path, :"data-delimiter" => ', ', :class => "tags" %>
+    <%= f.autocomplete_field :tag_list, autocomplete_tag_name_posts_path, :"data-delimiter" => ', '
+	   %>
   </div>
 	
   <div class="actions">

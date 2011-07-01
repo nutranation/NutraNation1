@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   
   def create
     @post = current_user.posts.build(params[:post])
-    @post.tag_list = params[:post][:tag_list]
+    @post.tag_list = params[:post][:tag_list].gsub(/\(\w\)/, '')
     if @post.save
       redirect_to root_path, :flash => { :success => "Post successful!" }
     else
