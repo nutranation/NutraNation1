@@ -18,6 +18,12 @@
     <span class="timestamp">
       <%= link_to post.user.name, post.user %> posted <%= time_ago_in_words(post.created_at) %> ago.
     </span>
+			<% votes = post.up_voted(current_user) %>
+			<% if votes.first %>
+				<span class="timestamp">
+					<%= votes.map(&:name).join(", ")  %> voted up this post
+				<span>
+			<% end %>
   </td>
   <% if current_user?(post.user) %>
     <td>
