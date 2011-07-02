@@ -4,7 +4,68 @@
     <title><%= title %></title>
     <%= csrf_meta_tag %>
     <%= render 'layouts/stylesheets' %>
-    <%= javascript_include_tag :defaults, "autocomplete-rails.js"  %>
+    <%= javascript_include_tag :defaults, "autocomplete-rails.js", "jquery.ui.core", "jquery.ui.widget.js", "jquery.ui.position"  %>
+    <link rel="stylesheet" href="/stylesheets/jquery.ui.all.css"> 
+		<script src="/javascripts/jquery.js"></script> 
+		<script src="/javascripts/jquery.ui.core.js"></script> 
+		<script src="/javascripts/jquery.ui.widget.js"></script> 
+		<script src="/javascripts/jquery.ui.position.js"></script> 
+		<script src="/javascripts/jquery.ui.autocomplete.js"></script> 
+		<% @all_tags_js = Tag.all %>
+		<% @last_tags_js = @all_tags_js.last  %>
+	
+		
+		<script>
+			$(function() {
+					var availableTags = [
+						<% @all_tags_js.each do |t| %>
+							<% unless t == @last_tags_js  %> 
+									"<%= t.name  %> (<%= t.count %>)",
+							<% end %>
+						<% end %>
+						"<%= @last_tags_js.name  %>  (<%= @last_tags_js.count %>)"
+					];
+				function split( val ) {
+					return val.split( /,\s*/ );
+				}
+				function extractLast( term ) {
+					return split( term ).pop();
+				}
+
+				$( "#post_tag_list" )
+					// don't navigate away from the field on tab when selecting an item
+					.bind( "keydown", function( event ) {
+						if ( event.keyCode === $.ui.keyCode.TAB &&
+								$( this ).data( "autocomplete" ).menu.active ) {
+							event.preventDefault();
+						}
+					})
+					.autocomplete({
+						minLength: 0,
+						source: function( request, response ) {
+							// delegate back to autocomplete, but extract the last term
+							response( $.ui.autocomplete.filter(
+								availableTags, extractLast( request.term ) ) );
+						},
+						focus: function() {
+							// prevent value inserted on focus
+							return false;
+						},
+						select: function( event, ui ) {
+							var terms = split( this.value );
+							// remove the current input
+							terms.pop();
+							// add the selected item
+							terms.push( ui.item.value );
+							// add placeholder to get the comma-and-space at the end
+							terms.push( "" );
+							this.value = terms.join( ", " );
+							return false;
+						}
+					});
+			});
+			</script>
+		
   </head>
   <body>
     <div class="container">

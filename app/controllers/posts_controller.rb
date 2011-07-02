@@ -25,6 +25,17 @@ class PostsController < ApplicationController
     @content_type = @item_type
     @following = @post
   end
+  
+  def update
+     @post = Post.find(params[:id])
+     @post.tag_list = params[:post][:tag_list].gsub(/\(\w\)/, '')
+     if @post.update_attributes(params[:post])
+       redirect_to @post, :flash => { :success => "Post updated." }
+     else
+       @title = "Edit Post"
+       render 'edit'
+     end
+   end
 
   def destroy
     @post.destroy
