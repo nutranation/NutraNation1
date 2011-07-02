@@ -37,6 +37,12 @@
 				<%= render :partial => 'shared/vote_form', :object => post %>
 			</td>
   <% end %>
+	<% if @related.first %>
+		<td>
+			Related Posts:<br>
+				<%= render :partial => 'related_post', :collection => @related %>
+		</td>
+	<% end %>
 </tr>
 <% if current_user?(post.user) || current_user.admin %>
 	<%= link_to "Edit Post", edit_post_path(post) %>

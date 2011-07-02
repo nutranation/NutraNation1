@@ -23,6 +23,7 @@ class PostsController < ApplicationController
     @item_type = 'Post'
     @content_type = @item_type
     @following = @post
+    @related = @post.find_related_tags.limit(3)
   end
   
   def update
