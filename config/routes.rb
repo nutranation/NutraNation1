@@ -5,9 +5,7 @@ NutraNation::Application.routes.draw do
       get :following, :followers, :following_tags, :following_posts
     end
   end
-  resources :posts do
-    get :autocomplete_tag_name, :on => :collection    
-  end
+  resources :posts 
   
   resources :votes
   resources :comments

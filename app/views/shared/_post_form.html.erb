@@ -10,8 +10,7 @@
   </div>
 	<p><strong>Input Tags</strong> (separate with comma)</p>
 	<div class="field">
-    <%= f.autocomplete_field :tag_list, autocomplete_tag_name_posts_path, :"data-delimiter" => ', '
-	   %>
+   <input id="post_tag_list" size="50" name="post[tag_list]" value = "<%= @post.tag_list %>" />
   </div>
 	
   <div class="actions">
