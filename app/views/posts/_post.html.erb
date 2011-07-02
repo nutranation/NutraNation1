@@ -38,4 +38,6 @@
 			</td>
   <% end %>
 </tr>
-<%= link_to "Edit Post", edit_post_path(post) %>
+<% if current_user?(post.user) || current_user.admin %>
+	<%= link_to "Edit Post", edit_post_path(post) %>
+<% end %>
