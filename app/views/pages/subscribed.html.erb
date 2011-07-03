@@ -1,5 +1,4 @@
 <% if signed_in? %>
-	 <%= javascript_include_tag :defaults, "autocomplete-rails.js"  %>
 	<%= render 'shared/feed_home' %>
 <% else %>
   <%= render 'shared/splash' %>
