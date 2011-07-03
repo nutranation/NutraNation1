@@ -6,4 +6,4 @@ log/*.log
 doc/ 
 *.swp 
 *~ .project 
-.DS_Store
+.DS_Store 
