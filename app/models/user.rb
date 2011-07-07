@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :name, :expertise, :occupation, :city, :state, :avatar, :email, :password, :password_confirmation
+  attr_accessible :name, :description, :location, :avatar, :email, :password, :password_confirmation
 
   has_many :posts,    :dependent => :destroy
   has_many :votes

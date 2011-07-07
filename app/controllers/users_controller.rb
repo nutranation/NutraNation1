@@ -9,14 +9,12 @@ class UsersController < ApplicationController
   end
   
   def show
-    if true
-      @user = User.find(params[:id])
-      @following = @user
-      @feed_items = @user.my_activity
-      @title = @user.name
-      @item_type = 'User'
-      @feed_type = true
-    end
+    @user = User.find(params[:id])
+    @following = @user
+    @feed_items = @user.my_activity
+    @title = @user.name
+    @item_type = 'User'
+    @feed_type = :my_activity
   end
   
   
