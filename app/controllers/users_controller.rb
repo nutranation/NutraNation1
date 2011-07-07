@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :except => [:show, :new, :create]
+  before_filter :authenticate_user!, :except => [:show, :new, :create]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user,   :only => :destroy
   
@@ -9,13 +9,17 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
-    @following = @user
-    @feed_items = @user.my_activity
-    @title = @user.name
-    @item_type = 'User'
-    @feed_type = true
+    if true
+      @user = User.find(params[:id])
+      @following = @user
+      @feed_items = @user.my_activity
+      @title = @user.name
+      @item_type = 'User'
+      @feed_type = true
+    end
   end
+  
+  
   def show_questions
   end
 
@@ -48,41 +52,10 @@ class UsersController < ApplicationController
     render 'show_posts'
   end
 
-  def new
-    @user  = User.new
-    @title = "Sign up"
-  end
-  
-  def create
-    @user = User.new(params[:user])
-    if @user.save
-      UserMailer.welcome_email(@user).deliver
-      sign_in @user
-      redirect_to root_path, :flash => { :success => "Welcome to the Sample App!" }
-    else
-      @title = "Sign up"
-      render 'new'
-    end
-  end
   
   def edit
     @title = "Edit Profile"
   end
-  
-  def update
-    if @user.update_attributes(params[:user])
-      redirect_to @user, :flash => { :success => "Profile updated." }
-    else
-      @title = "Edit Profile"
-      render 'edit'
-    end
-  end
-
-  def destroy
-    @user.destroy
-    redirect_to users_path, :flash => { :success => "User destroyed." }
-  end
-  
   
 
   private

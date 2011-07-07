@@ -1,18 +1,21 @@
 NutraNation::Application.routes.draw do
 
+  
+  devise_for :users
   resources :users do
     member do
       get :following, :followers, :following_tags, :following_posts
     end
   end
+  
   resources :posts 
   
   resources :votes
   resources :comments
   resources :tags
   resources :events
-  resources :sessions,      :only => [:new, :create, :destroy]
-  #resources :posts,    :only => [:create, :destroy, :show]
+
+
   resources :relationships, :only => [:create, :destroy]
   
   root :to =>'pages#subscribed'
@@ -23,8 +26,7 @@ NutraNation::Application.routes.draw do
   match '/live',   :to => "pages#home"
   match '/voted', :to => 'pages#highest_voted'
   match '/signup',  :to => 'users#new'
-  match '/signin',  :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

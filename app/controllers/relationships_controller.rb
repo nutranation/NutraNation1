@@ -1,5 +1,5 @@
 class RelationshipsController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate_user!
 
     def create 
       if params[:relationship][:item_type] == 'User'

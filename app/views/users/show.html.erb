@@ -5,7 +5,7 @@
         <%= image_tag(@user.display_image, :alt => "profile",  :width => "75px", :height => "75px") %>
         <%= @user.name %>
       </h1>
-      <%= render 'follow_form' if signed_in? %>
+      <%= render 'follow_form' if user_signed_in? %>
       <% if @user.posts.any? %>
         <%= render 'shared/feed' %>
       <% end %>

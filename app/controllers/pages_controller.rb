@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 
   def home
     @tite = "Live"
-    if signed_in?
+    if user_signed_in?
       @post = Post.new
       @feed_items = Post.order('updated_at DESC')
       @feed_type = :live
@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   
   def subscribed
     @title = "Home"
-    if signed_in?
+    if user_signed_in?
       @post = Post.new
       @feed_items = current_user.feed
       @feed_type = :subscribed
@@ -20,7 +20,7 @@ class PagesController < ApplicationController
   
   def highest_voted
     @title = "Home"
-    if signed_in?
+    if user_signed_in?
       @post = Post.new
       @feed_items = Post.highest_voted('2011-05-15')
       @feed_type = :highest_voted
