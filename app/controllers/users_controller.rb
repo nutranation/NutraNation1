@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @following = @user
-    @feed_items = @user.my_activity
+    @feed_items = @user.my_activity.page(params[:page])
     @title = @user.name
     @item_type = 'User'
     @feed_type = :my_activity

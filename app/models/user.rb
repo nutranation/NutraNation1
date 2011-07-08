@@ -43,7 +43,11 @@ class User < ActiveRecord::Base
   :length   => { :maximum => 50 }
 
   def my_activity
-    Post.joins("LEFT JOIN comments AS c
+    Post.select("DISTINCT posts.*, CASE
+        WHEN c.user_id = #{self.id} THEN c.created_at
+        WHEN posts.user_Id = #{self.id} THEN posts.created_at
+        WHEN v.user_id = #{self.id} THEN v.created_at
+     END").joins("LEFT JOIN comments AS c
     ON c.post_id = posts.id
     LEFT JOIN votes AS v
     ON v.content_id = posts.id
@@ -54,7 +58,7 @@ class User < ActiveRecord::Base
         WHEN posts.user_Id = #{self.id} THEN posts.created_at
         WHEN v.user_id = #{self.id} THEN v.created_at
      END
-     DESC").uniq
+     DESC")
   end
  
  
