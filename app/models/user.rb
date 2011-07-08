@@ -82,7 +82,14 @@ class User < ActiveRecord::Base
     tags = ids[:tags].join(", ")
     posts = ids[:posts].join(", ")
     
-    Post.select("DISTINCT posts.*").joins("LEFT JOIN comments AS c
+    Post.select("DISTINCT posts.*,
+    CASE 
+        WHEN posts.user_id IN(#{users}) THEN posts.updated_at
+        WHEN posts.id IN(#{posts}) THEN posts.updated_at
+        WHEN t.tag_id IN(#{tags}) THEN posts.updated_at
+        WHEN v.user_Id IN(#{users}) THEN v.created_at
+        WHEN c.user_id IN(#{users}) THEN c.created_at
+     END").joins("LEFT JOIN comments AS c
     ON c.post_id = posts.id
     LEFT JOIN taggings AS t
     ON t.taggable_id = posts.id
