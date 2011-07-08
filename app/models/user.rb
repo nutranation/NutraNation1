@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
     tags = ids[:tags].join(", ")
     posts = ids[:posts].join(", ")
     
-    Post.joins("LEFT JOIN comments AS c
+    Post.select("DISTINCT posts.*").joins("LEFT JOIN comments AS c
     ON c.post_id = posts.id
     LEFT JOIN taggings AS t
     ON t.taggable_id = posts.id
@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
         WHEN v.user_Id IN(#{users}) THEN v.created_at
         WHEN c.user_id IN(#{users}) THEN c.created_at
      END
-     DESC").uniq
+     DESC")
   end
   
   # helpers for subscription feed
