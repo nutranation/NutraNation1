@@ -1,8 +1,5 @@
 module UsersHelper
-  def current_user?(user)
-    user == current_user 
-  end
-  
+
   def admin?(user)
     if user.admin
       true
@@ -10,5 +7,7 @@ module UsersHelper
       false
     end
   end
+  
+  
 
 end

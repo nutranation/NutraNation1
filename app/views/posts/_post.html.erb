@@ -9,6 +9,9 @@
   </td>
   <td class="post">
 		<span class="title" style = "font-size: 120%"><strong><%= auto_link(wrap(post.title)).html_safe%></strong></span><br>
+	
+		<%= image_tag(post.picture.url(:medium), :alt => "profile",  :width => "200px", :height => "200px") %>  
+
 	<% if post.content %>
    		<span class "post"><%= auto_link(wrap(post.content)).html_safe %><span>
 	<% end %>
@@ -43,6 +46,7 @@
 				<%= render :partial => 'related_post', :collection => @related %>
 		</td>
 	<% end %>
+	
 </tr>
 <% if current_user?(post.user) || current_user.admin %>
 	<%= link_to "Edit Post", edit_post_path(post) %>

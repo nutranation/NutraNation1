@@ -1,12 +1,16 @@
-<%= form_for(@post) do |f| %>
+<%= form_for(@post, :html => { :multipart => true }) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <h1 id="post">Title</h1>
   <div class="field">
     <%= f.text_field :title, :class => "feed"  %>
   </div>
+	<div class = "field">
+		 <%= f.label :picture %><br />
+		 <%= f.file_field :picture %>
+	</div>
   <strong><p>Further Description</p></strong>
   <div class="field">
-    <%= f.text_area :content %>
+    <%= f.cktext_area :content, :height => 400, :toolbar=>'Easy' %>
   </div>
 	<p><strong>Input Tags</strong> (separate with comma)</p>
 	<div class="field">

@@ -36,12 +36,18 @@ class PostsController < ApplicationController
        render 'edit'
      end
    end
+  
 
   def destroy
     @post.destroy
     redirect_to root_path, :flash => { :success => "Post deleted!" }
   end
   
+
+   def current_user?(user)
+      user == current_user 
+   end
+   
   private
   
     def authorized_user

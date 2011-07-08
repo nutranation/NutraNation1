@@ -146,6 +146,8 @@ class User < ActiveRecord::Base
     following_ids = { :users => users, :tags => tags, :posts => posts }
   end
   
+  
+  
 
 ## controller helper methods
   def follow!(followed, item_type)

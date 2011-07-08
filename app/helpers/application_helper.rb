@@ -13,4 +13,9 @@ module ApplicationHelper
   def logo
     image_tag("logo.png", :alt => "NutraNation",  :width => "127px", :height => "70px")
   end
+  
+  def current_user?(user)
+    user == current_user 
+  end
+  
 end
