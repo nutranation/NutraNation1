@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :description, :location, :avatar, :email, :password, :password_confirmation
   
   include PgSearch
-  pg_search_scope :search_by_name, :against => :name, :using => {:tsearch => {:prefix => true}}
+  pg_search_scope :search_by_name, :against => :name
 
   has_many :posts,    :dependent => :destroy
   has_many :votes
