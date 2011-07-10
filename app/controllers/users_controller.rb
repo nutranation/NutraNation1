@@ -18,8 +18,10 @@ class UsersController < ApplicationController
   end
   
   
-  def show_questions
+  def search_users
+    @search = params[:search]
   end
+  
 
   def following
     @title = "Following"

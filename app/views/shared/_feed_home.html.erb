@@ -1,3 +1,4 @@
+
 <table class="front" summary="For signed-in users">
    <tr>
      <td class="main">
@@ -9,7 +10,6 @@
 			 <% elsif @feed_type == :highest_voted %>
 			  	<%= link_to "Subscriptions ", root_path %><%= link_to "Live ", live_path %><strong><%= link_to "Most Popular ", voted_path %></strong>
        <% end %>
-			 
        <%= render 'shared/feed' %>
      </td>
      <td class="sidebar round">

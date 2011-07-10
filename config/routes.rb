@@ -22,6 +22,7 @@ NutraNation::Application.routes.draw do
   
 
   match '/contact', :to => 'pages#contact'
+  match '/search', :to => 'pages#search'
   match '/about',   :to => 'pages#about'
   match '/live',   :to => "pages#home"
   match '/voted', :to => 'pages#highest_voted'

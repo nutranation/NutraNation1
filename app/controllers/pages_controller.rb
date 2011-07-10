@@ -34,4 +34,11 @@ class PagesController < ApplicationController
     @title = "About"
   end
   
+  def search
+    @search = params[:search]
+    @feed_items = Post.search_by_content(@search).page(params[:page])
+    @users = User.search_by_name(@search)
+    @feed_type = :search
+  end
+  
 end

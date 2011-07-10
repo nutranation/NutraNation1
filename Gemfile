@@ -11,6 +11,7 @@ gem 'acts-as-taggable-on'
 gem 'devise'
 gem 'ckeditor'
 gem 'kaminari'
+gem 'pg_search'
 
 
 
