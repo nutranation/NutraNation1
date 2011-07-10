@@ -72,11 +72,7 @@ class Post < ActiveRecord::Base
     item = item.downcase  
     Post.joins("LEFT JOIN comments AS c ON c.post_id = posts.id").where("lower(posts.title) LIKE '%#{item}%' 
                                                               OR lower(posts.content) LIKE '%#{item}%' 
-                                                              OR lower(c.content) LIKE '%#{item}%'")
-                                                              .order("CASE
-                                                                        WHEN lower(c.content) LIKE '%#{item}%' THEN c.created_at
-                                                                        ELSE posts.created_at
-                                                                      END").uniq
+                                                              OR lower(c.content) LIKE '%#{item}%'").order("CASE WHEN lower(c.content) LIKE '%#{item}%' THEN c.created_at ELSE posts.created_at END").uniq
                                                                         
   end
   
