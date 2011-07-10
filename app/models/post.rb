@@ -69,7 +69,7 @@ class Post < ActiveRecord::Base
   end
   
   def self.search(item)
-    item = item.downcase 
+    item = item.downcase  
     Post.joins("LEFT JOIN comments AS c ON c.post_id = posts.id").where("lower(posts.title) LIKE '%#{item}%' 
                                                               OR lower(posts.content) LIKE '%#{item}%' 
                                                               OR lower(c.content) LIKE '%#{item}%'")
