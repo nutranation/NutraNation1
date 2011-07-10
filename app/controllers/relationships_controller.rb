@@ -5,6 +5,7 @@ class RelationshipsController < ApplicationController
       if params[:relationship][:item_type] == 'User'
         @following  = User.find(params[:relationship][:followed_id])
         @item_type = 'User'
+        Notification.create(:user => @following, :item_type => @item_type, :item_id => current_user.id)
       elsif  params[:relationship][:item_type] == 'Tag' 
         @following = Tag.find(params[:relationship][:followed_id])
         @item_type = 'Tag'

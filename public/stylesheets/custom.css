@@ -329,3 +329,10 @@ span.Add-Event{
 	font-size: 250%;
 	
 }
+
+
+div#notifications {
+	display:none;
+}
+
+

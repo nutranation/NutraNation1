@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @refresh = "/posts/#{@comment.post_id}"
     if @comment.save
       redirect_to( @refresh, :flash => { :success => "Comment created!" })
+      @comment.post.create_notifications(@comment)
     else
       redirect_to( @refresh)
     end

@@ -67,6 +67,25 @@
 			});
 			</script>
 		
+			<script type="text/javascript">
+			$(document).ready(function(){
+			  $("button").click(function(){
+					$("div#notifications").toggle();
+			  });
+			});
+			</script>
+			<script type="text/javascript">
+			$(document).ready(function(){
+			  $("button").trigger(function(){
+					$("div#count").html("
+					Notifications: <%= current_user.notification_unseen %> 	<% @seen = true %>
+					
+					" );
+			  });
+			});
+			</script>
+			
+		
   </head>
   <body>
     <div class="container">

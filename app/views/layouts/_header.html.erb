@@ -16,6 +16,15 @@
     </ul>
 		<% if user_signed_in? %>
 			<%= render 'shared/search' %>
+			<div id = 'count'>
+				
+				
+				Notifications: <%= @notifications; current_user.notification_unseen %> </div><button>click here</button><br>
+			
+			<div id = 'notifications'>
+				<%= render :partial => 'shared/notification', :collection => current_user.notifications %>
+			</div>
 		<% end %>
+		
   </nav>
 </header>

@@ -21,13 +21,20 @@ class User < ActiveRecord::Base
   
   has_many :posts,    :dependent => :destroy
   has_many :votes
+  has_many :notifications
   has_many :comments,    :dependent => :destroy
   has_many :events,    :dependent => :destroy
   has_many :relationships, :dependent => :destroy,
   :foreign_key => "follower_id"
+  
+  
+  
+  
   has_many :reverse_relationships, :dependent => :destroy,
   :foreign_key => "followed_id",
   :class_name => "Relationship"
+  
+  
   has_many :following, :through => :relationships, :source => :followed
   has_many :followers, :through => :reverse_relationships,
   :source  => :follower
@@ -151,6 +158,13 @@ class User < ActiveRecord::Base
     User.where("lower(users.name) LIKE '%#{item}%'") 
   end
   
+  def notification_unseen
+    Notification.where("user_id = ? AND seen is null", self.id).size
+  end
+  
+  def notifications
+    Notification.where("user_id = ?", self.id).order('created_at DESC').limit(5)
+  end
   
   
   

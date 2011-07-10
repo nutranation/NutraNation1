@@ -17,6 +17,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :comments, :dependent => :destroy
   has_many :votes, :as => :content, :dependent => :destroy
+  has_many :notifications, :as => :item, :dependent => :destroy
   
   validates :title, :presence => true, :length => { :maximum => 600 }
   validates :user_id, :presence => true
@@ -51,7 +52,7 @@ class Post < ActiveRecord::Base
               ON v.content_id = c.id
                 AND v.content_type = 'Comment'
               GROUP BY c.id) AS score
-    ON comments.id = score.id").where("comments.post_id = ?", self).order("score.score DESC")
+    ON comments.id = score.id").where("comments.post_id = ?", self).order("score.score DESC, comments.created_at ASC")
   end
   
   def up_voted(user)
@@ -75,6 +76,20 @@ class Post < ActiveRecord::Base
                                                               OR lower(c.content) LIKE '%#{item}%'").order("CASE WHEN lower(c.content) LIKE '%#{item}%' THEN c.created_at ELSE posts.created_at END").uniq
                                                                         
   end
+  
+  def followers
+    followers = [self.user_id]
+    Relationship.where("item_type = 'Post' AND followed_id = ?", self.id).each do |r|
+      followers << r.follower_id
+    end
+    followers.uniq
+  end
+  
+  def create_notifications(comment)
+    self.followers.each do |f|
+      Notification.create(:user_id => f, :item => comment)
+    end
+  end 
   
   
 end
