@@ -12,7 +12,8 @@
 
 class Post < ActiveRecord::Base
   include PgSearch
-  pg_search_scope :search_by_content, :against => [:title, :content]
+  pg_search_scope :search_by_content, :against => [:title, :content], :using => :tsearch 
+        
   
   attr_accessible :title, :content, :picture
   
