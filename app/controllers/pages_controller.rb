@@ -13,7 +13,7 @@ class PagesController < ApplicationController
     @title = "Home"
     if user_signed_in?
       @post = Post.new
-      @feed_items = current_user.feed.page(params[:page])
+      @feed_items = Kaminari.paginate_array(current_user.feed).page(params[:page])
       @feed_type = :subscribed
     end
   end
@@ -22,7 +22,7 @@ class PagesController < ApplicationController
     @title = "Home"
     if user_signed_in?
       @post = Post.new
-      @feed_items = Post.highest_voted('2011-05-15').page(params[:page])
+      @feed_items = Kaminari.paginate_array(Post.highest_voted('2011-05-15')).page(params[:page])
       @feed_type = :highest_voted
     end
   end
@@ -36,8 +36,8 @@ class PagesController < ApplicationController
   
   def search
     @search = params[:search]
-    @feed_items = Post.search_by_content(@search).page(params[:page])
-    @users = User.search_by_name(@search)
+    @feed_items = Kaminari.paginate_array(Post.search(@search)).page(params[:page])
+    @users = User.search(@search).page(params[:page])
     @feed_type = :search
   end
   

@@ -11,9 +11,6 @@
 #
 
 class Post < ActiveRecord::Base
-  include PgSearch
-  pg_search_scope :search_by_content, :against => [:title, :content], :using => {:tsearch => {:prefix => true}}
-        
   
   attr_accessible :title, :content, :picture
   
@@ -38,7 +35,7 @@ class Post < ActiveRecord::Base
                   posts.title, posts.content, posts.user_id, 
                   posts.created_at, posts.updated_at, posts.picture_file_name, posts.picture_content_type,
                   posts.picture_file_size, posts.picture_updated_at").
-                  order("COALESCE(sum(v.value), 0) DESC")
+                  order("COALESCE(sum(v.value), 0) DESC").uniq
   end
   
   def find_tags
@@ -69,6 +66,18 @@ class Post < ActiveRecord::Base
       end
     end
     match
+  end
+  
+  def self.search(item)
+    item = item.downcase 
+    Post.joins("LEFT JOIN comments AS c ON c.post_id = posts.id").where("lower(posts.title) LIKE '%#{item}%' 
+                                                              OR lower(posts.content) LIKE '%#{item}%' 
+                                                              OR lower(c.content) LIKE '%#{item}%'")
+                                                              .order("CASE
+                                                                        WHEN lower(c.content) LIKE '%#{item}%' THEN c.created_at
+                                                                        ELSE posts.created_at
+                                                                      END").uniq
+                                                                        
   end
   
   

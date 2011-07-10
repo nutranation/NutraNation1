@@ -19,9 +19,6 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :description, :location, :avatar, :email, :password, :password_confirmation
   
-  include PgSearch
-  pg_search_scope :search_by_name, :against => :name
-
   has_many :posts,    :dependent => :destroy
   has_many :votes
   has_many :comments,    :dependent => :destroy
@@ -46,11 +43,7 @@ class User < ActiveRecord::Base
   :length   => { :maximum => 50 }
 
   def my_activity
-    Post.select("DISTINCT posts.*, CASE
-        WHEN c.user_id = #{self.id} THEN c.created_at
-        WHEN posts.user_Id = #{self.id} THEN posts.created_at
-        WHEN v.user_id = #{self.id} THEN v.created_at
-     END").joins("LEFT JOIN comments AS c
+    Post.joins("LEFT JOIN comments AS c
     ON c.post_id = posts.id
     LEFT JOIN votes AS v
     ON v.content_id = posts.id
@@ -61,7 +54,7 @@ class User < ActiveRecord::Base
         WHEN posts.user_Id = #{self.id} THEN posts.created_at
         WHEN v.user_id = #{self.id} THEN v.created_at
      END
-     DESC")
+     DESC").uniq
   end
  
  
@@ -89,14 +82,7 @@ class User < ActiveRecord::Base
     tags = ids[:tags].join(", ")
     posts = ids[:posts].join(", ")
     
-    Post.select("DISTINCT posts.*,
-    CASE 
-        WHEN posts.user_id IN(#{users}) THEN posts.updated_at
-        WHEN posts.id IN(#{posts}) THEN posts.updated_at
-        WHEN t.tag_id IN(#{tags}) THEN posts.updated_at
-        WHEN v.user_Id IN(#{users}) THEN v.created_at
-        WHEN c.user_id IN(#{users}) THEN c.created_at
-     END").joins("LEFT JOIN comments AS c
+    Post.joins("LEFT JOIN comments AS c
     ON c.post_id = posts.id
     LEFT JOIN taggings AS t
     ON t.taggable_id = posts.id
@@ -113,7 +99,7 @@ class User < ActiveRecord::Base
         WHEN v.user_Id IN(#{users}) THEN v.created_at
         WHEN c.user_id IN(#{users}) THEN c.created_at
      END
-     DESC")
+     DESC").uniq
   end
   
   # helpers for subscription feed
@@ -159,6 +145,13 @@ class User < ActiveRecord::Base
     
     following_ids = { :users => users, :tags => tags, :posts => posts }
   end
+  
+  def self.search(item)
+    item = item.downcase 
+    User.where("lower(users.name) LIKE '%#{item}%'") 
+  end
+  
+  
   
   
   

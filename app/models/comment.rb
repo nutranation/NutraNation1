@@ -5,6 +5,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :post, :touch => true
   has_many :votes, :as => :content, :dependent => :destroy
+  has_many :votes, :as => :content, :dependent => :destroy
   
   validates :content, :presence => true, :length => { :maximum => 600 }
   validates :user_id, :presence => true
