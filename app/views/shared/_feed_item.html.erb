@@ -29,6 +29,8 @@
 			
 			<% if @item_type == 'User' %>
 				<% comment = Comment.where("post_id = ? AND user_id = ?", feed_item.id, @user.id).last %>
+			<% elsif @feed_type == :search %>
+				<% comment = Comment.where("post_id = ? AND lower(content) LIKE '%#{@search}%'", feed_item.id).last%>
 			<% else %>
 				<% comment = feed_item.comments.last%>
 			<% end %>

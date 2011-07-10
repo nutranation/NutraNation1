@@ -35,7 +35,7 @@ class PagesController < ApplicationController
   end
   
   def search
-    @search = params[:search]
+    @search = params[:search].downcase
     @feed_items = Kaminari.paginate_array(Post.search(@search)).page(params[:page])
     @users = User.search(@search).page(params[:page])
     @feed_type = :search
