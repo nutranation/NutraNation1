@@ -1,8 +1,8 @@
 <div class="user_info">
   <a href="<%= user_path(current_user) %>">
-    <%= image_tag(current_user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
+    <%= image_tag(current_user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %> 
     <span class="user_name">
-      <%= current_user.name %>
+      <%= current_user.name %><br>
     </span>
     <span class="posts">
       <%= pluralize(current_user.posts.count, "post") %>

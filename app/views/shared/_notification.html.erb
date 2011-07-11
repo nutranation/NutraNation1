@@ -1,7 +1,8 @@
 <% if notification.item_type == 'User' %>
-	<% name = User.find(notification.item_id).name %>
-	<%= name %> is now following you<br>
+	<% user = User.find(notification.item_id) %>
+	<%= link_to user.name, user %> is now following you<br>
 <% elsif notification.item_type == 'Comment' %>
-	<% name = Comment.find(notification.item_id).user.name %>
-	<%= name %> commented on a post you are following <br>
+	<% comment = Comment.find(notification.item_id) %>
+	<% post = %>
+	<%= link_to comment.user.name, comment.user %> commented on a <%= link_to 'post', comment.post %> you are following <br>
 <% end %>
