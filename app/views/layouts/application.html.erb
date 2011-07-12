@@ -7,6 +7,7 @@
     <%= javascript_include_tag :defaults, "autocomplete-rails.js", "jquery.ui.core", "jquery.ui.widget.js", "jquery.ui.position"  %>
     <link rel="stylesheet" href="/stylesheets/jquery.ui.all.css"> 
 		<script src="/javascripts/jquery.js"></script> 
+		<script src="/javascripts/rails.js"></script> 
 		<script src="/javascripts/jquery.ui.core.js"></script> 
 		<script src="/javascripts/jquery.ui.widget.js"></script> 
 		<script src="/javascripts/jquery.ui.position.js"></script> 
@@ -70,20 +71,11 @@
 			<script type="text/javascript">
 			$(document).ready(function(){
 			  $("button").click(function(){
-					$("div#notifications").toggle();
+					$("div#notifications").hide();
 			  });
 			});
 			</script>
-			<script type="text/javascript">
-			$(document).ready(function(){
-			  $("button").trigger(function(){
-					$("div#count").html("
-					Notifications: <%= current_user.notification_unseen %> 	<% @seen = true %>
-					
-					" );
-			  });
-			});
-			</script>
+			
 			
 		
   </head>

@@ -87,7 +87,7 @@ class Post < ActiveRecord::Base
   
   def create_notifications(comment)
     self.followers.each do |f|
-      Notification.create(:user_id => f, :item => comment)
+      Notification.create(:user_id => f, :item => comment, :creator => comment.user.id)
     end
   end 
   

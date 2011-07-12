@@ -14,6 +14,7 @@ NutraNation::Application.routes.draw do
   resources :comments
   resources :tags
   resources :events
+  resources :notifications
 
 
   resources :relationships, :only => [:create, :destroy]
@@ -27,6 +28,7 @@ NutraNation::Application.routes.draw do
   match '/live',   :to => "pages#home"
   match '/voted', :to => 'pages#highest_voted'
   match '/signup',  :to => 'users#new'
+  match 'notifications/seen', :to => "notifications#seen"
 
 
   # The priority is based upon order of creation:

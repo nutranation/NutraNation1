@@ -163,7 +163,11 @@ class User < ActiveRecord::Base
   end
   
   def notifications
-    Notification.where("user_id = ?", self.id).order('created_at DESC').limit(5)
+    ne = Notification.where("user_id = ? AND seen is null AND (creator != ? OR creator IS null)", self.id, self.id).order('created_at DESC').limit(5)
+    unless ne.first
+      ne = Notification.where("user_id = ? AND (creator != ? OR creator IS null)", self.id, self.id).order('created_at DESC').limit(5)
+    end
+    ne
   end
   
   
