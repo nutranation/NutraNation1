@@ -1,6 +1,6 @@
 $("td#<%= @content.id %>.<%= @content_type %>").html("<%= Vote.count(@content_type,  @content.id) %> Score");
 <% if @content_type == 'Comment'%>
-	$("#container.comments").html("<%= escape_javascript( render :partial => 'shared/comment', :collection => @c_comment) %>");
+	$("#container.comments").html(" , :collection => @c_comment) %>");
 	$("td#<%= @content.id %>.vote").html("");
 <% end %>
 $("td.post-vote").html("");

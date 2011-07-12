@@ -1,4 +1,8 @@
-Unseen Notifications: <%= current_user.notification_unseen %> 
-<% notification_ids =   current_user.notifications.map(&:id).join(', ')%>
-<% sql = "UPDATE notifications SET SEEN = true where id IN(#{notification_ids})" %>
-<% User.connection.select_all(sql) %>
+Unseen Notifications: <%= current_user.notification_unseen %>
+<% unless defined?(i) %>
+	<% notification_ids =   current_user.notifications.map(&:id).join(', ')%>
+	<% sql = "UPDATE notifications SET SEEN = true where id IN(#{notification_ids})" %>
+	<% User.connection.select_all(sql) %>
+	<% i = 1 %>
+<% end %>
+
