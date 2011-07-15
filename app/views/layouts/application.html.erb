@@ -15,6 +15,7 @@
 		<%= javascript_include_tag :ckeditor %>
 		<% @all_tags_js = Tag.all %>
 		<% @last_tags_js = @all_tags_js.last  %>
+		<% @all_users = User.all %>
 	
 		
 		<script>
@@ -69,12 +70,33 @@
 			</script>
 		
 			<script type="text/javascript">
-			$(document).ready(function(){
-			  $("button").click(function(){
-					$("div#notifications").hide();
-			  });
+
+			var source = [
+				<% @all_users.each do |u| %>
+					{label: "<%= u.name  %>",
+					 value: "/users/<%= u.id %>" },
+				<% end %>
+				<% @all_tags_js.each do |t| %>
+					<% unless t == @last_tags_js  %> 
+							{label: "<%= t.name  %> (<%= t.count %>)",
+							 value: "/tags/<%= t.id %>" },
+					<% end %>
+				<% end %>
+				{label: "<%= @last_tags_js.name  %> (<%= @last_tags_js.count %>)",
+				 value: "/tags/<%= @last_tags_js.id %>" }
+			];
+			
+			$(document).ready(function() {
+			    $("#search-form").autocomplete({
+			        source: source,
+			        select: function( event, ui ) { 
+			            window.location.href = ui.item.value;
+			        }
+			    });
 			});
 			</script>
+			
+			
 			
 			
 		

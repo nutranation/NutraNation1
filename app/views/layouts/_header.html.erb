@@ -21,7 +21,6 @@
 			
 				Unseen Notifications: <%=  current_user.notification_unseen %> </div>
 				<%= button_to "show", {:action => "seen", :controller=>"notifications"}, :remote => true %>
-				<button>hide</button><br>
 			
 			<div id = 'notifications'>
 				<%= render :partial => 'shared/notification', :collection => current_user.notifications %>
