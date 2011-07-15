@@ -24,6 +24,8 @@ class MessagesController < ApplicationController
   
   def show
     @message = Message.find(params[:id])
+    @message.seen = true
+    @message.save!
   end
   
 end

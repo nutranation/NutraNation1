@@ -1,5 +1,7 @@
 <% if @inbox == :inbox %>
-	From: <%= link_to preview.sender.name, user_path(preview.sender) %>
+	
+	<% unless preview.seen %>	Unread<% end %> From: <%= link_to preview.sender.name, user_path(preview.sender) %>
+	
 <% else %>
 	From: <%= link_to preview.receiver.name, user_path(preview.receiver) %>
 <% end %>

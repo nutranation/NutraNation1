@@ -3,5 +3,6 @@
 <% else %>
 	<%= link_to 'Messages', inbox_message_path %><strong>Sent</strong>
 <% end %><br>
+Unread Messages: <%= current_user.unread_messages %><br>
 <%= link_to 'Send a Message', new_message_path %><br>
 <%= render :partial => 'preview', :collection => @messages %>

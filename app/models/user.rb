@@ -178,6 +178,10 @@ class User < ActiveRecord::Base
     ne
   end
   
+  def unread_messages
+    Message.where("receiver_id = ? AND seen is not true", self.id).size
+  end
+  
   
   
   
