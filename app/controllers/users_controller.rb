@@ -17,6 +17,10 @@ class UsersController < ApplicationController
     @feed_type = :my_activity
   end
   
+  def destroy
+     @user.destroy
+     redirect_to users_path, :flash => { :success => "User destroyed." }
+   end
   
 
   
@@ -61,6 +65,10 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
+    end
+    
+    def current_user?(user)
+      user == current_user
     end
     
     def admin_user
