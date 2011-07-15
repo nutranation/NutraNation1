@@ -1,0 +1,5 @@
+Sent By:<%= link_to @message.sender.name, user_path(@message.sender) %><br>
+Subject: <%=  @message.subject %><br>
+<% if @message.body %>
+	Body: <%= @message.body %>
+<% end %>

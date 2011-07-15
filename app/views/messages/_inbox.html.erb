@@ -1,0 +1,7 @@
+<% if @inbox == :inbox %>
+	<strong>Messages</strong>   <%= link_to 'Sent', sent_message_path %>
+<% else %>
+	<%= link_to 'Messages', inbox_message_path %><strong>Sent</strong>
+<% end %><br>
+<%= link_to 'Send a Message', new_message_path %><br>
+<%= render :partial => 'preview', :collection => @messages %>

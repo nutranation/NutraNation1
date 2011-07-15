@@ -8,6 +8,12 @@ NutraNation::Application.routes.draw do
     end
   end
   
+  resources :messages do
+    member do
+      get :inbox, :sent
+    end
+  end
+  
   resources :posts 
   
   resources :votes

@@ -1,0 +1,6 @@
+<% if @inbox == :inbox %>
+	From: <%= link_to preview.sender.name, user_path(preview.sender) %>
+<% else %>
+	From: <%= link_to preview.receiver.name, user_path(preview.receiver) %>
+<% end %>
+Subject:<%= link_to preview.subject, message_path(preview) %> <br>

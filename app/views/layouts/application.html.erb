@@ -13,89 +13,147 @@
 		<script src="/javascripts/jquery.ui.position.js"></script> 
 		<script src="/javascripts/jquery.ui.autocomplete.js"></script> 
 		<%= javascript_include_tag :ckeditor %>
-		<% @all_tags_js = Tag.all %>
-		<% @last_tags_js = @all_tags_js.last  %>
-		<% @all_users = User.all %>
+		<% if current_user %>
+			<% @all_tags_js = Tag.all %>
+			<% @last_tags_js = @all_tags_js.last  %>
+			<% @all_users = User.where('id != ?', current_user.id) %>
+			<% @last_user =  @all_users.last  %>
 	
 		
-		<script>
-			$(function() {
-					var availableTags = [
-						<% @all_tags_js.each do |t| %>
-							<% unless t == @last_tags_js  %> 
-									"<%= t.name  %> (<%= t.count %>)",
+			<script>
+				$(function() {
+						var availableTags = [
+							<% @all_tags_js.each do |t| %>
+								<% unless t == @last_tags_js  %> 
+										"<%= t.name  %> (<%= t.count %>)",
+								<% end %>
 							<% end %>
-						<% end %>
-						"<%= @last_tags_js.name  %>  (<%= @last_tags_js.count %>)"
-					];
-				function split( val ) {
-					return val.split( /,\s*/ );
-				}
-				function extractLast( term ) {
-					return split( term ).pop();
-				}
+							"<%= @last_tags_js.name  %>  (<%= @last_tags_js.count %>)"
+						];
+					function split( val ) {
+						return val.split( /,\s*/ );
+					}
+					function extractLast( term ) {
+						return split( term ).pop();
+					}
 
-				$( "#post_tag_list" )
-					// don't navigate away from the field on tab when selecting an item
-					.bind( "keydown", function( event ) {
-						if ( event.keyCode === $.ui.keyCode.TAB &&
-								$( this ).data( "autocomplete" ).menu.active ) {
-							event.preventDefault();
+					$( "#post_tag_list" )
+						// don't navigate away from the field on tab when selecting an item
+						.bind( "keydown", function( event ) {
+							if ( event.keyCode === $.ui.keyCode.TAB &&
+									$( this ).data( "autocomplete" ).menu.active ) {
+								event.preventDefault();
+							}
+						})
+						.autocomplete({
+							minLength: 0,
+							source: function( request, response ) {
+								// delegate back to autocomplete, but extract the last term
+								response( $.ui.autocomplete.filter(
+									availableTags, extractLast( request.term ) ) );
+							},
+							focus: function() {
+								// prevent value inserted on focus
+								return false;
+							},
+							select: function( event, ui ) {
+								var terms = split( this.value );
+								// remove the current input
+								terms.pop();
+								// add the selected item
+								terms.push( ui.item.value );
+								// add placeholder to get the comma-and-space at the end
+								terms.push( "" );
+								this.value = terms.join( ", " );
+								return false;
+							}
+						});
+				});
+				</script>
+			
+				<script>
+					$(function() {
+							var availableTags =  [
+
+								<% @all_users.each do |u| %>
+									<% unless u == @last_user  %> 
+											 "<%= u.name  %>",
+									<% end %>
+								<% end %>
+								"<%= @last_user.name  %>" 
+							];
+						
+						function split( val ) {
+							return val.split( /,\s*/ );
 						}
-					})
-					.autocomplete({
-						minLength: 0,
-						source: function( request, response ) {
-							// delegate back to autocomplete, but extract the last term
-							response( $.ui.autocomplete.filter(
-								availableTags, extractLast( request.term ) ) );
-						},
-						focus: function() {
-							// prevent value inserted on focus
-							return false;
-						},
-						select: function( event, ui ) {
-							var terms = split( this.value );
-							// remove the current input
-							terms.pop();
-							// add the selected item
-							terms.push( ui.item.value );
-							// add placeholder to get the comma-and-space at the end
-							terms.push( "" );
-							this.value = terms.join( ", " );
-							return false;
+						function extractLast( term ) {
+							return split( term ).pop();
 						}
+
+						$( "#message_receiver" )
+							// don't navigate away from the field on tab when selecting an item
+							.bind( "keydown", function( event ) {
+								if ( event.keyCode === $.ui.keyCode.TAB &&
+										$( this ).data( "autocomplete" ).menu.active ) {
+									event.preventDefault();
+								}
+							})
+							.autocomplete({
+								minLength: 0,
+								source: function( request, response ) {
+									// delegate back to autocomplete, but extract the last term
+									response( $.ui.autocomplete.filter(
+										availableTags, extractLast( request.term ) ) );
+								},
+								focus: function() {
+									// prevent value inserted on focus
+									return false;
+								},
+								select: function( event, ui ) {
+									var terms = split( this.value );
+									// remove the current input
+									terms.pop();
+									// add the selected item
+									terms.push( ui.item.value );
+									// add placeholder to get the comma-and-space at the end
+									terms.push( "" );
+									this.value = terms.join( "" );
+									return false;
+								}
+							});
 					});
-			});
-			</script>
+					</script>
 		
-			<script type="text/javascript">
+				<script type="text/javascript">
 
-			var source = [
-				<% @all_users.each do |u| %>
-					{label: "<%= u.name  %>",
-					 value: "/users/<%= u.id %>" },
-				<% end %>
-				<% @all_tags_js.each do |t| %>
-					<% unless t == @last_tags_js  %> 
-							{label: "<%= t.name  %> (<%= t.count %>)",
-							 value: "/tags/<%= t.id %>" },
+				var source = [
+					<% @all_users.each do |u| %>
+						{label: "<%= u.name  %>",
+						 value: "/users/<%= u.id %>" },
 					<% end %>
-				<% end %>
-				{label: "<%= @last_tags_js.name  %> (<%= @last_tags_js.count %>)",
-				 value: "/tags/<%= @last_tags_js.id %>" }
-			];
+					<% @all_tags_js.each do |t| %>
+						<% unless t == @last_tags_js  %> 
+								{label: "<%= t.name  %> (<%= t.count %>)",
+								 value: "/tags/<%= t.id %>" },
+						<% end %>
+					<% end %>
+					{label: "<%= @last_tags_js.name  %> (<%= @last_tags_js.count %>)",
+					 value: "/tags/<%= @last_tags_js.id %>" }
+				];
 			
-			$(document).ready(function() {
-			    $("#search-form").autocomplete({
-			        source: source,
-			        select: function( event, ui ) { 
-			            window.location.href = ui.item.value;
-			        }
-			    });
-			});
-			</script>
+				$(document).ready(function() {
+				    $("#search-form").autocomplete({
+				        source: source,
+				        select: function( event, ui ) { 
+				            window.location.href = ui.item.value;
+				        }
+				    });
+				});
+				</script>
+		<% end %>
 			
+				
+
 			
 			
 			
