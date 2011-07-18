@@ -15,9 +15,10 @@
     </ul>
 		<% if user_signed_in? %>
 			<%= render 'shared/search' %>
+		<%= link_to "Unseen Messages: #{current_user.unread_messages}", "/messages/#{current_user.id}/inbox"%><br>
 			<div id = 'count'>
 				
-				<%= link_to "Unseen Messages: #{current_user.unread_messages}", "/messages/#{current_user.id}/inbox"%><br>
+				
 				Unseen Notifications: <%=  current_user.notification_unseen %> </div>
 				<%= button_to "show", {:action => "seen", :controller=>"/notifications"}, :remote => true %>
 				
