@@ -26,6 +26,8 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     @message.seen = true
     @message.save!
+    unless current_user
+      redirect_to root_path
+    end
   end
-  
 end
