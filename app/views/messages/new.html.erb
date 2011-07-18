@@ -2,7 +2,7 @@
   <%= render 'shared/error_messages', :object => f.object %>
   
 	Send to:<input id="message_receiver" name="message[receiver]" /><br>
-  Subject:<%= f.text_field :subject, %><br>
+  Subject:<%= f.text_field :subject %><br>
   Body:<%= f.text_area :body  %>
 
   <div class="actions">
