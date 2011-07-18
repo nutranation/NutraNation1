@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :description, :location, :avatar, :email, :password, :password_confirmation
   
+  after_create :send_welcome_mail
+  
   has_many :posts,    :dependent => :destroy
   has_many :votes
   has_many :notifications
@@ -180,6 +182,10 @@ class User < ActiveRecord::Base
   
   def unread_messages
     Message.where("receiver_id = ? AND seen is not true", self.id).size
+  end
+  
+  def send_welcome_mail
+    UserMailer.welcome_email(self).deliver
   end
   
   

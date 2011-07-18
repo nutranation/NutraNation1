@@ -6,6 +6,9 @@ class UserMailer < ActionMailer::Base
       @user = user
       @url  = "http://nutranation.heroku.com/"
       mail(:to => user.email,
-           :subject => "Welcome to My NutraNation")
+           :subject => "Welcome to NutraNation")
   end
+  def comment_email(user)
+  end
+  
 end
