@@ -30,7 +30,7 @@ class UserMailer < ActionMailer::Base
   def message_email(message)
         @sender = message.sender
         @user = message.receiver
-        @subject = message.subject
+        @message = message
         @url  = "http://nutranation.heroku.com/messages/#{message.id}"
         mail(:to => @user.email,
            :subject => "#{@sender.name} sent you a message")
