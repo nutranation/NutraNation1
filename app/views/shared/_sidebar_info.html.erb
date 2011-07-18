@@ -1,7 +1,9 @@
 <% if @user.description %>
-  <strong>Description:</strong>  <%= @user.description %><br />
+  <strong>Description:</strong>  <%= @user.description %><br>
 <% end %>
 <% if @user.location  %>
-  <strong>Location:</strong>  <%= @user.location %> <br />
-<% end %>
-<strong>Posts:</strong> <%= @user.posts.count %>
+  <strong>Location:</strong>  <%= @user.location %> 
+<% end %><br>
+<strong>Posts:</strong> <%= @user.posts.count %><br>
+
+<%= link_to 'Send a Message', new_message_path %>

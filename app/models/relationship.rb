@@ -20,4 +20,13 @@ class Relationship < ActiveRecord::Base
   validates :follower_id, :presence => true
   validates :followed_id, :presence => true
   validates :item_type, :presence => true
+  
+  after_create :send_follower_email
+  
+  def send_follower_email
+    if self.item_type == 'User'
+      UserMailer.follower_email(self).deliver
+    end
+  end
+  
 end

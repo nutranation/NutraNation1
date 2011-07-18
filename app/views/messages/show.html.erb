@@ -1,5 +1,9 @@
-Sent By:<%= link_to @message.sender.name, user_path(@message.sender) %><br>
-Subject: <%=  @message.subject %><br>
-<% if @message.body %>
-	Body: <%= @message.body %>
+<% if current_user == @message.sender || current_user == @message.receiver %>
+	Sent By:<%= link_to @message.sender.name, user_path(@message.sender) %><br>
+	Subject: <%=  @message.subject %><br>
+	<% if @message.body %>
+		Body: <%= @message.body %>
+	<% end %>
+<% else %>
+	You do not have permission to read this message
 <% end %>

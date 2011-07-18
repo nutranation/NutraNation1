@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :description, :location, :avatar, :email, :password, :password_confirmation
   
-  after_create :send_welcome_mail
+  after_create :send_welcome_email
   
   has_many :posts,    :dependent => :destroy
   has_many :votes
@@ -184,7 +184,7 @@ class User < ActiveRecord::Base
     Message.where("receiver_id = ? AND seen is not true", self.id).size
   end
   
-  def send_welcome_mail
+  def send_welcome_email
     UserMailer.welcome_email(self).deliver
   end
   
@@ -204,7 +204,8 @@ class User < ActiveRecord::Base
   def vote!(content, content_type)
     votes.create!(:content_id => content.id, :content_type => content_type)
   end
-
+  
+  
 
 
 end

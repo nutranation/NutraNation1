@@ -6,7 +6,6 @@
       <% if user_signed_in? %>
 				<li><%= link_to "Tags", tags_path %></li>
         <li><%= link_to "Profile", current_user %></li>
-				<li><%= link_to "Messages", "/messages/#{current_user.id}/inbox" %></li>
         <li><%= link_to "Users", users_path %></li>
         <li><%= link_to "Settings", edit_user_registration_path %></li>
         <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete%></li>
@@ -18,9 +17,10 @@
 			<%= render 'shared/search' %>
 			<div id = 'count'>
 				
-			
+				<%= link_to "Unseen Messages: #{current_user.unread_messages}", "/messages/#{current_user.id}/inbox"%><br>
 				Unseen Notifications: <%=  current_user.notification_unseen %> </div>
-				<%= button_to "show", {:action => "seen", :controller=>"notifications"}, :remote => true %>
+				<%= button_to "show", {:action => "seen", :controller=>"/notifications"}, :remote => true %>
+				
 			
 			<div id = 'notifications'>
 				<%= render :partial => 'shared/notification', :collection => current_user.notifications %>
