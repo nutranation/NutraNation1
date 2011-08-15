@@ -1,6 +1,8 @@
 NutraNation::Application.routes.draw do
 
   
+  resources :authentications
+
   devise_for :users
   resources :users do
     member do
@@ -35,6 +37,7 @@ NutraNation::Application.routes.draw do
   match '/voted', :to => 'pages#highest_voted'
   match '/signup',  :to => 'users#new'
   match 'notifications/seen', :to => "notifications#seen"
+  match '/auth/:provider/callback' => 'authentications#create'
 
 
   # The priority is based upon order of creation:

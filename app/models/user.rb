@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   
   after_create :send_welcome_email
   
+  has_many :authentications
+  
   has_many :posts,    :dependent => :destroy
   has_many :votes
   has_many :notifications
