@@ -1,7 +1,6 @@
 NutraNation::Application.routes.draw do
 
   
-  resources :authentications
 
   devise_for :users
   resources :users do
