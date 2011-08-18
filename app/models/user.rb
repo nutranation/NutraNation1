@@ -204,6 +204,16 @@ class User < ActiveRecord::Base
     end
   end
   
+  def find_or_create_for_twitter(response)
+       data = response['extra']['user_hash']
+     
+         # Create a user with a stub password. 
+       user = User.create(:email => "twitter+#{data["id"]}@example.com", 
+                         :password => Devise.friendly_token[0,20])
+      user
+       
+   end
+  
   
 
 ## controller helper methods
