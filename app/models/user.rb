@@ -198,8 +198,10 @@ class User < ActiveRecord::Base
         user.save
       end
       user
-    else # Create a user with a stub password. 
-      User.create(:email => data["email"], :password => Devise.friendly_token[0,20], :name => data["name"], :location => data["location"]["name"], :facebook_id => data["id"]) 
+    elsif data["email"]  && data["name"] # Create a user with a stub password. 
+      User.create(:email => data["email"], :password => Devise.friendly_token[0,20], :name => data["name"], :facebook_id => data["id"]) 
+    else
+      redirect_to new_user_registration_url
     end
   end
 
