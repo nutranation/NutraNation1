@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  attr_accessible :name, :description, :location, :avatar, :email, :password, :password_confirmation
+  attr_accessible :name, :description, :location, :avatar, :email, :password, :password_confirmation, :facebook_id
   
   after_create :send_welcome_email
     
@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
     if self.avatar_file_name
       (self.avatar.url(:thumb))
     elsif self.facebook_id
-      i = "http://graph.facebook.com/#{self.facebook_id}/picture/?type=square"
+      "http://graph.facebook.com/#{self.facebook_id}/picture/?type=square"
     else
       i = "male.jpeg"
     end
