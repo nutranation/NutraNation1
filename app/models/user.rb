@@ -192,7 +192,6 @@ class User < ActiveRecord::Base
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
-    puts data.inspect
     if user = User.find_by_email(data["email"])
       unless user.facebook_id
         user.facebook_id = data["id"] 
@@ -203,27 +202,8 @@ class User < ActiveRecord::Base
       User.create(:email => data["email"], :password => Devise.friendly_token[0,20], :name => data["name"], :location => data["location"]["name"], :facebook_id => data["id"]) 
     end
   end
-  
-  def find_or_create_for_twitter(response)
-       data = response['extra']['user_hash']
-     
-         # Create a user with a stub password. 
-       user = User.create(:email => "twitter+#{data["id"]}@example.com", 
-                         :password => Devise.friendly_token[0,20])
-      user
-       
-   end
-   
-   def find_or_create_for_linked_in(response)
-        data = response['extra']['user_hash']
 
-          # Create a user with a stub password. 
-        user = User.create(:email => "linked_in+#{data["id"]}@example.com", 
-                          :password => Devise.friendly_token[0,20])
-       user
 
-    end
-  
   
 
 ## controller helper methods
