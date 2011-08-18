@@ -86,6 +86,8 @@ class User < ActiveRecord::Base
   def display_image
     if self.avatar_file_name
       (self.avatar.url(:thumb))
+    elsif self.facebook_id
+      i = "http://graph.facebook.com/#{self.facebook_id}/picture/?type=square"
     else
       i = "male.jpeg"
     end
@@ -192,9 +194,13 @@ class User < ActiveRecord::Base
     data = access_token['extra']['user_hash']
     puts data.inspect
     if user = User.find_by_email(data["email"])
+      unless user.facebook_id
+        user.facebook_id = data["id"] 
+        user.save
+      end
       user
     else # Create a user with a stub password. 
-      User.create(:email => data["email"], :password => Devise.friendly_token[0,20], :name => data["name"], :location => data["location"]["name"]) 
+      User.create(:email => data["email"], :password => Devise.friendly_token[0,20], :name => data["name"], :location => data["location"]["name"], :facebook_id => data["id"]) 
     end
   end
   
