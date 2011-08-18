@@ -206,6 +206,9 @@ Devise.setup do |config|
   
   config.omniauth :twitter, 'vFAIkMJ3HxqxRMHfXyhsOw', 'Lw6bqqMzwpI9PsLgfjRTWEucomprPowiXfz6ze0q6M'
        {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+       
+  config.omniauth :linked_in, 'to53yitspvxh', 'e1KkN29RYFYTU4k1'
+      {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
     
   
 end

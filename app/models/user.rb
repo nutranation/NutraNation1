@@ -213,6 +213,16 @@ class User < ActiveRecord::Base
       user
        
    end
+   
+   def find_or_create_for_linked_in(response)
+        data = response['extra']['user_hash']
+
+          # Create a user with a stub password. 
+        user = User.create(:email => "linked_in+#{data["id"]}@example.com", 
+                          :password => Devise.friendly_token[0,20])
+       user
+
+    end
   
   
 
