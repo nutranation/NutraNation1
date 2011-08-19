@@ -13,6 +13,7 @@ gem 'ckeditor'
 gem 'kaminari'
 gem "omniauth"
 gem 'nifty-generators'
+gem 'exception_notification_rails3', :require => 'exception_notifier'
 
 
 

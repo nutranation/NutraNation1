@@ -52,8 +52,13 @@ NutraNation::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => 'baci.lindsaar.net',
-    :user_name            => 'spencer.kline',
-    :password             => 'skpass2334',
+    :user_name            => 'nutranation.llc',
+    :password             => 'd0gsleep',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Exception] ",
+    :sender_address => %{"Exception Notifier" <nutranation.llc@gmail.com.com>},
+    :exception_recipients => %w{spencer.kline@gmail.com}
+    
 end
