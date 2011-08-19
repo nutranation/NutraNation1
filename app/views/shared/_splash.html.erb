@@ -5,5 +5,6 @@
   	</p>
 </div>
 
-<%= link_to "Sign up now!", new_user_registration_path, :class => "signup_button round" %>
-<%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) %>
+
+<%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) %><br>
+<%= link_to "Sign up with an email", new_user_registration_path %>
