@@ -21,7 +21,7 @@ class Relationship < ActiveRecord::Base
   validates :followed_id, :presence => true
   validates :item_type, :presence => true
   
-  after_create :send_follower_email
+  #after_create :send_follower_email
   
   def send_follower_email
     if self.item_type == 'User'
@@ -38,47 +38,12 @@ class Relationship < ActiveRecord::Base
     str == str.reverse ? true:false
   end
   
-  def self.anagram_sort(arr)
-    arr.sort do |e1, e2|
-      e1 =  e1 == e1.reverse ? 0 : 1
-      e2 =  e2 == e2.reverse ? 0 : 1
-      e1 <=> e2
-    end
-  end
+
   
   def self.reformat(str)
     str.gsub(' ', '%20')
   end
   
-  def self.rows(aoa)
-    columns = []
-    rows = []
-    aoa.each_with_index do |a,j|
-      a.each_with_index do |s, i|
-        if s == 0
-          rows << j
-          columns << i
-        end
-      end
-    end 
-    puts rows.inspect
-    rows.each do |r|
-      puts aoa[r].inspect
-      aoa[r].each { |s| s = 0 }
-      puts aoa[r].inspect
-    end
-    columns.each do |c|
-      aoa.each { |a| a[c] = 0 }
-    end
-    aoa
-  end
-  def self.duplicate(raw)
-    final = []
-    raw.each do |r|
-      final << r unless final.include?(r)
-    end
-    final
-  end
-    
+
   
 end
