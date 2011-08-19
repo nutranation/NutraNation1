@@ -1,5 +1,12 @@
 <h2>Sign in</h2>
 
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
+  <% end -%>
+<% end -%>
+
+
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <p><%= f.label :email %><br />
   <%= f.email_field :email %></p>
