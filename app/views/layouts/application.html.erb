@@ -28,7 +28,7 @@
 										"<%= t.name  %> (<%= t.count %>)",
 								<% end %>
 							<% end %>
-							"<%= @last_tags_js.name  %>  (<%= @last_tags_js.count %>)"
+							"<%#= @last_tags_js.name  %>  (<%#= @last_tags_js.count %>)"
 						];
 					function split( val ) {
 						return val.split( /,\s*/ );
@@ -80,7 +80,7 @@
 											 "<%= u.name  %>",
 									<% end %>
 								<% end %>
-								"<%= @last_user.name  %>" 
+								"<%#= @last_user.name  %>" 
 							];
 						
 						function split( val ) {
@@ -137,8 +137,8 @@
 								 value: "/tags/<%= t.id %>" },
 						<% end %>
 					<% end %>
-					{label: "<%= @last_tags_js.name  %> (<%= @last_tags_js.count %>)",
-					 value: "/tags/<%= @last_tags_js.id %>" }
+					{label: "<%#= @last_tags_js.name  %> (<%#= @last_tags_js.count %>)",
+					 value: "/tags/<%#= @last_tags_js.id %>" }
 				];
 			
 				$(document).ready(function() {
