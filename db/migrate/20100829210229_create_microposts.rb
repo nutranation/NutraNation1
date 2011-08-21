@@ -1,12 +1,12 @@
-class CreatePosts < ActiveRecord::Migration
+class CreateMicroposts < ActiveRecord::Migration
   def self.up
-    create_table :posts do |t|
+    create_table :microposts do |t|
       t.string :title
       t.integer :user_id
 
       t.timestamps
     end
-    add_index :posts, :user_id
+    add_index :microposts, :user_id
   end
 
   def self.down

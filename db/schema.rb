@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110818223731) do
 
-  create_table "authentications", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                                 :null => false
     t.string   "data_content_type"
@@ -28,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20110818223731) do
     t.string   "assetable_type",    :limit => 30
     t.string   "type",              :limit => 25
     t.string   "guid",              :limit => 10
-    t.integer  "locale",                          :default => 0
+    t.integer  "locale",            :limit => 1,  :default => 0
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -39,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20110818223731) do
   add_index "ckeditor_assets", ["user_id"], :name => "fk_user"
 
   create_table "comments", :force => true do |t|
-    t.text     "content"
+    t.text     "title"
     t.integer  "user_id"
     t.integer  "post_id"
     t.datetime "created_at"
@@ -80,11 +72,10 @@ ActiveRecord::Schema.define(:version => 20110818223731) do
   end
 
   create_table "posts", :force => true do |t|
-    t.text     "title"
+    t.string   "title"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "content"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
