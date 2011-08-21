@@ -1,6 +1,6 @@
 <% if @feed_items.any? %>
   <table class="posts" summary="Status feed">
 		<%= paginate @feed_items %>
-    <%= render :partial => 'shared/feed_item', :collection => @feed_items %>
+    <%#= render :partial => 'shared/feed_item', :collection => @feed_items %>
   </table>
 <% end %>

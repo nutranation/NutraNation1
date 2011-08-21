@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
 
+	layout 'new_application'
   def home
     @tite = "Live"
     if user_signed_in?

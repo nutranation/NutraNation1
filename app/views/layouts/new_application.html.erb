@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+    <title><%= title %></title>
+	<link rel="stylesheet" href="/stylesheets/styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print" />
+	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div id="wrapper"><!-- #wrapper -->
+<%= render 'shared/header' %>
+	<section id="main"><!-- #main content and sidebar area -->
+<section id="content" style="width:700px;">
+<%= yield %>
+</section>
+<%#= render 'shared/footer' %>
+</div><!-- #wrapper -->
+
+</body>
+</html>

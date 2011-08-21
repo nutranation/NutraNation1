@@ -1,0 +1,27 @@
+ <%= link_to logo, root_path %>
+<div align="right">
+      <% if user_signed_in? %>
+      <span id="currentuser"><%= current_user.email %></span> &nbsp;
+				<%= link_to "Tags", tags_path %>
+        <%= link_to "Profile", current_user %>
+        <%= link_to "Users", users_path %>
+        <%= link_to "Settings", edit_user_registration_path %>
+        <%= link_to "Sign out", destroy_user_session_path, :method => :delete%>
+      <% else %>
+        <li><%= link_to "Sign in", new_user_session_path %></li>
+      <% end %>
+</div>
+	<nav><!-- top nav -->
+		<div class="menu">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/about">About</a></li>
+				<li><a href="/contact">Contact Us</a></li>
+			</ul>
+		</div>
+	</nav><!-- end of top nav -->
+
+	<header><!-- header -->
+	</header><!-- end of header -->
+	
+
