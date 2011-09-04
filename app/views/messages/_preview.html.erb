@@ -1,8 +1,8 @@
 <% if @inbox == :inbox %>
 	
-	<strong><% unless preview.seen %>	Unread<% end %> From: <%= link_to preview.sender.name, user_path(preview.sender)  %></strong> <br>
+	<strong><% unless preview.seen %>	<span class = "unseen">Unread!<% end %></span> From: <%= link_to preview.sender.name, user_path(preview.sender)  %></strong> <br>
 	
 <% else %>
 	<strong>From: <%= link_to preview.receiver.name, user_path(preview.receiver) %></strong><br> 
 <% end %>
-<strong>Subject:<%= link_to preview.subject, message_path(preview) %> <br></strong><br>
+<strong>Subject:<%= link_to preview.subject, message_path(preview) %> <br></strong> <br><br>

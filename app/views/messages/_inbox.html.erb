@@ -1,8 +1,8 @@
-<% if @inbox == :inbox %>
+<span class = "message-header"><% if @inbox == :inbox %>
 	<strong>Messages</strong>   <%= link_to 'Sent', sent_message_path %>
 <% else %>
 	<%= link_to 'Messages', inbox_message_path %><strong> Sent</strong>
 <% end %><br>
 Unread Messages: <%= current_user.unread_messages %><br>
-<br>
+<br></span>
 <%= render :partial => 'preview', :collection => @messages %>

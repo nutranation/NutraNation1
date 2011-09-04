@@ -1,10 +1,10 @@
 class MessagesController < ApplicationController
   def inbox
-    @messages = Message.where('receiver_id = ?', current_user.id) 
+    @messages = Message.where('receiver_id = ?', current_user.id).order("created_at DESC")
     @inbox = :inbox
   end
   def sent
-    @messages = Message.where('sender_id = ?', current_user.id) 
+    @messages = Message.where('sender_id = ?', current_user.id).order("created_at DESC")
     @inbox = :sent
   end
   

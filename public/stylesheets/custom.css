@@ -395,7 +395,17 @@ div.related{
 div.show-post{
 	background: #6691a1;
 	color:white;
+}
 
+span.message-header{
+	background: #a7c94a;
+	color: 6691a1;
+}
+
+span.message-header a {
+	color: blue;
+	text-decoration: none;
+	
 }
 div.show-post a{
 		color: #a7c94a;
@@ -415,6 +425,10 @@ div.footer a:hover{
 	color:6691a1;
 	text-decoration: underline;
 	}
+	
+span.unseen{
+	color:red;
+}
 
 	
 
