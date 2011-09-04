@@ -12,11 +12,11 @@
            <div class="title_round">
 					 <div class = "top-bar">
        <% if  @feed_type == :live %>
-	       <%= link_to "Subscriptions ", root_path %><strong>Live </strong><%= link_to "Most Popular ", voted_path %>
+	       <%= link_to "Subscriptions ", subscribed_path %><strong>Live </strong><%= link_to "Most Popular ", voted_path %>
        <% elsif @feed_type == :subscribed %>
-           <strong> Subscriptions </strong><%= link_to "Live ", live_path %><%= link_to "Most Popular ", voted_path %>
+           <strong> Subscriptions </strong><%= link_to "Live ", root_path %><%= link_to "Most Popular ", voted_path %>
 			 <% elsif @feed_type == :highest_voted %>
-			  	<%= link_to "Subscriptions ", root_path %><%= link_to "Live ", live_path %><strong> Most Popular  </strong>
+			  	<%= link_to "Subscriptions ", subscribed_path %><%= link_to "Live ", root_path %><strong> Most Popular  </strong>
        <% end %>
 			 </div>
 			 </div>
