@@ -12,4 +12,4 @@
 <% end %><br>
 <strong>Posts:</strong> <%= @user.posts.count %><br>
 
-<%= link_to 'Send a Message', new_message_path %>
+<a href="/messages/new?name=<%= @user.name %>">Send a Message</a>

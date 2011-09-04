@@ -1,7 +1,7 @@
 <%= form_for(Message.new) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   
-	Send to:<input id="message_receiver" name="message[receiver]" /><br>
+	Send to:<input id="message_receiver" name="message[receiver]" value="<%= params[:name] if params[:name]%>" /><br>
   Subject:<%= f.text_field :subject %><br>
   Body:<%= f.text_area :body  %>
 

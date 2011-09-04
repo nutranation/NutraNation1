@@ -2,6 +2,7 @@
                           build(:followed_id =>  @following.id,  :item_type =>  @item_type ),
                           :remote => true) do |f| %>
   <div><%= f.hidden_field :followed_id %></div>
+
 <div><%= f.hidden_field :item_type %></div>
   <div class="actions"><%= f.submit "Follow" %></div>
 <% end %>

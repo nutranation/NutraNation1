@@ -31,13 +31,13 @@ NutraNation::Application.routes.draw do
 
   resources :relationships, :only => [:create, :destroy]
   
-  root :to =>'pages#subscribed'
+  root :to =>'pages#home'
   
 
   match '/contact', :to => 'pages#contact'
   match '/search', :to => 'pages#search'
   match '/about',   :to => 'pages#about'
-  match '/live',   :to => "pages#home"
+  match '/subscribed',   :to => "pages#subscribed"
   match '/voted', :to => 'pages#highest_voted'
   match '/signup',  :to => 'users#new'
   match 'notifications/seen', :to => "notifications#seen"

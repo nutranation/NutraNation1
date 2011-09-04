@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def home
-    @tite = "Live"
+    @tite = "Home"
     if user_signed_in?
       @post = Post.new
       @feed_items = Post.order('updated_at DESC').page(params[:page])
@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   end
   
   def subscribed
-    @title = "Home"
+    @title = "Subscription"
     if user_signed_in?
       @post = Post.new
       @feed_items = Kaminari.paginate_array(current_user.feed).page(params[:page])
