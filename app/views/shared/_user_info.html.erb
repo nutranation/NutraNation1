@@ -1,11 +1,20 @@
-<div class="user_info">
-  <a href="<%= user_path(current_user) %>">
-    <%= image_tag(current_user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %> 
-    <span class="user_name">
-      <%= current_user.name %><br>
-    </span>
-    <span class="posts">
-      <%= pluralize(current_user.posts.count, "post") %>
-    </span>
-  </a>
-</div>
+          <div class="roundcont_right">
+                 <div class="roundtop_right">
+      <img src="images/tl_sidebar.gif" alt="" width="15" height="15" class="corner" style="display: none" />
+                 </div>
+			                       <div class="round_inner_right">
+								<div class="title_sidebar">Sidebar</div>
+			                            <table border="0" cellspacing="0" cellpadding="0" class="inner_sidebar">
+			                              <tr>
+			                                <td><%= image_tag(current_user.display_image, :alt => "profile",  :width => "100px", :height => "100px") %> </td>
+			                                <td class="inner_sidebar_text"><%= current_user.name %></td>
+			                              </tr>
+			                            </table>
+																	<p> <%= pluralize(current_user.posts.count, "post") %></p>
+
+
+
+
+
+                        
+

@@ -1,20 +1,34 @@
-
 <table class="front" summary="For signed-in users">
    <tr>
-     <td class="main">
-       <%= render 'shared/post_form' %>
+     <td class="main" style="vertical-align: top;">
+	    <div id = "new-post">
+				<%= link_to "Add A New Post", new_post_path %>
+			</div>
+			 <div class="roundcont_bottom">
+           <div class="roundtop_bottom">
+             <img src="images/tl_bottom.gif" alt="" width="15" height="15" class="corner" style="display: none" />
+           </div>
+           <div class="round_inner_bottom">
+           <div class="title_round">
+					 <div class = "top-bar">
        <% if  @feed_type == :live %>
-	       <%= link_to "Subscriptions ", root_path %><strong><%= link_to "Live ", live_path  %></strong><%= link_to "Most Popular ", voted_path %>
+	       <%= link_to "Subscriptions ", root_path %><strong>Live </strong><%= link_to "Most Popular ", voted_path %>
        <% elsif @feed_type == :subscribed %>
-           <strong><%= link_to "Subscriptions ", root_path %></strong><%= link_to "Live ", live_path %><%= link_to "Most Popular ", voted_path %>
+           <strong> Subscriptions </strong><%= link_to "Live ", live_path %><%= link_to "Most Popular ", voted_path %>
 			 <% elsif @feed_type == :highest_voted %>
-			  	<%= link_to "Subscriptions ", root_path %><%= link_to "Live ", live_path %><strong><%= link_to "Most Popular ", voted_path %></strong>
+			  	<%= link_to "Subscriptions ", root_path %><%= link_to "Live ", live_path %><strong> Most Popular  </strong>
        <% end %>
+			 </div>
+			 </div>
        <%= render 'shared/feed' %>
      </td>
-     <td class="sidebar round">
-       <%= render 'shared/user_info' %>
-       <%= render 'shared/stats' %>
+     <td style="vertical-align: top;">
+			<div class="right" style="font-size: 24px;">
+  	     <%= render 'shared/user_info' %>
+	       <%= render 'shared/stats' %>
+			</div>
      </td>
+		<td></td>
    </tr>
 </table>
+

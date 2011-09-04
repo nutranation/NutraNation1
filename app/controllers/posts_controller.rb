@@ -36,6 +36,11 @@ class PostsController < ApplicationController
        render 'edit'
      end
    end
+   
+   def new
+     @post = Post.new
+     @title = "Create Post"
+   end
   
 
   def destroy

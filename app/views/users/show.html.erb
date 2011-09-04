@@ -6,15 +6,22 @@
         <%= @user.name %>
       </h1>
       <%= render 'follow_form' if user_signed_in? %>
+			<div class ="profile-fed">
       <% if @user.posts.any? %>
+				<div class ="profile-feed">
         <%= render 'shared/feed' %>
+				</div>
       <% end %>
+			
     </td>
 	<td>
 	</td>
-    <td class="sidebar round">
+    <td>
+			
+			<div class="right" style="font-size: 24px;">
       <%= render 'shared/sidebar_info' %>
       <%= render 'shared/stats' %>
+			</div>
     </td>
   </tr>
 </table>

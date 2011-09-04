@@ -1,23 +1,33 @@
 <%= form_for(@post, :html => { :multipart => true }) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
-  <h1 id="post">Title</h1>
-  <div class="field">
-    <%= f.text_field :title, :class => "feed"  %>
-  </div>
-	<div class = "field">
-		 <%= f.label :picture %><br />
-		 <%= f.file_field :picture %>
-	</div>
-  <strong><p>Further Description</p></strong>
-  <div class="field">
-    <%= f.cktext_area :content, :height => 400, :toolbar=>'Easy' %>
-  </div>
-	<p><strong>Input Tags</strong> (separate with comma)</p>
-	<div class="field">
-   <input id="post_tag_list" size="50" name="post[tag_list]" value = "<%= @post.tag_list %>" />
-  </div>
-	
-  <div class="actions">
-    <%= f.submit "Submit" %>
-  </div>
+<div class="roundcont">
+   <div class="roundtop">
+     <img src="images/tl.gif" alt="" width="15" height="15" class="corner" style="display: none" />
+   </div>
+   <div class="round_inner">
+   <div class="title_round">Title</div>
+   <table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><input class="feed" id="post_title" name="post[title]" size="100" rows="20" type="text class="title_search""> </td>
+        <td><input name="" type="button" class="browse" /></td>
+      </tr>
+    </table>
+   <div class="spacer"></div>
+   <div class="title_round">Picture</div>
+   <input id="post_picture" name="post[picture]" type="file" class="choose">
+   <div class="spacer"></div>
+   <div class="title_round">Further Desciption</div>
+    <%= f.cktext_area :content, :height => 200, :toolbar=>'Easy' %>
+   <div class="spacer"></div>
+   <div class="title_round">Input tags (separate with comma)</div>
+   <input id="post_tag_list" size="50" name="post[tag_list]" value="" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" class="title_search_bottom" >
+   <p><input id="post_submit" name="commit" type="submit" value="Submit">          
+
+
+   </div>
+   <div class="roundbottom">
+     <img src="images/bl.gif" alt="" width="15" height="15" class="corner" style="display: none" />
+   </div>
+</div>	
 <% end %>
+<div class="spacer"></div>

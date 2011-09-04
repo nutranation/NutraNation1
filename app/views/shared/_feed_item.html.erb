@@ -1,18 +1,19 @@
+
 <tr>
 		<% @content_type = 'Post' %>
-		<td class = "<%= @content_type %>"id = "<%=  feed_item.id %>">	
+		<td  style="vertical-align: top;" class = "<%= @content_type %>"id = "<%=  feed_item.id %>">	
 			<%= Vote.count(@content_type, feed_item.id) %> Score
 		</td>
-	<td class="gravatar">
+	<td class="gravatar" style="vertical-align: top;">
 		<%= image_tag(feed_item.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
 	</td>
 	
-	<td class="post">
+	<td class="post" style="vertical-align: top;">
 	
 		<span class="title" style = "font-size: 120%"><%= link_to wrap(feed_item.title), feed_item %></span><br>
 		<% if feed_item.content %>
 		<span class "post"><%= auto_link(wrap(feed_item.content)).html_safe %><span>
-		<% end %>
+		<% end %><br>
 		<% @tags = feed_item.find_tags %>
 		<% if @tags %>
 			<span class "tags" style="color: #5A8DA0; font-size: 80%;"><%= render :partial => 'shared/tag', :collection => @tags %></span>
@@ -34,9 +35,12 @@
 			<% else %>
 				<% comment = feed_item.comments.last%>
 			<% end %>
+		
 			<% if comment %>
 			<div class = "comment-feed">
 				<table class="comment-feed" >
+					<br/>
+					<strong>&nbsp;Comment:</strong>
 					<%= render :partial => 'shared/comment', :object => comment %>
 				</table>
 			</div>

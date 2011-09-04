@@ -43,10 +43,14 @@
 			</td>
   <% end %>
 	<% if @related.first %>
+		
 		<td>
-			Related Posts:<br>
+			<div class = "related">
+			<strong>Related Posts:</strong><br>
 				<%= render :partial => 'related_post', :collection => @related %>
+			</div>
 		</td>
+		
 	<% end %>
 	
 </tr>

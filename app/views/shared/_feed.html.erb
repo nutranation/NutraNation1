@@ -1,6 +1,10 @@
 <% if @feed_items.any? %>
-  <table class="posts" summary="Status feed">
-		<%= paginate @feed_items %>
-    <%= render :partial => 'shared/feed_item', :collection => @feed_items %>
-  </table>
+                   <div class="spacer"></div>
+                   <table border="0" cellspacing="0" cellpadding="0" width="100%" class="main-feed">
+                      <tr>
+												<%= paginate @feed_items %>
+												<%= render :partial => 'shared/feed_item', :collection => @feed_items %>
+                      </tr>
+                    </table>
 <% end %>
+

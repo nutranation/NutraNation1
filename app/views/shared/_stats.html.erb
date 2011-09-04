@@ -1,31 +1,11 @@
 <% @user ||= current_user %>
-<div class="stats">
-  <table summary="User stats">
-    <tr>
-      <td>
-        <a href="<%= following_user_path(@user) %>">
-          <span id="following" class="stat">
-            <%= @user.following_users.count %> following
-          </span>
-        </a>
-      </td>
-      <td>
-        <a href="<%= followers_user_path(@user) %>">
-          <span id="followers" class="stat">
-            <%= pluralize(@user.followed_users.count, "follower") %><br>
-          </span>
-        </a>
-      </td>
-    </tr>
-	</table>
-	<a href="<%= following_tags_user_path(@user) %>">
-		<span id="followers" class="stat">
-			Following <%= pluralize(@user.following_tags.count, "tag") %>
-		</span><br>
-	</a>
-	<a href="<%= following_posts_user_path(@user) %>">
-		<span id="followers" class="stat">
-			Following <%= pluralize(@user.following_posts.count, "post") %>
-		</span>
-	</a>
-</div>
+<div class="stats"  >
+	    
+          <p> <a href="<%= following_user_path(@user) %>"><%= @user.following_users.count %> following</a> &nbsp;&nbsp; <a href="<%= followers_user_path(@user) %>"><%= pluralize(@user.followed_users.count, "follower") %></a></p>
+          <a href="<%= following_posts_user_path(@user) %>"><p>Following <%= pluralize(@user.following_tags.count, "tag") %></p></a>
+          <a href="<%= following_posts_user_path(@user) %>"><p>Following <%= pluralize(@user.following_posts.count, "post") %></a></p>
+     </div>
+     <div class="roundbottom_right">
+       <img src="images/bl_sidebar.gif" alt="" width="15" height="15" class="corner" style="display: none" />
+     </div>
+  </div>	

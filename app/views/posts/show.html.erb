@@ -1,3 +1,4 @@
+
 <div id="follow_form">
 	<% if current_user.following?(@post, 'Post') %>
 	  <%= render 'shared/unfollow' %>
@@ -6,8 +7,9 @@
 	<% end %>
 </div>
 <br>
-
+<div class =  "show-post">
 <table class="posts" summary="Status feed">
+	
   <%= render :partial => 'post', :object => @post %>
 </table>
 
@@ -16,22 +18,11 @@
     <%= render :partial => 'shared/comment', :collection => @c_comment %>
   </table>
 </div>
+</div>
+<div class = "comment-form">
 <%= render 'shared/comment_form' %>
-<a href="http://twitter.com/share" class="twitter-share-button" data-url="www.nutranation.heroku.com/posts/<%= @post.id %>" data-text="NutraNation: Social network for registered dietitians" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=134934403267879&amp;xfbml=1"></script><fb:like href="nutranation.heroku.com/posts/<%= @post.id %>" send="true" width="450" show_faces="true" action="like" font="arial"></fb:like>
-<script src="http://platform.linkedin.com/in.js" type="text/javascript"></script>
-<script type="IN/Share" data-url="nutranation.heroku.com/posts/<%= @post.id %>" data-counter="top"></script>
-	<!-- Place this tag where you want the +1 button to render -->
-	<g:plusone size="small" href="nutranation.heroku.com/<%= @post.id %>"></g:plusone>
+</div>
 
-	<!--  Place this tag after the last plusone tag -->
-	<script type="text/javascript">
-	  (function() {
-	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-	    po.src = 'https://apis.google.com/js/plusone.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-	  })();
-	</script>
 	
 
 
