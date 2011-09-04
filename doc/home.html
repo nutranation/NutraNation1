@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>NutraNation</title>
+<link rel="stylesheet" type="text/css" media="all" href="style.css" />
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">google.load('jquery', '1.5');</script>
+<script type="text/javascript" src="js/jquery.gritter.min.js"></script>
+</head>
+
+<body>
+<div class="wrapper">   
+	<div class="header">
+
+        <div id="bookmarks">
+            <a href="#"><img src="images/google.png" width="33" height="33" border="0" /></a>&nbsp;
+            <a href="#"><img src="images/twitter.png" width="33" height="33" border="0" /></a>&nbsp;
+            <a href="#"><img src="images/facebook.png" width="33" height="33" border="0" /></a>&nbsp;
+            <a href="#"><img src="images/linked_id.png" width="33" height="33" border="0" /></a>
+        </div>   
+        <div id="signin" class="topmenu">
+       		<a href="#">Home</a> |
+        	<a href="#">Tags</a> |
+        	<a href="#">Profile</a> |
+        	<a href="#">Users</a> |
+        	<a href="#">Settings</a> | 
+            <a href="#">Sign out</a>
+            <p><input name="test" type="text" class="tag_search" /> </p>
+            <p><a href="#">Unseen messages: 0</a> | <a href="#" id="add-without-image">Unseen notification: 3</a></p>
+        </div>                   
+    </div> 
+    
+	<div id="content-wrap">	
+    <img src="images/banner.jpg" width="943" height="260" alt="headerphoto />    								
+		<div id="sidebar">	
+                
+                <div class="roundcont_home">
+                   <div class="roundtop_home">
+                     <img src="images/tl_bottom.gif" alt="" width="15" height="15" class="corner" style="display: none" />
+                   </div>
+                   <div class="round_inner">
+                   <div class="title_round">Title</div>
+					<p><a href="#"><img src="images/facebook_connect.png" width="107" height="26" border="0" ></a><br/>
+					<a href="#">Sign up with an email</a></p>   
+                
+ 
+                   </div>
+                   <div class="roundbottom_home">
+                     <img src="images/bl_bottom.gif" alt="" width="15" height="15" class="corner" style="display: none" />
+                   </div>
+                </div>	
+                
+        </div>
+
+        <div class="footer">Copyright 2011
+        <div class="footer_image"><img src="images/footer.gif" /></div>
+        </div>
+    </div>         
+</div>
+
+<script type="text/javascript">
+
+	$(function(){
+
+		// global setting override
+        /*
+		$.extend($.gritter.options, {
+		    position: 'bottom-left', // possibilities: bottom-left, bottom-right, top-left, top-right
+			fade_in_speed: 100, // how fast notifications fade in (string or int)
+			fade_out_speed: 100, // how fast the notices fade out
+			time: 1000 // hang on the screen for...
+		});
+        */
+
+
+		$('#add-without-image').click(function(){
+			
+
+			$.gritter.add({
+				// (string | mandatory) the heading of the notification
+				title: 'Unseen notifications',
+				// (string | mandatory) the text inside the notification
+				text: '* Spencer started following you<br/>* Peter Started following you<br/>* Rick voted for your post'
+			});
+
+			return false;
+		});
+
+
+
+	});
+</script>
+</body>
+</html>
