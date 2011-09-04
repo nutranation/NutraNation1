@@ -407,6 +407,14 @@ div.show-post a:hover{
 	}
 	
 
+div.footer a{
+		color: #a7c94a;
+		text-decoration: none;
+	}
+div.footer a:hover{
+	color:6691a1;
+	text-decoration: underline;
+	}
 
 	
 
