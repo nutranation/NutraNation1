@@ -340,6 +340,8 @@ img.corner {
 }
 
 
+
+
 .right a  {
 	color: #09c;
 	text-decoration: none;
@@ -582,7 +584,7 @@ textarea.expertise{
 
 
 input.feed{
-  	width: 398px;	
+  	width: 500px;	
 }
 textarea.comment{
 	width: 500px;
