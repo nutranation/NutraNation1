@@ -4,7 +4,7 @@
 	<% if @message.body %>
 		<strong>Body:</strong> <%= @message.body %>
 	<% end %>
-	<br><a href="/messages/new?name=<%= @message.sender.name %>">Reply</a>
+	<br><a href="/messages/new?name=<%= @message.sender.name %>&id=<%= @message.sender.id %>&parent=<%= @message.id %>">Reply</a>
 <% else %>
 	Please sign in. You do not have permission to read this message. 
 <% end %>

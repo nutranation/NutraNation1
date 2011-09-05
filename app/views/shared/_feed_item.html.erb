@@ -5,7 +5,7 @@
 			<%= Vote.count(@content_type, feed_item.id) %> Score
 		</td>
 	<td class="gravatar" style="vertical-align: top;">
-		<%= image_tag(feed_item.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
+		<a href="/users/<%= feed_item.user.id %>"><%= image_tag(feed_item.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %></a>
 	</td>
 	
 	<td class="post" style="vertical-align: top;">
@@ -13,10 +13,10 @@
 		<span class="title" style = "font-size: 120%"><%= link_to wrap(feed_item.title), feed_item %></span><br>
 		<% if feed_item.content %>
 		<span class "post"><%= auto_link(wrap(feed_item.content)).html_safe %><span>
-		<% end %><br>
+		<% end %>
 		<% @tags = feed_item.find_tags %>
 		<% if @tags %>
-			<span class "tags" style="color: #5A8DA0; font-size: 80%;"><%= render :partial => 'shared/tag', :collection => @tags %></span>
+			<span class "tags" style="color: #5A8DA0; font-size: 80%;"><%= render :partial => 'shared/tag', :collection => @tags %></span><br>
 		<% end %>
 			<span class="timestamp" style="color: #666;">
 				<%= link_to feed_item.user.name, feed_item.user %> posted <%= time_ago_in_words(feed_item.created_at) %> ago.

@@ -9,12 +9,15 @@ class MessagesController < ApplicationController
   end
   
   def create
-    @receiver = User.find_by_name(params[:message][:receiver])
+    @receiver = User.find(params[:message][:receiver_id])
     if @receiver
       @message = Message.create(:subject => params[:message][:subject], 
                                 :body => params[:message][:body],
                                 :receiver_id => @receiver.id, 
                                 :sender_id => current_user.id)
+      if params[:message][:parent]
+        @message.parent = params[:message][:parent]
+      end
       @message.save!
       redirect_to  "/messages/#{current_user.id}/inbox"
     else

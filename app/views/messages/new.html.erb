@@ -4,6 +4,8 @@
 	Send to:<input id="message_receiver" name="message[receiver]" value="<%= params[:name] if params[:name]%>" /><br>
   Subject:<%= f.text_field :subject %><br>
   Body:<%= f.text_area :body  %>
+	<input type="hidden" name="message[receiver_id]" value="<%= params[:id] if params[:id]%>">
+		<input type="hidden" name="message[parent]" value="<%= params[:parent] if params[:parent]%>">
 
   <div class="actions">
     <%= f.submit "Send" %>

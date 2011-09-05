@@ -7,7 +7,7 @@
 			</td>
 
     <td class="gravatar">
-      <%= image_tag(comment.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  
+      <a href="/users/<%= comment.user.id %>"><%= image_tag(comment.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %></a>
   	</td>
  <% end %>
 
