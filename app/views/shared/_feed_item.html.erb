@@ -18,7 +18,7 @@
 		<% if @tags %>
 			<span class "tags" style="color: #5A8DA0; font-size: 80%;"><%= render :partial => 'shared/tag', :collection => @tags %></span>
 		<% end %>
-			<span class="timestamp">
+			<span class="timestamp" style="color: #666;">
 				<%= link_to feed_item.user.name, feed_item.user %> posted <%= time_ago_in_words(feed_item.created_at) %> ago.
 			</span>
 			<% votes = feed_item.up_voted(current_user) %>
@@ -40,7 +40,7 @@
 			<div class = "comment-feed">
 				<table class="comment-feed" >
 					<br/>
-					<strong style="color: black;">&nbsp;Comment:</strong>
+					<div style="color: #666;">&nbsp;Comment:</div>
 					<%= render :partial => 'shared/comment', :object => comment %>
 				</table>
 			</div>
