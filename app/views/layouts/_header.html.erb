@@ -11,8 +11,9 @@
 		      <%= link_to "Users", users_path %> |
 		      <%= link_to "Settings", edit_user_registration_path %> |
 		      <%= link_to "Sign out", destroy_user_session_path, :method => :delete%>
+					
 					<p><input id="search-form" class="tag_search" name="search_form" placeholder="Search for People and Tags Here!" type="text" class="tag_search" /> </p>
-					<div class = "messages">
+					
 					<%= link_to "Unseen Messages: #{current_user.unread_messages}", "/messages/#{current_user.id}/inbox"%><br>
 						<div id = 'count'>
 
@@ -22,9 +23,9 @@
 
 
 						<div id = 'notifications'>
-							<%= render :partial => 'shared/notification', :collection => current_user.notifications %>
+							<span class = "messages"><%= render :partial => 'shared/notification', :collection => current_user.notifications %></span>
 						</div>
-						</div>
+						
 		    <% else %>
 					<%= link_to "About", about_path %> |
 		      <%= link_to "Contact", contact_path %> |

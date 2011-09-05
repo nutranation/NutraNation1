@@ -351,10 +351,14 @@ a:hover {
 }
 
 
+div#post-form{
+	margin-top: 3em;
+}
 #new-post a {
 	color:#a7c94a;
 	text-decoration: none;
 	font-size:30px;
+	margin-top: 2em;
 	
 }
 table.main-feed a{
@@ -430,7 +434,9 @@ span.unseen{
 	color:red;
 }
 
-	
+span.messages {
+	background: white;
+}
 
 
 
@@ -464,9 +470,7 @@ div.headert {
 	
 }
 
-.messages {
-	background: white;
-}
+
 
 
 /* Navigation */
@@ -753,6 +757,10 @@ span.Add-Event{
 
 
 div#notifications {
+	display:none;
+}
+
+div.post-input{
 	display:none;
 }
 
