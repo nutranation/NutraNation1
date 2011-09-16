@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def following_posts
     @post = Post.new
     @user = User.find(params[:id])
-    @feed_items  = @user.following_posts
+    @feed_items  = Kaminari.paginate_array(@user.following_posts).page(params[:page])
     @feed_type = :following
     render 'show_posts'
   end
