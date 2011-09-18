@@ -21,7 +21,7 @@ class PagesController < ApplicationController
   def highest_voted
     @title = "Home"
     if user_signed_in?
-     
+      @post = Post.new
       @feed_items = Kaminari.paginate_array(Post.highest_voted('2011-05-15')).page(params[:page])
       @feed_type = :highest_voted
     end
