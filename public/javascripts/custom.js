@@ -3,11 +3,16 @@ function () {
 		code  = $('.beta-code').val();
 		$.ajax({
 		  url: '/confirm?code='+code,
-		  success: function(){
-				
+		  success: function(data){
+				$('body').html(data);
 		  }
 		});
-		window.location.href="/";
+
 		
 });
+
+$('.request-submit').click(
+	function () { 
+		window.location.href='/'
+	});
 

@@ -209,7 +209,11 @@ class User < ActiveRecord::Base
     if code == '1234'
       self.confirmed = true
       self.save
+      confirm = true
+    else
+      confirm = false
     end
+    confirm
   end
   
 

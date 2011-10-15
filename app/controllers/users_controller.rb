@@ -60,8 +60,14 @@ class UsersController < ApplicationController
   end
   
   def confirm
-    current_user.confirm_user(params["code"])
-    redirect_to(root_path) 
+    confirm = current_user.confirm_user(params["code"])
+    if confirm
+      flash[:success] = "You have been confirmed."
+      redirect_to root_path
+    else
+      flash[:notice] = "You had the wrong code."
+      redirect_to root_path
+    end
   end
   
 
