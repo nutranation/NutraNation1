@@ -59,6 +59,11 @@ class UsersController < ApplicationController
     @title = "Edit Profile"
   end
   
+  def confirm
+    current_user.confirm_user(params["code"])
+    redirect_to(root_path) 
+  end
+  
 
   private
 

@@ -205,7 +205,12 @@ class User < ActiveRecord::Base
     end
   end
 
-
+  def confirm_user(code)
+    if code == '1234'
+      self.confirmed = true
+      self.save
+    end
+  end
   
 
 ## controller helper methods

@@ -10,7 +10,7 @@ NutraNation::Application.routes.draw do
   
   resources :users do
     member do
-      get :following, :followers, :following_tags, :following_posts
+      get :following, :followers, :following_tags, :following_posts, :confirm
     end
   end
   
@@ -40,6 +40,7 @@ NutraNation::Application.routes.draw do
   match '/subscribed',   :to => "pages#subscribed"
   match '/voted', :to => 'pages#highest_voted'
   match '/signup',  :to => 'users#new'
+  match '/confirm',  :to => 'users#confirm'
   match 'notifications/seen', :to => "notifications#seen"
 
 

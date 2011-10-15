@@ -13,7 +13,9 @@
 		<script src="/javascripts/jquery.ui.position.js"></script> 
 		<script src="/javascripts/jquery.ui.autocomplete.js"></script>
 		<script src="/javascripts/jquery.gritter.min.js"></script>
-		<script src="/javascripts/jquery.gritter.js"></script> 
+		<script src="/javascripts/jquery.gritter.js"></script>
+		
+
 		<%= javascript_include_tag :ckeditor %>
 		<% if current_user %>
 			<% @all_tags_js = Tag.all %>
@@ -158,7 +160,9 @@
 			       	$('div.post-input').show();
 			    	});
 					});
+					
 			</script>
+
 		<% end %>
 			
 				
@@ -182,3 +186,4 @@
     </div>
   </body>
 </html>
+<script src="/javascripts/custom.js"></script>
