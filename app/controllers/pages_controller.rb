@@ -38,5 +38,10 @@ class PagesController < ApplicationController
     @search = params[:search_form].downcase
     redirect_to @search
   end
+  def register
+    sql = "INSERT INTO waiting (email) VALUES('#{params[:email]}');"
+  	User.connection.select_all(sql)
+    render 'about'
+  end
   
 end

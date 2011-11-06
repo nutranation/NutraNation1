@@ -17,3 +17,18 @@ $('div.close_x').click(function () {
 $("div.close_x_sign").click(function () { 
 	$(".layer").hide();
 });
+
+$('#button_signup').click(function (){
+	email = $('.email_input').val();
+	$.ajax({
+	  url: '/register?email='+email,
+	  success: function(data) {
+			$(".layer").show();
+	  },
+		error:function (xhr, ajaxOptions, thrownError){
+	                  
+	                    alert("failed");
+	                }
+	});
+
+});

@@ -35,6 +35,7 @@ NutraNation::Application.routes.draw do
   
 
   match '/contact', :to => 'pages#contact'
+  match '/register', :to => 'pages#register'
   match '/search', :to => 'pages#search'
   match '/about',   :to => 'pages#about'
   match '/subscribed',   :to => "pages#subscribed"

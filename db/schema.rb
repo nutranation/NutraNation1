@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110905170437) do
+ActiveRecord::Schema.define(:version => 20111106183345) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20110905170437) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "facebook_id",            :limit => 8
+    t.boolean  "confirmed"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -158,5 +159,11 @@ ActiveRecord::Schema.define(:version => 20110905170437) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "waiting", :force => true do |t|
+    t.string "email"
+  end
+
+  add_index "waiting", ["email"], :name => "index_waiting_on_email", :unique => true
 
 end
