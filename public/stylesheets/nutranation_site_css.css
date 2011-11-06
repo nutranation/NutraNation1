@@ -136,6 +136,7 @@ td
 }
 	.thankyou_box
 	{
+		
 		position:relative;
 		margin:auto;
 		height:216px;
@@ -146,7 +147,6 @@ td
 		box-shadow:0px 0px 1px 10px #999;
 		border-radius:4px;
 		padding:20px;
-		font-
 	}
 	
 	.header-background
@@ -498,6 +498,23 @@ td
 {
 	cursor:pointer;	
 	}
+	
+	.close_x_sign
+	{
+		position:absolute;
+		top:5px;
+		right:14px;
+		height:13px;
+		width:13px;
+		line-height:11px;
+		font-family:Arial, Helvetica, sans-serif;
+		z-index:5;
+		}
+	.close_x_sign:hover
+	{
+		cursor:pointer;	
+		}
+	
 
 .about_text
 {

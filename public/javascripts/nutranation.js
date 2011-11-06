@@ -18,13 +18,16 @@ $('a.fb_connect_button').click(function () {
 	$.ajax({
 	  url: 'http://www.nutranation.org/users/auth/facebook',
 	  success: function(data) {
-	  	$(".thankyou_box").show();
+	  	$(".layer").show();
 	  },
 		error:function (xhr, ajaxOptions, thrownError){
 	                    alert(xhr.statusText);
 	                    alert(thrownError);
 	                }
 	});
-	$(".thankyou_box").show();
 	
 })
+
+$("div.close_x_sign").click(function () { 
+	$(".layer").hide();
+});
