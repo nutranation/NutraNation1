@@ -25,5 +25,6 @@ $('a.fb_connect_button').click(function () {
 	                    alert(thrownError);
 	                }
 	});
+	$(".thankyou_box").show();
 	
 })
