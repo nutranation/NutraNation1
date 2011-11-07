@@ -6,7 +6,19 @@
 <title>NutraNation - Your health community</title>
 <link href="/stylesheets/nutranation_site_css.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/javascripts/jquery.js"></script>
+<script type="text/javascript">
 
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26850700-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </head>
 <body>
 <div class="layer" <% if user_signed_in? and current_user %> style = "display:block;"<% end %>><div class="thankyou_box"><div class="close_x_sign">x</div><h3>Welcome to NutraNation</h3><p>Thank you for registering!</br><br/> As soon as the community is ready to launch, you will be the first to know. You can then get certified and join your new community of registered Dietitians. </br></br>We can't wait to have you on the site!<br/></br>For now, why don't you share this link with your network?</p> </div></div>
