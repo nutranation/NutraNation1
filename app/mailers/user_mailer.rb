@@ -8,6 +8,11 @@ class UserMailer < ActionMailer::Base
       mail(:to => user.email,
            :subject => "Welcome to NutraNation")
   end
+  def facebook_waiting_email(email)
+    @email = email
+    mail(:to => "spencer.kline@gmail.com",
+         :subject => "#{email} signed up")
+  end
   
   def comment_email(comment)
     @comment = comment
@@ -34,6 +39,11 @@ class UserMailer < ActionMailer::Base
         @url  = "http://nutranation.heroku.com/messages/#{message.id}"
         mail(:to => @user.email,
            :subject => "#{@sender.name} sent you a message")
+  end
+  def waiting_email(email)
+    @email = email
+    mail(:to => "spencer.kline@gmail.com",
+         :subject => "#{@email} signed up")
   end
   
 end

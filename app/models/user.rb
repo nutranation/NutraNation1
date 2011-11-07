@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :description, :location, :avatar, :email, :password, :password_confirmation, :facebook_id
   
   after_create :send_welcome_email
+  after_create :send_facebook_waiting_email
     
   has_many :posts,    :dependent => :destroy
   has_many :votes

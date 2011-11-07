@@ -41,6 +41,7 @@ class PagesController < ApplicationController
   def register
     sql = "INSERT INTO waiting (email) VALUES('#{params[:email]}');"
   	User.connection.select_all(sql)
+  	UserMailer.waiting_email(params[:email]).deliver
     render 'about'
   end
   
