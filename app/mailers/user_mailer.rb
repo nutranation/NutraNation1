@@ -17,7 +17,7 @@ class UserMailer < ActionMailer::Base
   def facebook_waiting_email(user)
     @email = user.email
     mail(:to => "spencer.kline@gmail.com",
-         :subject => "#{email} signed up")
+         :subject => "#{@email} signed up")
   end
   
   def comment_email(comment)
