@@ -4,12 +4,18 @@ class UserMailer < ActionMailer::Base
   
   def welcome_email(user)
       @user = user
-      @url  = "http://nutranation.heroku.com/"
+      @url  = "http://nutranation.org"
       mail(:to => user.email,
            :subject => "Welcome to NutraNation")
   end
-  def facebook_waiting_email(email)
-    @email = email
+  
+  def welcome_email_waiting(email)
+      @url  = "http://nutranation.org"
+      mail(:to => email,
+           :subject => "Welcome to NutraNation")
+  end
+  def facebook_waiting_email(user)
+    @email = user.email
     mail(:to => "spencer.kline@gmail.com",
          :subject => "#{email} signed up")
   end
