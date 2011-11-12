@@ -19,12 +19,7 @@
   })();
 
 </script>
-<script type="text/javascript">
-  function recordOutboundLink(link, category, action) {
-    _gat._getTrackerByName()._trackEvent(category, action);
-    setTimeout('document.location = "' + link.href + '"', 100);
-  }
-</script>
+
 </head>
 <body>
 <div class="layer" <% if user_signed_in? and current_user %> style = "display:block;"<% end %>><div class="thankyou_box"><div class="close_x_sign">x</div><h3>Welcome to NutraNation</h3><p>Thank you for registering!</br><br/> As soon as the community is ready to launch, you will be the first to know. You can then get certified and join your new community of registered Dietitians. </br></br>We can't wait to have you on the site!<br/></br>For now, why don't you share this link with your network?</p> </div></div>
@@ -74,14 +69,14 @@
    		  <h2>Register now...</h2>
           <p class="text_box_signup">...and receive a notification as soon as we launch!</p>
      		<table><tbody><tr><td class="text_box_signup">with your Facebook account:</td>
-            <td><a class="fb_connect_button" href="http://www.nutranation.org/users/auth/facebook" onClick="recordOutboundLink(this, 'Outbound Links', 'facebook');return false;"><img src="images/facebook_connect.png" border="1" style="background-color:#000;"></a><br></td></tr>
+            <td><a class="fb_connect_button" href="http://www.nutranation.org/users/auth/facebook"><img src="images/facebook_connect.png" border="1" style="background-color:#000;"></a><br></td></tr>
           <tr><td></td></tr>
           <tr><td class="text_box_signup">
      		with your email address:</td>
             <td><input class="email_input" type="text" tabindex="1" size="28" placeholder:"Placeholder" name="email input field" 	value="jane@doe.com"></td>
             </tr>
             <tr><td></td><td>
-            <a class="button" id="button_signup" href="javascript:void(0);" onClick="_gaq.push(['_trackEvent', 'Waiting']);" >Register now</a></td></tr>
+            <a class="button" id="button_signup" href="javascript:void(0);" >Register now</a></td></tr>
             </tbody></table>
             <p class="data_statement">*Don't worry, your data is safe with us and you can unsubscribe at any time</p>
      		<p style="visibility:hidden;"><a class="already_member" href="http://www.nutranation.org/users/sign_in">Already member? Sign in here</a></p>
