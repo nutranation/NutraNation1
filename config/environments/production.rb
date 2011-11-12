@@ -53,7 +53,7 @@ NutraNation::Application.configure do
     :port                 => 587,
     :domain               => 'baci.lindsaar.net',
     :user_name            => 'admin@nutranation.org',
-    :password             => 'd0gsleep',
+    :password             => 'n0tranation',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
   config.middleware.use ExceptionNotifier,
