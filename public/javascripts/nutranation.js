@@ -27,7 +27,7 @@ $('#button_signup').click(function (){
 	  },
 		error:function (xhr, ajaxOptions, thrownError){
 	                  
-	                    alert("failed");
+	                    alert("Email Previously Submitted");
 	                }
 	});
 
