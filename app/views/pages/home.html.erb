@@ -1,9 +1,1 @@
-<% if user_signed_in? and current_user %>
-	<% if current_user.confirmed %>
-		<%= render 'shared/feed_home' %>
-	<% else %>
-		<%= render 'shared/confirmation' %>
-	<% end %>
-<% else %>
-  <%= render 'shared/splash' %>
-<% end %>
+<%= render 'shared/splash' %>

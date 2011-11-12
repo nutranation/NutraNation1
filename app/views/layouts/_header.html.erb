@@ -1,42 +1,6 @@
-<div class="header">
-	  <div id="logo">
-	      <img src="/images/logo.png" width="130"  height="105"/>
-	  </div>
-
-      <div id="signin" class="topmenu">
-		    <%= link_to "Home", root_path %> |
-		    <% if user_signed_in? and current_user.confirmed %>
-					<%= link_to "Tags", tags_path %> |
-		      <%= link_to "Profile", current_user %> |
-		      <%= link_to "Users", users_path %> |
-		      <%= link_to "Settings", edit_user_registration_path %> |
-		      <%= link_to "Sign out", destroy_user_session_path, :method => :delete%>
-					
-					<p><input id="search-form" class="tag_search" name="search_form" placeholder="Search for People and Tags Here!" type="text" class="tag_search" /> </p>
-					
-					<%= link_to "Unseen Messages: #{current_user.unread_messages}", "/messages/#{current_user.id}/inbox"%><br>
-						<div id = 'count'>
-
-							
-							Unseen Notifications: <%=  current_user.notification_unseen %> </div>
-							<%= button_to "show", {:action => "seen", :controller=>"/notifications"}, :remote => true %>
-
-
-						<div id = 'notifications'>
-							<span class = "messages"><%= render :partial => 'shared/notification', :collection => current_user.notifications %></span>
-						</div>
-						
-		    <% else %>
-					<%= link_to "About", about_path %> |
-		      <%= link_to "Contact", contact_path %> 
-					<% if user_signed_in? %>
-						| <%= link_to "Sign out", destroy_user_session_path, :method => :delete%>
-					<% else %>
-						 | <%= link_to "Sign in", new_user_session_path %>
-		     	<% end %>
-				<% end %>
-      </div>                   
-  </div>
-
-
-		
+<div class="header-background">
+  <div class="header">
+    <a id="logo" href="/"> </a>
+    <div id="banner_header"></div>
+    <a class="button" id="button_signin" href="/users/sign_in">Sign in</a> </div class="header">
+</div class="header-background">
