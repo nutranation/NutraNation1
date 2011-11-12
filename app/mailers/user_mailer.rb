@@ -16,7 +16,7 @@ class UserMailer < ActionMailer::Base
   end
   def facebook_waiting_email(user)
     @email = user.email
-    mail(:to => "support@nutranation.org",
+    mail(:to => "admin@nutranation.org",
          :subject => "#{@email} signed up")
   end
   
@@ -48,7 +48,7 @@ class UserMailer < ActionMailer::Base
   end
   def waiting_email(email)
     @email = email
-    mail(:to => "support@nutranation.org",
+    mail(:to => "admin@nutranation.org",
          :subject => "#{@email} signed up")
   end
   
