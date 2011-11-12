@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "spencer.kline@gmail.com"
+  default :from => "admin@nutranation.org"
   
   
   def welcome_email(user)
