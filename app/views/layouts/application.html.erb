@@ -29,7 +29,7 @@
 </script>
 </head>
 <body>
-<div class="layer" ><div class="thankyou_box"><div class="close_x_sign">x</div><h3>Welcome to NutraNation</h3><p>Thank you for registering!</br><br/> As soon as the community is ready to launch, you will be the first to know. You can then get certified and join your new community of registered Dietitians. </br></br>We can't wait to have you on the site!<br/></br>For now, why don't you share this site with your network?</p></br>
+<div class="layer" <% if user_signed_in? and current_user %> style = "display:block;"<% end %>><div class="thankyou_box"><div class="close_x_sign">x</div><h3>Welcome to NutraNation</h3><p>Thank you for registering!</br><br/> As soon as the community is ready to launch, you will be the first to know. You can then get certified and join your new community of registered Dietitians. </br></br>We can't wait to have you on the site!<br/></br>For now, why don't you share this site with your network?</p></br>
 
 <iframe class="twitter_share_button" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.html#_=1319826452569&count=horizontal&id=twitter_tweet_button_0&lang=en&original_referer=http%3A%2F%2Fwww.nutranation.org%2F%23!%2Fexercise%2F0&text=NutraNation%20is%20Your%20online%20community%20focused%20on%20healthy%20living%20and%20nutrition.&url=http%3A%2F%2Fwww.nutranation.org&via=NutraNation" title="NutraNation"></iframe>
 
