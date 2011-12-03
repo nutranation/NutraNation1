@@ -1,8 +1,11 @@
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>NutraNation - Your health community</title>
+
+<link rel="icon" href="favicon.gif" type="image/gif"/>
 <link href="/stylesheets/nutranation_site_css.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/javascripts/jquery.js"></script>
 <script type="text/javascript">
@@ -16,9 +19,33 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
+
+</script>
+<script type="text/javascript">
+  function recordOutboundLink(link, category, action) {
+    _gat._getTrackerByName()._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100);
+  }
 </script>
 </head>
 <body>
+<div class="layer" ><div class="thankyou_box"><div class="close_x_sign">x</div><h3>Welcome to NutraNation</h3><p>Thank you for registering!</br><br/> As soon as the community is ready to launch, you will be the first to know. You can then get certified and join your new community of registered Dietitians. </br></br>We can't wait to have you on the site!<br/></br>For now, why don't you share this site with your network?</p></br>
+
+<iframe class="twitter_share_button" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.html#_=1319826452569&count=horizontal&id=twitter_tweet_button_0&lang=en&original_referer=http%3A%2F%2Fwww.nutranation.org%2F%23!%2Fexercise%2F0&text=NutraNation%20is%20Your%20online%20community%20focused%20on%20healthy%20living%20and%20nutrition.&url=http%3A%2F%2Fwww.nutranation.org&via=NutraNation" title="NutraNation"></iframe>
+
+<div class="fb_button" style="left:10px;background-color:transparent;background:none;">
+<div id="fb-root" style = "background-color:white;"></div><script src="http://connect.facebook.net/en_US/all.js#appId=134934403267879&amp;xfbml=1"></script><fb:like  href="www.nutranation.org" send="true" width="450" show_faces="true" action="like" font="arial" style=""></fb:like>
+</div>
+
+<div class="linkedin_button" style="padding-left:2px;padding-top:5px;display:inline-block;">
+<script src="http://platform.linkedin.com/in.js" type="text/javascript"></script>
+<script type="IN/Share" data-url="www.nutranation.org"></script>
+</div>
+
+
+
+ </div></div>
+
 <!--Facebook-JavaScript SDK-->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -29,12 +56,137 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <!--Facebook-JavaScript SDK-End-->
-<%= render 'layouts/header' %>
-	<%= yield %>
-<%= render 'layouts/footer' %>
-<div class = "params" style = "display:none;">
-	<%= debug(params)%>
+
+
+<div class="header-background">
+  <div class="header">
+    <a id="logo" href="http://www.nutranation.org/"> </a>
+    <div id="banner_header"></div>
+    <a class="button" id="button_signin" href="/users/sign_in">Sign in</a> </div class="header">
+</div class="header-background">
+<div id="container">
+<div id="content">
+      <div class="box_descr box"> 
+      <div><h1><span style="font-size:14px;white-space:nowrap;width:400px;">An online community focused on healthy living & nutrition - </span></h1></div>
+      <div><h1><span style="font-size:25px;padding-left:33px;">exclusive</span></h1> </div> 
+      <div style="margin-top:0px;float:right;padding-right:33px;font-size:18px;white-space:nowrap;line-height:1px;"><p>for certified dietitians & dietetics students</p></div>
+      <br/>
+  <div class="list_advantages">
+  <div class="separation_line2"></div>
+  <ul>
+  <li>Find reliable information in an dietitians-only community</li>
+  <li>Share your articles and blog posts among fellow experts</li>
+  <li>Find up-to-date information about your topics of interest</li>  
+  </ul>
+  <div class="separation_line2"></div>
+ 
+  </div>
+      
+      <div class="attention_box">Free certification & membership !</div>
+      </div>
+      
+     <div class="box_signup box">
+   		  <h2>Register now...</h2>
+          <p class="text_box_signup" style="padding-bottom:18px;;">...and receive a notification as soon as we launch!</p>
+     		<table><tbody><tr><td class="text_box_signup">with your Facebook account:</td>
+            <td><a class="fb_connect_button" href="http://www.nutranation.org/users/auth/facebook" onClick="recordOutboundLink(this, 'Outbound Links', 'facebook');return false;">
+            
+            <img src="images/facebook_connect.png" border="1" class="fb_button_button" style="background-color:#000;"></a><br></td></tr>
+          <tr><td></td></tr>
+          <tr><td class="text_box_signup">
+     		with your email address:</td>
+            <td><input class="email_input" type="text" tabindex="1" size="28" placeholder:"text" name="email input field" onFocus="if(this.value=='jane@doe.com')this.value='';" value="jane@doe.com"></td>
+            </tr>
+            <tr><td></td><td>
+            <a class="button" id="button_signup" href="javascript:void(0);" onClick="_gaq.push(['_trackEvent', 'Waiting']);" >Register now</a></td></tr>
+            </tbody></table>
+            <p class="data_statement">*Don't worry, your data is safe with us and you can unsubscribe at any time</p>
+     		<p style="visibility:hidden;"><a class="already_member" href="http://www.nutranation.org/users/sign_in">Already member? Sign in here</a></p>
+     </div>
+
+
+
+
+<div class="footer_links"> 
+  <div class="footer_links_box"><a href="/">Home</a> <span class="vertical_line">|</span> <a href="javascript:void(0)" class = "about-link">About</a> <span class="vertical_line">|</span><a href="javascript:void(0)" class = "contact-link">Contact</a> <span class="vertical_line">|</span> © Copyright 2011 </div>
+  
+  </div class="footer_links">
+  
+  
+  
+
 </div>
+</div>
+<div class="about_background">  
+	<div class="box_footerlinks_text box">
+		<div class="about_headline">Learn more about NutraNation<span class="arrowdown"></span></div class="about_headline">
+    
+        </div class="box_footerlinks_text box">
+    
+<div class="learnmore_container">
+	<ul class="learnmore_nav">
+		<li class = "about_nav">More about us<span class="doublearrow"></span></li>
+		<!--<li>Our wonderful team</li>-->
+		<li class = "contact_nav">Contact us<span class="doublearrow"></span></li>
+	</ul>
+
+<div class="learnmore_box">
+    <div class="learnmore_about">
+        <p class="learnmore_highlightword" style="font-weight:bold;font-size:19px;padding:0px 5px 5px 10px">Our Beliefs	</p>
+<span class = "first-about" style = "font-size:19px;"><br/>
+Have you ever been frustrated by the nonsense that passes for nutrition advice on the Internet? 
+Our goal at NutraNation is to amplify the voice of those people who know what they are talking about! We want to provide a soapbox for experts to spread a simple message: nutrition is a science. <br><br>So join us on at NutraNation as we try to make the world a healthier place one carrot at a time!</span><span class = "second-about" style = "font-size:19px;">
+<br/><div class="learnmore_highlightword">An exclusive community of experts! </div><br/>
+We want to provide a platform where credentialed experts can engage in dialogue with people who share their expertise and passion for nutrition. Only certified dietitians and dietetic students are granted membership.
+<br/><div class="learnmore_highlightword">Find answers and keep up-to-date! </div><br/>
+The Internet is plagued by websites making unverified claims about the rejuvenating properties of their particular fad diet or miracle pill. At best this advice is useless and at worst can be downright harmful. Worst of all, these snake oil salesmen cast a shadow of suspicion over the people who actually have insight into how to eat right and live healthy. Only on NutraNation.org, you can find information you can trust in and find answers by real experts.   Discuss the latest development and stay at the pulse of whats important in your community.
+<br/><div class="learnmore_highlightword">Expand your network</div><br/>
+Find other dietitians in your city or all over the country. Expand your network and built highly valuable connections.
+<br/>
+<div class="learnmore_highlightword" style="font-weight:bold;font-size:19px;padding:5px 10px 5px 10px">Join us now!</div></span>
+
+	</div>
+    <div class="learnmore_contact"><p class="learnmore_highlightword" style="font-weight:bold;font-size:19px;padding:5px 10px 5px 10px">Contact us today! </p></br><p style="font-size:19px;">We are looking forward to receiving your questions, feedback and comments at <a style="text-decoration:underline;" href="mailto:admin@nutranation.org">admin@nutranation.org</a>. <!--Also feel free to contact us on within on NutraNation platform!--></p></div>     
+</div>    
+<div style="clear:both"></div>
+</div>
+    
+</div>
+<div class="footer_top_background">
+	<div class="footer_bottom_bg">
+		<div class="footer_bottom">
+		<span class="sharing">Sharing is Caring...tell your network about us: </span>
+	<iframe class="twitter_share_button" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.html#_=1319826452569&count=horizontal&id=twitter_tweet_button_0&lang=en&original_referer=http%3A%2F%2Fwww.nutranation.org%2F%23!%2Fexercise%2F0&text=NutraNation%20is%20Your%20online%20community%20focused%20on%20healthy%20living%20and%20nutrition.&url=http%3A%2F%2Fwww.nutranation.org&via=NutraNation" title="NutraNation"></iframe>
+
+	<div class="fb_button" style = "background-color:white;">
+	<div id="fb-root" style = "background-color:white;"></div><script src="http://connect.facebook.net/en_US/all.js#appId=134934403267879&amp;xfbml=1"></script><fb:like  href="nutranation.org" send="true" width="450" show_faces="true" action="like" font="arial" style = "background-color:white;"></fb:like>
+	</div>
+
+	<div class="linkedin_button">
+	<script src="http://platform.linkedin.com/in.js" type="text/javascript"></script>
+	<script type="IN/Share" data-url="www.nutranation.org"></script>
+	</div>
+
+	</div class="footer_top_background">
+
+	    </div>
+	</div>
+
+	<div class="footer_bottom2">
+
+
+
+
+
+</div>
+<div class = "params" style="display:none;">
+<pre class='debug_dump'>--- !map:ActiveSupport::HashWithIndifferentAccess 
+action: home
+controller: pages
+</pre>
+</div>
+
+
 </body>
 <script type="text/javascript" src="/javascripts/nutranation.js"></script>
 </html>
