@@ -1,51 +1,57 @@
 $("div.about_headline").click(function () { 
-	$(".learnmore_about").slideDown() 
-	$(".learnmore_nav").slideDown();
-	$(".learnmore_box").slideDown();
-	$(".first-about").slideDown()
+	$(".learnmore_about").show() 
+	$(".learnmore_nav").show();
+	$(".learnmore_box").show();
+	$(".first-about").show()
 	$(".second-about").hide()
 	$(".box_footerlinks_text").hide() 
 	$(".learnmore_contact").hide()
+  $('body').scrollTo($(".target"));	
+	
 });
 
 $("a.about-link").click(function () { 
-	$(".learnmore_nav").slideDown();
-	$(".learnmore_box").slideDown();
-	$(".learnmore_about").slideDown() 
-	$(".first-about").slideDown();
+	$(".learnmore_nav").show();
+	$(".learnmore_box").show();
+	$(".learnmore_about").show() 
+	$(".first-about").show();
 	$(".second-about").hide();
 	$(".box_footerlinks_text").hide() 
 	$(".learnmore_contact").hide() 
+	$('body').scrollTo($(".target"));	
 });
 
 $("a.contact-link").click(function () { 
-	$(".learnmore_nav").slideDown();
-	$(".learnmore_box").slideDown();
+	$(".learnmore_nav").show();
+	$(".learnmore_box").show();
 	$(".learnmore_about").hide()
 	$(".first-about").hide();
 	$(".second-about").hide(); 
 	$(".box_footerlinks_text").hide() 
-	$(".learnmore_contact").slideDown() 
+	$(".learnmore_contact").show()
+	$('body').scrollTo($(".target"));	
 });
 
 $("li.contact_nav").click(function () { 
-	$(".learnmore_nav").slideDown();
-	$(".learnmore_box").slideDown();
+	$(".learnmore_nav").show();
+	$(".learnmore_box").show();
 	$(".learnmore_about").hide();
 	$(".first-about").hide();
 	$(".second-about").hide();
 	$(".box_footerlinks_text").hide() 
-	$(".learnmore_contact").slideDown()
+	$(".learnmore_contact").show()
+	$('body').scrollTo($(".target"));	
 });
 
 $("li.about_nav").click(function () { 
-	$(".learnmore_nav").slideDown();
-	$(".learnmore_box").slideDown();
-	$(".learnmore_about").slideDown() 
-	$(".first-about").slideDown();
-	$(".second-about").slideDown();
+	$(".learnmore_nav").show();
+	$(".learnmore_box").show();
+	$(".learnmore_about").show() 
+	$(".first-about").show();
+	$(".second-about").show();
 	$(".box_footerlinks_text").hide() 
-	$(".learnmore_contact").hide() 
+	$(".learnmore_contact").hide()
+	$('body').scrollTo($(".target"));	
 });
 
 
