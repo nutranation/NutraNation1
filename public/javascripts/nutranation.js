@@ -6,8 +6,7 @@ $("div.about_headline").click(function () {
 	$(".second-about").hide()
 	$(".box_footerlinks_text").hide() 
 	$(".learnmore_contact").hide()
-  $('body').scrollTo($(".target"));	
-	
+	$('body').scrollTo($(".target"), 2500, {easing:'linear'});		
 });
 
 $("a.about-link").click(function () { 
@@ -18,7 +17,7 @@ $("a.about-link").click(function () {
 	$(".second-about").hide();
 	$(".box_footerlinks_text").hide() 
 	$(".learnmore_contact").hide() 
-	$('body').scrollTo($(".target"));	
+	$('body').scrollTo($(".target"), 2500, {easing:'linear'});		
 });
 
 $("a.contact-link").click(function () { 
@@ -29,7 +28,7 @@ $("a.contact-link").click(function () {
 	$(".second-about").hide(); 
 	$(".box_footerlinks_text").hide() 
 	$(".learnmore_contact").show()
-	$('body').scrollTo($(".target"));	
+	$('body').scrollTo($(".target"), 2500, {easing:'linear'});		
 });
 
 $("li.contact_nav").click(function () { 
@@ -40,7 +39,7 @@ $("li.contact_nav").click(function () {
 	$(".second-about").hide();
 	$(".box_footerlinks_text").hide() 
 	$(".learnmore_contact").show()
-	$('body').scrollTo($(".target"));	
+	$('body').scrollTo($(".target"), 2500, {easing:'linear'});		
 });
 
 $("li.about_nav").click(function () { 
@@ -51,7 +50,7 @@ $("li.about_nav").click(function () {
 	$(".second-about").show();
 	$(".box_footerlinks_text").hide() 
 	$(".learnmore_contact").hide()
-	$('body').scrollTo($(".target"));	
+	$('body').scrollTo($(".target"), 2500, {easing:'linear'});		
 });
 
 
