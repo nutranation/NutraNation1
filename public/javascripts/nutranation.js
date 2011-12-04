@@ -5,7 +5,7 @@ $("div.about_headline").click(function () {
 	$(".first-about").slideDown()
 	$(".second-about").hide()
 	$(".box_footerlinks_text").hide() 
-	$(".learnmore_contact").hide() 
+	$(".learnmore_contact").hide()
 });
 
 $("a.about-link").click(function () { 
@@ -35,7 +35,7 @@ $("li.contact_nav").click(function () {
 	$(".first-about").hide();
 	$(".second-about").hide();
 	$(".box_footerlinks_text").hide() 
-	$(".learnmore_contact").slideDown() 
+	$(".learnmore_contact").slideDown()
 });
 
 $("li.about_nav").click(function () { 
