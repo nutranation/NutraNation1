@@ -461,6 +461,9 @@ a#button_signup:hover {
 	margin-right:auto;
 	color:#222;
 	}
+	.box_footerlinks_text:hover {
+		cursor:pointer;
+		}
 .close_x {
 	position:relative;
 	top:5px;
@@ -637,6 +640,7 @@ ul.learnmore_nav li{
 }
 
 ul.learnmore_nav li:hover{
+	cursor:pointer;
 	background-color:#C7D954;
 	background: -webkit-gradient(linear, left top, left bottom, from(#C7D954) 50%, to(#B0BF4A) 50%); /* Saf4+, Chrome */
 	background: -webkit-linear-gradient(top, #C7D954 50%, #B0BF4A 50%); /* Chrome 10+, Saf5.1+ */
