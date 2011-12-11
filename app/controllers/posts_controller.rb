@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :authorized_user, :only => :destroy
-  
+  #test
   def create
     @post = current_user.posts.build(params[:post])
     @post.tag_list = params[:post][:tag_list].gsub(/\(\w+\)/, '')
