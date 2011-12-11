@@ -8,7 +8,7 @@
 #  followed_id :integer
 #  created_at  :datetime
 #  updated_at  :datetime
-#
+# test
 
 class Relationship < ActiveRecord::Base
   attr_accessible :followed_id, :item_type
