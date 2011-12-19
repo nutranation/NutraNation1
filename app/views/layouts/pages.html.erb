@@ -6,6 +6,7 @@
 <title>NutraNation - Your health community</title>
 
 <link rel="icon" href="/images/favicon.gif" type="image/gif"/>
+<link href="/stylesheets/nutranation_site_css.css" rel="stylesheet" type="text/css" />
 <link href="/stylesheets/pagedesign.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/javascripts/jquery.js"></script>
 <script type="text/javascript" src="/javascripts/scrollTo.js"></script>
@@ -30,9 +31,9 @@
 </script>
 </head>
 <body>
-	<%= render 'shared/header_small' %>
+	<%= render 'layouts/header' %>
 		<%= yield %>
-	<%= render 'shared/footer_small' %>
+	<%= render 'layouts/footer' %>
 	<div class = "params" style = "display:none;">
 		<%= debug(params)%>
 	</div>

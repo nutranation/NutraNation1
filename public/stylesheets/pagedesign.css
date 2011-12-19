@@ -1,0 +1,384 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	min-height:500px;
+	overflow-y:scroll;
+	background: none no-repeat scroll 0 0 #000000;
+    color: #494C37;
+    direction: ltr;
+    font:Georgia, "Times New Roman", Times, serif;
+	font-size: 15px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    unicode-bidi: embed; /*The unicodeBidi property is used with the direction property to set or return whether the text should be overridden to support multiple languages in the same document.*/
+	background-color: #ffffff;
+	background: -webkit-gradient(radial, left top, left bottom, from(#FFFFFF) 35%, to(#C7D954) 130%); /* Saf4+, Chrome */
+	background: -webkit-radial-gradient(top center, #FFFFFF 35%, #C7D954 130%); /* Chrome 10+, Saf5.1+ */
+	background:    -moz-radial-gradient(top, #FFFFFF 35%, #C7D954 130%); /* FF3.6 */
+	background:     -ms-radial-gradient(top, #FFFFFF 35%, #C7D954 130%); /* IE10 */
+	background:      -o-radial-gradient(top, #FFFFFF 35%, #C7D954 130%); /* Opera 11.10+ */
+	background-color:         radial-gradient(top, #FFFFFF 35%, #C7D954 130%);
+ 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FFFFFF, EndColorStr=#C7D954 ); /* IE6–IE9 */
+}
+.clear {
+	clear:both;
+	}
+
+/*----------------------------------------headerbar attributes----------------------------------------*/
+
+
+#headerbar_holder {
+	height:36px;
+	background-color: #818C3A;
+	background: -webkit-gradient(linear, left top, left bottom, from(#818C3A), to(#BBCC55)); /* Saf4+, Chrome */
+	background: -webkit-linear-gradient(bottom, #818C3A, #BBCC55); /* Chrome 10+, Saf5.1+ */
+	background:    -moz-linear-gradient(bottom, #818C3A 0%,#bbcc55 99%,#EAFF6A 99.5%); /* FF3.6 */
+	background-color:     -ms-linear-gradient(bottom, #818C3A, #BBCC55); /* IE10 */
+	background:      -o-linear-gradient(top, #818C3A, #BBCC55); /* Opera 11.10+ */
+	background:         linear-gradient(top, #818C3A, #BBCC55);
+ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#BBCC55, EndColorStr=#818C3A ); /* IE6–IE9 */
+	}
+
+#headerbar_holder.thin {
+	height:38px;
+	}
+
+#headerbar_allwidth {
+	position:relative;
+	min-width:980px;
+	width:100%;
+	height:37px;
+	margin-right:auto;
+	margin-left:auto;
+	border-bottom:
+	background-color:#060;
+	border-bottom:1px solid black;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.52);
+	}
+#headerbar_content {
+	width:980px;
+	margin-right:auto;
+	margin-left:auto;
+	height:36px;/*<!--placeholder-->*/
+	background-color:#000;/*<!--placeholder-->*/
+	border:1px solid #000;/*<!--placeholder-->*/
+	}
+#logo_main {
+	float:left;
+	height: 36px;
+	width: 138px;
+	background-position: -5px -5px;
+	background-size:360px 288px;
+    background-repeat: no-repeat;
+	display:block;
+	background-image:url(/images/logo.png);
+	background-color:white;
+	}
+.headerbar_element {
+	float:left;
+	height:36px;
+	min-width:20px;
+	display:inline;
+	}
+#headerbar_searchbar_wrapper {
+	width:330px;
+	height:36px;
+	float:left;
+	display:inline-block;
+	background:pink;
+	}
+.headerbar_searchbar {
+	width:100%;
+	height:36px;
+	background:blue;
+	margin:auto;
+	}
+.searchbox {
+	width:315px;
+	height:20px;
+	background:yellow;
+	margin:auto;
+	margin-top:5px;
+	}
+#headerbar_nav {
+	float:right;
+	line-height:36px;
+	}
+.header_link {
+	background-color:#F0F;
+	display:inline-block;
+	padding:0 10px 0 10px;
+	}
+.header_link:hover {
+	background-color:#90C;
+	} 
+	
+
+/*------------------------------------------------------------------------main--------------------------------------------------*/
+
+
+
+#container_holder {
+	}
+#container_content {
+	width:980px;
+	min-height:400px;
+	margin-right:auto;
+	margin-left:auto;
+	background-color:#000;/*<!--placeholder-->*/
+	border:3px solid pink;/*<!--placeholder-->*/
+	
+	}
+.frame_content {
+	float:left;
+	width:720px;/*<!--placeholder-->*/	
+	min-height:100px;
+	margin-top:20px;
+	border:1px solid black; /*<!--placeholder-->*/
+	}
+.frame_sidebarright {
+	float:right;
+	background-color:#0F0;
+	width:220px;/*<!--placeholder-->*/	
+	min-height:100px;
+	margin-top:20px;
+	border:1px solid black; /*<!--placeholder-->*/	
+	
+	}
+
+/*-----------------------------------------------------------unique post---------------------------------------------------------------*/
+
+.unique_post {
+	width:530px;
+	margin-left:140px;
+	}
+.unique_post h1 {
+	float:left;
+	width:100%;
+	padding-bottom:8px;
+	margin-bottom:5px;
+	color:#F00;
+	font-size:17px;
+	border-bottom:1px solid white;
+	text-align:left;
+	}
+.unique_post .sub_post {
+	margin-right:0px;
+	margin-bottom:5px;
+	float:left;
+	font-size:11px;
+	color:#09F;
+	text-decoration:none;
+	}
+.sub_post_actions {
+	height:20px;
+	}
+.post_text {
+	padding-bottom:1px;
+	text-align:left;
+	color:white;
+	font-size:16px;
+	}
+
+/*-----------------------------------------------------------answer---------------------------------------------------------------*/
+
+.answer_box {
+	width:480px;
+	height:auto;
+	min-height:50px;/*to ensure that plus and minus have space*/
+	margin-bottom:25px;
+	margin-top:5px;
+	background-color:#FF6;
+	}
+.myanswer_box {
+	width:480px;
+	height:auto;
+	min-height:50px;/*to ensure that plus and minus have space*/
+	margin-bottom:25px;
+	margin-top:5px;
+	background-color:#CF6;
+	}
+
+.answer_rating_container {
+	float:left;
+	width:30px;
+	height:auto;
+	min-height:30px;
+	}
+.answer_rating_plusminus {
+	position:static;
+	float:left;
+	position:relative;
+	width:24px;
+	height:18px;
+	padding:2px;
+	margin-bottom:5px;
+	background-color:#C9C;
+	font-size:20px;
+	text-align:center;
+	font-weight:bold;
+	font-size:24px;
+	color:#000;
+	}
+
+.answer_content {
+	float:right;
+	height:auto;
+	min-height:22px;
+	width:428px;
+	padding:8px 10px 3px 12px;
+	background-color:#6FC;
+	line-height:17px;
+	font-size:14px;
+	color:black;
+	text-align:left;
+	}
+.myanswer_content {
+	float:right;
+	height:auto;
+	min-height:22px;
+	width:428px;
+	padding:8px 10px 3px 12px;
+	background-color:#0cC;
+	line-height:17px;
+	font-size:14px;
+	color:black;
+	text-align:left;
+	}
+
+.sub_answer_actions {
+	height:20px;
+	margin-top:5px;
+	}
+
+.answer_box .sub_answer {
+	margin-right:0px;
+	margin-bottom:5px;
+	float:left;
+	font-size:11px;
+	color:#09F;
+	text-decoration:none;
+	}
+
+.myanswer_texteditor_container {
+	width:400px;
+	height:200px;
+	margin-top:7px;
+	margin-bottom:30px;
+	background:white;
+
+}
+/*-----------------------------------------------------------comment---------------------------------------------------------------*/
+
+.comment_box{
+	width:480px;
+	height:auto;
+	min-height:50px;/*to ensure that plus and minus have space*/
+	margin-bottom:35px;
+	margin-top:0px;
+	background-color:#F39;
+	}
+.mycomment_box{
+	width:480px;
+	height:auto;
+	min-height:50px;/*to ensure that plus and minus have space*/
+	margin-bottom:35px;
+	margin-top:0px;
+	background-color:#E19;
+	}
+.comment_content {
+	float:right;
+	height:auto;
+	min-height:22px;
+	width:408px;
+	padding:8px 10px 3px 12px;
+	background-color:#03F;
+	line-height:17px;
+	font-size:14px;
+	color:black;
+	text-align:left;
+	border-top:1px solid black;
+	border-bottom:1px solid black;
+	border-collapse:collapse;
+	}
+.mycomment_content {
+	float:right;
+	height:auto;
+	min-height:22px;
+	width:408px;
+	padding:8px 10px 3px 12px;
+	background-color:#08F;
+	line-height:17px;
+	font-size:14px;
+	color:black;
+	text-align:left;
+	border-top:1px solid black;
+	border-bottom:1px solid black;
+	border-collapse:collapse;
+	}
+.mycomment_texteditor_container {
+	width:300px;
+	height:100px;
+	margin-top:7px;
+	margin-bottom:30px;
+	background:white;
+
+}
+.sub_answer_actions {
+	height:20px;
+	margin-top:5px;
+	}
+
+.comment_box .sub_comment {
+	margin-right:0px;
+	margin-bottom:5px;
+	float:left;
+	font-size:11px;
+	color:#09F;
+	text-decoration:none;
+	}
+
+/*--------------------------------------------------------footer------------------------------------------------------------------*/
+
+#footerbar_holder {
+	height:36px;
+	}
+
+#footerbar_allwidth {
+	position:relative;
+	min-width:980px;
+	width:100%;
+	height:37px;
+	margin-right:auto;
+	margin-left:auto;
+	border-bottom:
+	background-color:#060;
+	border-bottom:1px solid black;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.52);
+	}
+#footerbar_content {
+	width:980px;
+	margin-right:auto;
+	margin-left:auto;
+	height:36px;/*<!--placeholder-->*/
+	background-color:#000;/*<!--placeholder-->*/
+	border:1px solid #000;/*<!--placeholder-->*/
+	}
+
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+
+a.post_username {
+	color:#F00;
+		padding-right:0px;
+	}
+.user_description {
+	color:green;;
+	padding-left:7px;
+	}
+.vertical_line {
+	padding:0 5px 0 5px;
+}

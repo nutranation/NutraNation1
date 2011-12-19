@@ -1,59 +1,102 @@
-<tr>
-		<% @content_type = 'Post' %>
-		<td class = '<%= @content_type %>'id = "<%=  post.id %>">
-		
-			<%= Vote.count(@content_type, post.id) %> Score
-		</td>
-  <td class="gravatar">
-    <a href="/users/<%= post.user.id %>"><%= image_tag(post.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %>  </a>
-  </td>
-  <td class="post">
-		<span class="title" style = "font-size: 120%"><strong><%= auto_link(wrap(post.title)).html_safe%></strong></span><br>
-		
-		<% if post.picture_file_name %>
-			<%= image_tag(post.picture.url(:medium), :alt => "profile",  :width => "200px", :height => "200px") %> 
-		<% end %>
+	<div id="container_holder">
+    	<div id="container_content">
+        	<div class="frame_content">
+            	<div class="unique_post"><h1>This is the headline of the post(zB the question)</h1>
+                	<div class="clear"></div>
+                    <div class="post_text"><a href="http://www.nutranation.org/profile/userone"class="post_username">user one</a>,<span class="user_description">certified position of this user</span><br/>
+                   this is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the post</div>
+                    <div class="sub_post_actions">
+                    <a class="sub_post" href=""> Reply<span class="vertical_line">|</span></a>
+                    <a class="sub_post" href=""> Flag<span class="vertical_line">|</span></a>
+                    <span class="sub_post"> 1 hour ago</span>
+                   </div>
+                    <div class="answer_box">
+                    
+                    	<div class="answer_rating_container">
+	                    	<span class="answer_rating_plusminus">+</span>
+    	                    <span class="answer_rating_plusminus">-</span>
+                        </div>
+                    	<div class="answer_content"><a href="http://www.nutranation.org/profile/userone"class="post_username">user one</a>,<span class="user_description">certified position of this user</span><br/>this is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a question
+                            <div class="sub_answer_actions">
+                            <a class="sub_answer" href=""> Comment<span class="vertical_line">|</span></a>
+                            <a class="sub_answer" href=""> Flag<span class="vertical_line">|</span></a>
+                            <span class="sub_answer">35 minutes ago</span>
+                            </div>
+                    	</div class="answer_content">
+                    	<div class="clear"></div>
+                  			<div class="comment_box">
+                        
+                           <div class="comment_content"><a href="http://www.nutranation.org/profile/userone"class="post_username">user one</a>,<span class="user_description">certified position of this user</span><br/>this is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to  this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answer
+                                <div class="sub_comment_actions">
+                                <a class="sub_comment" href=""> Flag<span class="vertical_line">|</span></a>
+                                <span class="sub_comment" > 20 minutes ago</span>
+                                    </div>
+                          	</div>
+                        </div>  
+                        	<div class="comment_box">
+                            
+                               <div class="comment_content"><a href="http://www.nutranation.org/profile/usertwo"class="post_username">user two</a>,<span class="user_description">certified position of this user</span><br/>this is another answer
+                                    <div class="sub_comment_actions">
+                                    <a class="sub_comment" href=""> Flag<span class="vertical_line">|</span></a>
+                                    <span class="sub_comment" > 20 minutes ago</span>
+                                    </div>
+                              </div>
+                        	</div>  
+                            
+<!--<-------------only display if "comment" clicked on answer------------------>
+							<div class="mycomment_box">
+                              <div class="mycomment_content">Add an Comment to this Answer:<br/>
+                            	<div class="mycomment_texteditor_container">here goes the text editor</div>
+                              </div>
+                            </div>
+<!--<-------------only display if "comment" clicked on answer------------------>  
+                             
+                              
+                    	
+                    	<div class="clear"></div>
+                    </div class="answer_box">
+                    <div class="clear"></div>
 
-	<% if post.content %>
-   		<span class "post"><%= auto_link(wrap(post.content)).html_safe %><span>
-	<% end %>
-	<% if @tags %>
-		<%= render :partial => 'shared/tag', :collection => @tags %></span>
-	<% end %>
-    <span class="timestamp">
-      <%= link_to post.user.name, post.user %> posted <%= time_ago_in_words(post.created_at) %> ago.
-    </span>
-			<% votes = post.up_voted(current_user) %>
-			<% if votes.first %>
-				<span class="timestamp">
-					<%= votes.map(&:name).join(", ")  %> voted up this post
-				<span>
-			<% end %>
-  </td>
-  <% if current_user?(post.user) %>
-    <td>
-      <%= link_to "delete", post, :method => :delete,
-                                       :confirm => "You sure?",
-                                       :title => post.title %>
-    </td>
-	<% end %>
-	<% unless current_user.voted?('Post', post.id) || current_user?(post.user) %>
-			<td class = "post-vote">
-				<%= render :partial => 'shared/vote_form', :object => post %>
-			</td>
-  <% end %>
-	<% if @related.first %>
-		
-		<td>
-			<div class = "related">
-			<strong>Related Posts:</strong><br>
-				<%= render :partial => 'related_post', :collection => @related %>
-			</div>
-		</td>
-		
-	<% end %>
-	
-</tr>
-<% if current_user?(post.user) || current_user.admin %>
-	<%= link_to "Edit Post", edit_post_path(post) %>
-<% end %>
+                    
+                
+                        
+                <div class="answer_box">
+                    	<div class="answer_rating_container">
+	                    	<span class="answer_rating_plusminus">+</span>
+    	                    <span class="answer_rating_plusminus">-</span>
+                        </div>
+                    	<div class="answer_content"><a href="http://www.nutranation.org/profile/userone"class="post_username">user one</a>,<span class="user_description">certified position of this user</span><br/>this is the second toprated answer to this question
+                            <div class="sub_answer_actions">
+                            <a class="sub_answer" href=""> Comment<span class="vertical_line">|</span></a>
+                            <a class="sub_answer" href=""> Flag<span class="vertical_line">|</span></a>
+                            <span class="sub_answer">35 minutes ago</span>
+                            </div>
+                        </div>
+                    <div class="clear"></div>
+                 </div>
+                	
+                    
+                    
+                    
+                    <div class="myanswer_box">
+                    		<div class="myanswer_content">Add an Answer to this question:<br/>
+                            	<div class="myanswer_texteditor_container">here goes the text editor
+                                </div>
+                            </div>
+                    <div class="clear"></div>
+                    </div>
+                
+                
+                
+                
+                </div> 
+            </div>
+           
+            <div class="frame_sidebarright">
+            </div>
+        	<div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+                    
+        
+    </div>
