@@ -8,7 +8,7 @@ body {
     color: #494C37;
     direction: ltr;
     font:Georgia, "Times New Roman", Times, serif;
-	font-size: 15px;
+	font-size: 25px;
     line-height: 20px;
     margin: 0;
     padding: 0;
@@ -108,7 +108,7 @@ body {
 	line-height:36px;
 	}
 .header_link {
-	background-color:#F0F;
+	background-color:#ccc;
 	display:inline-block;
 	padding:0 10px 0 10px;
 	}
