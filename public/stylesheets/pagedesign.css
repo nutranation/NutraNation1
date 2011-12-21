@@ -434,22 +434,29 @@ h6 {
 		border-bottom:1px solid pink;
 		padding-top:15px;
 		padding-left:10px;
+<<<<<<< Updated upstream
 		padding-bottom:10px;
+=======
+>>>>>>> Stashed changes
 		color:black;
 		text-align:left;
 		}
 	.sidebarright_section_headline {
 		padding:5px 0 5px 5px;
 		}
+<<<<<<< Updated upstream
 	.sidebarright_list_headline {
 		padding-left:0;
 		margin-bottom:1px;
 	}
+=======
+>>>>>>> Stashed changes
 	.sidebarright_list {
 		list-style-type:none;
 		padding-left:5px;
 		margin-top:0;
 		}
+<<<<<<< Updated upstream
 	.sidebarright_list h3 {
 		color:red;
 		margin-bottom:-2px;
@@ -534,6 +541,11 @@ a.button_sidebarright_addtopic:hover {
 	margin-top:15px;
 	}
 	
+=======
+	.sidebarright_list.li {
+		color:green;
+	}
+>>>>>>> Stashed changes
 /*--------------------------------------------------------footer------------------------------------------------------------------*/
 
 #footerbar_holder {
