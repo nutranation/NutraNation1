@@ -1,4 +1,4 @@
-@charset "utf-8";
+ter@charset "utf-8";
 /* CSS Document */
 
 body {
@@ -57,6 +57,7 @@ h6 {
 
 
 #headerbar_holder {
+	position:fixed;
 	height:36px;
 	background-color: #818C3A;
 	background: -webkit-gradient(linear, left top, left bottom, from(#818C3A), to(#BBCC55)); /* Saf4+, Chrome */
@@ -65,7 +66,7 @@ h6 {
 	background-color:     -ms-linear-gradient(bottom, #818C3A, #BBCC55); /* IE10 */
 	background:      -o-linear-gradient(top, #818C3A, #BBCC55); /* Opera 11.10+ */
 	background:         linear-gradient(top, #818C3A, #BBCC55);
- filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#BBCC55, EndColorStr=#818C3A ); /* IE6–IE9 */
+ 				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#BBCC55, EndColorStr=#818C3A ); /* IE6–IE9 */
 	}
 
 #headerbar_holder.thin {
@@ -148,6 +149,7 @@ h6 {
 
 
 #container_holder {
+	padding-top:38px;
 	}
 #container_content {
 	width:980px;
@@ -156,7 +158,6 @@ h6 {
 	margin-left:auto;
 	background-color:#000;/*<!--placeholder-->*/
 	border:3px solid pink;/*<!--placeholder-->*/
-	
 	}
 .frame_content {
 	float:left;
@@ -170,10 +171,13 @@ h6 {
 	background-color:#CCC;
 	width:220px;/*<!--placeholder-->*/	
 	min-height:100px;
-	margin-top:20px;
 	border:1px solid black; /*<!--placeholder-->*/	
-	
+	height:200px;
+	margin-top:90px;
+	background-color:#6F6;
+	top:100px;
 	}
+
 
 /*-----------------------------------------------------------unique post---------------------------------------------------------------*/
 
@@ -370,16 +374,6 @@ h6 {
 	text-decoration:none;
 	}
 	*--------------------------------------------------------sidebar-right-----------------------------------------------------------------*/
-
-	.frame_sidebarright {
-		height:200px;
-		width:220px;/*<!--placeholder-->*/
-		margin-top:90px;
-		background-color:#6F6;
-		border:1px solid black; /*<!--placeholder-->*/		
-		top:100px:}
-	
-
 	#sidebarright_actionbuttons_container {
 		position:absolute;
 		width:220px;
