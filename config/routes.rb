@@ -33,7 +33,7 @@ NutraNation::Application.routes.draw do
   
   root :to =>'pages#home'
   
-
+  match '/feed', :to => 'posts#feed'
   match '/contact', :to => 'pages#contact'
   match '/register', :to => 'pages#register'
   match '/search', :to => 'pages#search'
