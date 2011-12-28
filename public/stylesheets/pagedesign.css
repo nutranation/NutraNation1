@@ -535,17 +535,19 @@ a.button_green:hover {
 	margin-bottom:15px;
 	}
 .feedpage_headline_container_buttons .button_green{
+	float:left;
 	width:200px;
-	height:12px;
-	margin:26px 10px 0 0;
+	height:18px;
+	margin:0px 10px 0 0;
 	padding:0 13px 0 13px;
-	display:inline;
+	display:block;
 	}
 .feedpage_headline_container .singletextitem {
 	color:white;
 	font-weight:800;
 	display:inline;
 	white-space:nowrap;
+	float:left;
 	}
 .feedpage_headline_container a.singletextitem {
 	float:right;
