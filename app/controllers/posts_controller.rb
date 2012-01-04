@@ -20,15 +20,8 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
-    @comment = Comment.new
-    @comment.post_id = @post.id
-    @c_comment = @post.order_comments
-    @unique = true
-    @tags = @post.find_tags
-    @item_type = 'Post'
-    @content_type = @item_type
-    @following = @post
-    @related = @post.find_related_tags.limit(3)
+    @user =  @post.user
+    @comments = @post.comments
   end
   
   def update

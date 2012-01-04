@@ -1,33 +1,18 @@
-<tr>
-	  <% unless @feed_type %>
-				<% @content_type = 'Comment' %>
-			<td class = 'Comment' id = '<%=  comment.id %>'>
-	
-				<%= Vote.count(@content_type, comment.id) %> Score
-			</td>
+	<div class="answer_box">
+    	<div class="answer_rating_container">
+      	<span class="answer_rating_plusminus">+</span>
+          <span class="answer_rating_plusminus">-</span>
+        </div>
+    	<div class="answer_content"><a href="http://www.nutranation.org/profile/userone"class="post_username"><%= comment.user.name %></a>,<span class="user_description"><%= comment.user.description %></span><br/>
+<h3><%= comment.content  %></h3>
+            <div class="sub_answer_actions">
+            <a class="sub_answer" href=""> Comment<span class="vertical_line">|</span></a>
+            <a class="sub_answer" href=""> Flag<span class="vertical_line">|</span></a>
+            <span class="sub_answer">35 minutes ago</span>
+            </div>
+        </div>
+    	<div class="clear"></div>
+ 	</div>
+    <div class="clear"></div>
+</div>
 
-    <td class="gravatar">
-      <a href="/users/<%= comment.user.id %>"><%= image_tag(comment.user.display_image, :alt => "profile",  :width => "50px", :height => "50px") %></a>
-  	</td>
- <% end %>
-
-  <td class="comments">
-    <span class="content"> <%= auto_link(wrap(comment.content)).html_safe %> </span><br>
-    <span class="timestamp">
-      <%= link_to comment.user.name, comment.user %> <span style= "color: #666;" >posted <%= time_ago_in_words(comment.created_at) %> ago.</span>
-    </span>
-  </td>
-  <% unless @feed_type || current_user?(comment.user) || current_user.voted?('Comment', comment.id) %>
-		<td class = "vote" id = "<%= comment.id %>">
-			<%= render :partial => 'shared/vote_form', :object => comment %>
-		</td>
-	<% end %>
-  <% if current_user?(comment.user) %>
-    <td>
-      <%= link_to "delete", comment, :method => :delete,
-                                       :confirm => "You sure?",
-                                       :content => comment.content %>
-    </td>
-  <% end %>
-
-</tr>

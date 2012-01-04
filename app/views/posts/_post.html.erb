@@ -2,10 +2,10 @@
     	<div id="container_content">
         	<div class="frame_content">
 				<div class="feed_container">
-	            	<div class="unique_post"><h1>ThB the question)</h1>
+	            	<div class="unique_post"><h1><%= @post.title %></h1>
 	                	<div class="clear"></div>
-	                    <div class="post_text"><a href="http://www.nutranation.org/profile/userone"class="post_username">user one</a>,<span class="user_description">certified position of this user</span><br/>
-							<h2>this is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the   postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the postthis is the post</h2>
+	                    <div class="post_text"><a href="http://www.nutranation.org/profile/userone"class="post_username"><%= @user.name %></a>,<span class="user_description"><%= @user.description %></span><br/>
+							<h2><%= @post.content %></h2>
 						</div>
 	                    <div class="sub_post_actions">
 	                    	<a class="sub_post" href="">Reply<span class="vertical_line">|</span></a>
