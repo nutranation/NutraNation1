@@ -203,23 +203,21 @@ a.button_green:hover {
 	}
 .frame_content {
 	float:left;
-	width:720px;/*<!--placeholder-->*/	
+	width:635px;/*<!--placeholder-->*/	
 	min-height:100px;
 	margin-top:20px;
-	background-color:inherit;
-	border:1px solid black; /*<!--placeholder-->*/
+	background-color:yellow;
 	}
 .frame_sidebarright {
 	float:right;
 	background-color:green;
-	width:220px;/*<!--placeholder-->*/	
-	border:1px solid black; /*<!--placeholder-->*/	
+	width:285px;/*<!--placeholder-->*/	
 	height:auto;
 	margin-top:20px;x
 	}
 .feed_container {
 	margin-left:140px;
-	width:530px;
+	width:495px;
 	background-color:inherit;
 }
 
@@ -230,6 +228,7 @@ a.button_green:hover {
 	background-color:inherit;
 	padding-bottom:5px;
 	border-bottom:1px dashed #333;
+	min-width:350px;
 	}
 .unique_post h1 {
 	float:left;
@@ -302,7 +301,6 @@ a.button_green:hover {
 	display:block;
 	}
 .answer_box {
-	width:480px;
 	height:auto;
 	min-height:50px;/*to ensure that plus and minus have space*/
 	margin-bottom:25px;
@@ -310,7 +308,7 @@ a.button_green:hover {
 	background-color:#FF6;
 	}
 .myanswer_box {
-	width:480px;
+	width:auto;
 	height:auto;
 	min-height:50px;/*to ensure that plus and minus have space*/
 	margin-bottom:25px;
@@ -341,29 +339,27 @@ a.button_green:hover {
 	cursor:pointer;
 	}
 
-.answer_content {
-	position:relative;
-	float:right;
-	height:auto;
-	min-height:22px;
-	width:428px;
-	padding:8px 10px 3px 12px;
-	margin-bottom:35px;
-	background-color:#6FC;
-	line-height:17px;
-	font-size:14px;
-	color:black;
-	text-align:left;
+	.answer_content {
+		position:relative;
+		height:auto;
+		min-height:22px;
+		padding:8px 10px 3px 12px;
+		margin-bottom:-19px;
+		margin-left:35px;
+		background-color:#6FC;
+		line-height:17px;
+		font-size:14px;
+		color:black;
+		text-align:left;
+		border-collapse:collapse;
 	}
 .answer_content h3 {
 	position:relative;
 	color:blue;
 }
 .myanswer_content {
-	float:right;
 	height:auto;
 	min-height:22px;
-	width:428px;
 	padding:8px 10px 3px 12px;
 	background-color:#0cC;
 	line-height:17px;
@@ -371,7 +367,6 @@ a.button_green:hover {
 	color:black;
 	text-align:left;
 	}
-
 .sub_answer_actions {
 	height:20px;
 	margin-top:5px;
@@ -423,30 +418,28 @@ a.button_green:hover {
 
 .container_allcomments{
 	background-color:inherit;
-	display:block;}
+	display:block;
+	}
 .comment_box{
-	width:480px;
+	width:auto;
 	height:auto;
-	min-height:50px;/*to ensure that plus and minus have space*/
-	margin-bottom:35px;
+	min-height:50px;
+	margin-bottom:25px;
 	margin-top:0px;
 	background-color:#F39;
 	}
 .mycomment_box{
-	width:480px;
 	height:auto;
-	min-height:50px;/*to ensure that plus and minus have space*/
-	margin-bottom:35px;
+	margin-bottom:25px;
 	margin-top:0px;
 	background-color:#E19;
 	}
 .comment_content {
-	position:relative; /*untested*/
-	float:right;
+	position:relative; 
 	height:auto;
 	min-height:22px;
-	width:408px;
 	padding:8px 10px 3px 12px;
+	margin-left:60px;
 	background-color:#03F;
 	line-height:17px;
 	font-size:14px;
@@ -455,13 +448,14 @@ a.button_green:hover {
 	border-top:1px solid black;
 	border-bottom:1px solid black;
 	border-collapse:collapse;
+	overflow:hidden;
 	}
 .mycomment_content {
-	float:right;
+	position:relative;
 	height:auto;
 	min-height:22px;
-	width:408px;
 	padding:8px 10px 3px 12px;
+	margin-left:60px;
 	background-color:#08F;
 	line-height:17px;
 	font-size:14px;
@@ -470,12 +464,15 @@ a.button_green:hover {
 	border-top:1px solid black;
 	border-bottom:1px solid black;
 	border-collapse:collapse;
+	overflow:hidden;
 	}
 .mycomment_texteditor_container {
-	width:300px;
+	min-width:300px;
+	width:auto;
 	height:100px;
 	margin-top:7px;
 	margin-bottom:30px;
+	margin-right:20px;
 	background:white;
 	}
 .sub_answer_actions {
@@ -510,7 +507,6 @@ a.button_green:hover {
 	cursor:pointer;
 	background:inherit;
 	display:block;
-	
 	}
 .comment_content .more_expand_text:hover {
 	}
@@ -594,56 +590,46 @@ a.button_green:hover {
 	display:none;
 	}
 .feedpage_morebutton_container {
-	margin-right:40px;
-	margin-left:-10px;
-	}
-	
-	
-	
-	
-	
-	
+		margin-right:40px;
+		margin-left:-10px;
+		}	
 	/*--------------------------------------------------------sidebar-right-----------------------------------------------------------------*/
 	#sidebarright_actionbuttons_container {
-		position:absolute;
-		top:71px;
-		width:220px;
-		height:20px;
+		position:static;
+		width:100%;
+		max-width:285px;
+		height:auto;
 		border-bottom:1px solid blue;
 		padding-top:11px;
 		padding-bottom:11px;
 		}
+	#sidebarright_actionbuttons_container .button_green {
+		display:block;
+		width:50%;
+		margin-right:auto;
+		margin-left:auto;
+		}
 
 	#sidebarright_otherthanbutton {
 		position:relative;
-		top:43px;
-		width:220px;
+		width:100%;
 		height:auto;
 		background:red; /*<!--placeholder-->*/		
 		}
-	#sidebarright_topicsection_container{
-		top:110px;
-		width:220px;
-		border-bottom:1px solid pink;
-		padding-top:15px;
-		padding-left:10px;
-		padding-bottom:10px;
-		color:black;
-		text-align:left;
-		}
-	.sidebarright_section_headline {
-		padding:5px 0 5px 5px;
+	.sidebarright_section_container {
+		padding:5px 0 5px 0px;
 		}
 	.sidebarright_list_headline {
-		padding-left:0;
+		padding-left:10px;
 		margin-bottom:1px;
+		white-space:nowrap;
 	}
-	.sidebarright_list {
-		list-style-type:none;
-		padding-left:5px;
+	.sidebarright_elements_box {
+		width:100%;
+		padding-left:0px;
 		margin-top:0;
 		}
-	.sidebarright_list h3 {
+	.sidebarright_elements_box h3 {
 		color:red;
 		margin-bottom:-2px;
 		margin-top:0px;
@@ -651,85 +637,59 @@ a.button_green:hover {
 		display:inline-block;
 	}
 	.sidebarright_addinfoforlistitem {
-		font-size:12px;
+		font-size:11px;
 		color:gray;
-		margin-left:10px;
+		margin-top:4px;
 	}
-	.button_sidebarright_followtopic {
-			text-decoration:none;
-			height:auto;
-			width:auto;
-			font-size:12px;
-			font-weight:bold;
-			color:white;
-			padding:3px 5px 3px 5px;
-			margin:0 40px 12px 5px;
-			border-width:1px;
-			border-style:solid;
-			border-color:#000 #000 #161711 #000;
-			border-radius:3px;
-			box-shadow:0 1px 0 rgba(0, 0, 0, 0.1);
-			text-shadow:0 -1px #623633;
-			text-align: center;
-			text-shadow:#313325;
-			background-color: #737F28;
-			background: -webkit-gradient(linear, left top, left bottom, from(#737F28), to(#737F28)); /* Saf4+, Chrome */
-			background: -webkit-linear-gradient(top, #737F28, #737F28); /* Chrome 10+, Saf5.1+ */
-			background:    -moz-linear-gradient(top, #737F28, #737F28); /* FF3.6 */
-			background:     -ms-linear-gradient(top, #737F28, #737F28); /* IE10 */
-			background:      -o-linear-gradient(top, #737F28, #737F28); /* Opera 11.10+ */
-			background:         linear-gradient(top, #737F28, #737F28);
-		 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#737F28, EndColorStr=#737F28 ); /* IE6–IE9 */
-			cursor:pointer;
-			white-space:nowrap;
-			}
-		a.button_sidebarright_followtopic:hover {
-			background-color:green;/*text-decoration:underline;*/	
-			box-shadow:0 0 1px 1px #FFFFFF;
-		
+.frame_sidebarright .textbox {
+	width:150px;
 	}
-.button_sidebarright_addtopic {
-			float:left;
-			text-decoration:none;
-			height:auto;
-			width:auto;
-			font-size:12px;
-			font-weight:bold;
-			color:white;
-			padding:3px 5px 3px 5px;
-			margin:20px 40px 12px 5px;
-			border-width:1px;
-			border-style:solid;
-			border-color:#000 #000 #161711 #000;
-			border-radius:3px;
-			box-shadow:0 1px 0 rgba(0, 0, 0, 0.1);
-			text-shadow:0 -1px #623633;
-			text-align: center;
-			text-shadow:#313325;
-			background-color: #737F28;
-			background: -webkit-gradient(linear, left top, left bottom, from(#737F28), to(#737F28)); /* Saf4+, Chrome */
-			background: -webkit-linear-gradient(top, #737F28, #737F28); /* Chrome 10+, Saf5.1+ */
-			background:    -moz-linear-gradient(top, #737F28, #737F28); /* FF3.6 */
-			background:     -ms-linear-gradient(top, #737F28, #737F28); /* IE10 */
-			background:      -o-linear-gradient(top, #737F28, #737F28); /* Opera 11.10+ */
-			background:         linear-gradient(top, #737F28, #737F28);
-		 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#737F28, EndColorStr=#737F28 ); /* IE6–IE9 */
-			cursor:pointer;
-			white-space:nowrap;
-			}
+
+/*---------------------------------------different boxes in sidebarright:topics-----------------------------------------------*/
+#sidebarright_topicsection_container{
+		position:static;
+		width:auto;
+		border-bottom:1px solid pink;
+		padding-top:15px;
+		padding-left:0px;
+		padding-bottom:10px;
+		color:black;
+		text-align:left;
+		}
+#sidebarright_topicsection_container .sidebarright_element {
+	position:relative;
+	background-color:green;
+	border-bottom: 1px dashed black;
+	padding-left:20px;
+	}
+#sidebarright_topicsection_container .sidebarright_addinfoforlistitem  {
+	margin-left:0px;
+	max-width:130px;
+	}
 a.button_sidebarright_addtopic:hover {
 	background-color:green;/*text-decoration:underline;*/	
-	box-shadow:0 0 1px 1px #FFFFFF;
-		
+	box-shadow:0 0 1px 1px #FFFFFF;	
 	}
-.sidebarright_list .textbox {
-	width:150px;
-	margin-top:15px;
+#sidebarright_topicsection_container .sidebarright_element .button_green {
+	position:absolute;
+	right:0px;
+	top:10px;
+	padding:0 5px 0 5px;
+	display:inline;
+	float:right;
+	vertical-align:top;
 	}
-	
-	.sidebarright_list.li {
-		color:green;
+#sidebarright_topicsection_container h3 {
+	max-width:170px;
+	overflow:hidden;
+	white-space:nowrap;
 	}
+.frame_sidebarright #sidebarright_topicsection_container .textbox {
+	width:180px;
+	margin:10px 0 10px 0;
+	}
+
+
 /*--------------------------------------------------------footer------------------------------------------------------------------*/
 
 #footerbar_holder {
@@ -761,12 +721,12 @@ a.button_sidebarright_addtopic:hover {
 
 .frame_profileleft {
 	float:left;
-	width:607px;/*<!--placeholder-->*/	
+	width:617px;/*<!--placeholder-->*/	
 	min-height:100px;
 	margin-top:20px;
 	background-color:blue;
 	border:1px solid black; /*<!--placeholder-->*/
-	}
+	overflow:hidden;}
 #profileleft_container {
 	position:relative;
 	margin-left:140px;
@@ -871,11 +831,14 @@ a.button_sidebarright_addtopic:hover {
 #sign_certified_text {
 	position:absolute;
 	right:0px;
-	top:3px;
+	top:13px;
 	background-color:green;
 	z-index:6000;
 	font-size:10px;
-	}
+	-webkit-transform: rotate(45deg); 
+	-moz-transform: rotate(45deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+	/*The rotation property of the BasicImage filter can accept one of four values: 0, 1, 2, or 3 which will rotate the element 0, 90, 180 or 270 degress respectively.*/}
 #sign_certified_triangle {
 	position:absolute;
 	width:0px;
