@@ -28,12 +28,16 @@ body {
 	}
 a  {
 	text-decoration:none;
+<<<<<<< Updated upstream
 	cursor:pointer;
 	color:blue;
 }
 a:hover {
 	text-decoration:underline;
 	}
+=======
+}
+>>>>>>> Stashed changes
 h1 {
 	font-size:17px;
 	border-bottom:1px solid white;
@@ -45,16 +49,25 @@ h2 {
 	}
 h3 {
 	font-size:inherit;
+<<<<<<< Updated upstream
+=======
+	line-height:12px;
+>>>>>>> Stashed changes
 	font-weight:normal;
 	}
 h4 {
 	font-size:inherit;
+<<<<<<< Updated upstream
+=======
+	line-height:12px;
+>>>>>>> Stashed changes
 	font-weight:normal;
 	}
 h5 {
 	}
 h6 {
 	}
+<<<<<<< Updated upstream
 td {
 	padding:0;	
 	}
@@ -109,6 +122,9 @@ ul.listofpeople li{
 	}
 
 
+=======
+	
+>>>>>>> Stashed changes
 /*----------------------------------------headerbar attributes----------------------------------------*/
 
 
@@ -234,9 +250,15 @@ ul.listofpeople li{
 	}
 .frame_sidebarright {
 	float:right;
+<<<<<<< Updated upstream
 	background-color:#FFFFFF;
 	width:285px;
 	height:auto;
+=======
+	background-color:#CCC;
+	width:220px;/*<!--placeholder-->*/	
+	min-height:100px;
+>>>>>>> Stashed changes
 	margin-top:20px;
 	}
 .feed_container {
@@ -377,7 +399,10 @@ ul.listofpeople li{
 	display:block;
 	}
 .answer_content h3 {
+<<<<<<< Updated upstream
 	position:relative;
+=======
+>>>>>>> Stashed changes
 	color:blue;
 }
 .myanswer_content {
@@ -506,7 +531,89 @@ ul.listofpeople li{
 	color:#09F;
 	text-decoration:none;
 	}
+	*--------------------------------------------------------sidebar-right-----------------------------------------------------------------*/
 
+	.frame_sidebarright {
+		height:200px;
+		width:220px;/*<!--placeholder-->*/
+		margin-top:90px;
+		background-color:#6F6;
+		border:1px solid black; /*<!--placeholder-->*/		
+		top:100px:}
+	
+
+<<<<<<< Updated upstream
+=======
+	#sidebarright_actionbuttons_container {
+		position:absolute;
+		width:220px;
+		border-bottom:1px solid pink;
+		padding-top:11px;
+		}
+
+	#sidebarright_otherthanbutton {
+		position:absolute;
+		top:116px;
+		width:220px;
+		height:auto;
+		background:green; /*<!--placeholder-->*/		
+
+		}
+
+	.button_followquestion {
+		text-decoration:none;
+		height:auto;
+		width:auto;
+		font-size:14px;
+		font-weight:bold;
+		color:white;
+		padding:3px 31px 3px 31px;
+		margin:0 10px 15px 10px;
+		border-width:1px;
+		border-style:solid;
+		border-color:#000 #000 #161711 #000;
+		border-radius:3px;
+		box-shadow:0 1px 0 rgba(0, 0, 0, 0.1);
+		text-shadow:0 -1px #623633;
+		text-align: center;
+		text-shadow:#313325;
+		background-color: #737F28;
+		background: -webkit-gradient(linear, left top, left bottom, from(#737F28), to(#737F28)); /* Saf4+, Chrome */
+		background: -webkit-linear-gradient(top, #737F28, #737F28); /* Chrome 10+, Saf5.1+ */
+		background:    -moz-linear-gradient(top, #737F28, #737F28); /* FF3.6 */
+		background:     -ms-linear-gradient(top, #737F28, #737F28); /* IE10 */
+		background:      -o-linear-gradient(top, #737F28, #737F28); /* Opera 11.10+ */
+		background:         linear-gradient(top, #737F28, #737F28);
+	 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#737F28, EndColorStr=#737F28 ); /* IE6–IE9 */
+		cursor:pointer;
+		white-space:nowrap;
+		}
+	a.button_followquestion:hover {
+		background-color:green;/*text-decoration:underline;*/	
+		box-shadow:0 0 1px 1px #FFFFFF;
+		}	
+	#sidebarright_topicsection_container{
+		top:110px;
+		width:220px;
+		border-bottom:1px solid pink;
+		padding-top:15px;
+		padding-left:10px;
+		color:black;
+		text-align:left;
+		}
+	.sidebarright_section_headline {
+		padding:5px 0 5px 5px;
+		}
+	.sidebarright_list {
+		list-style-type:none;
+		padding-left:5px;
+		margin-top:0;
+		}
+	.sidebarright_list.li {
+		color:green;
+	}
+/*--------------------------------------------------------footer------------------------------------------------------------------*/
+>>>>>>> Stashed changes
 
 		/*-------------------------comment_expendable-----------------------*/
 
