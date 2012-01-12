@@ -7,8 +7,7 @@ body {
 	background: none no-repeat scroll 0 0 #FFF;
     color: #494C37;
     direction: ltr;
-    font:Georgia, "Times New Roman", Times, serif;
-	font-size: 15px;
+	font:11px Georgia, "Times New Roman", Times, serif;
     line-height: 20px;
     margin: 0;
     padding: 0;
@@ -30,7 +29,7 @@ a  {
 	text-decoration:none;
 	cursor:pointer;
 	color:blue;
-}
+	}
 a:hover {
 	text-decoration:underline;
 	}
@@ -81,20 +80,25 @@ ul {
 	text-align: center;
 	text-shadow:#313325;
 	background-color: #737F28;
-	background: -webkit-gradient(linear, left top, left bottom, from(#737F28), to(#737F28)); /* Saf4+, Chrome */
-	background: -webkit-linear-gradient(top, #737F28, #737F28); /* Chrome 10+, Saf5.1+ */
-	background:    -moz-linear-gradient(top, #737F28, #737F28); /* FF3.6 */
-	background:     -ms-linear-gradient(top, #737F28, #737F28); /* IE10 */
-	background:      -o-linear-gradient(top, #737F28, #737F28); /* Opera 11.10+ */
-	background:         linear-gradient(top, #737F28, #737F28);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#737F28, EndColorStr=#737F28 ); /* IE6–IE9 */
+	background: -webkit-gradient(linear, left top, left bottom, from(#464C20), to(#2F2D15)); /* Saf4+, Chrome */
+	background: -webkit-linear-gradient(top, #464C20, #2F2D15); /* Chrome 10+, Saf5.1+ */
+	background:    -moz-linear-gradient(top, #464C20, #2F2D15); /* FF3.6 */
+	background:     -ms-linear-gradient(top, #464C20, #2F2D15); /* IE10 */
+	background:      -o-linear-gradient(top, #464C20, #2F2D15); /* Opera 11.10+ */
+	background:         linear-gradient(top, #464C20, #2F2D15);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#464C20, EndColorStr=#2F2D15 ); /* IE6–IE9 */
 	cursor:pointer;
 	white-space:nowrap;
 	}
 a.button_green:hover {
 	background-color:green;/*text-decoration:underline;*/	
-	box-shadow:0 0 1px 1px #FFFFFF;
+	box-shadow:0 0 1px 1px #000;
 	}	
+a.button_green:active {
+	position:relative;
+	top:1px;
+	left:1px;
+	}
 .bullet {
 	padding:0 2px 0 2px;
 	font-size:10px;
@@ -238,6 +242,7 @@ ul.listofpeople li{
 	width:285px;
 	height:auto;
 	margin-top:20px;
+	border-right:1px dotted ##494c37;
 	}
 .feed_container {
 	margin-left:140px;
@@ -291,7 +296,6 @@ ul.listofpeople li{
 	padding-bottom:1px;
 	text-align:left;
 	color:black;
-	font-size:16px;
 	background-color:inherit;
 	}
 
@@ -354,7 +358,6 @@ ul.listofpeople li{
 	padding:2px;
 	margin-bottom:5px;
 	background-color:#C9C;
-	font-size:20px;
 	text-align:center;
 	font-weight:bold;
 	font-size:24px;
@@ -370,7 +373,7 @@ ul.listofpeople li{
 	margin-left:35px;
 	background-color:#EDF8EE;
 	line-height:17px;
-	font-size:14px;
+	font-size:11px;
 	color:black;
 	text-align:left;
 	border-collapse:collapse;
@@ -386,7 +389,7 @@ ul.listofpeople li{
 	padding:8px 10px 3px 12px;
 	background-color:#0cC;
 	line-height:17px;
-	font-size:14px;
+	font-size:11px;
 	color:black;
 	text-align:left;
 	}
@@ -426,7 +429,7 @@ ul.listofpeople li{
 	top:138px;
 	right:0px;
 	padding:2px 10px 2px 10px;
-	font-size:13px;
+	font-size:10px;
 	color:blue;
 	cursor:pointer;
 	background:inherit;
@@ -465,7 +468,7 @@ ul.listofpeople li{
 	margin-left:60px;
 	background-color:#DEE8DF;
 	line-height:17px;
-	font-size:14px;
+	font-size:11px;
 	color:black;
 	text-align:left;
 	border-top:1px solid black;
@@ -481,7 +484,7 @@ ul.listofpeople li{
 	margin-left:60px;
 	background-color:#08F;
 	line-height:17px;
-	font-size:14px;
+	font-size:11px;
 	color:black;
 	text-align:left;
 	border-top:1px solid black;
@@ -520,7 +523,7 @@ ul.listofpeople li{
 	top:143px;
 	right:0px;
 	padding:2px 10px 2px 10px;
-	font-size:13px;
+	font-size:10px;
 	color:blue;
 	cursor:pointer;
 	background:inherit;
@@ -585,7 +588,7 @@ ul.listofpeople li{
 	padding:1px 3px 1px 3px;
 	background-color:#333;
 	color:#999;
-	font-size:14px;
+	font-size:11px;
 	line-height:17px;
 	white-space:nowrap;
 	text-align:left;
@@ -599,7 +602,7 @@ ul.listofpeople li{
 	padding:1px 3px 1px 3px;
 	background-color:#333;
 	color:#999;
-	font-size:13px;
+	font-size:11px;
 	line-height:16px;
 	white-space:nowrap;
 	text-align:left;
@@ -822,14 +825,17 @@ a.post_username {
 }		
 
 	/*--------------------------------------------------------sidebar-right-----------------------------------------------------------------*/
+.frame_sidebarright a {
+	color:#22241A;
+	}
+a.button_green {	
+	color:#FFF;
+	}
 #sidebarright_actionbuttons_container {
 	position:static;
 	width:100%;
 	max-width:285px;
 	height:auto;
-	border-bottom:1px solid blue;
-	padding-top:11px;
-	padding-bottom:11px;
 	}
 .sidebarright_element .button_green {
 	position:absolute;
@@ -853,29 +859,39 @@ a.post_username {
 	height:auto;
 	}
 .sidebarright_section_container {
-	padding:20px 0 15px 0px;
-	position:static;
+	padding-top:0px;
+	padding-right:0;position:static;
 	width:auto;
-	border-bottom:1px solid pink;
 	color:black;
 	text-align:left;
+	border-collapse:collapse;
 	}
-.sidebarright_section_container .sidebarright_element {
+.sidebarright_section_container .sidebarright_element {	
 	position:relative;
-	border-bottom: 1px dashed black;
+	border-top: 1px dotted #8c9841;
 	padding-left:0px;
 	padding-top:5px;
+	border-collapse:collapse;
+	}
+.sidebarright_section_container, #sidebarright_actionbuttons_container {	
+	border-bottom:1px dotted #494c37;
 	}
 .sidebarright_list_headline {
+		width:100%;
 		padding-left:0px;
+		background-color:#f7ffd2;
 		font-weight:bold;
-		margin-bottom:1px;
+		line-height:30px;
 		white-space:nowrap;
+		margin-top:auto;
+		margin-bottom:auto;
+		
 	}
 	.sidebarright_elements_box {
 		width:100%;
 		padding-left:0px;
 		margin-top:0;
+		border-collapse:collapse;
 		}
 	.sidebarright_elements_box h3 {
 		color:red;
@@ -887,6 +903,7 @@ a.post_username {
 		font-size:11px;
 		color:gray;
 		margin-top:4px;
+		margin-bottom:8px;
 	}
 .frame_sidebarright .textbox {
 	width:150px;
@@ -903,6 +920,7 @@ a.post_username {
 
 /*--------------different boxes in sidebarright:topics--------------------*/
 #sidebarright_topicsection_container{
+	border-collapse:collapse;
 		}
 #sidebarright_topicsection_container .sidebarright_addinfoforlistitem  {
 	margin-left:0px;
@@ -919,8 +937,8 @@ a.post_username {
 	}
 /*--------------different boxes in sidebarright:people to follow AND topics to follow--------------------*/
 .sidebarright_element .name {
+	font-weight:bold;
 	margin-right:5px;
-	font-size:15px;
 	display:inline;
 	}
 #sidebarright_peopletofollowsection_container{
@@ -928,7 +946,7 @@ a.post_username {
 #sidebarright_peopletofollowsection_container .sidebarright_element .button_green {
 	position:relative;
 	float:right;
-	margin:5px;
+	margin:0px 5px 9px 7px;
 	}
 #sidebarright_peopletofollowsection_container .info {
 	height:auto;
@@ -940,13 +958,9 @@ a.post_username {
 	}
 
 .sidebarright_element .location, .sidebarright_element .connection, .sidebarright_element .activity, .sidebarright_element .jobtitle, .sidebarright_element .followers, .sidebarright_element .relatedto, .sidebarright_element .activity_topic	{
-	color:white;
-	font-size:12px;
+	color:black;
 	line-height:17px;
 	display:inline;
-	}
-.sidebarright_element .location, .sidebarright_element .activity, .sidebarright_element .jobtitle	{
-	white-space:nowrap;
 	}
 #sidebarright_peopletofollowsection_container img {
 	width:50px;
