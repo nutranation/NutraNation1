@@ -15,6 +15,8 @@ class UsersController < ApplicationController
     @title = @user.name
     @item_type = 'User'
     @feed_type = :my_activity
+    @profile = true
+    @mine = true
   end
   
   def destroy
