@@ -1,0 +1,49 @@
+				<div class="unique_post">
+                    	<div class="container_onlypostitself">
+                            <h1><a href=""><%= short_post.title %></a></h1>
+                            <div class="clear"></div>
+                            <div class="post_text"><a href="http://www.nutranation.org/profile/userone"class="post_username"><%= short_post.user.name %></a>,<span class="user_description"><%= short_post.user.description %>r</span><br/>
+                                <h2><%= short_post.content %></h2>
+                                <span class="more_expand_text">(see more)</span>
+                            </div>
+                            <div class="sub_post_reactions">11 Reactions
+                            </div>
+                            <div class="sub_post_actions">
+                                <a class="sub_post" href="">Follow<span class="vertical_line">|</span></a>
+                                <a class="sub_post" href="">Reply<span class="vertical_line">|</span></a>
+                                <a class="sub_post" href="">Share<span class="vertical_line">|</span></a>
+                                <a class="sub_post" href="">Flag<span class="vertical_line">|</span></a>
+                                <span class="sub_post">1 hour ago</span>
+                            </div>
+                        </div>
+					<div class="container_allanswers">
+						
+<!-- the div "answer_box" contains one answer and needs to be repeated for each new answer to a question.-->                           	
+                            <div class="answer_box">
+						<div class="answer_rating_container">
+	                    		<span class="answer_rating_plusminus">+</span>
+    	                    	<span class="answer_rating_plusminus">4</span><!--this is a no of positive ratings-->
+                        	</div>
+						<div class="answer_content">
+							<% comment = short_post.comments.first %>
+									<a href="http://www.nutranation.org/profile/userone"class="post_username"><%= comment.user.name %></a>,<span class="user_description"><%= comment.user.description %></span><br/>
+									<h3>this is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a question</h3>
+                                        <span class="more_expand_text">(see more)</span>
+                			  <div class="sub_answer_reactions">12221 Comments</div>
+                            		<div class="sub_answer_actions">
+                            			<a class="sub_answer" href=""> Comment<span class="vertical_line">|</span></a>
+                            			<a class="sub_answer" href=""> Flag<span class="vertical_line">|</span></a>
+                            			<span class="sub_answer">35 minutes ago</span>
+                            		</div>
+                    			</div>
+						<div class="clear"></div>
+
+	                    <div class="clear"></div>
+                    </div>
+                    </div>
+                        <div class="clear"></div>
+                </div>
+                    <div class="feedpage_morebutton_container">
+					<div class="button_green">See more</div>
+				</div>
+ 	

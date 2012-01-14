@@ -1,0 +1,333 @@
+	            <div class="frame_sidebarright">
+<!--all actionbuttons-->
+	                <div id="sidebarright_actionbuttons_container">
+						<% if @profile and @mine %>
+						<a class="button_green" href=""> Edit</a> 
+						<% end %>	<!--Show on own Profile-->
+							<% if @profile and not @mine %>
+                        <a class="button_green" href=""> Message</a>  <!--Show on other Profiles-->
+                        <a class="button_green" href=""> Follow</a>  <!--Show on other Profiles-->
+								<% end %>
+								<% if @unique %>
+                        <a class="button_green" href=""> Add Your Question</a>	<!--Show on Unique Post-->
+                        <a class="button_green" href=""> Follow this Question</a>
+								<% end %>
+								<% if @feed or @profile%>
+                        <a class="button_green" href=""> Invite People</a>	<!--Show on Feed and Profile-->
+							<% end %>
+						<div class="clear"></div>
+                    </div>
+                	<div class="clear"></div>    
+					<div id="sidebarright_otherthanbutton">
+<!--Topics of the current question - shown on Unique Post Page-->
+						<% if @unique %>
+						<div class="sidebarright_section_container">
+	                        <div id="sidebarright_topicsection_container">						
+								<div class="sidebarright_list_headline"> Topics:</div>
+								<div class="sidebarright_elements_box">
+                                	<div class="sidebarright_element">
+                                        <h3><a href=“”>1st topic of question</a></h3>
+                                        <div class="sidebarright_addinfoforlistitem">5 questions - 25 answers</div>
+                                        <a class="button_green" href="">Follow Topic</a>
+									</div>
+                                    <div class="sidebarright_element">
+                                        <h3><a href=“”>2nd of question</a></h3>
+                                        <div class="sidebarright_addinfoforlistitem">5 questions - 35 answers</div>
+                                        <a class="button_green" href="">Follow Topic</a>
+	                            	</div>
+									<div class="sidebarright_element">
+                                    	<input class="textbox" type="text" placeholder="Add Topic to this Question" value="" name="s"/>
+                                	</div>
+                                </div>	
+			                    <div class="clear"></div>
+	                    	</div>
+	                    <div class="clear"></div>
+	            		</div>
+<% end %>
+<% if @unique or @feed or @profile%>
+<!--People to follow - displayed on Unique Post Page, Feed and Profile-->
+                        <div class="sidebarright_section_container">
+	                        <div id="sidebarright_peopletofollowsection_container">						
+								<div class="sidebarright_list_headline"> Who to follow</div>
+								<div class="sidebarright_elements_box">
+                                	<div class="sidebarright_element">
+                                        <div class="pic_small_container">
+                                        	<a class="profilepic_small" href="">
+                                            	<img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                            </a>
+                                        </div>
+                                        <div class="info">	
+                                            <a class="name" href=“”>Spencer Kline</a>
+                                            <div class="jobtitle">Registered Dietitian</div><span class="bullet">  •  </span>
+                                        	<a class="button_green" href="">Follow</a>
+                                            <div class="location">Boston, MA</div><span class="bullet">  •  </span>
+                                        	<div class="activity">23 Posts</div><span class="bullet">  •  </span>
+                                        	<div class="connection">Followed by <a class="linktoprofile" href="www.nutranation.org/lauren.janich">Lauren Janich</a>
+                                            </div> 
+                                        </div>
+									</div>
+                                    
+                                    <div class="sidebarright_element">
+                                        <div class="pic_small_container">
+                                        	<a class="profilepic_small" href="">
+                                            	<img src="images/bastian_johannes_purrer.png" alt="name of person goes here" />
+                                            </a>
+                                        </div>
+                                        <div class="info">	
+                                            <a class="name" href=“”>Bastian Johannes Purrer</a>
+                                            <div class="jobtitle">Guy pretending to be a website designer</div><span class="bullet">  •  </span>
+                                        	<a class="button_green" href="">Follow</a>
+                                            <div class="location">Berlin, Germany</div><span class="bullet">  •  </span>
+                                        	<div class="activity">23 Posts</div><span class="bullet">  •  </span>
+                                        	<div class="connection">Also follows
+                                            	<a class="linktotopic" href="www.nutranation.org/topic/Hebrew_University_Jerusalem">Hebrew University Jerusalem</a>, 
+                                            	<a class="linktotopic" href="www.nutranation.org/topic/NutraNation">NutraNation</a>
+                                            </div> 
+                                        </div>
+									</div>
+                                </div>	
+			                    <div class="clear"></div>
+	                    	</div>
+	                    <div class="clear"></div>
+	            		</div>
+	<% end %>
+	<% if @feed or @profile %>
+<!--Topics to follow - displayed on Feed and Unique Post Page:-->    
+                        <div class="sidebarright_section_container">
+	                        <div id="sidebarright_topicstofollowsection_container">						
+								<div class="sidebarright_list_headline"> Topics to follow</div>
+								<div class="sidebarright_elements_box">
+                                	<div class="sidebarright_element">
+                                        <div class="info">	
+                                            <a class="name" href=“”>Nutrition</a>
+                                            <div class="activity_topic">123 Questions</div><span class="bullet">  •  </span>
+                                        	<a class="button_green" href="">Follow</a>
+                                            <div class="followers">53 followers</div><span class="bullet">  •  </span>
+                                        	<div class="relatedto">Related to <a class="linktotopic" href="www.nutranation.org/topic/NutraNation">NutraNation</a>
+                                            </div> 
+                                        </div>
+									</div>
+                                    
+                                </div>	
+			                    <div class="clear"></div>
+	                    	</div>
+	                    <div class="clear"></div>
+	            		</div>
+	<% end %>
+<!--Related Questions - displayed on Unique Post Page:-->
+		<% if @unique %>
+                        <div class="sidebarright_section_container">
+	                        <div id="sidebarright_relatedquestionssection_container">						
+								<div class="sidebarright_list_headline">Related Questions</div>
+								<div class="sidebarright_elements_box">
+                                	<div class="sidebarright_element">
+                                    	<h1>
+                                            <a class="related_question_link" href="www.nutranation.org/this-is-the-related-questions-headline">This is the related questions headline and its a very long question so i can simulate the continue button-This is the related questions headline and its a very long question so i can simulate the continue button-This is the related questions headline and its a very long question so i can simulate the continue button
+                                                <span class="more_expand_text">(continue)
+                                                </span>
+                                            </a>
+										</h1>
+									</div>
+                                    <div class="sidebarright_element">
+                                    	<h1>
+                                            <a class="related_question_link" href="www.nutranation.org/this-is.the-related-questions-headline">This is a second, rather short question
+                                            </a>
+										</h1>
+									</div>
+                                    <div class="sidebarright_element">
+                                        <a class="see_more" href="#">See more related questions
+                                        </a>    <!--this is not supposed to open a new page, but expand the list of questions further down, still in the sidebar-->
+									</div>
+			                    <div class="clear"></div>
+                                </div>	
+			                    <div class="clear"></div>
+	                    	</div>
+	                    <div class="clear"></div>
+	            		</div>
+			<% end %>
+<!--Advertisement - displayed everywhere-->  
+						<div class="sidebarright_section_container">
+	                        <div id="sidebarright_ads_container">						
+								<div class="sidebarright_elements_box">
+                                	<div class="sidebarright_element">
+                                    	<div class="advertisement_indicator">Advertisement
+                                        </div>
+                                    </div>
+                                    <div class="sidebarright_element">
+                                    	<div class="ad_container">
+                                            <a class="234x60">
+                                                <img alt="example standard size google ad" src="images/examplead1.png"/>
+											</a>
+                                        </div>
+									</div>
+                                    <div class="sidebarright_element">
+                                    	<div class="ad_container">
+                                            <a class="234x60">
+                                                <img alt="example standard size google ad" src="images/examplead2.png"/>
+											</a>
+                                        </div>
+									</div>
+			                    	<div class="clear"></div>
+                                </div>	
+	                    	</div>
+	                    <div class="clear"></div>
+	            		</div>   
+			<% if @profile %>              
+<!--Activity data  - displayed on Profile-->
+						<div class="sidebarright_section_container">
+                        	<span id="sidebarright_activityall_container">
+        <!--following-->
+                                <div class="sidebarright_activitywithpictures_container">						
+                                    <div class="sidebarright_list_headline"> Following:</div>
+                                    <div class="number_following">222</div>
+                                    <a class="view_all">(view all)</a>
+                                    <div class="sidebarright_elements_box">
+                                        <div class="sidebarright_element">
+                                            <ul class="listofpeople">
+                                                <li>
+                                                    <a class="profilepic_small" href="">
+                                                        <img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="profilepic_small" href="">
+                                                        <img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="profilepic_small" href="">
+                                                        <img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="profilepic_small" href="">
+                                                        <img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="profilepic_small" href="">
+                                                        <img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="profilepic_small" href="">
+                                                        <img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="profilepic_small" href="">
+                                                        <img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                                    </a>
+                                                </li>
+                                            </ul>    
+                                        </div>
+                                    </div>	
+                                    <div class="clear"></div>
+                                </div>
+        <!--followers-->
+                                <div class="sidebarright_activitywithpictures_container">						
+                                    <div class="sidebarright_list_headline"> Followers:</div>
+                                    <div class="number_following">333</div>
+                                    <a class="view_all">(view all)</a>
+                                    <div class="sidebarright_elements_box">
+                                        <div class="sidebarright_element">
+                                            <ul class="listofpeople">
+                                                <li>
+                                                    <a class="profilepic_small" href="">
+                                                        <img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="profilepic_small" href="">
+                                                        <img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="profilepic_small" href="">
+                                                        <img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="profilepic_small" href="">
+                                                        <img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="profilepic_small" href="">
+                                                        <img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="profilepic_small" href="">
+                                                        <img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="profilepic_small" href="">
+                                                        <img src="images/spencer_kline.jpg" alt="name of person goes here" />
+                                                    </a>
+                                                </li>
+                                            </ul>    
+                                        </div>
+                                    </div>	
+                                    <div class="clear"></div>
+                                </div>             
+        <!--topics following-->
+                                <div class="sidebarright_activitylist_container">						
+                                    <div class="sidebarright_list_headline"> Topics:</div>
+                                    <div class="number_following">33</div>
+                                    <a class="view_all">(view all)</a>
+                                    <div class="sidebarright_elements_box">
+                                        <div class="sidebarright_element">
+                                            <h3><a href=“”>topic1</a></h3>
+                                            <a class="button_green" href="">Follow Topic</a>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <div class="sidebarright_element">
+                                            <h3><a href=“”>topic2</a></h3>
+                                            <a class="button_green" href="">Follow Topic</a>
+                                        </div>
+                                    </div>	
+                                    <div class="clear"></div>
+                                </div>     
+        <!--questions asked-->
+                                <div class="sidebarright_activitylist_container">						
+                                    <div class="sidebarright_list_headline"> Questions asked</div>
+                                    <div class="number_following">12</div>
+                                    <a class="view_all">(view all)</a>
+                                    <div class="sidebarright_elements_box">
+<!--no list of those questions here cause its shown next to the profile whihc includes the feed of her answered and asked questions anyway.-->
+                                    </div>	
+                                </div>  
+        <!--questions answered-->
+	                  			<div class="clear"></div>
+                                <div class="sidebarright_activitylist_container">						
+                                    <div class="sidebarright_list_headline"> Questions answered</div>
+                                    <div class="number_following">13</div>
+                                    <a class="view_all">(view all)</a>
+                                    <div class="sidebarright_elements_box">
+<!--no list of those questions here cause its shown next to the profile whihc includes the feed of her answered and asked questions anyway.-->
+                                    </div>	
+                                </div>     
+        <!--positive ratings-->
+                                <div class="sidebarright_activitylist_container">						
+                                    <div class="sidebarright_list_headline">Positive Ratings</div>
+                                    <div class="number_following">23</div>
+                                    <a class="view_all">(view all)</a>
+                                    <div class="sidebarright_elements_box">
+                                    </div>	
+                                </div>     
+                            	<div class="clear"></div>
+							</span>
+                        </div>
+	 
+					</div>
+	            </div>
+	 <% end %>
+							
+				<div class="clear"></div>
+	      	</div>
+	      	<div class="clear"></div>
+
+
+	    </div>

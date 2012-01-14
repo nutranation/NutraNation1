@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     
   end
   def feed
-    
+    @feed=true 
   end
   def create
     @post = current_user.posts.build(params[:post])
@@ -22,6 +22,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user =  @post.user
     @comments = @post.comments
+    @unique=true
   end
   
   def update

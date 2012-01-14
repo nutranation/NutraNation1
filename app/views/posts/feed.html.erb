@@ -90,30 +90,7 @@
 	            </div>
 	            <div class="frame_sidebarright">
 	            <!--followbutton is here-->
-					<div id="sidebarright_otherthanbutton">
-						<div id="sidebarright_topicsection_container">
-							<div class="sidebarright_section_headline">
-								<div class="sidebarright_list_headline"> Topics:</div>
-								<div class="sidebarright_list">
-	                                <h3><a href=“”>1st topic of question</a></h3>
-									<div class="sidebarright_addinfoforlistitem">5 items</div>
-									<a class="button_sidebarright_followtopic" href="">Follow Topic</a>
-									<h3><a href=“”>2nd of question</a></h3>
-									<div class="sidebarright_addinfoforlistitem">5 items</div>
-									<a class="button_sidebarright_followtopic" href="">Follow Topic</a>
-									<input class="textbox" type="text" placeholder="Add Topic" value="" name="s"/>
-	                            </div>	
-			                    <div class="clear"></div>
-	                    	</div>
-	                    <div class="clear"></div>
-	            		</div>
-					</div>
-	<!--here comes the button that is at top of the sidebar, positioned absolute:-->
-	                <div id="sidebarright_actionbuttons_container">
-						<a class="button_green" href=""> Add Your Question</a>
-	                </div>
-                	<div class="clear"></div>    
-	            </div>
+ <%= render :partial => 'shared/sidebar' %>
 				<div class="clear"></div>
 	      	</div>
 	      	<div class="clear"></div>
