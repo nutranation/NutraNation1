@@ -16,7 +16,10 @@ class UsersController < ApplicationController
     @item_type = 'User'
     @feed_type = :my_activity
     @profile = true
-    @mine = true
+    @posts = @user.posts
+    if @user.id == 5
+      @mine = true
+    end
   end
   
   def destroy
