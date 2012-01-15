@@ -13,9 +13,11 @@
                                 <a class="sub_post" href="">Reply<span class="vertical_line">|</span></a>
                                 <a class="sub_post" href="">Share<span class="vertical_line">|</span></a>
                                 <a class="sub_post" href="">Flag<span class="vertical_line">|</span></a>
-                                <span class="sub_post">1 hour ago</span>
+                                <span class="sub_post"><%= time_ago_in_words(short_post.created_at) %></span>
                             </div>
                         </div>
+												<% comment = short_post.comments.first %>
+												<% if comment %>
 					<div class="container_allanswers">
 						
 <!-- the div "answer_box" contains one answer and needs to be repeated for each new answer to a question.-->                           	
@@ -24,26 +26,27 @@
 	                    		<span class="answer_rating_plusminus">+</span>
     	                    	<span class="answer_rating_plusminus">4</span><!--this is a no of positive ratings-->
                         	</div>
+
 						<div class="answer_content">
 							<% comment = short_post.comments.first %>
 									<a href="http://www.nutranation.org/profile/userone"class="post_username"><%= comment.user.name %></a>,<span class="user_description"><%= comment.user.description %></span><br/>
-									<h3>this is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a question</h3>
+									<h3><%= comment.content %></h3>
                                         <span class="more_expand_text">(see more)</span>
                 			  <div class="sub_answer_reactions">12221 Comments</div>
                             		<div class="sub_answer_actions">
                             			<a class="sub_answer" href=""> Comment<span class="vertical_line">|</span></a>
                             			<a class="sub_answer" href=""> Flag<span class="vertical_line">|</span></a>
-                            			<span class="sub_answer">35 minutes ago</span>
+                            			<span class="sub_answer">time_ago_in_words(comment.created_at)</span>
                             		</div>
                     			</div>
-						<div class="clear"></div>
+													<div class="clear"></div>
 
-	                    <div class="clear"></div>
-                    </div>
-                    </div>
+								                    <div class="clear"></div>
+							                    </div>
+							                    </div>
+							<% end %>
+
                         <div class="clear"></div>
                 </div>
-                    <div class="feedpage_morebutton_container">
-					<div class="button_green">See more</div>
-				</div>
+
  	

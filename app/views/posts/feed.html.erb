@@ -13,76 +13,7 @@
                             <a class="singletextitem" href="">Live Feed<span class="vertical_line">|</span></a>
 						</div>
 <!--after this comes the div that needs to repeated for every post in the feed--> 
-						<div class="unique_post">
-                        	<div class="container_onlypostitself">
-                                <h1><a href="">This is the headline of the post(zB the question)</a></h1>
-                                <div class="clear"></div>
-                                <div class="post_text"><a href="http://www.nutranation.org/profile/userone"class="post_username">user one</a>,<span class="user_description">certified position of this user</span><br/>
-                                    <h2>this| is the postthis is the postthis is| the postthis is the postthis is the postthis |is the postthis is the |  postthis is the postthis is |the postthis is the postt|his is the postthis is the postthis is |the postthis is the postthis is the postthis |is the postthis is t|he postthis is the postthis i|s the postthis is the postt|his is the postthis is the postthis is t|he postthis is the postthis is the postthis is| the postthis is th|e postthis is the po|stthis is the post</h2>
-                                    <span class="more_expand_text">(see more)</span>
-                                </div>
-                                <div class="sub_post_reactions">11 Reactions
-                                </div>
-                                <div class="sub_post_actions">
-                                    <a class="sub_post" href="">Follow<span class="vertical_line">|</span></a>
-                                    <a class="sub_post" href="">Reply<span class="vertical_line">|</span></a>
-                                    <a class="sub_post" href="">Share<span class="vertical_line">|</span></a>
-                                    <a class="sub_post" href="">Flag<span class="vertical_line">|</span></a>
-                                    <span class="sub_post">1 hour ago</span>
-                                </div>
-                            </div>
-							<div class="container_allanswers">	
-<!-- the div "answer_box" contains one answer and needs to be repeated for each new answer to a question.-->                           	
-                                <div class="answer_box">
-								<div class="answer_rating_container">
-			                    		<span class="answer_rating_plusminus">+</span>
-		    	                    	<span class="answer_rating_plusminus">4</span><!--this is a no of positive ratings-->
-		                        	</div>
-								<div class="answer_content">
-											<a href="http://www.nutranation.org/profile/userone"class="post_username">user one</a>,<span class="user_description">certified position of this user</span><br/>
-											<h3>this is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a questionthis is the toprated answer to a question</h3>
-                                            <span class="more_expand_text">(see more)</span>
-                    			  <div class="sub_answer_reactions">12221 Comments</div>
-		                            		<div class="sub_answer_actions">
-		                            			<a class="sub_answer" href=""> Comment<span class="vertical_line">|</span></a>
-		                            			<a class="sub_answer" href=""> Flag<span class="vertical_line">|</span></a>
-		                            			<span class="sub_answer">35 minutes ago</span>
-		                            		</div>
-		                    			</div>
-								<div class="clear"></div>
-                                <div class="container_allcomments">
-<!-- the div "comment_box" contains one comment and needs to be repeated for each new comment to a answer.-->                           	
-                                	<div class="comment_box">
-                                        <div class="comment_content"><a href="http://www.nutranation.org/profile/userone"class="post_username">user one</a>,<span class="user_description">certified position of this user</span><br/>
-                                                    <h4>this is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to  this answerthis is the first comment to this answerthis is the first comment to this answerthis is the first comment to this answer!</h4>
-                                            		<span class="more_expand_text">(see more)</span>
-                                                    <div class="sub_comment_actions">
-                                                    <a class="sub_comment" href="">Flag<span class="vertical_line">|</span></a>
-                                                    <span class="sub_comment" > 20 minutes ago</span>
-                                                    </div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-<!--the mycomment_box div needs to be displayed whenever the other comments are displayed, so when someone either clicks on the "5comments" or on "comment"-->                                    
-                                    <div class="mycomment_box">
-                                        <div class="mycomment_content">Add an Comment to this Answer:<br/>
-                                            <div class="mycomment_texteditor_container">here goes the text editor</div>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-							</div>
-<!--the myanswer_box div needs to be displayed whenever the other answers are displayed, so when someone either clicks on the "11reactions" or on "reply"-->		                    	<div class="myanswer_box">
-		                    	<div class="myanswer_content">Add an Answer to this question:<br/>
-		                            	<div class="myanswer_texteditor_container">here goes the text editor
-		                                </div>
-		                            </div>
-			                    <div class="clear"></div>
-		                    </div>
-		                    </div>
-                            <div class="clear"></div>
-		                </div>
+<%= render :partial => 'shared/short_post', :collection => @posts %>
                         <div class="feedpage_morebutton_container">
 							<div class="button_green">See more</div>
 						</div>

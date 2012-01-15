@@ -10,7 +10,7 @@
 	                    <div class="sub_post_actions">
 	                    	<a class="sub_post" href="">Reply<span class="vertical_line">|</span></a>
 	                    	<a class="sub_post" href="">Flag<span class="vertical_line">|</span></a>
-	                    	<span class="sub_post">1 hour ago</span>
+	                    	<span class="sub_post"><%= time_ago_in_words(@post.created_at) %></span>
 	                   	</div>
 						<div class="answer_box">
 						  <%= render :partial => 'shared/comment', :collection => @comments %>
