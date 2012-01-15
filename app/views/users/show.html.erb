@@ -9,7 +9,7 @@
                                     </div>
                                 </div>
                                 <div id="profile_maininfo_maininfo" class="profile_structurebox">
-                                    <div class="profile_structurebox" id="profile_maininfos_name"> Jamie Doherty<!--Eric-Maxim Choupo-Moting  kann man den Namen so machen, dass er kleiner geschrieben wird im font-size, wenn er nicht passt?-->
+                                    <div class="profile_structurebox" id="profile_maininfos_name"> <%= @user.name %><!--Eric-Maxim Choupo-Moting  kann man den Namen so machen, dass er kleiner geschrieben wird im font-size, wenn er nicht passt?-->
                                     </div>
                                     <div class="profile_structurebox" id="profile_maininfos_position"> Registered Dietician, TX, MA
                                     </div>
@@ -85,7 +85,7 @@
                         
                         
                         
-<%= render :partial => 'shared/short_post', :collection => @posts %>
+												<%= render :partial => 'shared/short_post', :collection => @feed_items %>
 </div>
                         <div id="sign_certified_box">
 							<span id="sign_certified_triangle"></span>
