@@ -1,10 +1,11 @@
 <div id="container_holder">
   	<div id="container_content">            
-	<div class="frame_profileleft">
+		<div class="frame_content">
 					<div id="profileleft_container" class="profile_designbox">
-                    	<div id="profile_maininfos" class="profile_designbox">
+                    	<div id="profile_maininfos" class="profile_structurebox">
                         	<div id="profile_picdescript" class="profile_structurebox">
-                            	<div id="profilepicture" class="profile_structurebox"><!--profile pic goes here-->
+                            	<div class="profilepicture" class="profile_structurebox"><!--profile pic goes here-->
+	                                <img src="/images/bastian_johannes_purrer.png" alt="Bastian Johannes Purrer"/>
                                 	<div id="profile_picture_add_inside" class="profile_structurebox">+ change picture
                                     </div>
                                 </div>
@@ -22,9 +23,7 @@
                                 </div>
                                 <div class="clear"></div>
                             </div>
-                           
                         </div>
-                        
                         <div id="profile_furtherinfos" class="profile_designbox">
                          
                         <table id="profile_furtherinfos_table" class="profile_structurebox">
@@ -64,16 +63,15 @@
                             <tr id="profile_furtherinfo_table_followers">
 	                            <td class="profile_furtherinfos_table_left">connections
                                 </td>
-                                <td class="profile_furtherinfos_table_right"><span class="count_followers">25 followers</span>
-                                </td>
+								<td class="profile_furtherinfos_table_right">
+		                                <ul>
+		                                    <li class="profile_furtherinfos_links">
+		                                        <span class="count_followers">25 followers</span>												
+		                                    </li>
+		                                </ul>
+								</td>
     						</tr>                    
                         </table>                        
-                            	<div class="profile_structurebox">
-                                	<div class="profile_furtherinfos_">
-                                    </div>
-                                    <div class="">
-                                    </div>
-                                </div>
                          
                          
                          
@@ -89,13 +87,12 @@
 </div>
 <% end %>
                         <div id="sign_certified_box">
-							<span id="sign_certified_triangle"></span>
-                            <span id="sign_certified_text">Checked by </br>NutraNation</span> <!--wie schreibt man text schief?-->
+	                        <img src="/images/verified.gif" alt="NutraNation certified expert"/>
                         </div>
 					</div>
-	            </div>
-						 <%= render :partial => 'shared/sidebar' %>
-										<div class="clear"></div>
-							      	</div>
-							      	<div class="clear"></div>
-							    </div>
+	 	</div>
+		<%= render :partial => 'shared/sidebar' %>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>

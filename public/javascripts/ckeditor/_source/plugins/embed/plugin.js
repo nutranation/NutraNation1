@@ -34,8 +34,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				{
 					label : editor.lang.embed.button,
 					command : commandName,
-					icon: this.path + "images/embed.png"
-				});      
+					icon: this.path + "/images/embed.png"
+				});
+      
 			CKEDITOR.dialog.add( commandName, CKEDITOR.getUrl( this.path + 'dialogs/embed.js' ) );
 		}
 	});
