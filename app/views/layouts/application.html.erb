@@ -1,5 +1,14 @@
 <%= render 'layouts/head' %>
 <link href="/stylesheets/pagedesign.css" rel="stylesheet" type="text/css" />
+<%= javascript_include_tag :ckeditor %>
+	<script type="text/javascript">
+    $(document).ready(function() {
+			$('input#post_title').focusin(function() {
+       	$('div.post-input').show();
+    	});
+		});
+		
+</script>
 </head>
 <body>
 	<%= render 'shared/header_small' %>

@@ -2,8 +2,8 @@
                     	<div class="container_onlypostitself">
                             <h1><a href=""><%= short_post.title %></a></h1>
                             <div class="clear"></div>
-                            <div class="post_text"><a href="http://www.nutranation.org/profile/userone"class="post_username"><%= short_post.user.name %></a>,<span class="user_description"><%= short_post.user.description %>r</span><br/>
-                                <h2><%= short_post.content %></h2>
+                            <div class="post_text"><a href="http://www.nutranation.org/profile/userone"class="post_username"><%= short_post.user.name %></a><% if short_post.user.description and short_post.user.description != "" %>,<span class="user_description"><%= short_post.user.description %></span><% end %><br/>
+                                <h2><%= auto_link(wrap(short_post.content)).html_safe %></h2>
                                 <span class="more_expand_text">(see more)</span>
                             </div>
                             <div class="sub_post_reactions">11 Reactions
@@ -29,7 +29,7 @@
 
 						<div class="answer_content">
 							<% comment = short_post.comments.first %>
-									<a href="http://www.nutranation.org/profile/userone"class="post_username"><%= comment.user.name %></a>,<span class="user_description"><%= comment.user.description %></span><br/>
+									<a href="http://www.nutranation.org/profile/userone"class="post_username"><%= comment.user.name %></a><% if comment.user.description and comment.user.description != "" %>,<span class="user_description"><%= comment.user.description %></span><% end %><br/>
 									<h3><%= comment.content %></h3>
                                         <span class="more_expand_text">(see more)</span>
                 			  <div class="sub_answer_reactions">12221 Comments</div>

@@ -3,7 +3,8 @@
 	        	<div class="frame_content">
 					<div class="feed_container">
 						<div class="feedpage_headline_container_buttons">
-							<div class="button_green">Add Question</div>
+							
+								
 							<div class="button_green">Settings</div>
 						</div>
 		            	<div class="feedpage_headline_container">
@@ -12,7 +13,9 @@
                             <a class="singletextitem" href="">Your Subscriptions<span class="vertical_line">|</span></a>
                             <a class="singletextitem" href="">Live Feed<span class="vertical_line">|</span></a>
 						</div>
+					
 <!--after this comes the div that needs to repeated for every post in the feed--> 
+<div><%= render :partial => 'shared/post_form' %></div>
 <%= render :partial => 'shared/short_post', :collection => @posts %>
                         <div class="feedpage_morebutton_container">
 							<div class="button_green">See more</div>

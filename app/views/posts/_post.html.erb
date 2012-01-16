@@ -4,8 +4,8 @@
 				<div class="feed_container">
 	            	<div class="unique_post"><h1><%= @post.title %></h1>
 	                	<div class="clear"></div>
-	                    <div class="post_text"><a href="http://www.nutranation.org/profile/userone"class="post_username"><%= @user.name %></a>,<span class="user_description"><%= @user.description %></span><br/>
-							<h2><%= @post.content %></h2>
+	                    <div class="post_text"><a href="http://www.nutranation.org/profile/userone"class="post_username"><%= @user.name %></a><% if @user.description and @user.description != "" %>,<span class="user_description"><%= @user.description %></span><% end %><br/>
+							<h2><%= auto_link(wrap(@post.content)).html_safe %></h2>
 						</div>
 	                    <div class="sub_post_actions">
 	                    	<a class="sub_post" href="">Reply<span class="vertical_line">|</span></a>

@@ -7,15 +7,19 @@ class PostsController < ApplicationController
   def feed
     @feed=true 
     @posts = Post.all.reverse
+    @post = Post.new
   end
   def create
     @post = current_user.posts.build(params[:post])
     @post.tag_list = params[:post][:tag_list].gsub(/\(\w+\)/, '')
+    @feed=true 
+    @posts = Post.all.reverse
+    @post = Post.new
     if @post.save
-      redirect_to root_path, :flash => { :success => "Post successful!" }
+       redirect_to feed_path, :flash => { :success => "Post successful!" }
     else
       @feed_items = []
-      render 'pages/home'
+      redirect_to feed_path
     end
   end
   
@@ -29,8 +33,10 @@ class PostsController < ApplicationController
   def update
      @post = Post.find(params[:id])
      @post.tag_list = params[:post][:tag_list].gsub(/\(\w\)/, '')
+
      if @post.update_attributes(params[:post])
        redirect_to @post, :flash => { :success => "Post updated." }
+       
      else
        @title = "Edit Post"
        render 'edit'

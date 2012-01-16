@@ -78,7 +78,7 @@
                          
                          
                          </div>
-                          
+                          <% if @feed_items.any? %>
                         <div id="profile_feed" class="profile_designbox">
                         
                         
@@ -87,6 +87,7 @@
                         
 												<%= render :partial => 'shared/short_post', :collection => @feed_items %>
 </div>
+<% end %>
                         <div id="sign_certified_box">
 							<span id="sign_certified_triangle"></span>
                             <span id="sign_certified_text">Checked by </br>NutraNation</span> <!--wie schreibt man text schief?-->
