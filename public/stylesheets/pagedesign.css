@@ -305,7 +305,7 @@ display:none;
 	color: #494C37;
 	text-decoration: none;
 }
-.header_link:hover
+.header_link:hover, #logo_main:hover
 {
 	background-color: #464C20;
 	background: -webkit-gradient(linear, left top, left bottom, from(#464C20), to(#818C3A));
@@ -343,7 +343,7 @@ display:none;
 	float: left;
 	min-height: 100px;
 }
-.frame_sidebarright
+.frame_sitebarright
 {
 	float: right;
 	background-color: #FFFFFF;
@@ -352,7 +352,8 @@ display:none;
 	margin-top: 0px;
 	border-right: 1px dotted #494C37;
 	border-top: 1px solid #494C37;
-	border-color:#494C37 #494C37 #FFF #FFF;
+	border-left-color:#FFF;
+	border-bottom-color:#FFF;
 	box-shadow: 0 1px #95A695 inset;
 	box-shadow-color:#FFF;
 	border-radius:1px;
@@ -734,6 +735,8 @@ overflow:hidden;
 	padding: 4px;
 	min-height: 20px;
 	border:1px solid #95A695;
+	-moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
+	-webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
 	box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
 }
 #profile_maininfos
@@ -990,8 +993,8 @@ A.post_username
 {
 	padding: 0 5px;
 }
-/*--------------------------------------------------------sidebar-right-----------------------------------------------------------------*/
-.frame_sidebarright A
+/*--------------------------------------------------------sitebar-right-----------------------------------------------------------------*/
+.frame_sitebarright A
 {
 	color: #494C37;
 }
@@ -999,38 +1002,38 @@ A.button_green
 {
 	color: #FFF;
 }
-#sidebarright_actionbuttons_container
+#sitebarright_actionbuttons_container
 {
 	position: static;
 	width: 100%;
 	height: auto;
 	padding-top:15px;
 }
-.sidebarright_element .button_green
+.sitebarright_element .button_green
 {
 	position: absolute;
 	right: 0px;
-	top: 7px;
+
 	padding: 0 5px;
 	display: inline;
 	float: right;
 	vertical-align: top;
 }
-#sidebarright_actionbuttons_container .button_green
+#sitebarright_actionbuttons_container .button_green
 {
 	display: block;
 	width: 50%;
 	margin-right: auto;
 	margin-left: auto;
 }
-#sidebarright_otherthanbutton
+#sitebarright_otherthanbutton
 {
 	
 	position: relative;
 	width: 100%;
 	height: auto;
 }
-.sidebarright_section_container
+.sitebarright_section_container
 {
 	padding-top: 0px;
 	padding-right: 0;
@@ -1040,7 +1043,7 @@ A.button_green
 	text-align: left;
 	border-collapse: collapse;
 }
-.sidebarright_section_container .sidebarright_element
+.sitebarright_section_container .sitebarright_element
 {
 	position: relative;
 	border-top: 1px dotted #95A695;
@@ -1048,19 +1051,21 @@ A.button_green
 	padding-top: 5px;
 	border-collapse: collapse;
 }
-.sidebarright_section_container, #sidebarright_actionbuttons_container
+.sitebarright_section_container, #sitebarright_actionbuttons_container
 {
-	border-right: 1px dotted #494C37;
-	border-bottom: 1px solid #494C37;
-	border-color:#FFF #FFF #494C37 #FFF;
-	box-shadow: 0 1px #95A695 inset;
+	border-bottom: 1px solid #FFF;
+	border-left-color: #FFF;
+	border-top:1px solid #494C37;
+	-moz-box-shadow: inset 0 1px #95A695;
+	-webkit-box-shadow: inset 0 1px #95A695;
+	box-shadow: inset 0 1px #95A695;
 	border-radius:1px;
 
 	
 	
 	
 }
-.sidebarright_list_headline
+.sitebarright_list_headline
 { 	
 	width: 100%;
 	padding-left: 0px;
@@ -1070,28 +1075,28 @@ A.button_green
 	margin-top: auto;
 	margin-bottom: auto;
 }
-.sidebarright_elements_box
+.sitebarright_elements_box
 {
 	width: 100%;
 	padding-left: 0px;
 	margin-top: 0;
 	border-collapse: collapse;
 }
-.sidebarright_elements_box H3
+.sitebarright_elements_box H3
 {
 	color: #FF0000;
 	margin-bottom: -2px;
 	margin-top: 0px;
 	display: inline-block;
 }
-.sidebarright_addinfoforlistitem
+.sitebarright_addinfoforlistitem
 {
 	font-size: 12px;
 	color: #808080;
 	margin-top: 4px;
 	margin-bottom: 8px;
 }
-.frame_sidebarright .textbox
+.frame_sitebarright .textbox
 {
 	width: 150px;
 }
@@ -1106,44 +1111,44 @@ A.button_green
 {
 	display: inline;
 }
-/*--------------different boxes in sidebarright:topics--------------------*/
-#sidebarright_topicsection_container
+/*--------------different boxes in sitebarright:topics--------------------*/
+#sitebarright_topicsection_container
 {
 	border-collapse: collapse;
 }
-#sidebarright_topicsection_container .sidebarright_addinfoforlistitem
+#sitebarright_topicsection_container .sitebarright_addinfoforlistitem
 {
 	margin-left: 0px;
 	max-width: 130px;
 }
-#sidebarright_topicsection_container H3, .sidebarright_activitywithpictures_container H3
+#sitebarright_topicsection_container H3, .sitebarright_activitywithpictures_container H3
 {
 	max-width: 170px;
 	overflow: hidden;
 	white-space: nowrap;
 }
-.frame_sidebarright #sidebarright_topicsection_container .textbox
+.frame_sitebarright #sitebarright_topicsection_container .textbox
 {
 	width: 180px;
 	margin: 10px 0;
 }
-/*--------------different boxes in sidebarright:people to follow AND topics to follow--------------------*/
-.sidebarright_element .name
+/*--------------different boxes in sitebarright:people to follow AND topics to follow--------------------*/
+.sitebarright_element .name
 {
 	font-weight: bold;
 	margin-right: 5px;
 	display: inline;
 }
-#sidebarright_peopletofollowsection_container
+#sitebarright_peopletofollowsection_container
 {
 }
-#sidebarright_peopletofollowsection_container .sidebarright_element .button_green
+#sitebarright_peopletofollowsection_container .sitebarright_element .button_green
 {
 	position: relative;
 	float: right;
 	margin: 0px 5px 9px 7px;
 }
-#sidebarright_peopletofollowsection_container .info
+#sitebarright_peopletofollowsection_container .info
 {
 	height: auto;
 	width: 234px;
@@ -1152,14 +1157,14 @@ A.button_green
 	display: inline-block;
 	vertical-align: top;
 }
-.sidebarright_element .location, .sidebarright_element .connection, .sidebarright_element .activity, .sidebarright_element .jobtitle, .sidebarright_element .followers, .sidebarright_element .relatedto, .sidebarright_element .activity_topic
+.sitebarright_element .location, .sitebarright_element .connection, .sitebarright_element .activity, .sitebarright_element .jobtitle, .sitebarright_element .followers, .sitebarright_element .relatedto, .sitebarright_element .activity_topic
 {
 	color: #000000;
 	line-height: 14px;
 	display: inline;
 
 }
-#sidebarright_peopletofollowsection_container IMG
+#sitebarright_peopletofollowsection_container IMG
 {
 	width: 50px;
 	height: 50px;
@@ -1171,13 +1176,13 @@ A .profilepic_small
 	height: auto;
 	width: auto;
 }
-#sidebarright_topicstofollowsection_container .sidebarright_element .button_green
+#sitebarright_topicstofollowsection_container .sitebarright_element .button_green
 {
 	position: relative;
 	float: right;
 	margin: 5px;
 }
-#sidebarright_topicstofollowsection_container .info
+#sitebarright_topicstofollowsection_container .info
 {
 	height: auto;
 	width: 285px;
@@ -1186,30 +1191,30 @@ A .profilepic_small
 	display: inline-block;
 	vertical-align: top;
 }
-/*--------------different boxes in sidebarright:related questions--------------------*/
-#sidebarright_relatedquestionssection_container
+/*--------------different boxes in sitebarright:related questions--------------------*/
+#sitebarright_relatedquestionssection_container
 {
 }
 .related_question_link
 {
 }
-#sidebarright_relatedquestionssection_container .sidebarright_element
+#sitebarright_relatedquestionssection_container .sitebarright_element
 {
 	padding-bottom: 8px;
 }
-#sidebarright_relatedquestionssection_container A.see_more
+#sitebarright_relatedquestionssection_container A.see_more
 {
 	font-size: 12px;
 	white-space: nowrap;
 	display: block;
 }
-#sidebarright_relatedquestionssection_container H1
+#sitebarright_relatedquestionssection_container H1
 {
 	font-size: inherit;
 	font-weight: bold;
 }
-/*--------------different boxes in sidebarright:advertisement--------------------*/
-#sidebarright_ads_container .advertisement_indicator
+/*--------------different boxes in sitebarright:advertisement--------------------*/
+#sitebarright_ads_container .advertisement_indicator
 {
 	position: relative;
 	height: 16px;
@@ -1218,35 +1223,35 @@ A .profilepic_small
 	color: #FFFFFF;
 	text-align: right;
 }
-#sidebarright_ads_container .sidebarright_element
+#sitebarright_ads_container .sitebarright_element
 {
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
-/*#sidebarright_ads_container .ad_container 234x60*/
+/*#sitebarright_ads_container .ad_container 234x60*/
 #INVALID-RULE
 {
 	height: 60px;
 	width: 234px;
 }
-/*--------------different boxes in sidebarright:activity - on profiles--------------------*/
-.sidebarright_activitywithpictures_container
+/*--------------different boxes in sitebarright:activity - on profiles--------------------*/
+.sitebarright_activitywithpictures_container
 {
 	margin-bottom: 10px;
 }
-.sidebarright_activitywithpictures_container .sidebarright_element
+.sitebarright_activitywithpictures_container .sitebarright_element
 {
 	height: 35px;
 }
-#sidebarright_activityall_container .sidebarright_list_headline
+#sitebarright_activityall_container .sitebarright_list_headline
 {
 	display: inline;
 }
-#sidebarright_activityall_container .number_following
+#sitebarright_activityall_container .number_following
 {
 	display: inline;
 }
-.sidebarright_activitywithpictures_container UL.listofpeople LI
+.sitebarright_activitywithpictures_container UL.listofpeople LI
 {
 	float: left;
 	width: 35px;
@@ -1254,7 +1259,7 @@ A .profilepic_small
 	margin-right: 2px;
 	display: inline-block;
 }
-.sidebarright_activitywithpictures_container IMG
+.sitebarright_activitywithpictures_container IMG
 {
 	width: 35px;
 	height: 35px;
@@ -1262,25 +1267,25 @@ A .profilepic_small
 	line-height: 14px;
 	white-space: normal;
 }
-.sidebarright_activitywithpictures_container .sidebarright_element
+.sitebarright_activitywithpictures_container .sitebarright_element
 {
 	padding-bottom: 5px;
 }
-#sidebarright_activityall_container A.view_all
+#sitebarright_activityall_container A.view_all
 {
 	padding-left: 5px;
 	font-size: 12px;
 	display: inline;
 }
-.sidebarright_activitylist_container
+.sitebarright_activitylist_container
 {
 	margin-bottom: 8px;
 }
-.sidebarright_activitylist_container .sidebarright_element
+.sitebarright_activitylist_container .sitebarright_element
 {
 	height: auto;
 }
-.sidebarright_activitylist_container H3
+.sitebarright_activitylist_container H3
 {
 	max-width: 170px;
 	margin-top: 4px;

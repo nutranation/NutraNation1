@@ -57,7 +57,7 @@ body {
 	text-decoration: underline;
 }
 
-#sidebar {
+#sitebar {
 	margin-left:15px;
 	margin: 0;	padding: 0; 
 	float:left;	
@@ -103,7 +103,7 @@ body {
 }
 .roundcont_right {
 	width: 290px;
-	background: #a7c94a url(images/back_sidebar.png) repeat-x;
+	background: #a7c94a url(images/back_sitebar.png) repeat-x;
 	color: #fff;
 	margin: 10px 0;
 }
@@ -113,11 +113,11 @@ body {
 }
 
 .roundtop_right { 
-	background: url(images/tr_sidebar.gif) no-repeat top right; 
+	background: url(images/tr_sitebar.gif) no-repeat top right; 
 }
 
 .roundbottom_right {
-	background: url(images/br_sidebar.gif) no-repeat top right; 
+	background: url(images/br_sitebar.gif) no-repeat top right; 
 }
 .roundcont_bottom {
 	width: 630px;
@@ -155,13 +155,13 @@ body {
 .roundbottom_home {
 	background: url(images/br_bottom.gif) no-repeat top right; 
 }
-.inner_sidebar {
+.inner_sitebar {
 	padding-top: 20px;
 }
-.inner_sidebar_text {
+.inner_sitebar_text {
 	padding-left: 15px;
 }
-.title_sidebar {
+.title_sitebar {
 	text-align:center;
 	font-size: 18px;
 }
@@ -557,7 +557,7 @@ td.main {
   padding: 1em;
 }
 
-td.sidebar {
+td.sitebar {
   width: 30%;
   padding: 1em;
   vertical-align: top;
