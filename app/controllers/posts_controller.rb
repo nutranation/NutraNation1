@@ -28,6 +28,7 @@ class PostsController < ApplicationController
     @user =  @post.user
     @comments = @post.comments
     @unique=true
+    @comment = Comment.new
   end
   
   def update
