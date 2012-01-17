@@ -21,7 +21,6 @@ BODY
 /*Saf4+, Chrome:*/
 	background: -webkit-radial-gradient(top center, #FFFFFF 35%, #C7D954 130%);
 
-<<<<<<< Updated upstream
 /*Chrome 10+, Saf5.1+, FF*/
 	background: -moz-radial-gradient(top, #FFFFFF 35%, #C7D954 160%);
 
@@ -191,60 +190,6 @@ border-style:solid;
 border-color:white white white black;
 display:none;
 }
-=======
-body {
-	min-height:500px;
-	overflow-y:scroll;
-	background: none no-repeat scroll 0 0 #000000;
-    color: #494C37;
-    direction: ltr;
-    font:Georgia, "Times New Roman", Times, serif;
-	font-size: 15px;
-    line-height: 20px;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    unicode-bidi: embed; /*The unicodeBidi property is used with the direction property to set or return whether the text should be overridden to support multiple languages in the same document.*/
-	background-color: #ffffff;
-	background: -webkit-gradient(radial, left top, left bottom, from(#FFFFFF) 35%, to(#C7D954) 130%); /* Saf4+, Chrome */
-	background: -webkit-radial-gradient(top center, #FFFFFF 35%, #C7D954 130%); /* Chrome 10+, Saf5.1+ */
-	background:    -moz-radial-gradient(top, #FFFFFF 35%, #C7D954 130%); /* FF3.6 */
-	background:     -ms-radial-gradient(top, #FFFFFF 35%, #C7D954 130%); /* IE10 */
-	background:      -o-radial-gradient(top, #FFFFFF 35%, #C7D954 130%); /* Opera 11.10+ */
-	background-color:         radial-gradient(top, #FFFFFF 35%, #C7D954 130%);
- 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FFFFFF, EndColorStr=#C7D954 ); /* IE6–IE9 */
-}
-.clear {
-	clear:both;
-	}
-a  {
-	text-decoration:none;
-}
-h1 {
-	font-size:17px;
-	border-bottom:1px solid white;
-	}
-h2 {
-	line-height:inherit;
-	font-size:inherit;
-	font-weight:normal;
-	}
-h3 {
-	font-size:inherit;
-	line-height:12px;
-	font-weight:normal;
-	}
-h4 {
-	font-size:inherit;
-	line-height:12px;
-	font-weight:normal;
-	}
-h5 {
-	}
-h6 {
-	}
-	
->>>>>>> Stashed changes
 /*----------------------------------------headerbar attributes----------------------------------------*/
 #headerbar_holder
 {
@@ -379,7 +324,6 @@ h6 {
 	color: #E3DA53;
 }
 /*------------------------------------------------------------------------main--------------------------------------------------*/
-<<<<<<< Updated upstream
 #container_holder
 {
 	padding-top: 38px;
@@ -432,39 +376,6 @@ A.subreactions
 {
 	color:#95A695;
 }
-=======
-
-
-
-#container_holder {
-	}
-#container_content {
-	width:980px;
-	min-height:400px;
-	margin-right:auto;
-	margin-left:auto;
-	background-color:#000;/*<!--placeholder-->*/
-	border:3px solid pink;/*<!--placeholder-->*/
-	
-	}
-.frame_content {
-	float:left;
-	width:720px;/*<!--placeholder-->*/	
-	min-height:100px;
-	margin-top:20px;
-	border:1px solid black; /*<!--placeholder-->*/
-	}
-.frame_sidebarright {
-	float:right;
-	background-color:#CCC;
-	width:220px;/*<!--placeholder-->*/	
-	min-height:100px;
-	margin-top:20px;
-	border:1px solid black; /*<!--placeholder-->*/	
-	
-	}
-
->>>>>>> Stashed changes
 /*-----------------------------------------------------------unique post---------------------------------------------------------------*/
 .unique_post
 {
@@ -626,52 +537,8 @@ overflow:hidden;
 .answer_rating_number .label_container
 {
 	position:relative;
-<<<<<<< Updated upstream
 	left:-2px;
 	top:-15px;
-=======
-	width:24px;
-	height:18px;
-	padding:2px;
-	margin-bottom:5px;
-	background-color:#C9C;
-	font-size:20px;
-	text-align:center;
-	font-weight:bold;
-	font-size:24px;
-	color:#000;
-	}
-
-.answer_content {
-	float:right;
-	height:auto;
-	min-height:22px;
-	width:428px;
-	padding:8px 10px 3px 12px;
-	background-color:#6FC;
-	line-height:17px;
-	font-size:14px;
-	color:black;
-	text-align:left;
-	}
-.answer_content h3 {
-	color:blue;
-}
-.myanswer_content {
-	float:right;
-	height:auto;
-	min-height:22px;
-	width:428px;
-	padding:8px 10px 3px 12px;
-	background-color:#0cC;
-	line-height:17px;
-	font-size:14px;
-	color:black;
-	text-align:left;
-	}
-
-.sub_answer_actions {
->>>>>>> Stashed changes
 	height:20px;
 	width:29px;
 }
@@ -1194,7 +1061,6 @@ A.button_green
 	box-shadow: inset 0 1px #95A695;
 	border-radius:1px;
 
-<<<<<<< Updated upstream
 	
 	
 	
@@ -1427,95 +1293,6 @@ A .profilepic_small
 	overflow: hidden;
 	white-space: nowrap;
 }
-=======
-.comment_box .sub_comment {
-	margin-right:0px;
-	margin-bottom:5px;
-	float:left;
-	font-size:11px;
-	color:#09F;
-	text-decoration:none;
-	}
-	*--------------------------------------------------------sidebar-right-----------------------------------------------------------------*/
-
-	.frame_sidebarright {
-		height:200px;
-		width:220px;/*<!--placeholder-->*/
-		margin-top:90px;
-		background-color:#6F6;
-		border:1px solid black; /*<!--placeholder-->*/		
-		top:100px:}
-	
-
-	#sidebarright_actionbuttons_container {
-		position:absolute;
-		width:220px;
-		border-bottom:1px solid pink;
-		padding-top:11px;
-		}
-
-	#sidebarright_otherthanbutton {
-		position:absolute;
-		top:116px;
-		width:220px;
-		height:auto;
-		background:green; /*<!--placeholder-->*/		
-
-		}
-
-	.button_followquestion {
-		text-decoration:none;
-		height:auto;
-		width:auto;
-		font-size:14px;
-		font-weight:bold;
-		color:white;
-		padding:3px 31px 3px 31px;
-		margin:0 10px 15px 10px;
-		border-width:1px;
-		border-style:solid;
-		border-color:#000 #000 #161711 #000;
-		border-radius:3px;
-		box-shadow:0 1px 0 rgba(0, 0, 0, 0.1);
-		text-shadow:0 -1px #623633;
-		text-align: center;
-		text-shadow:#313325;
-		background-color: #737F28;
-		background: -webkit-gradient(linear, left top, left bottom, from(#737F28), to(#737F28)); /* Saf4+, Chrome */
-		background: -webkit-linear-gradient(top, #737F28, #737F28); /* Chrome 10+, Saf5.1+ */
-		background:    -moz-linear-gradient(top, #737F28, #737F28); /* FF3.6 */
-		background:     -ms-linear-gradient(top, #737F28, #737F28); /* IE10 */
-		background:      -o-linear-gradient(top, #737F28, #737F28); /* Opera 11.10+ */
-		background:         linear-gradient(top, #737F28, #737F28);
-	 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#737F28, EndColorStr=#737F28 ); /* IE6–IE9 */
-		cursor:pointer;
-		white-space:nowrap;
-		}
-	a.button_followquestion:hover {
-		background-color:green;/*text-decoration:underline;*/	
-		box-shadow:0 0 1px 1px #FFFFFF;
-		}	
-	#sidebarright_topicsection_container{
-		top:110px;
-		width:220px;
-		border-bottom:1px solid pink;
-		padding-top:15px;
-		padding-left:10px;
-		color:black;
-		text-align:left;
-		}
-	.sidebarright_section_headline {
-		padding:5px 0 5px 5px;
-		}
-	.sidebarright_list {
-		list-style-type:none;
-		padding-left:5px;
-		margin-top:0;
-		}
-	.sidebarright_list.li {
-		color:green;
-	}
->>>>>>> Stashed changes
 /*--------------------------------------------------------footer------------------------------------------------------------------*/
 #footerbar_holder
 {
