@@ -1,0 +1,15 @@
+    <div class="roundcont_right">
+           <div class="roundtop_right">
+<img src="/images/tl_sitebar.gif" alt="" width="15" height="15" class="corner" style="display: none" />
+           </div>
+                       <div class="round_inner_right">
+					<div class="title_sitebar">Sidebar</div>
+<% if @user.description %>
+  <strong>Description:</strong>  <%= @user.description %><br>
+<% end %>
+<% if @user.location  %>
+  <strong>Location:</strong>  <%= @user.location %> 
+<% end %><br>
+<strong>Posts:</strong> <%= @user.posts.count %><br>
+
+<a href="/messages/new?name=<%= @user.name %>&id=<%= @user.id %>">Send a Message</a>
