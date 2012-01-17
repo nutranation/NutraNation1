@@ -123,7 +123,7 @@ describe UsersController do
     it "should display the post count" do
       10.times { Factory(:post, :user => @user, :title => "foo") }
       get :show, :id => @user
-      response.should have_selector('td.sidebar',
+      response.should have_selector('td.sitebar',
                                     :title => @user.posts.count.to_s)
     end
     

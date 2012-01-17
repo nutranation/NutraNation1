@@ -34,7 +34,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				{
 					label : editor.lang.attachment.button,
 					command : commandName,
-					icon: this.path + "images/attachment.png"
+					icon: this.path + "/images/attachment.png"
 				});
       
 			CKEDITOR.dialog.add( commandName, CKEDITOR.getUrl( this.path + 'dialogs/attachment.js' ) );

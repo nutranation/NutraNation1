@@ -52,13 +52,13 @@ width: 450px;
 margin-left: 40px;
 }
 
-#sidebar1 {
+#sitebar1 {
 float: left;
 padding-left: 20px;
 width: 180px;
 }
 
-#sidebar2 {
+#sitebar2 {
 float: right;
 padding-right: 30px;
 width: 180px;
@@ -222,7 +222,7 @@ img.alignleft, img.alignright, img.aligncenter {
 margin-bottom: 12px;
 }
 
-/* sidebar and footer widget blocks */
+/* sitebar and footer widget blocks */
 
 aside h3 {
 font-size: 18px;

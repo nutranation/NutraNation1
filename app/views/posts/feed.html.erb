@@ -3,28 +3,26 @@
 	        	<div class="frame_content">
 					<div class="feed_container">
 						<div class="feedpage_headline_container_buttons">
-							
-								
-							<div class="button_green">Settings</div>
+							<a class="button_green" href="">Add Question</a>
+							<a class="button_green" href="">Settings</a>
 						</div>
 		            	<div class="feedpage_headline_container">
-							<div class="singletextitem">Feed</div>
-                            <a class="singletextitem" href="">Recommandations</a>
+							<div class="singletextitem">Feed<span class="vertical_line">|</span></div>
+                            <a class="singletextitem" href="">Recommandations<span class="vertical_line">|</span></a>
                             <a class="singletextitem" href="">Your Subscriptions<span class="vertical_line">|</span></a>
                             <a class="singletextitem" href="">Live Feed<span class="vertical_line">|</span></a>
 						</div>
-					
 <!--after this comes the div that needs to repeated for every post in the feed--> 
 <div><%= render :partial => 'shared/post_form' %></div>
 <%= render :partial => 'shared/short_post', :collection => @posts %>
                         <div class="feedpage_morebutton_container">
-							<div class="button_green">See more</div>
+							<a class="button_green">See more</a>
 						</div>
 		 			</div>
 	            </div>
-	            <div class="frame_sidebarright">
+	            <div class="frame_sitebarright">
 	            <!--followbutton is here-->
- <%= render :partial => 'shared/sidebar' %>
+ <%= render :partial => 'shared/sitebar' %>
 				<div class="clear"></div>
 	      	</div>
 	      	<div class="clear"></div>
