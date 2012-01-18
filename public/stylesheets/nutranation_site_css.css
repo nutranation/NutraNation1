@@ -165,27 +165,24 @@ body {
 }
 #logo {
 	position:absolute;
-	background:center no-repeat;
+	background-repeat: no-repeat;
 	left:10px;
 	top:5px;
 	height: 101px;
 	width: 388px;
-	background: no-repeat;
 	background-position: left;
 	z-index:5;
 	display:inline;
-	background-image: url(/images/logo.png);
 	background-size:330px 86px;
 }
-#banner_header {
-	visibility:hidden;
+#logo IMG
+{
 	position:absolute;
-	left:388px;
-	top:0;
-	background-image:url(/images/banner_header.jpg);
 	background-repeat:no-repeat;
-	height: 96px;
-	width: 184px;
+	width: 388px;
+	height: 101px;
+	background-color:transparent;
+	border:none;
 }
 #container {
 	position:relative;

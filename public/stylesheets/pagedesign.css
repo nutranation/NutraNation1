@@ -33,6 +33,39 @@ BODY
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FFFFFF, EndColorStr=#C7D954 );
 /*IE6–IE9*/
 }
+
+
+html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,input,hr 
+{
+	margin:0; 
+	padding:0;
+}
+h1,h2,h3,h4,h5,h6,pre,code,address,caption,cite,code,em,strong,th 
+{
+	font-weight:normal; 
+	font-style:normal;
+}
+ul,ol 
+{
+	list-style:none;
+}
+fieldset,img,hr 
+{
+	border:none;
+}	
+caption,th 
+{
+	text-align:left;
+}
+table 
+{
+	border-collapse:collapse; 
+	border-spacing:0;
+}
+td 
+{
+	vertical-align:top;
+}
 html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, blockquote, pre, form, fieldset, table, th, td 
 {
     margin-bottom: 0;
@@ -160,6 +193,7 @@ A.button_green:active
 {
 	padding: 0 1px;
 	font-size: 12px;
+	line-height:1px;
 }
 UL.listofpeople
 {
@@ -1074,6 +1108,7 @@ A.button_green
 	white-space: nowrap;
 	margin-top: auto;
 	margin-bottom: auto;
+	background-color:#F7FFD2;
 }
 .sitebarright_elements_box
 {
@@ -1111,6 +1146,11 @@ A.button_green
 {
 	display: inline;
 }
+.followbutton
+{
+	display:inline;
+	width:auto;
+}
 /*--------------different boxes in sitebarright:topics--------------------*/
 #sitebarright_topicsection_container
 {
@@ -1138,6 +1178,7 @@ A.button_green
 	font-weight: bold;
 	margin-right: 5px;
 	display: inline;
+	line-height: 14px;
 }
 #sitebarright_peopletofollowsection_container
 {
@@ -1146,12 +1187,12 @@ A.button_green
 {
 	position: relative;
 	float: right;
-	margin: 0px 5px 9px 7px;
+	margin: 25px 5px 25px 2px;
 }
 #sitebarright_peopletofollowsection_container .info
 {
 	height: auto;
-	width: 234px;
+	width: 160px;
 	padding: 0 3px 5px;
 	background-image: url(white);
 	display: inline-block;
@@ -1162,7 +1203,6 @@ A.button_green
 	color: #000000;
 	line-height: 14px;
 	display: inline;
-
 }
 #sitebarright_peopletofollowsection_container IMG
 {
@@ -1217,19 +1257,20 @@ A .profilepic_small
 #sitebarright_ads_container .advertisement_indicator
 {
 	position: relative;
+	right:5px;
+	line-height: 16px;
 	height: 16px;
-	width: 234px;
-	font-size: 12px;
-	color: #FFFFFF;
+	width: 100%;
+	font-size: 11px;
+	color: #95A695;
 	text-align: right;
 }
 #sitebarright_ads_container .sitebarright_element
 {
-	margin-top: 5px;
+	border-collapse:collapse;
 	margin-bottom: 5px;
 }
-/*#sitebarright_ads_container .ad_container 234x60*/
-#INVALID-RULE
+#sitebarright_ads_container .ad_container
 {
 	height: 60px;
 	width: 234px;
@@ -1293,6 +1334,27 @@ A .profilepic_small
 	overflow: hidden;
 	white-space: nowrap;
 }
+/*--------------different boxes in sitebarright:sharing--------------------*/
+.twitter_share_button
+{
+	height:30px;
+}
+.fb_button
+{
+	width:200px;
+	display:none;
+}
+.fb_button_rtl 
+{
+	padding-left:0;
+	
+}
+#sitebarright_sharing_container .fb_edge_widget_with_comment, fb_iframe_widget
+.linkedin_button
+{
+	height:85px;
+}
+
 /*--------------------------------------------------------footer------------------------------------------------------------------*/
 #footerbar_holder
 {

@@ -23,7 +23,7 @@
 						<% if @unique %>
 						<div class="sitebarright_section_container">
 	                        <div id="sitebarright_topicsection_container">						
-								<div class="sitebarright_list_headline"> Topics:</div>
+								<div class="sitebarright_list_headline"> Topics</div>
 								<div class="sitebarright_elements_box">
                                 	<div class="sitebarright_element">
                                         <h3><a href=“”>1st topic of question</a></h3>
@@ -59,12 +59,14 @@
                                         <div class="info">	
                                             <a class="name" href=“”>Spencer Kline</a>
                                             <div class="jobtitle">Registered Dietitian</div><span class="bullet">  •  </span>
-                                        	<a class="button_green" href="">Follow</a>
                                             <div class="location">Boston, MA</div><span class="bullet">  •  </span>
                                         	<div class="activity">23 Posts</div><span class="bullet">  •  </span>
                                         	<div class="connection">Followed by <a class="linktoprofile" href="www.nutranation.org/lauren.janich">Lauren Janich</a>
                                             </div> 
                                         </div>
+										<div class="followbutton">
+                                    		<a class="button_green" href="">Follow</a>
+										</div>
 									</div>
                                     
                                     <div class="sitebarright_element">
@@ -76,7 +78,6 @@
                                         <div class="info">	
                                             <a class="name" href=“”>Bastian Johannes Purrer</a>
                                             <div class="jobtitle">Guy pretending to be a website designer</div><span class="bullet">  •  </span>
-                                        	<a class="button_green" href="">Follow</a>
                                             <div class="location">Berlin, Germany</div><span class="bullet">  •  </span>
                                         	<div class="activity">23 Posts</div><span class="bullet">  •  </span>
                                         	<div class="connection">Also follows
@@ -84,6 +85,9 @@
                                             	<a class="linktotopic" href="www.nutranation.org/topic/NutraNation">NutraNation</a>
                                             </div> 
                                         </div>
+										<div class="followbutton">
+                                    		<a class="button_green" href="">Follow</a>
+										</div>
 									</div>
                                 </div>	
 			                    <div class="clear"></div>
@@ -148,31 +152,53 @@
 <!--Advertisement - displayed everywhere-->  
 						<div class="sitebarright_section_container">
 	                        <div id="sitebarright_ads_container">						
-								<div class="sitebarright_elements_box">
-                                	<div class="sitebarright_element">
+								<div class="sitebarright_list_headline">
                                     	<div class="advertisement_indicator">Advertisement
-                                        </div>
-                                    </div>
-                                    <div class="sitebarright_element">
-                                    	<div class="ad_container">
+										</div>
+								</div>
+								<div class="sitebarright_element">
+                                    <div class="ad_container">
                                             <a class="234x60">
                                                 <img alt="example standard size google ad" src="/images/examplead1.png"/>
 											</a>
-                                        </div>
 									</div>
-                                    <div class="sitebarright_element">
-                                    	<div class="ad_container">
+								</div>
+								<div class="sitebarright_element">
+                                    <div class="ad_container">
                                             <a class="234x60">
                                                 <img alt="example standard size google ad" src="/images/examplead2.png"/>
 											</a>
-                                        </div>
 									</div>
-			                    	<div class="clear"></div>
-                                </div>	
+								</div>
+			                    <div class="clear"></div>
+							</div>	
 	                    	</div>
 	                    <div class="clear"></div>
 	            		</div>   
 			<% if @profile %>              
+
+<!--SHARING - displayed TO BE DISCUSSED-->  
+									<div class="sitebarright_section_container">
+				                        <div id="sitebarright_sharing_container">						
+											<div class="sitebarright_list_headline">
+												<span class="sharing">Sharing is Caring...tell your network about us: </span>
+											</div>
+											<div class="sitebarright_element">
+												<iframe class="twitter_share_button" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.html#_=1319826452569&count=horizontal&id=twitter_tweet_button_0&lang=en&original_referer=http%3A%2F%2Fwww.nutranation.org%2F%23!%2Fexercise%2F0&text=NutraNation%20is%20Your%20online%20community%20focused%20on%20healthy%20living%20and%20nutrition.&url=http%3A%2F%2Fwww.nutranation.org&via=NutraNation" title="NutraNation"></iframe>
+												<div class="fb_button" style="background-color:white;">
+													<div id="fb-root" style = "background-color:white;">
+													</div>
+													<script src="http://connect.facebook.net/en_US/all.js#appId=134934403267879&amp;xfbml=1"></script><fb:like  href="nutranation.org" send="true" width="190" show_faces="true" action="like" font="arial" style = "background-color:white;"></fb:like>
+												</div>
+												<div class="linkedin_button">
+													<script src="http://platform.linkedin.com/in.js" type="text/javascript"></script>
+													<script type="IN/Share" data-url="www.nutranation.org"></script>
+												</div>
+											</div>
+										</div>
+				            		</div>   
+						<% end %>
+						<% if @unique or @feed or @profile%>
 <!--Activity data  - displayed on Profile-->
 						<div class="sitebarright_section_container">
                         	<span id="sitebarright_activityall_container">
@@ -274,7 +300,7 @@
                                 </div>             
         <!--topics following-->
                                 <div class="sitebarright_activitylist_container">						
-                                    <div class="sitebarright_list_headline"> Topics:</div>
+                                    <div class="sitebarright_list_headline"> Topics</div>
                                     <div class="number_following">33</div>
                                     <a class="view_all">(view all)</a>
                                     <div class="sitebarright_elements_box">
