@@ -1,17 +1,30 @@
 		<div class="answer_rating_container">
-              		<span class="answer_rating_plusminus">+</span>
-                  	<span class="answer_rating_plusminus">-</span>
-                	</div>
-		<div class="answer_content">
-					<a href="http://www.nutranation.org/profile/userone"class="post_username"><%= comment.user.name %></a><% if comment.user.description and comment.user.description != "" %>,<span class="user_description"><%= comment.user.description %><% end %></span><br/>
+    		<span class="answer_rating_plusminus">+</span>
+        	<span class="answer_rating_number">5
+            	<div class="label_container">
+					<span class="label">Answer votes</span>
+                    <span class="arrowtoright"></span>
+				</div>
+			</span><!--this is a no of positive ratings-->
+		</div>
+		<div class="answer_content">			
+			<div class="pic_small_container">
+				<a class="profilepic_small" href="">
+					<img alt="name of person goes here" src="/images/spencer_kline.jpg">
+				</a>
+			</div>	
+			<div class="post">
+					<a href="http://www.nutranation.org/profile/userone"class="post_username"><%= comment.user.name %></a><% if comment.user.description and comment.user.description != "" %>,
+					<span class="user_description"><%= comment.user.description %><% end %></span><br/>
 					<h3><%= comment.content %></h3>
-                    		<div class="sub_answer_actions">
+					<div class="sub_answer_actions">
                     			<a class="sub_answer" href=""> Comment<span class="vertical_line">|</span></a>
                     			<a class="sub_answer" href=""> Flag<span class="vertical_line">|</span></a>
                     			<span class="sub_answer">35 minutes ago</span>
                     		</div>
-            			</div>
-	<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
 
 	
 	

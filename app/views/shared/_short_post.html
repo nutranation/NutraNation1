@@ -2,7 +2,9 @@
                     	<div class="container_onlypostitself">
                             <h1><a href=""><%= short_post.title %></a></h1>
                             <div class="clear"></div>
-                            <div class="post_text"><a href="http://www.nutranation.org/profile/userone"class="post_username"><%= short_post.user.name %></a><% if short_post.user.description and short_post.user.description != "" %>,<span class="user_description"><%= short_post.user.description %></span><% end %><br/>
+                            <div class="post_text">
+								<img src="/images/spencer_kline.jpg" alt="name of person goes here" />
+								<a href="http://www.nutranation.org/profile/userone"class="post_username"><%= short_post.user.name %></a><% if short_post.user.description and short_post.user.description != "" %>,<span class="user_description"><%= short_post.user.description %></span><% end %><br/>
                                 <h2><%= auto_link(wrap(short_post.content)).html_safe %></h2>
                                 <span class="more_expand_text">(see more)</span>
                             </div>
@@ -30,21 +32,28 @@
                                         <span class="arrowtoright"></span>
 									</div>
 								</span><!--this is a no of positive ratings-->
-                        	</div>
+                        </div>
 
 						<div class="answer_content">
 							<% comment = short_post.comments.first %>
+								<div class="pic_small_container">
+									<a class="profilepic_small" href="">
+										<img alt="name of person goes here" src="/images/spencer_kline.jpg">
+									</a>
+								</div>									
+								<div class="post">
 									<a href="http://www.nutranation.org/profile/userone"class="post_username"><%= comment.user.name %></a><% if comment.user.description and comment.user.description != "" %>,<span class="user_description"><%= comment.user.description %></span><% end %><br/>
 									<h3><%= comment.content %></h3>
-                                        <span class="more_expand_text">(see more)</span>
-                			  <div class="sub_answer_reactions">12221 Comments</div>
+									<span class="more_expand_text">(see more)</span>
+                			  		<div class="sub_answer_reactions">12221 Comments</div>
                             		<div class="sub_answer_actions">
                             			<a class="sub_answer" href=""> Comment<span class="vertical_line">|</span></a>
                             			<a class="sub_answer" href=""> Flag<span class="vertical_line">|</span></a>
                             			<span class="sub_answer"><%= time_ago_in_words(comment.created_at) %></span>
                             		</div>
-                    			</div>
-													<div class="clear"></div>
+								</div>
+                    	</div>
+						<div class="clear"></div>
 
 								                    <div class="clear"></div>
 							                    </div>

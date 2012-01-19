@@ -151,6 +151,8 @@ UL
 	border-width: 1px;
 	border-style: solid;
 	border-color: #000 #000 #161711;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
 	border-radius: 3px;
 	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
@@ -179,9 +181,9 @@ A.button_green:hover
 {
 	background-color: #008000;
 /*text-decoration:underline;*/
-	-webkit-box-shadow: 0 1px 1px #000000;
-	-moz-box-shadow: 0 1px 1px #000000;
-	box-shadow: 0 1px 1px #000000;
+	-webkit-box-shadow: 0 0 1px 0px #000000;
+	-moz-box-shadow: 0 0 1px 0px #000000;
+	box-shadow: 0 0 1px 0px #000000;
 }
 A.button_green:active
 {
@@ -223,6 +225,11 @@ border-width:6px;
 border-style:solid;
 border-color:white white white black;
 display:none;
+}
+.pic_small_container
+{
+	background-color: #FFFFFF;
+	display: inline-block;
 }
 /*----------------------------------------headerbar attributes----------------------------------------*/
 #headerbar_holder
@@ -391,6 +398,9 @@ display:none;
 	box-shadow: 0 1px #95A695 inset;
 	box-shadow-color:#FFF;
 	border-radius:1px;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	
 }
 .feed_container
 {
@@ -417,6 +427,7 @@ A.subreactions
 	padding-bottom: 5px;
 /*	border-bottom: 1px dashed #333;
 */	min-width: 350px;
+	line-height:15px;
 }
 .unique_post H1
 {
@@ -468,6 +479,14 @@ border:1px solid #ccc;
 {
 	margin:5px 0;
 }
+.post_text IMG
+{
+	position:absolute;
+	left:-60px;
+	top:2px;
+	width:50px;
+	height:50px;
+}
 /*-------------------------post_expendable-----------------------
 .post_text h2 {
 max-height:61px;
@@ -500,12 +519,18 @@ overflow:hidden;
 }
 .answer_box, .myanswer_box
 {
+	width:100%;
+	position:relative;
+	left:-42px;
 	height: auto;
 	min-height: 50px;
-/*to ensure that plus and minus have space*/
-	margin-bottom: 25px;
-	margin-top: 4px;
 	padding-top: 2px;
+}
+.answer_box .post, .myanswer_box .post
+{
+	position:relative;
+	left:1px;
+	display: table-cell;
 }
 .answer_rating_container
 {
@@ -589,16 +614,33 @@ overflow:hidden;
 {
 	position: relative;
 	min-height: 22px;
-	padding: 8px 10px 3px 12px;
+	padding: 8px;
 	margin-bottom: 0px;
+	margin-top: 1px;
 	margin-left: 35px;
-	background-color: #F7FFD2;
-	line-height: 20px;
+	background-color: #EDF4EF;
+	line-height: 16px;
 	font-size: 12px;
 	color: #000000;
 	text-align: left;
+	border-width:0 0 1px 0;
+	border-color:#95A695;
+	border-style:solid;
 	border-collapse: collapse;
 	display: block;
+}
+.answer_content .pic_small_container, .myanswer_content .pic_small_container
+{
+	position:static;
+	float:left;
+	height:40px;
+	margin:0 7px 5px 0;
+	display:block;
+}
+.answer_content IMG, .myanswer_content IMG
+{
+	height:40px;
+	width:40px;
 }
 .answer_content H3
 {
@@ -687,7 +729,7 @@ overflow:hidden;
 	width: 100%;
 	height: 18px;
 	padding-bottom: 7px;
-	border-bottom: 2px solid #CCC;
+	border-bottom: 1px solid #494C37;
 	margin-bottom: 15px;
 }
 .feedpage_headline_container_buttons
@@ -695,7 +737,7 @@ overflow:hidden;
 	position: relative;
 	width: 100%;
 	height: 21px;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 	padding: 0px;
 }
 .feedpage_headline_container_buttons .button_green
@@ -748,16 +790,15 @@ overflow:hidden;
 }
 .feedpage_morebutton_container
 {
-	margin-right: 25px;
-	margin-left: 25px;
+	margin:25px 50px 25px -10px  ;
 	padding:0;
 	
 }
 .feedpage_morebutton_container A.button_green
 {
 	width:100%;
-	padding:auto;
 	display:block;
+	margin:0;
 }
 /*----------------------------------------------------profile left side----------------------------------------------------------------------*/
 #profileleft_container
@@ -896,31 +937,7 @@ top:5px;
 right:2px;
 height:50px;
 }
-/*#sign_certified_text
-{
-	position: absolute;
-	right: 0px;
-	top: 13px;
-	background-color: #008000;
-	z-index: 6000;
-	font-size: 12px;
-	-webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
-/*The rotation property of the BasicImage filter can accept one of four values: 0, 1, 2, or 3 which will rotate the element 0, 90, 180 or 270 degress respectively.*/
-/*}
-#sign_certified_triangle
-{
-	position: absolute;
-	width: 0px;
-	height: 0px;
-	border-bottom: 33px solid transparent;
-	border-top: 33px solid #FFFF00;
-	border-left: 33px solid transparent;
-	border-right: 33px solid #FFFF00;
-	z-index: 4;
-}
-*/*/#profile_furtherinfos
+#profile_furtherinfos
 {
 	min-height: 50px;
 	margin-top: 10px;
@@ -975,6 +992,7 @@ color:black;
 {
 	padding-bottom: 7px;
 }
+
 /*----------------------------------------------------profile right side----------------------------------------------------------------------*/
 .frame_profileright
 {
@@ -1027,6 +1045,67 @@ A.post_username
 {
 	padding: 0 5px;
 }
+/*--------------------------------------------------------editor----------------------------------------------------------------*/
+#new_post 
+{
+	margin-bottom:20px;
+	line-height:20px;
+}
+#new_post #post_title
+{
+	width:494px;		
+}
+#new_post #post_tag_list
+{
+	margin-bottom:7px;	
+}
+#cke_post_content_editor
+{
+	width:100px;
+	padding:0;
+}
+#new_post #post_tag_list
+{
+	margin-right:7px;
+}
+#new_post #post_submit
+{
+	position:relative;
+	float:right;
+	top:-1px;
+	right:-8px;
+	display:inline;
+	padding-top:0;
+	padding-bottom:0;
+}
+#new_post #post_submit:hover
+{	
+	cursor:pointer;
+	background-color: #008000;
+	text-decoration:underline;
+	-webkit-box-shadow: 0 0 1px 0px #000000;
+	-moz-box-shadow: 0 0 1px 0px #000000;
+	box-shadow: 0 0 1px 0px #000000;	
+}
+#new_post #post_submit:active
+{
+	position: relative;
+	top: 1px;
+	left: 1px;
+}
+
+#new_post .button_green
+{
+	height:23px;
+	width:100px;
+	font: 14px Georgia, "Times New Roman", Times, serif;	
+	font-weight:bold;
+	}	
+TD#cke_contents_post_content_editor 
+{
+	height:100px;
+}
+
 /*--------------------------------------------------------sitebar-right-----------------------------------------------------------------*/
 .frame_sitebarright A
 {
@@ -1094,10 +1173,8 @@ A.button_green
 	-webkit-box-shadow: inset 0 1px #95A695;
 	box-shadow: inset 0 1px #95A695;
 	border-radius:1px;
-
-	
-	
-	
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
 }
 .sitebarright_list_headline
 { 	
@@ -1108,7 +1185,13 @@ A.button_green
 	white-space: nowrap;
 	margin-top: auto;
 	margin-bottom: auto;
-	background-color:#F7FFD2;
+	background-color:#EDF4EF;
+}
+.sitebarright_activitylist_container .sitebarright_list_headline, 
+.sitebarright_activitywithpictures_container .sitebarright_list_headline, 
+#sitebarright_ads_container .sitebarright_list_headline
+{
+	border-top:1px solid #494C37;
 }
 .sitebarright_elements_box
 {
@@ -1123,6 +1206,7 @@ A.button_green
 	margin-bottom: -2px;
 	margin-top: 0px;
 	display: inline-block;
+	font-weight:bold;
 }
 .sitebarright_addinfoforlistitem
 {
@@ -1135,21 +1219,22 @@ A.button_green
 {
 	width: 150px;
 }
-.pic_small_container
+#sitebarright_peopletofollowsection_container .pic_small_container
 {
 	height: 50px;
 	width: 50px;
-	background-color: #FFFFFF;
-	display: inline-block;
 }
 .info
 {
 	display: inline;
+	line-height:13px;
 }
 .followbutton
 {
 	display:inline;
-	width:auto;
+	float:right;
+	width:71px;
+	height:5px;
 }
 /*--------------different boxes in sitebarright:topics--------------------*/
 #sitebarright_topicsection_container
@@ -1178,7 +1263,6 @@ A.button_green
 	font-weight: bold;
 	margin-right: 5px;
 	display: inline;
-	line-height: 14px;
 }
 #sitebarright_peopletofollowsection_container
 {
@@ -1286,7 +1370,6 @@ A .profilepic_small
 }
 #sitebarright_activityall_container .sitebarright_list_headline
 {
-	display: inline;
 }
 #sitebarright_activityall_container .number_following
 {

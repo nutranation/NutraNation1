@@ -1,30 +1,30 @@
 <%= form_for(@post, :html => { :multipart => true }) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
 <div class="roundcont">
-   <div class="roundtop">
-     <img src="/images/tl.gif" alt="" width="15" height="15" class="corner" style="display: none" />
-   </div>
-   <div class="round_inner">
-   <table border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td><input class="feed" id="post_title" name="post[title]" size="100" rows="20" type="text class="title_search""> </td>
-      </tr>
-    </table>
-	 <div class = "post-input">
-   <div class="spacer"></div>
-   <div class="title_round">Picture</div>
-   <input id="post_picture" name="post[picture]" type="file" class="choose">
-   <div class="spacer"></div>
-   <div class="title_round">Further Desciption</div>
-    <%= f.cktext_area :content, :height => 200, :toolbar=>'Easy' %>
-   <div class="spacer"></div>
-   <div class="title_round">Input tags (separate with comma)</div>
-   <input id="post_tag_list" size="50" name="post[tag_list]" value="" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" class="title_search_bottom" >
-   <p><input id="post_submit" name="commit" type="submit" value="Submit">          
-   </div>
-   <div class="roundbottom">
-     <img src="/images/bl.gif" alt="" width="15" height="15" class="corner" style="display: none" />
-   </div>
-</div>	
+	<div class="roundtop">
+		<img src="/images/tl.gif" alt="" width="15" height="15" class="corner" style="display: none" />
+	</div>
+	<div class="round_inner">
+		<table border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td><input class="feed" id="post_title" name="post[title]" value="Add your Question here" style="color:#95A695;" size="70	" rows="20" type="text class="title_search""> </td>
+			</tr>
+		</table>
+		<div class = "post-input" style="display:none">
+			<div class="spacer"></div>
+			<div class="title_round">Picture</div>
+			<input id="post_picture" name="post[picture]" type="file" class="choose">
+			<div class="spacer"></div>
+			<div class="title_round">Further Desciption</div>
+			<%= f.cktext_area :content, :height => 100, :toolbar=>'Easy' %>
+			<div class="spacer"></div>
+			<div class="title_round">Select Topics to show your question to the right experts</div>
+			<input id="post_tag_list" size="50" value="Input topics here (separate with comma)" style="color:#95A695;" name="post[tag_list]" value="" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" class="title_search_bottom" >
+			<input id="post_submit" class="button_green" name="commit" type="submit" value="Submit">          
+		</div>
+		<div class="roundbottom">
+			<img src="/images/bl.gif" alt="" width="15" height="15" class="corner" style="display: none" />
+		</div>
+	</div>	
 <% end %>
 <div class="spacer"></div></div>

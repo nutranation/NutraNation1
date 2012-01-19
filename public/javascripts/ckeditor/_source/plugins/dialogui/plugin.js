@@ -328,7 +328,7 @@ CKEDITOR.plugins.add( 'dialogui' );
 				{
 					attributes[ 'aria-labelledby' ] = this._.labelId;
 					this._.required && ( attributes[ 'aria-required' ] = this._.required );
-					var html = [ '<div class="cke_dialog_ui_input_textarea" role="presentation"><textarea class="cke_dialog_ui_input_textarea" id="', domId, '" ' ];
+					var html = [ '<div class="cke_dialog_ui_input_textarea" 	role="presentation"><textarea class="cke_dialog_ui_input_textarea" id="', domId, '" ' ];
 					for ( var i in attributes )
 						html.push( i + '="' + CKEDITOR.tools.htmlEncode( attributes[i] ) + '" ' );
 					html.push( '>', CKEDITOR.tools.htmlEncode( me._['default'] ), '</textarea></div>' );
