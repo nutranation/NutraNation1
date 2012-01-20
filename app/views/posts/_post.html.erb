@@ -2,7 +2,15 @@
     	<div id="container_content">
         	<div class="frame_content">
 				<div class="feed_container">
-	            	<div class="unique_post"><h1><%= @post.title %></h1>
+	            	<div id="unique_post" class="unique_post">
+						<div class="topicoverheadline">
+							<h2>
+								<a class="singletextitem">Topic1</a>		
+								<a class="singletextitem">Topic2</a>		
+								<a class="singletextitem">Topic3</a>									
+							</h2>
+						</div>
+						<h1><%= @post.title %></h1>
 	                	<div class="clear"></div>
 	                    <div class="post_text">
 							<img src="/images/spencer_kline.jpg" alt="name of person goes here" />

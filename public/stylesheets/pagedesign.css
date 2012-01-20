@@ -391,7 +391,6 @@ display:none;
 	width: 295px;
 	height: auto;
 	margin-top: 0px;
-	border-right: 1px dotted #494C37;
 	border-top: 1px solid #494C37;
 	border-left-color:#FFF;
 	border-bottom-color:#FFF;
@@ -441,6 +440,37 @@ A.subreactions
 	border-bottom: 1px solid #FFFFFF;
 	text-align: left;
 }
+#unique_post H1
+{
+	font-size: 20px;
+	font-weight:bold;
+}
+
+.topicoverheadline
+{
+	line-height:20px;
+	width:100%;
+}
+.topicoverheadline a.singletextitem
+{
+	color:#95A695;
+	font-size:11px;
+	padding:0px 4px 0px 4px;
+	border:1px solid #95A695;
+	border-radius:3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	margin-right:3px;	
+}
+.topicoverheadline H2
+{
+	margin-bottom:2px;
+}
+#unique_post .topicoverheadline H2
+{
+	margin-bottom:6px;
+}
+
 .container_onlypostitself
 {
 	background-color: inherit;
@@ -662,6 +692,10 @@ overflow:hidden;
 	background: #FFFFFF;
 	border:1px solid black;
 }
+.myanswer_content .field
+{
+	margin-bottom:20px;
+}
 /*-------------------------answer_expendable-----------------------
 .answer_content h3 {
 max-height:120px;
@@ -790,7 +824,7 @@ overflow:hidden;
 }
 .feedpage_morebutton_container
 {
-	margin:25px 50px 25px -10px  ;
+	margin:35px 10px 25px -10px  ;
 	padding:0;
 	
 }
@@ -1124,14 +1158,15 @@ A.button_green
 }
 .sitebarright_element .button_green
 {
-	position: absolute;
-	right: 0px;
-
-	padding: 0 5px;
-	display: inline;
+	position: relative;
 	float: right;
+	right: 0px;
+	padding: 0 5px;
+	margin: 5px;
+	display: inline;
 	vertical-align: top;
 }
+
 #sitebarright_actionbuttons_container .button_green
 {
 	display: block;
@@ -1231,20 +1266,26 @@ A.button_green
 }
 .followbutton
 {
-	display:inline;
+	display:block;
 	float:right;
-	width:71px;
-	height:5px;
 }
 /*--------------different boxes in sitebarright:topics--------------------*/
 #sitebarright_topicsection_container
 {
 	border-collapse: collapse;
 }
+#sitebarright_topicsection_container .info
+{
+	float:left;
+	display:inline-block;
+	padding-top:5px;
+	padding-bottom:5px;
+}
 #sitebarright_topicsection_container .sitebarright_addinfoforlistitem
 {
 	margin-left: 0px;
 	max-width: 130px;
+	display:block;
 }
 #sitebarright_topicsection_container H3, .sitebarright_activitywithpictures_container H3
 {
@@ -1276,9 +1317,8 @@ A.button_green
 #sitebarright_peopletofollowsection_container .info
 {
 	height: auto;
-	width: 160px;
+	width: 140px;
 	padding: 0 3px 5px;
-	background-image: url(white);
 	display: inline-block;
 	vertical-align: top;
 }
@@ -1299,12 +1339,6 @@ A .profilepic_small
 {
 	height: auto;
 	width: auto;
-}
-#sitebarright_topicstofollowsection_container .sitebarright_element .button_green
-{
-	position: relative;
-	float: right;
-	margin: 5px;
 }
 #sitebarright_topicstofollowsection_container .info
 {
